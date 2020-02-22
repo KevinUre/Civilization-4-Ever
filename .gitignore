@@ -10,3 +10,6 @@ temp_files/
 
 *.dll
 *.opensdf
+
+.vs/
+UpgradeLog.htm
