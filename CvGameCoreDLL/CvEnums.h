@@ -737,6 +737,9 @@ enum GameOptionTypes				// Exposed to Python
 	//DeathMaker900 Tech Pillage Begin
 	GAMEOPTION_PILLAGE_TECH,
 	//DeathMaker900 Tech Pillage End
+	//DeathMaker900 Non-Lethal Combat Begin
+	GAMEOPTION_NON_LETHAL_COMBAT,
+	//DeathMaker900 Non-Lethal Combat Begin
 	GAMEOPTION_ADV_CULTURE,
 
 #ifdef _USRDLL

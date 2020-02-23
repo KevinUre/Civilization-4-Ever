@@ -1089,20 +1089,25 @@ void CvUnit::resolveCombat(CvUnit* pDefender, CvPlot* pPlot, CvBattleDefinition&
 		pyArgsCD.add(gDLL->getPythonIFace()->makePythonObject(&cdAttackerDetails));
 		pyArgsCD.add(gDLL->getPythonIFace()->makePythonObject(&cdDefenderDetails));
 		pyArgsCD.add(getCombatOdds(this, pDefender));
-		CvEventReporter::getInstance().genericEvent("combatLogCalc", pyArgsCD.makeFunctionArgs());
+		CvEventReporter::getInstance().genericEvent("combatLogCalc", pyArgsCD.makeFunctio\nArgs());
 	}
 
 	collateralCombat(pPlot, pDefender);
 
+	// a first strike is a chance to attack that isnt punished for failure unless they also have first strikes
+	// you only get XP from killing (deaths) or widthdrawing
+	// what is unit combat limit?
+	// how does collateral work?
+	int iCombatRoundCount = 1;
 	while (true)
 	{
-		if (GC.getGameINLINE().getSorenRandNum(GC.getDefineINT("COMBAT_DIE_SIDES"), "Combat") < iDefenderOdds)
+		if (GC.getGameINLINE().getSorenRandNum(GC.getDefineINT("COMBAT_DIE_SIDES"), "Combat") < iDefenderOdds) //if defender hits
 		{
-			if (getCombatFirstStrikes() == 0)
+			if (getCombatFirstStrikes() == 0) // if attacker has no first strikes left
 			{
-				if (getDamage() + iAttackerDamage >= maxHitPoints() && GC.getGameINLINE().getSorenRandNum(100, "Withdrawal") < withdrawalProbability())
+				if (getDamage() + iAttackerDamage >= maxHitPoints() && GC.getGameINLINE().getSorenRandNum(100, "Withdrawal") < withdrawalProbability()) // we are dead, can we widthdraw?
 				{
-					flankingStrikeCombat(pPlot, iAttackerStrength, iAttackerFirepower, iAttackerKillOdds, iDefenderDamage, pDefender);
+					flankingStrikeCombat(pPlot, iAttackerStrength, iAttackerFirepower, iAttackerKillOdds, iDefenderDamage, pDefender); // give them one on the way out
 
 					changeExperience(GC.getDefineINT("EXPERIENCE_FROM_WITHDRAWL"), pDefender->maxXPValue(), true, pPlot->getOwnerINLINE() == getOwnerINLINE(), !pDefender->isBarbarian());
 					break;
@@ -1110,7 +1115,7 @@ void CvUnit::resolveCombat(CvUnit* pDefender, CvPlot* pPlot, CvBattleDefinition&
 
 				changeDamage(iAttackerDamage, pDefender->getOwnerINLINE());
 
-				if (pDefender->getCombatFirstStrikes() > 0 && pDefender->isRanged())
+				if (pDefender->getCombatFirstStrikes() > 0 && pDefender->isRanged()) // art only
 				{
 					kBattle.addFirstStrikes(BATTLE_UNIT_DEFENDER, 1);
 					kBattle.addDamage(BATTLE_UNIT_ATTACKER, BATTLE_TIME_RANGED, iAttackerDamage);
@@ -1129,11 +1134,11 @@ void CvUnit::resolveCombat(CvUnit* pDefender, CvPlot* pPlot, CvBattleDefinition&
 				}
 			}
 		}
-		else
+		else  //if attacker hits
 		{
-			if (pDefender->getCombatFirstStrikes() == 0)
+			if (pDefender->getCombatFirstStrikes() == 0) // if defender has no first strikes left
 			{
-				if (std::min(GC.getMAX_HIT_POINTS(), pDefender->getDamage() + iDefenderDamage) > combatLimit())
+				if (std::min(GC.getMAX_HIT_POINTS(), pDefender->getDamage() + iDefenderDamage) > combatLimit()) // we fuck off instead of wounding them past the damage cap
 				{
 					changeExperience(GC.getDefineINT("EXPERIENCE_FROM_WITHDRAWL"), pDefender->maxXPValue(), true, pPlot->getOwnerINLINE() == getOwnerINLINE(), !pDefender->isBarbarian());
 					pDefender->setDamage(combatLimit(), getOwnerINLINE());
@@ -1142,7 +1147,7 @@ void CvUnit::resolveCombat(CvUnit* pDefender, CvPlot* pPlot, CvBattleDefinition&
 
 				pDefender->changeDamage(iDefenderDamage, getOwnerINLINE());
 
-				if (getCombatFirstStrikes() > 0 && isRanged())
+				if (getCombatFirstStrikes() > 0 && isRanged()) // art only
 				{
 					kBattle.addFirstStrikes(BATTLE_UNIT_ATTACKER, 1);
 					kBattle.addDamage(BATTLE_UNIT_DEFENDER, BATTLE_TIME_RANGED, iDefenderDamage);
@@ -1162,16 +1167,6 @@ void CvUnit::resolveCombat(CvUnit* pDefender, CvPlot* pPlot, CvBattleDefinition&
 			}
 		}
 
-		if (getCombatFirstStrikes() > 0)
-		{
-			changeCombatFirstStrikes(-1);
-		}
-
-		if (pDefender->getCombatFirstStrikes() > 0)
-		{
-			pDefender->changeCombatFirstStrikes(-1);
-		}
-
 		if (isDead() || pDefender->isDead())
 		{
 			if (isDead())
@@ -1183,7 +1178,7 @@ void CvUnit::resolveCombat(CvUnit* pDefender, CvPlot* pPlot, CvBattleDefinition&
 			}
 			else
 			{
-				flankingStrikeCombat(pPlot, iAttackerStrength, iAttackerFirepower, iAttackerKillOdds, iDefenderDamage, pDefender);
+				flankingStrikeCombat(pPlot, iAttackerStrength, iAttackerFirepower, iAttackerKillOdds, iDefenderDamage, pDefender); // if they die we get a flank? on who?
 
 				int iExperience = pDefender->attackXPValue();
 				iExperience = ((iExperience * iDefenderStrength) / iAttackerStrength);
@@ -1192,6 +1187,31 @@ void CvUnit::resolveCombat(CvUnit* pDefender, CvPlot* pPlot, CvBattleDefinition&
 			}
 
 			break;
+		}
+
+		if (GC.getGameINLINE().isOption(GAMEOPTION_NON_LETHAL_COMBAT)) {
+
+			if (iCombatRoundCount >= GC.getDefineINT("MAX_COMBAT_ROUNDS")) {
+				int iExperience = GC.getDefineINT("MIN_EXPERIENCE_PER_COMBAT");
+				pDefender->changeExperience(iExperience, maxXPValue(), true, pPlot->getOwnerINLINE() == pDefender->getOwnerINLINE(), !isBarbarian());
+				changeExperience(iExperience, pDefender->maxXPValue(), true, pPlot->getOwnerINLINE() == getOwnerINLINE(), !pDefender->isBarbarian());
+				break;
+			}
+			else
+			{
+				if(getCombatFirstStrikes() == 0 && pDefender->getCombatFirstStrikes() == 0) // first strikes dont count against turn limit
+				iCombatRoundCount++;
+			}
+		}
+
+		if (getCombatFirstStrikes() > 0)
+		{
+			changeCombatFirstStrikes(-1);
+		}
+
+		if (pDefender->getCombatFirstStrikes() > 0)
+		{
+			pDefender->changeCombatFirstStrikes(-1);
 		}
 	}
 }
@@ -1354,7 +1374,10 @@ void CvUnit::updateCombat(bool bQuick)
 		}
 		else
 		{
-			//@MOD Commanders                KEVIN
+			//@MOD Commanders                
+
+
+
 			//USE commanders here (so their command points will be decreased) for attacker and defender:
 			this->nullUsedCommander();
 			pDefender->nullUsedCommander();
@@ -13156,8 +13179,15 @@ void CvUnit::getDefenderCombatValues(CvUnit& kDefender, const CvPlot* pPlot, int
 
 	int iStrengthFactor = ((iOurFirepower + iTheirFirepower + 1) / 2);
 
-	iOurDamage = std::max(1, ((GC.getDefineINT("COMBAT_DAMAGE") * (iTheirFirepower + iStrengthFactor)) / (iOurFirepower + iStrengthFactor)));
-	iTheirDamage = std::max(1, ((GC.getDefineINT("COMBAT_DAMAGE") * (iOurFirepower + iStrengthFactor)) / (iTheirFirepower + iStrengthFactor)));
+	if (GC.getGameINLINE().isOption(GAMEOPTION_NON_LETHAL_COMBAT)) {
+		iOurDamage = std::max(1, ((GC.getDefineINT("COMBAT_DAMAGE") / GC.getDefineINT("NLCGO_COMBAT_STRENGTH_DEVISOR") * (iTheirFirepower + iStrengthFactor)) / (iOurFirepower + iStrengthFactor)));
+		iTheirDamage = std::max(1, ((GC.getDefineINT("COMBAT_DAMAGE") / GC.getDefineINT("NLCGO_COMBAT_STRENGTH_DEVISOR") * (iOurFirepower + iStrengthFactor)) / (iTheirFirepower + iStrengthFactor)));
+	}
+	else
+	{
+		iOurDamage = std::max(1, ((GC.getDefineINT("COMBAT_DAMAGE") * (iTheirFirepower + iStrengthFactor)) / (iOurFirepower + iStrengthFactor)));
+		iTheirDamage = std::max(1, ((GC.getDefineINT("COMBAT_DAMAGE") * (iOurFirepower + iStrengthFactor)) / (iTheirFirepower + iStrengthFactor)));
+	}
 }
 
 int CvUnit::getTriggerValue(EventTriggerTypes eTrigger, const CvPlot* pPlot, bool bCheckPlot) const
