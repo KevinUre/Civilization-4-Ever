@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- RevolutionDCM/LoR -->
+<!-- Sid Meier's Civilization 4 Beyond the Sword -->
+<!-- Modified by the World of Civilization Team -->
+<!-- Game Text Infos -->
+<!-- -->
+<Civ4GameText xmlns="http://www.firaxis.com">
+	<TEXT>
+		<Tag>TXT_KEY_PEDIA_CATEGORY_EVENT</Tag>
+		<English>Events</English>
+		<French>&#201;v&#233;nements</French>
+		<German>Ereignisse</German>
+		<Italian>Eventi</Italian>
+		<Spanish>Acontecimientos</Spanish>
+		<Finnish>Tapahtumat</Finnish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PEDIA_CATEGORY_EVENTAGE</Tag>
+		<English>Ages</English>
+		<French>&#194;ges</French>
+		<German>Zeitalter</German>
+		<Italian>Ere</Italian>
+		<Spanish>Edades</Spanish>
+		<Finnish>Ajanjaksot</Finnish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PEDIA_CATEGORY_GREAT_PERSONS</Tag>
+		<English>Great People</English>
+		<French>Grandes personnes</French>
+		<German>Gro&#223;e Pers&#246;nlichkeiten</German>
+		<Italian>Grandi Personaggi</Italian>
+		<Spanish>Gran Personaje</Spanish>
+		<Finnish>Suurmiehet</Finnish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PEDIA_CATEGORY_CONCEPT_FOREVER</Tag>
+		<English>4-Ever Concepts</English>
+		<French>Concepts de DCM</French>
+		<German>DCM-Konzepte</German>
+		<Italian>Nozioni di DCM</Italian>
+		<Spanish>Conceptos de DCM</Spanish>
+		<Finnish>DCM-konseptit</Finnish>
+	</TEXT>
+</Civ4GameText>

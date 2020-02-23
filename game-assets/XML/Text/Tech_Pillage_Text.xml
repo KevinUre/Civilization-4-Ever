@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Sid Meier's Civilization 4 Beyond the Sword -->
+<!-- Modified by the World of Civilization Team -->
+<!-- Game Text Infos -->
+<!-- -->
+<Civ4GameText xmlns="http://www.firaxis.com">
+	<TEXT>
+		<Tag>TXT_KEY_GAME_OPTION_TECH_PILLAGE</Tag>
+		<English>Technology from Pillaging</English>
+		<French>Advanced Technology Bleeding</French>
+		<German>Advanced Technology Bleeding</German>
+		<Italian>Advanced Technology Bleeding</Italian>
+		<Spanish>Advanced Technology Bleeding</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_GAME_OPTION_TECH_PILLAGE_HELP</Tag>
+		<English>Pillaging yields beakers in a technology that the victim possesses.</English>
+		<French>Pillaging yields beakers in a technology that the victim possesses.</French>
+		<German>Pillaging yields beakers in a technology that the victim possesses.</German>
+		<Italian>Pillaging yields beakers in a technology that the victim possesses.</Italian>
+		<Spanish>Pillaging yields beakers in a technology that the victim possesses.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_TECH_PILLAGED</Tag>
+		<English>You have discovered %D1_NumResearch[ICON_RESEARCH] towards [COLOR_TECH_TEXT]%s2_TechName[COLOR_REVERT] from pillaging!</English>
+		<French>Advanced Technology Bleeding</French>
+		<German>Advanced Technology Bleeding</German>
+		<Italian>Advanced Technology Bleeding</Italian>
+		<Spanish>Advanced Technology Bleeding</Spanish>
+	</TEXT>
+</Civ4GameText>

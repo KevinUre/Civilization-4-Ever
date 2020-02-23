@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Sid Meier's Civilization 4 Beyond the Sword -->
+<!-- Modified by the World of Civilization Team -->
+<!-- Game Text Infos -->
+<!-- -->
+<Civ4GameText xmlns="http://www.firaxis.com">
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_CRUSIER</Tag>
+		<English>Crusier</English>
+		<French>
+			<Text>Destroyer</Text>
+			<Gender>Male</Gender>
+			<Plural>0</Plural>
+		</French>
+		<German>
+			<Text>Zerst&#246;rer</Text>
+			<Gender>Male</Gender>
+			<Plural>0</Plural>
+		</German>
+		<Italian>
+			<Text>Cacciatorpediniera:Cacciatorpediniere</Text>
+			<Gender>Female</Gender>
+			<Plural>0:1</Plural>
+		</Italian>
+		<Spanish>
+			<Text>Destructor:Destructores</Text>
+			<Gender>Male</Gender>
+			<Plural>0:1</Plural>
+		</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_CRUSIER_PEDIA</Tag>
+		<English>[TAB]Destroyers are small escort ships that serve a variety of useful functions. These light, fast vessels were used extensively in World War II to provide air and sea cover for carrier groups. One of the primary functions of the destroyer is to locate and destroy enemy submarines. Using their sonar equipment to locate the subs, and their batteries of depth charges and torpedoes to destroy them, the destroyer forces of World War II were the key to the success of many crucial naval operations. Modern destroyers are still used in much the same role, as escorts for larger vessels and as submarine hunters. In addition to five-inch guns, the arsenal of today's destroyer includes anti-submarine helicopters, anti-ship cruise missiles, and the Phalanx system for defense against anti-ship missiles.</English>
+		<French>[TAB]Les destroyers sont de petits bateaux d'escorte aux fonctions multiples. Ces navires, l&#233;gers et rapides, furent largement utilis&#233;s au cours de la Deuxi&#232;me Guerre mondiale pour assurer aux porte-avions une couverture contre les menaces a&#233;riennes et navales. Une de leurs fonctions principales est de localiser et d&#233;truire les sous-marins ennemis. Gr&#226;ce &#224; leur &#233;quipement sonar, leurs batteries de grenades sous-marines et leurs torpilles, les destroyers de la Deuxi&#232;me Guerre mondiale ont jou&#233; un r&#244;le pr&#233;pond&#233;rant dans la plupart des grandes op&#233;rations navales. Les destroyers modernes ont conserv&#233; leurs r&#244;les de navires d'escortes et de chasseurs de sous-marins. En plus des canons de cinq pouces, l'arsenal des destroyers modernes comprend des h&#233;licopt&#232;res de lutte anti sous-marine, des missiles de surface et le syst&#232;me Phalanx de d&#233;fense antimissile.</French>
+		<German>[TAB]Zerst&#246;rer sind kleine Geleitschutzschiffe, die eine Reihe n&#252;tzlicher Funktionen erf&#252;llen. W&#228;hrend des 2. Weltkrieges wurden diese schnellen und wendigen Seefahrzeuge sehr h&#228;ufig zur &#220;berwachung und Sicherung des Luft- und Seeraums der begleiteten Flugzeugtr&#228;ger eingesetzt und waren in vielen bedeutenden Gefechten der Schl&#252;ssel zum Erfolg. Zu den wichtigsten Aufgaben der Zerst&#246;rer geh&#246;ren auch heute noch die sonargest&#252;tzte Ortung und die anschlie&#223;ende Zerst&#246;rung feindlicher U-Boote mittels der an Bord bereitstehenden Wasserbomben und Torpedos. Das vormals nur aus 5-Zoll-Gesch&#252;tzen bestehende Waffenarsenal wurde beim modernen Zerst&#246;rer mittlerweile um Anti-U-Boot-Hubschrauber, Anti-Schiff-Marschflugk&#246;rper und ein Phalanxsystem zur Verteidigung gegen Anti-Schiff-Marschflugk&#246;rper erweitert.</German>
+		<Italian>[TAB]I cacciatorpedinieri sono piccole navi da scorta che vengono utilizzate in molte occasioni. Queste navi leggere e veloci furono impiegate diffusamente nel corso della Seconda Guerra Mondiale per proteggere le flotte di portaerei da attacchi navali e aerei. Uno dei compiti principali del cacciatorpediniere &#232; individuare e distruggere i sottomarini nemici. Utilizzando la strumentazione sonar per individuare i sottomarini e cariche di profondit&#224; e torpedini per distruggerli, i cacciatorpedinieri della Seconda Guerra Mondiale furono la carta vincente per molte importanti operazioni navali. I cacciatorpedinieri moderni vengono ancora impiegati con la stessa funzione di scorta per le navi pi&#249; grandi e di caccia ai sottomarini. Oltre al cannone da cinque pollici, l'arsenale dei cacciatorpedinieri odierni comprende elicotteri antisommergibili e missili anti-nave, oltre al sistema Phalanx, per difendersi dai missili anti-nave avversari.</Italian>
+		<Spanish>[TAB]Los destructores son peque&#241;os barcos de escolta que llevan a cabo diferentes tareas de gran utilidad. En la Segunda Guerra Mundial, estos ligeros y r&#225;pidos buques se usaron a menudo para proporcionar cobertura a las agrupaciones de portaviones. Una de las funciones principales de los destructores es localizar y destruir los submarinos enemigos. Haciendo uso de sus equipos de sonar para localizarlos, y de sus cargas de profundidad y sus torpedos para destruirlos, los destructores de la Segunda Guerra Mundial fueron la clave del &#233;xito de muchas operaciones navales cruciales. Los destructores modernos siguen us&#225;ndose pr&#225;cticamente del mismo modo, como escoltas para naves m&#225;s grandes y cazadores de submarinos. Adem&#225;s de los ca&#241;ones de cinco pulgadas, el arsenal de los destructores modernos cuenta con helic&#243;pteros antisubmarinos, misiles de crucero antinavales y un sistema defensivo antimisiles llamado Falange.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_CRUSIER_STRATEGY</Tag>
+		<English>[COLOR_UNIT_TEXT]Destroyers[COLOR_REVERT] have a small chance of intercepting enemy aircraft and also are very good at spotting and destroying enemy [COLOR_UNIT_TEXT]Submarines[COLOR_REVERT] (which are invisible to most other units). They are often stacked with [COLOR_UNIT_TEXT]Carriers[COLOR_REVERT] and [COLOR_UNIT_TEXT]Transport[COLOR_REVERT] units.</English>
+		<French>Les [COLOR_UNIT_TEXT]destroyers[COLOR_REVERT] ont une petite chance d'intercepter les avions ennemis et sont &#233;galement tr&#232;s efficaces pour rep&#233;rer et d&#233;truire les [COLOR_UNIT_TEXT]sous-marins[COLOR_REVERT] ennemis (invisibles pour la plupart des autres unit&#233;s). Ils sont souvent associ&#233;s &#224; des [COLOR_UNIT_TEXT]porte-avions[COLOR_REVERT] et &#224; des [COLOR_UNIT_TEXT]transports[COLOR_REVERT].</French>
+		<German>[COLOR_UNIT_TEXT]Zerst&#246;rer[COLOR_REVERT] k&#246;nnen feindliche Flugzeuge abfangen und eignen sich hervorragend f&#252;r die Ortung und Versenkung feindlicher [COLOR_UNIT_TEXT]U-Boote[COLOR_REVERT] (die f&#252;r die meisten anderen Einheiten unsichtbar sind). Sie werden h&#228;ufig als Geleitschutz f&#252;r [COLOR_UNIT_TEXT]Flugzeugtr&#228;ger[COLOR_REVERT] und [COLOR_UNIT_TEXT]Transportschiffe[COLOR_REVERT] eingesetzt.</German>
+		<Italian>I [COLOR_UNIT_TEXT]cacciatorpedinieri[COLOR_REVERT] hanno una piccola probabilit&#224; di intercettare gli aerei nemici e sono particolarmente adatti per individuare e distruggere i [COLOR_UNIT_TEXT]sottomarini[COLOR_REVERT] (che sono praticamente invisibili alla maggior parte delle unit&#224;). I cacciatorpedinieri vengono spesso utilizzati per scortare [COLOR_UNIT_TEXT]portaerei[COLOR_REVERT] e [COLOR_UNIT_TEXT]trasporti[COLOR_REVERT].</Italian>
+		<Spanish>Los [COLOR_UNIT_TEXT]Destructores[COLOR_REVERT] tienen una peque&#241;a probabilidad de interceptar aeronaves enemigas y tambi&#233;n son muy &#250;tiles para detectar y destruir [COLOR_UNIT_TEXT]Submarinos[COLOR_REVERT] enemigos (que son invisibles para la mayor&#237;a de las unidades). Se suelen apilar con unidades de [COLOR_UNIT_TEXT]Portaaviones[COLOR_REVERT] y [COLOR_UNIT_TEXT]Transportes[COLOR_REVERT].</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_DESTROYER_STRATEGY</Tag>
+		<English>[COLOR_UNIT_TEXT]Destroyers[COLOR_REVERT] have a small chance of intercepting enemy aircraft and also are very good at spotting and destroying enemy [COLOR_UNIT_TEXT]Submarines[COLOR_REVERT] (which are invisible to most other units). They are often stacked with [COLOR_UNIT_TEXT]Carriers[COLOR_REVERT] and [COLOR_UNIT_TEXT]Transport[COLOR_REVERT] units.</English>
+		<French>Les [COLOR_UNIT_TEXT]destroyers[COLOR_REVERT] ont une petite chance d'intercepter les avions ennemis et sont &#233;galement tr&#232;s efficaces pour rep&#233;rer et d&#233;truire les [COLOR_UNIT_TEXT]sous-marins[COLOR_REVERT] ennemis (invisibles pour la plupart des autres unit&#233;s). Ils sont souvent associ&#233;s &#224; des [COLOR_UNIT_TEXT]porte-avions[COLOR_REVERT] et &#224; des [COLOR_UNIT_TEXT]transports[COLOR_REVERT].</French>
+		<German>[COLOR_UNIT_TEXT]Zerst&#246;rer[COLOR_REVERT] k&#246;nnen feindliche Flugzeuge abfangen und eignen sich hervorragend f&#252;r die Ortung und Versenkung feindlicher [COLOR_UNIT_TEXT]U-Boote[COLOR_REVERT] (die f&#252;r die meisten anderen Einheiten unsichtbar sind). Sie werden h&#228;ufig als Geleitschutz f&#252;r [COLOR_UNIT_TEXT]Flugzeugtr&#228;ger[COLOR_REVERT] und [COLOR_UNIT_TEXT]Transportschiffe[COLOR_REVERT] eingesetzt.</German>
+		<Italian>I [COLOR_UNIT_TEXT]cacciatorpedinieri[COLOR_REVERT] hanno una piccola probabilit&#224; di intercettare gli aerei nemici e sono particolarmente adatti per individuare e distruggere i [COLOR_UNIT_TEXT]sottomarini[COLOR_REVERT] (che sono praticamente invisibili alla maggior parte delle unit&#224;). I cacciatorpedinieri vengono spesso utilizzati per scortare [COLOR_UNIT_TEXT]portaerei[COLOR_REVERT] e [COLOR_UNIT_TEXT]trasporti[COLOR_REVERT].</Italian>
+		<Spanish>Los [COLOR_UNIT_TEXT]Destructores[COLOR_REVERT] tienen una peque&#241;a probabilidad de interceptar aeronaves enemigas y tambi&#233;n son muy &#250;tiles para detectar y destruir [COLOR_UNIT_TEXT]Submarinos[COLOR_REVERT] enemigos (que son invisibles para la mayor&#237;a de las unidades). Se suelen apilar con unidades de [COLOR_UNIT_TEXT]Portaaviones[COLOR_REVERT] y [COLOR_UNIT_TEXT]Transportes[COLOR_REVERT].</Spanish>
+	</TEXT>
+</Civ4GameText>

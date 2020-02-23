@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Sid Meier's Civilization 4 Beyond the Sword -->
+<!-- Modified by the World of Civilization Team -->
+<!-- Game Text Infos -->
+<!-- -->
+<Civ4GameText xmlns="http://www.firaxis.com">
+	<TEXT>
+		<Tag>TXT_KEY_GAME_OPTION_SPIES_RETURN_TO_NEAREST_CITY</Tag>
+		<English>Spies Return to Nearest City</English>
+		<French>Spies Return to Nearest City</French>
+		<German>Spies Return to Nearest City</German>
+		<Italian>Spies Return to Nearest City</Italian>
+		<Spanish>Spies Return to Nearest City</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_GAME_OPTION_SPIES_RETURN_TO_NEAREST_CITY_HELP</Tag>
+		<English>Enables spies to return to nearest city, rather than capital city.</English>
+		<French>Enables spies to return to nearest city, rather than capital city.</French>
+		<German>Enables spies to return to nearest city, rather than capital city.</German>
+		<Italian>Enables spies to return to nearest city, rather than capital city.</Italian>
+		<Spanish>Enables spies to return to nearest city, rather than capital city.</Spanish>
+	</TEXT>
+</Civ4GameText>

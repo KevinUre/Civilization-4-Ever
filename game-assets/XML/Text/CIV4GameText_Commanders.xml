@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Civ4GameText>
+	<!-- UNITCOMBAT -->
+	<TEXT>
+		<Tag>TXT_KEY_UNITCOMBAT_COMMANDER</Tag>
+		<English>Commander Units</English>
+		<French>Commander Units</French>
+		<German>Commander Units</German>
+		<Italian>Commander Units</Italian>
+		<Spanish>Commander Units</Spanish>
+	</TEXT>
+	<!-- PROMOTIONS -->
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_HILLTRAINING1</Tag>
+		<English>Highland Training I</English>
+		<French>Morale I</French>
+		<German>Morale I</German>
+		<Italian>Morale I</Italian>
+		<Spanish>Morale I</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_HILLTRAINING2</Tag>
+		<English>Highland Training II</English>
+		<French>Morale I</French>
+		<German>Morale I</German>
+		<Italian>Morale I</Italian>
+		<Spanish>Morale I</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_WOODTRAINING1</Tag>
+		<English>Woodland Training I</English>
+		<French>Morale I</French>
+		<German>Morale I</German>
+		<Italian>Morale I</Italian>
+		<Spanish>Morale I</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_WOODTRAINING2</Tag>
+		<English>Woodland Training II</English>
+		<French>Morale I</French>
+		<German>Morale I</German>
+		<Italian>Morale I</Italian>
+		<Spanish>Morale I</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_SHELTER</Tag>
+		<English>Shelter Training</English>
+		<French>Morale I</French>
+		<German>Morale I</German>
+		<Italian>Morale I</Italian>
+		<Spanish>Morale I</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_MORALE1</Tag>
+		<English>Morale I</English>
+		<French>Morale I</French>
+		<German>Morale I</German>
+		<Italian>Morale I</Italian>
+		<Spanish>Morale I</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_MORALE2</Tag>
+		<English>Morale II</English>
+		<French>Morale II</French>
+		<German>Morale II</German>
+		<Italian>Morale II</Italian>
+		<Spanish>Morale II</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_MORALE3</Tag>
+		<English>Morale III</English>
+		<French>Morale III</French>
+		<German>Morale III</German>
+		<Italian>Morale III</Italian>
+		<Spanish>Morale III</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_MORALE4</Tag>
+		<English>Morale IV</English>
+		<French>Morale IV</French>
+		<German>Morale IV</German>
+		<Italian>Morale IV</Italian>
+		<Spanish>Morale IV</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_MORALE5</Tag>
+		<English>Morale V</English>
+		<French>Morale V</French>
+		<German>Morale V</German>
+		<Italian>Morale V</Italian>
+		<Spanish>Morale V</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_OPERATIONS1</Tag>
+		<English>Operations I</English>
+		<French>Operations I</French>
+		<German>Operations I</German>
+		<Italian>Operations I</Italian>
+		<Spanish>Operations I</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_OPERATIONS2</Tag>
+		<English>Operations II</English>
+		<French>Operations II</French>
+		<German>Operations II</German>
+		<Italian>Operations II</Italian>
+		<Spanish>Operations II</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_OPERATIONS3</Tag>
+		<English>Operations III</English>
+		<French>Operations III</French>
+		<German>Operations III</German>
+		<Italian>Operations III</Italian>
+		<Spanish>Operations III</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_OPERATIONS4</Tag>
+		<English>Operations IV</English>
+		<French>Operations IV</French>
+		<German>Operations IV</German>
+		<Italian>Operations IV</Italian>
+		<Spanish>Operations IV</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_TACTICS1</Tag>
+		<English>Tactics I</English>
+		<French>Tactics I</French>
+		<German>Tactics I</German>
+		<Italian>Tactics I</Italian>
+		<Spanish>Tactics I</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_TACTICS2</Tag>
+		<English>Tactics II</English>
+		<French>Tactics II</French>
+		<German>Tactics II</German>
+		<Italian>Tactics II</Italian>
+		<Spanish>Tactics II</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_TACTICS3</Tag>
+		<English>Tactics III</English>
+		<French>Tactics III</French>
+		<German>Tactics III</German>
+		<Italian>Tactics III</Italian>
+		<Spanish>Tactics III</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_TACTICS4</Tag>
+		<English>Tactics IV</English>
+		<French>Tactics IV</French>
+		<German>Tactics IV</German>
+		<Italian>Tactics IV</Italian>
+		<Spanish>Tactics IV</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_INITIATIVE1</Tag>
+		<English>Initiative I</English>
+		<French>Initiative I</French>
+		<German>Initiative I</German>
+		<Italian>Initiative I</Italian>
+		<Spanish>Initiative I</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_INITIATIVE2</Tag>
+		<English>Initiative II</English>
+		<French>Initiative II</French>
+		<German>Initiative II</German>
+		<Italian>Initiative II</Italian>
+		<Spanish>Initiative II</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_INITIATIVE3</Tag>
+		<English>Initiative III</English>
+		<French>Initiative III</French>
+		<German>Initiative III</German>
+		<Italian>Initiative III</Italian>
+		<Spanish>Initiative III</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_INITIATIVE4</Tag>
+		<English>Initiative IV</English>
+		<French>Initiative IV</French>
+		<German>Initiative IV</German>
+		<Italian>Initiative IV</Italian>
+		<Spanish>Initiative IV</Spanish>
+	</TEXT>
+	<!-- PROMOTION EFFECTS -->
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_CONTROL_POINTS_TEXT</Tag>
+		<English>[ICON_BULLET]+%d1_Num Control Points</English>
+		<French>[ICON_BULLET]+%d1_Num Control Points</French>
+		<German>[ICON_BULLET]+%d1_Num Control Points</German>
+		<Italian>[ICON_BULLET]+%d1_Num Control Points</Italian>
+		<Spanish>[ICON_BULLET]+%d1_Num Control Points</Spanish>
+	</TEXT>	
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_COMMAND_RANGE_TEXT</Tag>
+		<English>[ICON_BULLET]+%d1_Num Command Range</English>
+		<French>[ICON_BULLET]+%d1_Num Command Range</French>
+		<German>[ICON_BULLET]+%d1_Num Command Range</German>
+		<Italian>[ICON_BULLET]+%d1_Num Command Range</Italian>
+		<Spanish>[ICON_BULLET]+%d1_Num Command Range</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_ONSLAUGHT_TEXT</Tag>
+		<English>[ICON_BULLET]Continues attack while at full [ICON_STRENGTH]</English>
+		<French>[ICON_BULLET]Continues attack while at full [ICON_STRENGTH]</French>
+		<German>[ICON_BULLET]Continues attack while at full [ICON_STRENGTH]</German>
+		<Italian>[ICON_BULLET]Continues attack while at full [ICON_STRENGTH]</Italian>
+		<Spanish>[ICON_BULLET]Continues attack while at full [ICON_STRENGTH]</Spanish>
+	</TEXT>
+	<!-- INTERFACE INFORMATION -->
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_HELP_COMMAND_RANGE</Tag>
+		<English>, CR: %d1_Num</English>
+		<French>Command range: %d1_Num</French>
+		<German>Command range: %d1_Num</German>
+		<Italian>Command range: %d1_Num</Italian>
+		<Spanish>Command range: %d1_Num</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_HELP_CONTROL_POINTS</Tag>
+		<English>, CP: (%d1_Curr/%d2_Max)</English>
+		<French>Control points: %d1_Num/%d1_Num</French>
+		<German>Control points: %d1_Num/%d1_Num</German>
+		<Italian>Control points: %d1_Num/%d1_Num</Italian>
+		<Spanish>Control points: %d1_Num/%d1_Num</Spanish>
+	</TEXT>	
+</Civ4GameText>

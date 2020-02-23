@@ -727,14 +727,34 @@ void CvUnit::doTurn()
 	{
 		if (isAlwaysHeal())
 		{
-			doHeal();
+			if (GC.getGameINLINE().isOption(GAMEOPTION_NON_LETHAL_COMBAT))
+			{
+				if (canHeal(plot())) 
+				{
+					doHeal();
+				}
+			}
+			else 
+			{
+				doHeal();
+			}
 		}
 	}
 	else
 	{
 		if (isHurt())
 		{
-			doHeal();
+			if (GC.getGameINLINE().isOption(GAMEOPTION_NON_LETHAL_COMBAT))
+			{
+				if (canHeal(plot()))
+				{
+					doHeal();
+				}
+			}
+			else
+			{
+				doHeal();
+			}
 		}
 
 		if (!isCargo())
@@ -1089,7 +1109,7 @@ void CvUnit::resolveCombat(CvUnit* pDefender, CvPlot* pPlot, CvBattleDefinition&
 		pyArgsCD.add(gDLL->getPythonIFace()->makePythonObject(&cdAttackerDetails));
 		pyArgsCD.add(gDLL->getPythonIFace()->makePythonObject(&cdDefenderDetails));
 		pyArgsCD.add(getCombatOdds(this, pDefender));
-		CvEventReporter::getInstance().genericEvent("combatLogCalc", pyArgsCD.makeFunctio\nArgs());
+		CvEventReporter::getInstance().genericEvent("combatLogCalc", pyArgsCD.makeFunctionArgs());
 	}
 
 	collateralCombat(pPlot, pDefender);
@@ -1189,8 +1209,8 @@ void CvUnit::resolveCombat(CvUnit* pDefender, CvPlot* pPlot, CvBattleDefinition&
 			break;
 		}
 
-		if (GC.getGameINLINE().isOption(GAMEOPTION_NON_LETHAL_COMBAT)) {
-
+		if (GC.getGameINLINE().isOption(GAMEOPTION_NON_LETHAL_COMBAT)) 
+		{
 			if (iCombatRoundCount >= GC.getDefineINT("MAX_COMBAT_ROUNDS")) {
 				int iExperience = GC.getDefineINT("MIN_EXPERIENCE_PER_COMBAT");
 				pDefender->changeExperience(iExperience, maxXPValue(), true, pPlot->getOwnerINLINE() == pDefender->getOwnerINLINE(), !isBarbarian());
@@ -3481,6 +3501,36 @@ bool CvUnit::canHeal(const CvPlot* pPlot) const
 	if (healRate(pPlot) <= 0)
 	{
 		return false;
+	}
+
+	if (GC.getGameINLINE().isOption(GAMEOPTION_NON_LETHAL_COMBAT))
+	{
+		for (int iI = 0; iI < NUM_DIRECTION_TYPES; iI++)
+		{
+			CvPlot* pLoopPlot = plotDirection(getX_INLINE(), getY_INLINE(), ((DirectionTypes)iI));
+			std::vector<CvUnit*> aUnits;
+			CLLNode<IDInfo>* pUnitNode = pLoopPlot->headUnitNode();
+			if (pUnitNode == NULL) { continue; }
+			while (pUnitNode != NULL)
+			{
+				CvUnit* pLoopUnit = ::getUnit(pUnitNode->m_data);
+				pUnitNode = pLoopPlot->nextUnitNode(pUnitNode);
+				if (NULL != pLoopUnit)
+				{
+					aUnits.push_back(pLoopUnit);
+				}
+			}
+			std::vector<CvUnit*>::iterator it = aUnits.begin();
+			while (it != aUnits.end())
+			{
+				CvUnit* pLoopUnit = *it;
+				if (pLoopUnit->isEnemy(getTeam()) && !pLoopUnit->isSpy())
+				{
+					return false;
+				}
+				++it;
+			}
+		}
 	}
 
 	return true;
@@ -6860,7 +6910,7 @@ void CvUnit::promote(PromotionTypes ePromotion, int iLeaderUnitId)
 			if (!pWarlord->getNameNoDesc().empty())
 			{
 				setName(pWarlord->getNameKey());
-			}
+			}\
 
 			//update graphics models
 			m_eLeaderUnitType = pWarlord->getUnitType();
@@ -6871,7 +6921,10 @@ void CvUnit::promote(PromotionTypes ePromotion, int iLeaderUnitId)
 	if (!GC.getPromotionInfo(ePromotion).isLeader())
 	{
 		changeLevel(1);
-		changeDamage(-(getDamage() / 2));
+		if (!GC.getGameINLINE().isOption(GAMEOPTION_NON_LETHAL_COMBAT)) 
+		{
+			changeDamage(-(getDamage() / 2));
+		}
 	}
 
 	setHasPromotion(ePromotion, true);
@@ -13179,9 +13232,10 @@ void CvUnit::getDefenderCombatValues(CvUnit& kDefender, const CvPlot* pPlot, int
 
 	int iStrengthFactor = ((iOurFirepower + iTheirFirepower + 1) / 2);
 
-	if (GC.getGameINLINE().isOption(GAMEOPTION_NON_LETHAL_COMBAT)) {
-		iOurDamage = std::max(1, ((GC.getDefineINT("COMBAT_DAMAGE") / GC.getDefineINT("NLCGO_COMBAT_STRENGTH_DEVISOR") * (iTheirFirepower + iStrengthFactor)) / (iOurFirepower + iStrengthFactor)));
-		iTheirDamage = std::max(1, ((GC.getDefineINT("COMBAT_DAMAGE") / GC.getDefineINT("NLCGO_COMBAT_STRENGTH_DEVISOR") * (iOurFirepower + iStrengthFactor)) / (iTheirFirepower + iStrengthFactor)));
+	if (GC.getGameINLINE().isOption(GAMEOPTION_NON_LETHAL_COMBAT)) 
+	{
+		iOurDamage = std::max(1, ((GC.getDefineINT("NLCGO_COMBAT_STRENGTH_NOMINATOR") * GC.getDefineINT("COMBAT_DAMAGE") / GC.getDefineINT("NLCGO_COMBAT_STRENGTH_DENUMERATOR")) * (iTheirFirepower + iStrengthFactor)) / (iOurFirepower + iStrengthFactor));
+		iTheirDamage = std::max(1, ((GC.getDefineINT("NLCGO_COMBAT_STRENGTH_NOMINATOR") * GC.getDefineINT("COMBAT_DAMAGE") / GC.getDefineINT("NLCGO_COMBAT_STRENGTH_DENUMERATOR")) * (iOurFirepower + iStrengthFactor)) / (iTheirFirepower + iStrengthFactor));
 	}
 	else
 	{

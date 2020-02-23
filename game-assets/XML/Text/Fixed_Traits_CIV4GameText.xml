@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by XMLSPY 2004 Professional Ed. Release 2, Installed Multi + SMP for 3 users (Firaxis Games) -->
+<!-- Sid Meier's Civilization 4 -->
+<!-- Copyright Firaxis Games 2005 -->
+<!-- -->
+<!-- Game Text - New -->
+<Civ4GameText xmlns="http://www.firaxis.com">
+	<TEXT>
+		<Tag>TXT_KEY_TRAIT_TRADE_YIELD_MODIFIERS</Tag>
+		<English>[NEWLINE][SPACE][SPACE][ICON_BULLET]%D1% %F2_yield from [ICON_TRADE]</English>
+		<French>[NEWLINE][SPACE][SPACE][ICON_BULLET]%D1% %F2_yield avec : [ICON_TRADE]</French>
+		<German>[NEWLINE][SPACE][SPACE][ICON_BULLET]%D1% %F2_yield durch [ICON_TRADE]</German>
+		<Italian>[NEWLINE][SPACE][SPACE][ICON_BULLET]%D1% %F2_yield da [ICON_TRADE]</Italian>
+		<Spanish>[NEWLINE][SPACE][SPACE][ICON_BULLET]%D1% %F2_yield por [ICON_TRADE]</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_TRADE_ROUTE_MOD_LEADER</Tag>
+		<English>%D1%%: from Leader</English>
+		<French>%D1%% : pour une paix durable</French>
+		<German>%D1%%: f&#252;r anhaltenden Frieden</German>
+		<Italian>%D1%%: per il perdurare della pace</Italian>
+		<Spanish>%D1%%: Por la paz mantenida</Spanish>
+	</TEXT>
+</Civ4GameText>
