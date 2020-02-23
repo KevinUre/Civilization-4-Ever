@@ -387,6 +387,12 @@ public:
 	std::vector<CvInfoBase*>& getNewConceptInfo();
 	CvInfoBase& getNewConceptInfo(NewConceptTypes e);
 
+	//DeathMaker900 Begin
+	int getNumForeverConceptInfos();
+	std::vector<CvInfoBase*>& getForeverConceptInfo();
+	CvInfoBase& getForeverConceptInfo(ForeverConceptTypes e);
+	//DeathMaker900 End
+
 	int getNumCityTabInfos();
 	std::vector<CvInfoBase*>& getCityTabInfo();
 	CvInfoBase& getCityTabInfo(CityTabTypes e);
@@ -999,6 +1005,9 @@ protected:
 	std::vector<CvSpecialUnitInfo*> m_paSpecialUnitInfo;
 	std::vector<CvInfoBase*> m_paConceptInfo;
 	std::vector<CvInfoBase*> m_paNewConceptInfo;
+	//DeathMaker900 Begin
+	std::vector<CvInfoBase*> m_paForeverConceptInfo;
+	//DeathMaker900 End
 	std::vector<CvInfoBase*> m_paCityTabInfo;
 	std::vector<CvInfoBase*> m_paCalendarInfo;
 	std::vector<CvInfoBase*> m_paSeasonInfo;

@@ -391,5 +391,12 @@ void CyUnitPythonInterface1(python::class_<CyUnit>& x)
 
 		.def("getArtInfo", &CyUnit::getArtInfo,  python::return_value_policy<python::reference_existing_object>(), "CvArtInfoUnit* (int i, eEra)")
 		.def("getButton", &CyUnit::getButton, "std::string ()")
+
+		//@MOD Commanders
+		.def("isCommander", &CyUnit::isCommander, "bool ()")
+		.def("controlPointsLeft", &CyUnit::controlPointsLeft, "int ()")
+		.def("controlPoints", &CyUnit::controlPoints, "int ()")
+		.def("commandRange", &CyUnit::commandRange, "int ()")
+		//end mod
 		;
 }

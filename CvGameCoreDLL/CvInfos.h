@@ -513,6 +513,12 @@ public:
 	bool read(CvXMLLoadUtility* pXML);
 	bool readPass2(CvXMLLoadUtility* pXML);
 
+	//@MOD Commanders: promotion info functions
+	int getControlPoints() const;
+	int getCommandRange() const;
+	bool isOnslaught() const;
+	//end mod
+
 //---------------------------------------PROTECTED MEMBER VARIABLES---------------------------------
 
 protected:
@@ -577,6 +583,12 @@ protected:
 	bool* m_pbTerrainDoubleMove;
 	bool* m_pbFeatureDoubleMove;
 	bool* m_pbUnitCombat;
+
+	//@MOD Commanders: promotion info members
+	int m_iControlPoints;
+	int m_iCommandRange;
+	bool m_bOnslaught;
+	//end mod
 
 };
 
@@ -983,6 +995,11 @@ public:
 
 	bool read(CvXMLLoadUtility* pXML);
 
+	//@MOD Commanders: unit info functions
+	int getControlPoints() const;
+	int getCommandRange() const;
+	//end mod
+
 	//---------------------------------------PROTECTED MEMBER VARIABLES---------------------------------
 
 protected:
@@ -1152,6 +1169,11 @@ protected:
 	CvString m_szArtDefineButton;
 
 	std::vector<int> m_aiSeeInvisibleTypes;
+
+	//@MOD Commanders: unit info members
+	int m_iControlPoints;
+	int m_iCommandRange;
+	//end mod
 };
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -2717,6 +2739,11 @@ public:
 	int getValue() const;								// Exposed to Python
 	int getMovementCost() const;				// Exposed to Python
 	int getFlatMovementCost() const;		// Exposed to Python
+
+	// < Air Combat Experience Start >
+	int getAirBombDefense() const;
+	// < Air Combat Experience End   >
+
 	int getPrereqBonus() const;					// Exposed to Python
 
 	// Arrays
@@ -2736,6 +2763,10 @@ protected:
 	int m_iValue;
 	int m_iMovementCost;
 	int m_iFlatMovementCost;	
+	// < Air Combat Experience Start >
+	int m_iAirBombDefense;
+	// < Air Combat Experience End   >
+
 	int m_iPrereqBonus;
 
 	// Arrays
@@ -2824,6 +2855,15 @@ public:
 	void setImprovementPillage(int i);
 	int getImprovementUpgrade() const;				// Exposed to Python
 	void setImprovementUpgrade(int i);
+	// Super Forts begin *XML*
+	int getCulture() const;
+	int getCultureRange() const;
+	int getVisibilityChange() const;
+	int getSeeFrom() const;
+	int getUniqueRange() const;
+	bool isBombardable() const;
+	bool isUpgradeRequiresFortify() const;
+	// Super Forts end
 
 	bool isActsAsCity() const;				// Exposed to Python
 	bool isHillsMakesValid() const;				// Exposed to Python
@@ -2902,6 +2942,15 @@ protected:
 	int m_iPillageGold;
 	int m_iImprovementPillage;
 	int m_iImprovementUpgrade;
+	// Super Forts begin *XML*
+	int m_iCulture;
+	int m_iCultureRange;
+	int m_iVisibilityChange;
+	int m_iSeeFrom;
+	int m_iUniqueRange;
+	bool m_bBombardable;
+	bool m_bUpgradeRequiresFortify;
+	// Super Forts end
 
 	bool m_bActsAsCity;				
 	bool m_bHillsMakesValid;				
@@ -3703,6 +3752,10 @@ public:
 
 	bool read(CvXMLLoadUtility* pXML);
 
+	//@MOD Commanders
+	int getCommandersLevelThresholdsPercent() const;
+	//end mod
+
 	//---------------------------------------PROTECTED MEMBER VARIABLES---------------------------------
 protected:
 
@@ -3725,6 +3778,10 @@ protected:
 	int m_iCorporationMaintenancePercent;
 	int m_iNumCitiesAnarchyPercent;
 	int m_iAdvancedStartPointsMod;
+
+	//@MOD Commanders
+	int m_iCommandersLevelThresholdsPercent;
+	//end mod
 
 };
 

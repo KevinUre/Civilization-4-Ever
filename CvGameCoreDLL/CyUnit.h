@@ -402,6 +402,13 @@ public:
 	void attackForDamage(CyUnit *defender, int attakerDamageChange, int defenderDamageChange);
 	void rangeStrike(int iX, int iY);
 
+	//@MOD Commanders: python methods
+	bool isCommander() const;
+	int controlPointsLeft() const;
+	int controlPoints() const;
+	int commandRange() const;
+	//end mod
+
 protected:
 	CvUnit* m_pUnit;
 };

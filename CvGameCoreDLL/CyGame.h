@@ -212,6 +212,22 @@ public:
 	void makeSpecialBuildingValid(int /*SpecialBuildingTypes*/ eIndex);
 	bool isNukesValid();
 	void makeNukesValid(bool bValid);
+
+	// < Air Combat Experience Start >
+	bool isRouteDestructionThroughAirBombs() const;
+	void setRouteDestructionThroughAirBombs(bool bNewValue);
+	bool isExperienceGainByDestroyingImprovements() const;
+	void setExperienceGainByDestroyingImprovements(bool bNewValue);
+	bool isExperienceGainByDestroyingRoutes() const;
+	void setExperienceGainByDestroyingRoutes(bool bNewValue);
+	bool isExperienceGainByAttackingCities() const;
+	void setExperienceGainByAttackingCities(bool bNewValue);
+	bool isExperienceGainByAttackingUnits() const;
+	void setExperienceGainByAttackingUnits(bool bNewValue);
+	bool isBombNoMansLand() const;
+	void setBombNoMansLand(bool bNewValue);
+	// < Air Combat Experience End   >
+
 	bool isInAdvancedStart();
 
 	CyCity* getHolyCity(int /*ReligionTypes*/ eIndex);

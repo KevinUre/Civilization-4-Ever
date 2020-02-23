@@ -872,6 +872,74 @@ void CyGame::makeNukesValid(bool bValid)
 		m_pGame->makeNukesValid(bValid);
 }
 
+// < Air Combat Experience Start >
+bool CyGame::isRouteDestructionThroughAirBombs() const
+{
+	return m_pGame ? m_pGame->isRouteDestructionThroughAirBombs() : false;
+}
+
+void CyGame::setRouteDestructionThroughAirBombs(bool bNewValue)
+{
+	if (m_pGame)
+		m_pGame->setRouteDestructionThroughAirBombs(bNewValue);
+}
+
+bool CyGame::isExperienceGainByDestroyingImprovements() const
+{
+	return m_pGame ? m_pGame->isExperienceGainByDestroyingImprovements() : false;
+}
+
+void CyGame::setExperienceGainByDestroyingImprovements(bool bNewValue)
+{
+	if (m_pGame)
+		m_pGame->setExperienceGainByDestroyingImprovements(bNewValue);
+}
+
+bool CyGame::isExperienceGainByDestroyingRoutes() const
+{
+	return m_pGame ? m_pGame->isExperienceGainByDestroyingRoutes() : false;
+}
+
+void CyGame::setExperienceGainByDestroyingRoutes(bool bNewValue)
+{
+	if (m_pGame)
+		m_pGame->setExperienceGainByDestroyingRoutes(bNewValue);
+}
+
+bool CyGame::isExperienceGainByAttackingCities() const
+{
+	return m_pGame ? m_pGame->isExperienceGainByAttackingCities() : false;
+}
+
+void CyGame::setExperienceGainByAttackingCities(bool bNewValue)
+{
+	if (m_pGame)
+		m_pGame->setExperienceGainByAttackingCities(bNewValue);
+}
+
+bool CyGame::isExperienceGainByAttackingUnits() const
+{
+	return m_pGame ? m_pGame->isExperienceGainByAttackingUnits() : false;
+}
+
+void CyGame::setExperienceGainByAttackingUnits(bool bNewValue)
+{
+	if (m_pGame)
+		m_pGame->setExperienceGainByAttackingUnits(bNewValue);
+}
+
+bool CyGame::isBombNoMansLand() const
+{
+	return m_pGame ? m_pGame->isBombNoMansLand() : false;
+}
+
+void CyGame::setBombNoMansLand(bool bNewValue)
+{
+	if (m_pGame)
+		m_pGame->setBombNoMansLand(bNewValue);
+}
+// < Air Combat Experience End   >
+
 bool CyGame::isInAdvancedStart()
 {
 	return m_pGame ? m_pGame->isInAdvancedStart() : false;

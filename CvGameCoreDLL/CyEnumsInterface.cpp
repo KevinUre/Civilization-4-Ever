@@ -523,6 +523,16 @@ void CyEnumsPythonInterface()
 		.value("GAMEOPTION_NO_GOODY_HUTS", GAMEOPTION_NO_GOODY_HUTS)
 		.value("GAMEOPTION_NO_EVENTS", GAMEOPTION_NO_EVENTS)
 		.value("GAMEOPTION_NO_ESPIONAGE", GAMEOPTION_NO_ESPIONAGE)
+		//Lemon's Spy Mod Begin
+		.value("GAMEOPTION_SPIES_RETURN_TO_NEAREST_CITY", GAMEOPTION_SPIES_RETURN_TO_NEAREST_CITY)
+		//Lemon's Spy Mod Begin
+		//DeathMaker900 Advanced Technology Bleeding Begin
+		.value("GAMEOPTION_ADV_TECH_BLEED", GAMEOPTION_ADV_TECH_BLEED)
+		//DeathMaker900 Advanced Technology Bleeding End
+		//DeathMaker900 Tech Pillage Begin
+		.value("GAMEOPTION_PILLAGE_TECH", GAMEOPTION_PILLAGE_TECH)
+		//DeathMaker900 Tech Pillage End
+		.value("GAMEOPTION_ADV_CULTURE", GAMEOPTION_ADV_CULTURE)
 		.value("NUM_GAMEOPTION_TYPES", NUM_GAMEOPTION_TYPES)
 		;
 
@@ -819,6 +829,12 @@ void CyEnumsPythonInterface()
 	python::enum_<NewConceptTypes>("NewConceptTypes")
 		.value("NO_NEW_CONCEPT", NO_NEW_CONCEPT)
 		;
+
+	//DeathMaker900 Begin
+	python::enum_<ForeverConceptTypes>("ForeverConceptTypes")
+		.value("NO_FOREVER_CONCEPT", NO_FOREVER_CONCEPT)
+		;
+	//DeathMaker900 End
 
 	python::enum_<CalendarTypes>("CalendarTypes")
 		.value("CALENDAR_DEFAULT", CALENDAR_DEFAULT)
@@ -1704,6 +1720,9 @@ void CyEnumsPythonInterface()
 		.value("CIVILOPEDIA_PAGE_PROJECT", CIVILOPEDIA_PAGE_PROJECT)
 		.value("CIVILOPEDIA_PAGE_CONCEPT", CIVILOPEDIA_PAGE_CONCEPT)
 		.value("CIVILOPEDIA_PAGE_CONCEPT_NEW", CIVILOPEDIA_PAGE_CONCEPT_NEW)
+		//DeathMaker900 Begin
+		.value("CIVILOPEDIA_PAGE_CONCEPT_FOREVER", CIVILOPEDIA_PAGE_CONCEPT_FOREVER)
+		//DeathMaker900 End
 		.value("CIVILOPEDIA_PAGE_SPECIALIST", CIVILOPEDIA_PAGE_SPECIALIST)
 		.value("CIVILOPEDIA_PAGE_TERRAIN", CIVILOPEDIA_PAGE_TERRAIN)
 		.value("CIVILOPEDIA_PAGE_FEATURE", CIVILOPEDIA_PAGE_FEATURE)

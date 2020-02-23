@@ -245,6 +245,9 @@ void CyInfoPythonInterface2()
 		.def("getValue", &CvRouteInfo::getValue, "int ()")
 		.def("getMovementCost", &CvRouteInfo::getMovementCost, "int ()")
 		.def("getFlatMovementCost", &CvRouteInfo::getFlatMovementCost, "int ()")
+		// < Air Combat Experience Start >
+		.def("getAirBombDefense", &CvRouteInfo::getAirBombDefense, "int ()")
+		// < Air Combat Experience End   >
 		.def("getPrereqBonus", &CvRouteInfo::getPrereqBonus, "int ()")
 
 		// Arrays

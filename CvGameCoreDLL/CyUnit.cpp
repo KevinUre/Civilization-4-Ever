@@ -15,6 +15,28 @@
 #include "CvDLLInterfaceIFaceBase.h"
 #include "CvGlobals.h"
 
+//@MOD Commanders: python methods
+bool CyUnit::isCommander() const
+{
+	return m_pUnit ? m_pUnit->isCommander(): false;
+}
+
+int CyUnit::controlPointsLeft() const
+{
+	return m_pUnit ? m_pUnit->controlPointsLeft() : -1;
+}
+
+int CyUnit::controlPoints() const
+{
+	return m_pUnit ? m_pUnit->controlPoints() : -1;
+}
+
+int CyUnit::commandRange() const
+{
+	return m_pUnit ? m_pUnit->commandRange() : -1;
+}
+//end mod
+
 CyUnit::CyUnit() : m_pUnit(NULL)
 {
 

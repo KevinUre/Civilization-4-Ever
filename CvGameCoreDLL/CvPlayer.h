@@ -40,6 +40,9 @@ protected:
 	void uninit();
 
 public:
+	//@MOD Commanders: array of pointers to GGs player has
+	std::vector<CvUnit*> Commanders;	
+	//end mod
 
 	void initFreeState();
 	void initFreeUnits();
@@ -1041,7 +1044,6 @@ public:
 	virtual int AI_maxGoldTrade(PlayerTypes ePlayer) const = 0;
 
 protected:
-
 	int m_iStartingX;
 	int m_iStartingY;
 	int m_iTotalPopulation;

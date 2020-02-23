@@ -633,3 +633,9 @@ CvTurnTimerInfo* CyGlobalContext::getTurnTimerInfo(int i) const
 {
 	return &(GC.getTurnTimerInfo((TurnTimerTypes) i));
 }
+
+//DeathMaker900 Begin
+CvInfoBase* CyGlobalContext::getForeverConceptInfo(int i) const
+{
+	return (i>=0 && i<GC.getNumForeverConceptInfos()) ? &GC.getForeverConceptInfo((ForeverConceptTypes)i) : NULL;
+}

@@ -3417,6 +3417,9 @@ void CvGlobals::deleteInfoArrays()
 
 	deleteInfoArray(m_paConceptInfo);
 	deleteInfoArray(m_paNewConceptInfo);
+	//DeathMaker900 Begin
+	deleteInfoArray(m_paForeverConceptInfo);
+	//DeathMaker900 End
 	deleteInfoArray(m_paCityTabInfo);
 	deleteInfoArray(m_paCalendarInfo);
 	deleteInfoArray(m_paSeasonInfo);
@@ -3579,3 +3582,21 @@ void CvGlobals::setBorderFinder(FAStar* pVal) { m_borderFinder = pVal; }
 void CvGlobals::setAreaFinder(FAStar* pVal) { m_areaFinder = pVal; }
 void CvGlobals::setPlotGroupFinder(FAStar* pVal) { m_plotGroupFinder = pVal; }
 CvDLLUtilityIFaceBase* CvGlobals::getDLLIFaceNonInl() { return m_pDLL; }
+
+//DeathMaker900 Start
+int CvGlobals::getNumForeverConceptInfos()
+{
+	return (int)m_paForeverConceptInfo.size();
+}
+
+std::vector<CvInfoBase*>& CvGlobals::getForeverConceptInfo()
+{
+	return m_paForeverConceptInfo;
+}
+
+CvInfoBase& CvGlobals::getForeverConceptInfo(ForeverConceptTypes e)
+{
+	FAssert(e > -1);
+	FAssert(e < GC.getNumForeverConceptInfos());
+	return *(m_paForeverConceptInfo[e]);
+}

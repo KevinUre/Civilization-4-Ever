@@ -35,6 +35,11 @@ void CyGlobalContextPythonInterface3(python::class_<CyGlobalContext>& x)
 		.def("getNumNewConceptInfos", &CyGlobalContext::getNumNewConceptInfos, "int () - NumNewConceptInfos")
 		.def("getNewConceptInfo", &CyGlobalContext::getNewConceptInfo, python::return_value_policy<python::reference_existing_object>(), "New Concept Info () - Returns info object")
 
+		//DeathMaker900 Begin
+		.def("getNumForeverConceptInfos", &CyGlobalContext::getNumForeverConceptInfos, "int () - NumForeverConceptInfos")
+		.def("getForeverConceptInfo", &CyGlobalContext::getForeverConceptInfo, python::return_value_policy<python::reference_existing_object>(), "Forever Concept Info () - Returns info object")
+		//DeathMaker900 End
+
 		.def("getNumCityTabInfos", &CyGlobalContext::getNumCityTabInfos, "int () - Returns NumCityTabInfos")
 		.def("getCityTabInfo", &CyGlobalContext::getCityTabInfo, python::return_value_policy<python::reference_existing_object>(), "CityTabInfo - () - Returns Info object")
 

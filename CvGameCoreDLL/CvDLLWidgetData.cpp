@@ -2730,7 +2730,10 @@ void CvDLLWidgetData::parseActionHelp(CvWidgetDataStruct &widgetDataStruct, CvWS
 					if (GC.getImprovementInfo(eImprovement).getDefenseModifier() != 0)
 					{
 						szBuffer.append(NEWLINE);
-						szBuffer.append(gDLL->getText("TXT_KEY_ACTION_DEFENSE_MODIFIER", GC.getImprovementInfo(eImprovement).getDefenseModifier()));
+						// Super Forts begin *bombard* *text*
+						szBuffer.append(gDLL->getText("TXT_KEY_ACTION_DEFENSE_MODIFIER", (GC.getImprovementInfo(eImprovement).getDefenseModifier() - pMissionPlot->getDefenseDamage())));
+						// szBuffer.append(gDLL->getText("TXT_KEY_ACTION_DEFENSE_MODIFIER", GC.getImprovementInfo(eImprovement).getDefenseModifier())); - Original Code
+						// Super Forts end
 					}
 
 					if (GC.getImprovementInfo(eImprovement).getImprovementUpgrade() != NO_IMPROVEMENT)
@@ -4409,6 +4412,17 @@ void CvDLLWidgetData::parseDescriptionHelp(CvWidgetDataStruct &widgetDataStruct,
 			}
 		}
 		break;
+		//DeathMaker900 Begin
+	case CIVILOPEDIA_PAGE_CONCEPT_FOREVER:
+		{
+			ForeverConceptTypes eConcept = (ForeverConceptTypes)widgetDataStruct.m_iData2;
+			if (NO_FOREVER_CONCEPT != eConcept)
+			{
+				szBuffer.assign(GC.getForeverConceptInfo(eConcept).getDescription());
+			}
+		}
+		break;
+		//DeathMaker900 End
 	case CIVILOPEDIA_PAGE_SPECIALIST:
 		{
 			SpecialistTypes eSpecialist = (SpecialistTypes)widgetDataStruct.m_iData2;

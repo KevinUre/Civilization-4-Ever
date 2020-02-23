@@ -204,6 +204,21 @@ void CyGamePythonInterface()
 		.def("isNukesValid", &CyGame::isNukesValid, "bool")
 		.def("makeNukesValid", &CyGame::makeNukesValid, " void (bool bValid)")
 
+		// < Air Combat Experience Start >
+		.def("isRouteDestructionThroughAirBombs", &CyGame::isRouteDestructionThroughAirBombs, "bool")
+		.def("setRouteDestructionThroughAirBombs", &CyGame::setRouteDestructionThroughAirBombs, " void (bool bValid)")
+		.def("isExperienceGainByDestroyingImprovements", &CyGame::isExperienceGainByDestroyingImprovements, "bool")
+		.def("setExperienceGainByDestroyingImprovements", &CyGame::setExperienceGainByDestroyingImprovements, " void (bool bValid)")
+		.def("isExperienceGainByDestroyingRoutes", &CyGame::isExperienceGainByDestroyingRoutes, "bool")
+		.def("setExperienceGainByDestroyingRoutes", &CyGame::setExperienceGainByDestroyingRoutes, " void (bool bValid)")
+		.def("isExperienceGainByAttackingCities", &CyGame::isExperienceGainByAttackingCities, "bool")
+		.def("setExperienceGainByAttackingCities", &CyGame::setExperienceGainByAttackingCities, " void (bool bValid)")
+		.def("isExperienceGainByAttackingUnits", &CyGame::isExperienceGainByAttackingUnits, "bool")
+		.def("setExperienceGainByAttackingUnits", &CyGame::setExperienceGainByAttackingUnits, " void (bool bValid)")
+		.def("isBombNoMansLand", &CyGame::isBombNoMansLand, "bool")
+		.def("setBombNoMansLand", &CyGame::setBombNoMansLand, " void (bool bValid)")
+		// < Air Combat Experience End   >
+
 		.def("isInAdvancedStart", &CyGame::isInAdvancedStart, "bool")
 
 		.def("getHolyCity", &CyGame::getHolyCity, python::return_value_policy<python::manage_new_object>(), "CyCity getHolyCity()")

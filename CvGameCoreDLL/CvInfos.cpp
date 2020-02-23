@@ -1573,6 +1573,11 @@ bool CvTechInfo::readPass2(CvXMLLoadUtility* pXML)
 //
 //------------------------------------------------------------------------------------------------------
 CvPromotionInfo::CvPromotionInfo() :
+//@MOD Commanders
+m_iControlPoints(0),
+m_iCommandRange(0),
+m_bOnslaught(false),
+//end mod
 m_iLayerAnimationPath(ANIMATIONPATH_NONE),
 m_iPrereqPromotion(NO_PROMOTION),
 m_iPrereqOrPromotion1(NO_PROMOTION),
@@ -1647,6 +1652,23 @@ CvPromotionInfo::~CvPromotionInfo()
 	SAFE_DELETE_ARRAY(m_pbFeatureDoubleMove);
 	SAFE_DELETE_ARRAY(m_pbUnitCombat);
 }
+
+//@MOD Commanders
+int CvPromotionInfo::getControlPoints() const
+{
+	return m_iControlPoints;
+}
+
+int CvPromotionInfo::getCommandRange() const
+{
+	return m_iCommandRange;
+}
+
+bool CvPromotionInfo::isOnslaught() const
+{
+	return m_bOnslaught;
+}
+//end mod
 
 int CvPromotionInfo::getLayerAnimationPath() const
 {
@@ -1965,6 +1987,12 @@ void CvPromotionInfo::read(FDataStreamBase* stream)
 	uint uiFlag=0;
 	stream->Read(&uiFlag);		// flag for expansion
 	
+	//@MOD Commanders: read from saved game
+	stream->Read(&m_iControlPoints);
+	stream->Read(&m_iCommandRange);
+	stream->Read(&m_bOnslaught);
+	//end mod
+	
 	stream->Read(&m_iLayerAnimationPath);			
 	stream->Read(&m_iPrereqPromotion);			
 	stream->Read(&m_iPrereqOrPromotion1);			
@@ -2058,6 +2086,12 @@ void CvPromotionInfo::write(FDataStreamBase* stream)
 
 	uint uiFlag = 0;
 	stream->Write(uiFlag);		// flag for expansion
+
+	//@MOD Commanders: save game
+	stream->Write(m_iControlPoints);
+	stream->Write(m_iCommandRange);
+	stream->Write(m_bOnslaught);
+	//end mod
 
 	stream->Write(m_iLayerAnimationPath);			
 	stream->Write(m_iPrereqPromotion);			
@@ -2191,6 +2225,12 @@ bool CvPromotionInfo::read(CvXMLLoadUtility* pXML)
 	pXML->SetVariableListTagPair(&m_pbTerrainDoubleMove, "TerrainDoubleMoves", sizeof(GC.getTerrainInfo((TerrainTypes)0)), GC.getNumTerrainInfos());
 	pXML->SetVariableListTagPair(&m_pbFeatureDoubleMove, "FeatureDoubleMoves", sizeof(GC.getFeatureInfo((FeatureTypes)0)), GC.getNumFeatureInfos());
 	pXML->SetVariableListTagPair(&m_pbUnitCombat, "UnitCombats", sizeof(GC.getUnitCombatInfo((UnitCombatTypes)0)), GC.getNumUnitCombatInfos());
+	
+	//@MOD Commanders: read promotion from xml
+	pXML->GetChildXmlValByName(&m_iControlPoints, "iControlPoints");
+	pXML->GetChildXmlValByName(&m_iCommandRange, "iCommandRange");
+	pXML->GetChildXmlValByName(&m_bOnslaught, "bOnslaught");
+	//end mod
 
 	return true;
 }
@@ -2975,6 +3015,10 @@ std::wstring CvActionInfo::getHotKeyDescription() const
 //
 //------------------------------------------------------------------------------------------------------
 CvUnitInfo::CvUnitInfo() :
+//@MOD Commanders
+m_iControlPoints(0),
+m_iCommandRange(0),
+//end mod
 m_iAIWeight(0),
 m_iProductionCost(0),
 m_iHurryCostModifier(0),
@@ -3179,6 +3223,18 @@ CvUnitInfo::~CvUnitInfo()
 	SAFE_DELETE_ARRAY(m_paszMiddleArtDefineTags);
 	SAFE_DELETE_ARRAY(m_paszUnitNames);
 }
+
+//@MOD Commanders: unit info
+int CvUnitInfo::getControlPoints() const
+{
+	return m_iControlPoints;
+}
+
+int CvUnitInfo::getCommandRange() const
+{
+	return m_iCommandRange;
+}
+//end mod
 
 int CvUnitInfo::getAIWeight() const			
 {
@@ -4157,6 +4213,11 @@ void CvUnitInfo::read(FDataStreamBase* stream)
 
 	uint uiFlag=0;
 	stream->Read(&uiFlag);	// flags for expansion
+	
+	//@MOD Commanders: load unit info from saved game
+	stream->Read(&m_iControlPoints);
+	stream->Read(&m_iCommandRange);
+	//end mod
 
 	stream->Read(&m_iAIWeight);
 	stream->Read(&m_iProductionCost);
@@ -4456,6 +4517,11 @@ void CvUnitInfo::write(FDataStreamBase* stream)
 
 	uint uiFlag=0;
 	stream->Write(uiFlag);		// flag for expansion
+
+	//@MOD Commanders: save unit info
+	stream->Write(m_iControlPoints);
+	stream->Write(m_iCommandRange);
+	//end mod
 
 	stream->Write(m_iAIWeight);
 	stream->Write(m_iProductionCost);
@@ -4964,6 +5030,11 @@ bool CvUnitInfo::read(CvXMLLoadUtility* pXML)
 	m_iLeaderPromotion = pXML->FindInInfoClass(szTextVal);
 
 	pXML->GetChildXmlValByName(&m_iLeaderExperience, "iLeaderExperience");
+	
+	//@MOD Commanders: read unit info from xml
+	pXML->GetChildXmlValByName(&m_iControlPoints, "iControlPoints");
+	pXML->GetChildXmlValByName(&m_iCommandRange, "iCommandRange");
+	//end mod
 
 	updateArtDefineButton();
 
@@ -11094,6 +11165,9 @@ m_iAdvancedStartCostIncrease(0),
 m_iValue(0),
 m_iMovementCost(0),
 m_iFlatMovementCost(0),
+// < Air Combat Experience Start >
+m_iAirBombDefense(0),
+// < Air Combat Experience End   >
 m_iPrereqBonus(NO_BONUS),
 m_piYieldChange(NULL),
 m_piTechMovementChange(NULL),
@@ -11161,6 +11235,13 @@ int CvRouteInfo::getTechMovementChange(int i) const
 	return m_piTechMovementChange ? m_piTechMovementChange[i] : -1;
 }
 
+// < Air Combat Experience Start >
+int CvRouteInfo::getAirBombDefense() const
+{
+	return m_iAirBombDefense; 
+}
+// < Air Combat Experience End   >
+
 int CvRouteInfo::getPrereqOrBonus(int i) const
 {
 	return m_piPrereqOrBonuses ? m_piPrereqOrBonuses[i] : -1;
@@ -11180,6 +11261,10 @@ bool CvRouteInfo::read(CvXMLLoadUtility* pXML)
 	pXML->GetChildXmlValByName(&m_iValue, "iValue");
 	pXML->GetChildXmlValByName(&m_iMovementCost, "iMovement");
 	pXML->GetChildXmlValByName(&m_iFlatMovementCost, "iFlatMovement");
+
+	// < Air Combat Experience Start >
+	pXML->GetChildXmlValByName(&m_iAirBombDefense, "iAirBombDefense");
+	// < Air Combat Experience End   >
 
 	pXML->GetChildXmlValByName(szTextVal, "BonusType");
 	m_iPrereqBonus = pXML->FindInInfoClass(szTextVal);
@@ -11345,6 +11430,15 @@ m_iHappiness(0),
 m_iPillageGold(0),
 m_iImprovementPillage(NO_IMPROVEMENT),
 m_iImprovementUpgrade(NO_IMPROVEMENT),
+// Super Forts begin *XML*
+m_iCulture(0),
+m_iCultureRange(0),
+m_iVisibilityChange(0),
+m_iSeeFrom(0),
+m_iUniqueRange(0),
+m_bBombardable(false),
+m_bUpgradeRequiresFortify(false),
+// Super Forts end
 m_bActsAsCity(true),				
 m_bHillsMakesValid(false),				
 m_bFreshWaterMakesValid(false),	
@@ -11490,6 +11584,43 @@ void CvImprovementInfo::setImprovementUpgrade(int i)
 {
 	m_iImprovementUpgrade = i; 
 }
+
+// Super Forts begin *XML*
+int CvImprovementInfo::getCulture() const
+{
+	return m_iCulture;
+}
+
+int CvImprovementInfo::getCultureRange() const
+{
+	return m_iCultureRange;
+}
+
+int CvImprovementInfo::getVisibilityChange() const
+{
+	return m_iVisibilityChange;
+}
+
+int CvImprovementInfo::getSeeFrom() const
+{
+	return m_iSeeFrom;
+}
+
+int CvImprovementInfo::getUniqueRange() const
+{
+	return m_iUniqueRange;
+}
+
+bool CvImprovementInfo::isBombardable() const
+{
+	return m_bBombardable;
+}
+
+bool CvImprovementInfo::isUpgradeRequiresFortify() const
+{
+	return m_bUpgradeRequiresFortify;
+}
+// Super Forts end
 
 bool CvImprovementInfo::isActsAsCity() const
 {
@@ -11750,6 +11881,15 @@ void CvImprovementInfo::read(FDataStreamBase* stream)
 	stream->Read(&m_iPillageGold);
 	stream->Read(&m_iImprovementPillage);
 	stream->Read(&m_iImprovementUpgrade);
+	// Super Forts begin *XML*
+	stream->Read(&m_iCulture);
+	stream->Read(&m_iCultureRange);
+	stream->Read(&m_iVisibilityChange);
+	stream->Read(&m_iSeeFrom);
+	stream->Read(&m_iUniqueRange);
+	stream->Read(&m_bBombardable);
+	stream->Read(&m_bUpgradeRequiresFortify);
+	// Super Forts end
 
 	stream->Read(&m_bActsAsCity);				
 	stream->Read(&m_bHillsMakesValid);				
@@ -11861,6 +12001,15 @@ void CvImprovementInfo::write(FDataStreamBase* stream)
 	stream->Write(m_iPillageGold);
 	stream->Write(m_iImprovementPillage);
 	stream->Write(m_iImprovementUpgrade);
+	// Super Forts begin *XML*
+	stream->Write(m_iCulture);
+	stream->Write(m_iCultureRange);
+	stream->Write(m_iVisibilityChange);
+	stream->Write(m_iSeeFrom);
+	stream->Write(m_iUniqueRange);
+	stream->Write(m_bBombardable);
+	stream->Write(m_bUpgradeRequiresFortify);
+	// Super Forts end
 
 	stream->Write(m_bActsAsCity);				
 	stream->Write(m_bHillsMakesValid);				
@@ -11999,6 +12148,15 @@ bool CvImprovementInfo::read(CvXMLLoadUtility* pXML)
 	pXML->GetChildXmlValByName(&m_iHappiness, "iHappiness");
 	pXML->GetChildXmlValByName(&m_iPillageGold, "iPillageGold");
 	pXML->GetChildXmlValByName(&m_bOutsideBorders, "bOutsideBorders");
+	// Super Forts begin *XML*
+	pXML->GetChildXmlValByName(&m_iCulture, "iCulture");
+	pXML->GetChildXmlValByName(&m_iCultureRange, "iCultureRange");
+	pXML->GetChildXmlValByName(&m_iVisibilityChange, "iVisibilityChange");
+	pXML->GetChildXmlValByName(&m_iSeeFrom, "iSeeFrom");
+	pXML->GetChildXmlValByName(&m_iUniqueRange, "iUnique");
+	pXML->GetChildXmlValByName(&m_bBombardable, "bBombardable");
+	pXML->GetChildXmlValByName(&m_bUpgradeRequiresFortify, "bUpgradeRequiresFortify");
+	// Super Forts end
 
 	pXML->SetVariableListTagPair(&m_pbTerrainMakesValid, "TerrainMakesValids", sizeof(GC.getTerrainInfo((TerrainTypes)0)), GC.getNumTerrainInfos());
 	pXML->SetVariableListTagPair(&m_pbFeatureMakesValid, "FeatureMakesValids", sizeof(GC.getFeatureInfo((FeatureTypes)0)), GC.getNumFeatureInfos());
@@ -14642,6 +14800,9 @@ bool CvLeaderHeadInfo::read(CvXMLLoadUtility* pXML)
 //
 //------------------------------------------------------------------------------------------------------
 CvWorldInfo::CvWorldInfo() :
+//@MOD Commanders
+m_iCommandersLevelThresholdsPercent(0),
+//end mod
 m_iDefaultPlayers(0),
 m_iUnitNameModifier(0),
 m_iTargetNumCities(0),
@@ -14674,6 +14835,13 @@ m_iAdvancedStartPointsMod(0)
 CvWorldInfo::~CvWorldInfo()
 {
 }
+
+//@MOD Commanders
+int CvWorldInfo::getCommandersLevelThresholdsPercent() const
+{
+	return m_iCommandersLevelThresholdsPercent; 
+}
+//end mod
 
 int CvWorldInfo::getDefaultPlayers() const
 {
@@ -14776,6 +14944,10 @@ bool CvWorldInfo::read(CvXMLLoadUtility* pXML)
 	{
 		return false;
 	}
+
+	//@MOD Commanders
+	pXML->GetChildXmlValByName(&m_iCommandersLevelThresholdsPercent, "iCommandersLevelThresholdsPercent");
+	//end mod
 
 	pXML->GetChildXmlValByName(&m_iDefaultPlayers, "iDefaultPlayers");
 	pXML->GetChildXmlValByName(&m_iUnitNameModifier, "iUnitNameModifier");

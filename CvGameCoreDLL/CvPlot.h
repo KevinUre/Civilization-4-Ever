@@ -126,6 +126,22 @@ public:
 	CvUnit* getSelectedUnit() const;																																// Exposed to Python				
 	int getUnitPower(PlayerTypes eOwner = NO_PLAYER) const;																					// Exposed to Python				
 
+	// Super Forts begin *bombard*
+	bool isBombardable(const CvUnit* pUnit) const;
+	bool isBombarded() const;
+	void setBombarded(bool bNewValue);
+	int getDefenseDamage() const;
+	void changeDefenseDamage(int iChange);
+	// Super Forts end
+	// Super Forts begin *culture*
+	int getCultureRangeForts(PlayerTypes ePlayer) const;
+	void setCultureRangeForts(PlayerTypes ePlayer, int iNewValue);
+	void changeCultureRangeForts(PlayerTypes ePlayer, int iChange);
+	bool isWithinFortCultureRange(PlayerTypes ePlayer) const;
+	void changeCultureRangeFortsWithinRange(PlayerTypes ePlayer, int iChange, int iRange, bool bUpdate);
+	void doImprovementCulture();
+	// Super Forts end
+
 	int defenseModifier(TeamTypes eDefender, bool bIgnoreBuilding, bool bHelp = false) const;									// Exposed to Python				
 	int movementCost(const CvUnit* pUnit, const CvPlot* pFromPlot) const;														// Exposed to Python				
 
@@ -496,6 +512,11 @@ protected:
 	short m_iReconCount;
 	short m_iRiverCrossingCount;
 
+	// Super Forts begin *bombard*
+	int m_iDefenseDamage;
+	bool m_bBombarded;
+	// Super Forts end
+
 	bool m_bStartingPlot:1;
 	bool m_bHills:1;
 	bool m_bNOfRiver:1;
@@ -523,6 +544,7 @@ protected:
 
 	short* m_aiYield;
 	int* m_aiCulture;
+	short* m_aiCultureRangeForts; // Super Forts *culture*
 	short* m_aiFoundValue;
 	char* m_aiPlayerCityRadiusCount;
 	int* m_aiPlotGroup;			// IDs - keep as int

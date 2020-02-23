@@ -569,6 +569,15 @@ void CvGameTextMgr::setUnitHelp(CvWStringBuffer &szString, const CvUnit* pUnit, 
 		}
 	}
 
+	//@MOD Commanders: unit help
+	//show commander's parameters in popup
+	if (pUnit->isCommander())
+	{
+		szString.append(gDLL->getText("TXT_KEY_UNIT_HELP_COMMAND_RANGE", pUnit->commandRange()));
+		szString.append(gDLL->getText("TXT_KEY_UNIT_HELP_CONTROL_POINTS", pUnit->controlPointsLeft(), pUnit->controlPoints()));
+	}
+	//end mod
+
 	if (pUnit->getOwnerINLINE() != GC.getGameINLINE().getActivePlayer() && !pUnit->isAnimal() && !pUnit->getUnitInfo().isHiddenNationality())
 	{
 		szString.append(L", ");
@@ -718,8 +727,20 @@ void CvGameTextMgr::setUnitHelp(CvWStringBuffer &szString, const CvUnit* pUnit, 
 
 			if (pUnit->isAmphib())
 			{
-				szString.append(NEWLINE);
-				szString.append(gDLL->getText("TXT_KEY_PROMOTION_AMPHIB_TEXT"));
+				//TSHEEP Display Spy Messages Differently
+				if(pUnit->isSpy())
+				{
+					szString.append(NEWLINE);
+					szString.append(gDLL->getText("TXT_KEY_PROMOTION_RADIATION_TEXT_SPY"));
+				}
+				else
+				{
+					szString.append(NEWLINE);
+					szString.append(gDLL->getText("TXT_KEY_PROMOTION_AMPHIB_TEXT"));
+				}
+				//szString.append(NEWLINE);
+				//szString.append(gDLL->getText("TXT_KEY_PROMOTION_AMPHIB_TEXT"));
+				//TSHEEP
 			}
 
 			if (pUnit->isRiver())
@@ -736,8 +757,20 @@ void CvGameTextMgr::setUnitHelp(CvWStringBuffer &szString, const CvUnit* pUnit, 
 
 			if (pUnit->isAlwaysHeal())
 			{
-				szString.append(NEWLINE);
-				szString.append(gDLL->getText("TXT_KEY_PROMOTION_ALWAYS_HEAL_TEXT"));
+				//TSHEEP Display Spy Messages Differently
+				if(pUnit->isSpy())
+				{
+					szString.append(NEWLINE);
+					szString.append(gDLL->getText("TXT_KEY_PROMOTION_LOYALTY_TEXT_SPY"));
+				}
+				else
+				{
+					szString.append(NEWLINE);
+					szString.append(gDLL->getText("TXT_KEY_PROMOTION_ALWAYS_HEAL_TEXT"));
+				}
+				//szString.append(NEWLINE);
+				//szString.append(gDLL->getText("TXT_KEY_PROMOTION_ALWAYS_HEAL_TEXT"));
+				//TSHEEP End
 			}
 
 			if (pUnit->isHillsDoubleMove())
@@ -778,20 +811,56 @@ void CvGameTextMgr::setUnitHelp(CvWStringBuffer &szString, const CvUnit* pUnit, 
 
 			if (pUnit->getExtraEnemyHeal() != 0)
 			{
-				szString.append(NEWLINE);
-				szString.append(gDLL->getText("TXT_KEY_PROMOTION_HEALS_EXTRA_TEXT", pUnit->getExtraEnemyHeal()) + gDLL->getText("TXT_KEY_PROMOTION_ENEMY_LANDS_TEXT"));
+				//TSHEEP Display Spy Messages Differently
+				if(pUnit->isSpy())
+				{
+					szString.append(NEWLINE);
+					szString.append(gDLL->getText("TXT_KEY_PROMOTION_INSTIGATE_TEXT_SPY", pUnit->getExtraEnemyHeal()));
+				}
+				else
+				{
+					szString.append(NEWLINE);
+					szString.append(gDLL->getText("TXT_KEY_PROMOTION_HEALS_EXTRA_TEXT", pUnit->getExtraEnemyHeal()) + gDLL->getText("TXT_KEY_PROMOTION_ENEMY_LANDS_TEXT"));
+				}
+				//szString.append(NEWLINE);
+				//szString.append(gDLL->getText("TXT_KEY_PROMOTION_HEALS_EXTRA_TEXT", pUnit->getExtraEnemyHeal()) + gDLL->getText("TXT_KEY_PROMOTION_ENEMY_LANDS_TEXT"));
+				//TSHEEP End
 			}
 
 			if (pUnit->getExtraNeutralHeal() != 0)
 			{
-				szString.append(NEWLINE);
-				szString.append(gDLL->getText("TXT_KEY_PROMOTION_HEALS_EXTRA_TEXT", pUnit->getExtraNeutralHeal()) + gDLL->getText("TXT_KEY_PROMOTION_NEUTRAL_LANDS_TEXT"));
+				//TSHEEP Display Spy Messages Differently
+				if(pUnit->isSpy())
+				{
+					szString.append(NEWLINE);
+					szString.append(gDLL->getText("TXT_KEY_PROMOTION_INSTIGATE2_TEXT_SPY", pUnit->getExtraNeutralHeal()));
+				}
+				else
+				{
+					szString.append(NEWLINE);
+					szString.append(gDLL->getText("TXT_KEY_PROMOTION_HEALS_EXTRA_TEXT", pUnit->getExtraNeutralHeal()) + gDLL->getText("TXT_KEY_PROMOTION_NEUTRAL_LANDS_TEXT"));
+				}
+				//szString.append(NEWLINE);
+				//szString.append(gDLL->getText("TXT_KEY_PROMOTION_HEALS_EXTRA_TEXT", pUnit->getExtraNeutralHeal()) + gDLL->getText("TXT_KEY_PROMOTION_NEUTRAL_LANDS_TEXT"));
+				//TSHEEP End
 			}
 
 			if (pUnit->getExtraFriendlyHeal() != 0)
 			{
-				szString.append(NEWLINE);
-				szString.append(gDLL->getText("TXT_KEY_PROMOTION_HEALS_EXTRA_TEXT", pUnit->getExtraFriendlyHeal()) + gDLL->getText("TXT_KEY_PROMOTION_FRIENDLY_LANDS_TEXT"));
+				//TSHEEP Display Spy Messages Differently
+				if(pUnit->isSpy())
+				{
+					szString.append(NEWLINE);
+					szString.append(gDLL->getText("TXT_KEY_PROMOTION_POISON_TEXT_SPY", pUnit->getExtraFriendlyHeal()));
+				}
+				else
+				{
+					szString.append(NEWLINE);
+					szString.append(gDLL->getText("TXT_KEY_PROMOTION_HEALS_EXTRA_TEXT", pUnit->getExtraFriendlyHeal()) + gDLL->getText("TXT_KEY_PROMOTION_FRIENDLY_LANDS_TEXT"));
+				}
+				//szString.append(NEWLINE);
+				//szString.append(gDLL->getText("TXT_KEY_PROMOTION_HEALS_EXTRA_TEXT", pUnit->getExtraFriendlyHeal()) + gDLL->getText("TXT_KEY_PROMOTION_FRIENDLY_LANDS_TEXT"));
+				//TSHEEP End
 			}
 
 			if (pUnit->getSameTileHeal() != 0)
@@ -809,19 +878,64 @@ void CvGameTextMgr::setUnitHelp(CvWStringBuffer &szString, const CvUnit* pUnit, 
 
 		if (pUnit->currInterceptionProbability() > 0)
 		{
-			szString.append(NEWLINE);
-			szString.append(gDLL->getText("TXT_KEY_UNIT_INTERCEPT_AIRCRAFT", pUnit->currInterceptionProbability()));
+			//TSHEEP Display Spy Messages Differently
+			if(pUnit->isSpy())
+			{
+				szString.append(NEWLINE);
+				szString.append(gDLL->getText("TXT_KEY_UNIT_INTERCEPT_AIRCRAFT_SPY", pUnit->currInterceptionProbability()));
+				szString.append(NEWLINE);
+				szString.append(gDLL->getText("TXT_KEY_UNIT_INTERCEPT_AIRCRAFT_SPY_COUNTER", pUnit->currInterceptionProbability() * 5));
+			}
+			else
+			{
+				szString.append(NEWLINE);
+				szString.append(gDLL->getText("TXT_KEY_UNIT_INTERCEPT_AIRCRAFT", pUnit->currInterceptionProbability()));
+			}
+			//szString.append(NEWLINE);
+			//szString.append(gDLL->getText("TXT_KEY_UNIT_INTERCEPT_AIRCRAFT", pUnit->currInterceptionProbability()));
+			//TSHEEP End
 		}
 
 		if (pUnit->evasionProbability() > 0)
 		{
-			szString.append(NEWLINE);
-			szString.append(gDLL->getText("TXT_KEY_UNIT_EVADE_INTERCEPTION", pUnit->evasionProbability()));
+			//TSHEEP Display Spy Messages Differently
+			if(pUnit->isSpy())
+			{
+				szString.append(NEWLINE);
+				szString.append(gDLL->getText("TXT_KEY_UNIT_EVADE_INTERCEPTION_SPY", pUnit->evasionProbability()));
+			}
+			else
+			{
+				szString.append(NEWLINE);
+				szString.append(gDLL->getText("TXT_KEY_UNIT_EVADE_INTERCEPTION", pUnit->evasionProbability()));
+			}
+			//szString.append(NEWLINE);
+			//szString.append(gDLL->getText("TXT_KEY_UNIT_EVADE_INTERCEPTION", pUnit->evasionProbability()));
+			//TSHEEP End
 		}
 
 		if (pUnit->withdrawalProbability() > 0)
 		{
-			if (bShort)
+			//TSHEEP Display Spy Messages Differently
+			if(pUnit->isSpy())
+			{
+				szString.append(NEWLINE);
+				szString.append(gDLL->getText("TXT_KEY_UNIT_ESCAPE_SPY", pUnit->withdrawalProbability()));
+			}
+			else
+			{
+				if (bShort)
+				{
+					szString.append(NEWLINE);
+					szString.append(gDLL->getText("TXT_KEY_UNIT_WITHDRAWL_PROBABILITY_SHORT", pUnit->withdrawalProbability()));
+				}
+				else
+				{
+					szString.append(NEWLINE);
+					szString.append(gDLL->getText("TXT_KEY_UNIT_WITHDRAWL_PROBABILITY", pUnit->withdrawalProbability()));
+				}
+			}
+			/*if (bShort)
 			{
 				szString.append(NEWLINE);
 				szString.append(gDLL->getText("TXT_KEY_UNIT_WITHDRAWL_PROBABILITY_SHORT", pUnit->withdrawalProbability()));
@@ -830,7 +944,8 @@ void CvGameTextMgr::setUnitHelp(CvWStringBuffer &szString, const CvUnit* pUnit, 
 			{
 				szString.append(NEWLINE);
 				szString.append(gDLL->getText("TXT_KEY_UNIT_WITHDRAWL_PROBABILITY", pUnit->withdrawalProbability()));
-			}
+			}*/
+			//TSHEEP End
 		}
 
 		if (pUnit->combatLimit() < GC.getMAX_HIT_POINTS() && pUnit->canAttack())
@@ -2082,7 +2197,7 @@ void createTestFontString(CvWStringBuffer& szString)
 {
 	int iI;
 	szString.assign(L"!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[Χ]^_`abcdefghijklmnopqrstuvwxyz\n");
-	//szString.append(L"{}~\\ίΐΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡÒΣΤΥΦΨΩΪΫάέήίΰαβγδεζηθικλμνξοπρςστυφχψωϊϋόύώÿΏ΅«»°™©®€£Ά”‘“…’");
+	szString.append(L"{}~\\ίΐΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡÒΣΤΥΦΨΩΪΫάέήίΰαβγδεζηθικλμνξοπρςστυφχψωϊϋόύώÿΏ΅«»°™©®€£Ά”‘“…’");
 	for (iI=0;iI<NUM_YIELD_TYPES;++iI)
 		szString.append(CvWString::format(L"%c", GC.getYieldInfo((YieldTypes) iI).getChar()));
 
@@ -3019,7 +3134,10 @@ void CvGameTextMgr::setPlotHelp(CvWStringBuffer& szString, CvPlot* pPlot)
 
 			if (GC.getImprovementInfo(eImprovement).getImprovementUpgrade() != NO_IMPROVEMENT)
 			{
-				if ((pPlot->getUpgradeProgress() > 0) || pPlot->isBeingWorked())
+				// Super Forts begin *text* *upgrade*
+				if ((pPlot->getUpgradeProgress() > 0) || (pPlot->isBeingWorked() && !GC.getImprovementInfo(eImprovement).isUpgradeRequiresFortify()))
+				// if ((pPlot->getUpgradeProgress() > 0) || pPlot->isBeingWorked()) - Original Code
+				// Super Forts end
 				{
 					iTurns = pPlot->getUpgradeTimeLeft(eImprovement, eRevealOwner);
 
@@ -3027,7 +3145,16 @@ void CvGameTextMgr::setPlotHelp(CvWStringBuffer& szString, CvPlot* pPlot)
 				}
 				else
 				{
-					szString.append(gDLL->getText("TXT_KEY_PLOT_WORK_TO_UPGRADE", GC.getImprovementInfo((ImprovementTypes) GC.getImprovementInfo(eImprovement).getImprovementUpgrade()).getTextKeyWide()));
+					// Super Forts begin *text* *upgrade*
+					if (GC.getImprovementInfo(eImprovement).isUpgradeRequiresFortify())
+					{
+						szString.append(gDLL->getText("TXT_KEY_PLOT_FORTIFY_TO_UPGRADE", GC.getImprovementInfo((ImprovementTypes) GC.getImprovementInfo(eImprovement).getImprovementUpgrade()).getTextKeyWide()));
+					}
+					else
+					{
+						szString.append(gDLL->getText("TXT_KEY_PLOT_WORK_TO_UPGRADE", GC.getImprovementInfo((ImprovementTypes) GC.getImprovementInfo(eImprovement).getImprovementUpgrade()).getTextKeyWide()));
+					}
+					// Super Forts end
 				}
 			}
 		}
@@ -3947,6 +4074,26 @@ void CvGameTextMgr::parsePromotionHelp(CvWStringBuffer &szBuffer, PromotionTypes
 		return;
 	}
 
+	//@MOD Commanders: promotion help
+	if (GC.getPromotionInfo(ePromotion).getControlPoints() != 0)		//Control
+	{
+		szBuffer.append(pcNewline);
+		szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_CONTROL_POINTS_TEXT", GC.getPromotionInfo(ePromotion).getControlPoints()));
+	}
+
+	if (GC.getPromotionInfo(ePromotion).getCommandRange() != 0)	//Command Range
+	{
+		szBuffer.append(pcNewline);
+		szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_COMMAND_RANGE_TEXT", GC.getPromotionInfo(ePromotion).getCommandRange()));
+	}
+
+	if (GC.getPromotionInfo(ePromotion).isOnslaught())	//Onslaught
+	{
+		szBuffer.append(pcNewline);
+		szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_ONSLAUGHT_TEXT"));
+	}
+	//end mod
+
 	if (GC.getPromotionInfo(ePromotion).isBlitz())
 	{
 		szBuffer.append(pcNewline);
@@ -3955,8 +4102,20 @@ void CvGameTextMgr::parsePromotionHelp(CvWStringBuffer &szBuffer, PromotionTypes
 
 	if (GC.getPromotionInfo(ePromotion).isAmphib())
 	{
-		szBuffer.append(pcNewline);
-		szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_AMPHIB_TEXT"));
+		//TSHEEP Display Spy Messages Differently
+		if(GC.getPromotionInfo(ePromotion).getSound()[5] == 'P')
+		{
+			szBuffer.append(pcNewline);
+			szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_RADIATION_TEXT_SPY"));
+		}
+		else
+		{
+			szBuffer.append(pcNewline);
+			szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_AMPHIB_TEXT"));
+		}
+		//szBuffer.append(pcNewline);
+		//szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_AMPHIB_TEXT"));
+		//TSHEEP End
 	}
 
 	if (GC.getPromotionInfo(ePromotion).isRiver())
@@ -3973,8 +4132,20 @@ void CvGameTextMgr::parsePromotionHelp(CvWStringBuffer &szBuffer, PromotionTypes
 
 	if (GC.getPromotionInfo(ePromotion).isAlwaysHeal())
 	{
-		szBuffer.append(pcNewline);
-		szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_ALWAYS_HEAL_TEXT"));
+		//TSHEEP Display Spy Messages Differently
+		if(GC.getPromotionInfo(ePromotion).getSound()[5] == 'P')
+		{
+			szBuffer.append(pcNewline);
+			szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_LOYALTY_TEXT_SPY"));
+		}
+		else
+		{
+			szBuffer.append(pcNewline);
+			szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_ALWAYS_HEAL_TEXT"));
+		}
+		//szBuffer.append(pcNewline);
+		//szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_ALWAYS_HEAL_TEXT"));
+		//TSHEEP End
 	}
 
 	if (GC.getPromotionInfo(ePromotion).isHillsDoubleMove())
@@ -4033,20 +4204,58 @@ void CvGameTextMgr::parsePromotionHelp(CvWStringBuffer &szBuffer, PromotionTypes
 
 	if (GC.getPromotionInfo(ePromotion).getInterceptChange() != 0)
 	{
-		szBuffer.append(pcNewline);
-		szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_INTERCEPT_TEXT", GC.getPromotionInfo(ePromotion).getInterceptChange()));
+		//TSHEEP Display Spy Promotions Differently
+		if(GC.getPromotionInfo(ePromotion).getSound()[5] == 'P')
+		{
+			szBuffer.append(pcNewline);
+			szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_INTERCEPT_TEXT_SPY", GC.getPromotionInfo(ePromotion).getInterceptChange()));
+			szBuffer.append(pcNewline);
+			szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_INTERCEPT_TEXT_SPY_COUNTER", GC.getPromotionInfo(ePromotion).getInterceptChange() * GC.getDefineINT("SUPER_SPIES_COUNTERESPIONAGE_BONUS_MULTIPLIER"))); //KEVIN
+		}
+		else
+		{
+			szBuffer.append(pcNewline);
+			szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_INTERCEPT_TEXT", GC.getPromotionInfo(ePromotion).getInterceptChange()));
+		}
+		//szBuffer.append(pcNewline);
+		//szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_INTERCEPT_TEXT", GC.getPromotionInfo(ePromotion).getInterceptChange()));
+		//TSHEEP End
 	}
 
 	if (GC.getPromotionInfo(ePromotion).getEvasionChange() != 0)
 	{
-		szBuffer.append(pcNewline);
-		szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_EVASION_TEXT", GC.getPromotionInfo(ePromotion).getEvasionChange()));
+		//TSHEEP Display Spy Promotions Differently
+		if(GC.getPromotionInfo(ePromotion).getSound()[5] == 'P')
+		{
+			szBuffer.append(pcNewline);
+			szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_EVASION_TEXT_SPY", GC.getPromotionInfo(ePromotion).getEvasionChange()));
+		}
+		else
+		{
+			szBuffer.append(pcNewline);
+			szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_EVASION_TEXT", GC.getPromotionInfo(ePromotion).getEvasionChange()));
+		}
+		//szBuffer.append(pcNewline);
+		//szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_EVASION_TEXT", GC.getPromotionInfo(ePromotion).getEvasionChange()));
+		//TSHEEP End
 	}
 
 	if (GC.getPromotionInfo(ePromotion).getWithdrawalChange() != 0)
 	{
-		szBuffer.append(pcNewline);
-		szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_WITHDRAWAL_TEXT", GC.getPromotionInfo(ePromotion).getWithdrawalChange()));
+		//TSHEEP Display Spy Promotions Differently
+		if(GC.getPromotionInfo(ePromotion).getSound()[5] == 'P')
+		{
+			szBuffer.append(pcNewline);
+			szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_ESCAPE_TEXT_SPY", GC.getPromotionInfo(ePromotion).getWithdrawalChange()));
+		}
+		else
+		{
+			szBuffer.append(pcNewline);
+			szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_WITHDRAWAL_TEXT", GC.getPromotionInfo(ePromotion).getWithdrawalChange()));
+		}
+		//szBuffer.append(pcNewline);
+		//szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_WITHDRAWAL_TEXT", GC.getPromotionInfo(ePromotion).getWithdrawalChange()));
+		//TSHEEP End
 	}
 
 	if (GC.getPromotionInfo(ePromotion).getCargoChange() != 0)
@@ -4097,20 +4306,56 @@ void CvGameTextMgr::parsePromotionHelp(CvWStringBuffer &szBuffer, PromotionTypes
 
 	if (GC.getPromotionInfo(ePromotion).getEnemyHealChange() != 0)
 	{
-		szBuffer.append(pcNewline);
-		szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_HEALS_EXTRA_TEXT", GC.getPromotionInfo(ePromotion).getEnemyHealChange()) + gDLL->getText("TXT_KEY_PROMOTION_ENEMY_LANDS_TEXT"));
+		//TSHEEP Display Spy Promotions Differently
+		if(GC.getPromotionInfo(ePromotion).getSound()[5] == 'P')
+		{
+			szBuffer.append(pcNewline);
+			szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_INSTIGATE_TEXT_SPY", GC.getPromotionInfo(ePromotion).getEnemyHealChange()));
+		}
+		else
+		{
+			szBuffer.append(pcNewline);
+			szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_HEALS_EXTRA_TEXT", GC.getPromotionInfo(ePromotion).getEnemyHealChange()) + gDLL->getText("TXT_KEY_PROMOTION_ENEMY_LANDS_TEXT"));
+		}
+		//szBuffer.append(pcNewline);
+		//szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_HEALS_EXTRA_TEXT", GC.getPromotionInfo(ePromotion).getEnemyHealChange()) + gDLL->getText("TXT_KEY_PROMOTION_ENEMY_LANDS_TEXT"));
+		//TSHEEP End
 	}
 
 	if (GC.getPromotionInfo(ePromotion).getNeutralHealChange() != 0)
 	{
-		szBuffer.append(pcNewline);
-		szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_HEALS_EXTRA_TEXT", GC.getPromotionInfo(ePromotion).getNeutralHealChange()) + gDLL->getText("TXT_KEY_PROMOTION_NEUTRAL_LANDS_TEXT"));
+		//TSHEEP Display Spy Promotions Differently
+		if(GC.getPromotionInfo(ePromotion).getSound()[5] == 'P')
+		{
+			szBuffer.append(pcNewline);
+			szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_INSTIGATE2_TEXT_SPY", GC.getPromotionInfo(ePromotion).getNeutralHealChange()));
+		}
+		else
+		{
+			szBuffer.append(pcNewline);
+			szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_HEALS_EXTRA_TEXT", GC.getPromotionInfo(ePromotion).getNeutralHealChange()) + gDLL->getText("TXT_KEY_PROMOTION_NEUTRAL_LANDS_TEXT"));
+		}
+		//szBuffer.append(pcNewline);
+		//szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_HEALS_EXTRA_TEXT", GC.getPromotionInfo(ePromotion).getNeutralHealChange()) + gDLL->getText("TXT_KEY_PROMOTION_NEUTRAL_LANDS_TEXT"));
+		//TSHEEP End
 	}
 
 	if (GC.getPromotionInfo(ePromotion).getFriendlyHealChange() != 0)
 	{
-		szBuffer.append(pcNewline);
-		szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_HEALS_EXTRA_TEXT", GC.getPromotionInfo(ePromotion).getFriendlyHealChange()) + gDLL->getText("TXT_KEY_PROMOTION_FRIENDLY_LANDS_TEXT"));
+		//TSHEEP Display Spy Promotions Differently
+		if(GC.getPromotionInfo(ePromotion).getSound()[5] == 'P')
+		{
+			szBuffer.append(pcNewline);
+			szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_POISON_TEXT_SPY", GC.getPromotionInfo(ePromotion).getFriendlyHealChange()));
+		}
+		else
+		{
+			szBuffer.append(pcNewline);
+			szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_HEALS_EXTRA_TEXT", GC.getPromotionInfo(ePromotion).getFriendlyHealChange()) + gDLL->getText("TXT_KEY_PROMOTION_FRIENDLY_LANDS_TEXT"));
+		}
+		//szBuffer.append(pcNewline);
+		//szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_HEALS_EXTRA_TEXT", GC.getPromotionInfo(ePromotion).getFriendlyHealChange()) + gDLL->getText("TXT_KEY_PROMOTION_FRIENDLY_LANDS_TEXT"));
+		//TSHEEP End
 	}
 
 	if (GC.getPromotionInfo(ePromotion).getSameTileHealChange() != 0)
@@ -4175,7 +4420,13 @@ void CvGameTextMgr::parsePromotionHelp(CvWStringBuffer &szBuffer, PromotionTypes
 
 	if (GC.getPromotionInfo(ePromotion).getUpgradeDiscount() != 0)
 	{
-		if (100 == GC.getPromotionInfo(ePromotion).getUpgradeDiscount())
+		//TSHEEP Display Spy Promotions Differently
+		if(GC.getPromotionInfo(ePromotion).getSound()[5] == 'P')
+		{
+			szBuffer.append(pcNewline);
+			szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_UPGRADE_DISCOUNT_TEXT_SPY", GC.getPromotionInfo(ePromotion).getUpgradeDiscount()));
+		}
+		else if (100 == GC.getPromotionInfo(ePromotion).getUpgradeDiscount())
 		{
 			szBuffer.append(pcNewline);
 			szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_UPGRADE_DISCOUNT_FREE_TEXT"));
@@ -4185,6 +4436,17 @@ void CvGameTextMgr::parsePromotionHelp(CvWStringBuffer &szBuffer, PromotionTypes
 			szBuffer.append(pcNewline);
 			szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_UPGRADE_DISCOUNT_TEXT", GC.getPromotionInfo(ePromotion).getUpgradeDiscount()));
 		}
+		/*if (100 == GC.getPromotionInfo(ePromotion).getUpgradeDiscount())
+		{
+			szBuffer.append(pcNewline);
+			szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_UPGRADE_DISCOUNT_FREE_TEXT"));
+		}
+		else
+		{
+			szBuffer.append(pcNewline);
+			szBuffer.append(gDLL->getText("TXT_KEY_PROMOTION_UPGRADE_DISCOUNT_TEXT", GC.getPromotionInfo(ePromotion).getUpgradeDiscount()));
+		}*/
+		//TSHEEP End
 	}
 
 	if (GC.getPromotionInfo(ePromotion).getExperiencePercent() != 0)
@@ -5624,20 +5886,58 @@ void CvGameTextMgr::setBasicUnitHelp(CvWStringBuffer &szBuffer, UnitTypes eUnit,
 
 	if (GC.getUnitInfo(eUnit).getInterceptionProbability() > 0)
 	{
-		szBuffer.append(NEWLINE);
-		szBuffer.append(gDLL->getText("TXT_KEY_UNIT_INTERCEPT_AIRCRAFT", GC.getUnitInfo(eUnit).getInterceptionProbability()));
+		//TSHEEP Display Spy Messages Differently
+		if(GC.getUnitInfo(eUnit).isSpy())
+		{
+			szBuffer.append(NEWLINE);
+			szBuffer.append(gDLL->getText("TXT_KEY_UNIT_INTERCEPT_AIRCRAFT_SPY", GC.getUnitInfo(eUnit).getInterceptionProbability()));
+			szBuffer.append(NEWLINE);
+			szBuffer.append(gDLL->getText("TXT_KEY_UNIT_INTERCEPT_AIRCRAFT_SPY_COUNTER", GC.getUnitInfo(eUnit).getInterceptionProbability() * 5));
+		}
+		else
+		{
+			szBuffer.append(NEWLINE);
+			szBuffer.append(gDLL->getText("TXT_KEY_UNIT_INTERCEPT_AIRCRAFT", GC.getUnitInfo(eUnit).getInterceptionProbability()));
+		}
+		//szBuffer.append(NEWLINE);
+		//szBuffer.append(gDLL->getText("TXT_KEY_UNIT_INTERCEPT_AIRCRAFT", GC.getUnitInfo(eUnit).getInterceptionProbability()));
+		//TSHEEP End
 	}
 
 	if (GC.getUnitInfo(eUnit).getEvasionProbability() > 0)
 	{
-		szBuffer.append(NEWLINE);
-		szBuffer.append(gDLL->getText("TXT_KEY_UNIT_EVADE_INTERCEPTION", GC.getUnitInfo(eUnit).getEvasionProbability()));
+		//TSHEEP Display Spy Messages Differently
+		if(GC.getUnitInfo(eUnit).isSpy())
+		{
+			szBuffer.append(NEWLINE);
+			szBuffer.append(gDLL->getText("TXT_KEY_UNIT_EVADE_INTERCEPTION_SPY", GC.getUnitInfo(eUnit).getEvasionProbability()));
+		}
+		else
+		{
+			szBuffer.append(NEWLINE);
+			szBuffer.append(gDLL->getText("TXT_KEY_UNIT_EVADE_INTERCEPTION", GC.getUnitInfo(eUnit).getEvasionProbability()));
+		}
+		//szBuffer.append(NEWLINE);
+		//szBuffer.append(gDLL->getText("TXT_KEY_UNIT_EVADE_INTERCEPTION", GC.getUnitInfo(eUnit).getEvasionProbability()));
+		//TSHEEP End
 	}
 
 	if (GC.getUnitInfo(eUnit).getWithdrawalProbability() > 0)
 	{
-		szBuffer.append(NEWLINE);
-		szBuffer.append(gDLL->getText("TXT_KEY_UNIT_WITHDRAWL_PROBABILITY", GC.getUnitInfo(eUnit).getWithdrawalProbability()));
+		//TSHEEP Display Spy Messages Differently
+		if(GC.getUnitInfo(eUnit).isSpy())
+		{
+			szBuffer.append(NEWLINE);
+			szBuffer.append(gDLL->getText("TXT_KEY_UNIT_ESCAPE_SPY", GC.getUnitInfo(eUnit).getWithdrawalProbability()));
+		}
+		else
+		{
+			szBuffer.append(NEWLINE);
+			szBuffer.append(gDLL->getText("TXT_KEY_UNIT_WITHDRAWL_PROBABILITY", GC.getUnitInfo(eUnit).getWithdrawalProbability()));
+		}
+		//szBuffer.append(NEWLINE);
+		//szBuffer.append(gDLL->getText("TXT_KEY_UNIT_WITHDRAWL_PROBABILITY", GC.getUnitInfo(eUnit).getWithdrawalProbability()));
+		//TSHEEP End
 	}
 
 	if (GC.getUnitInfo(eUnit).getCombatLimit() < GC.getMAX_HIT_POINTS() && GC.getUnitInfo(eUnit).getCombat() > 0 && !GC.getUnitInfo(eUnit).isOnlyDefensive())
@@ -10367,6 +10667,14 @@ void CvGameTextMgr::setImprovementHelp(CvWStringBuffer &szBuffer, ImprovementTyp
 
 		szBuffer.append(NEWLINE);
 		szBuffer.append(gDLL->getText("TXT_KEY_IMPROVEMENT_EVOLVES", GC.getImprovementInfo((ImprovementTypes) info.getImprovementUpgrade()).getTextKeyWide(), iTurns));
+
+		// Super Forts begin *text* *upgrade*
+		if (info.isUpgradeRequiresFortify())
+		{
+			szBuffer.append(NEWLINE);
+			szBuffer.append(gDLL->getText("TXT_KEY_IMPROVEMENT_FORTIFY_TO_UPGRADE"));
+		}
+		// Super Forts end
 	}
 
 	int iLast = -1;
@@ -10411,8 +10719,43 @@ void CvGameTextMgr::setImprovementHelp(CvWStringBuffer &szBuffer, ImprovementTyp
 		szBuffer.append(gDLL->getText("TXT_KEY_IMPROVEMENT_LESS_GROWTH"));
 	}
 
+	// Super Forts begin *text* *bombard*
+	if (info.isBombardable() && (info.getDefenseModifier() > 0))
+	{
+		szBuffer.append(NEWLINE);
+		szBuffer.append(gDLL->getText("TXT_KEY_IMPROVEMENT_BOMBARD"));
+	}
+	// Super Forts end
+
 	if (bCivilopediaText)
 	{
+		// Super Forts begin *text*
+		if (info.getCulture() > 0)
+		{
+			szBuffer.append(NEWLINE);
+			szBuffer.append(gDLL->getText("TXT_KEY_IMPROVEMENT_PLOT_CULTURE", info.getCulture()));
+		}
+		if (info.getCultureRange() > 0 && ((info.getCulture() > 0) || info.isActsAsCity()))
+		{
+			szBuffer.append(NEWLINE);
+			szBuffer.append(gDLL->getText("TXT_KEY_IMPROVEMENT_CULTURE_RANGE", info.getCultureRange()));
+		}
+		if (info.getVisibilityChange() > 0)
+		{
+			szBuffer.append(NEWLINE);
+			szBuffer.append(gDLL->getText("TXT_KEY_IMPROVEMENT_VISIBILITY_RANGE", info.getVisibilityChange()));
+		}
+		if (info.getSeeFrom() > 0)
+		{
+			szBuffer.append(NEWLINE);
+			szBuffer.append(gDLL->getText("TXT_KEY_IMPROVEMENT_SEE_FROM", info.getSeeFrom()));
+		}
+		if (info.getUniqueRange() > 0)
+		{
+			szBuffer.append(NEWLINE);
+			szBuffer.append(gDLL->getText("TXT_KEY_IMPROVEMENT_UNIQUE_RANGE", info.getUniqueRange()));
+		}
+		// Super Forts end
 		if (info.getPillageGold() > 0)
 		{
 			szBuffer.append(NEWLINE);
@@ -13186,7 +13529,7 @@ void CvGameTextMgr::eventGoldHelp(CvWStringBuffer& szBuffer, EventTypes eEvent, 
 	}
 }
 
-void CvGameTextMgr::setTradeRouteHelp(CvWStringBuffer &szBuffer, int iRoute, CvCity* pCity)
+void CvGameTextMgr::setTradeRouteHelp(CvWStringBuffer &szBuffer, int iRoute, CvCity* pCity) //KEVIN
 {
 	if (NULL != pCity)
 	{
@@ -13279,6 +13622,10 @@ void CvGameTextMgr::setTradeRouteHelp(CvWStringBuffer &szBuffer, int iRoute, CvC
 
 			FAssert(iProfit == pCity->calculateTradeProfit(pOtherCity));
 
+			//TRADE
+
+			//END TRADE
+
 			szBuffer.append(SEPARATOR);
 
 			szBuffer.append(NEWLINE);
@@ -13301,6 +13648,16 @@ void CvGameTextMgr::setEspionageCostHelp(CvWStringBuffer &szBuffer, EspionageMis
 		if (NULL != pPlot && NO_IMPROVEMENT != pPlot->getImprovementType())
 		{
 			szBuffer.append(gDLL->getText("TXT_KEY_ESPIONAGE_HELP_DESTROY_IMPROVEMENT", GC.getImprovementInfo(pPlot->getImprovementType()).getTextKeyWide()));
+			//TSHEEP Add Radiation Help
+			if(NULL != pSpyUnit)
+			{
+                if(pSpyUnit->isAmphib())
+                {
+                    szBuffer.append(NEWLINE);
+                    szBuffer.append(gDLL->getText("TXT_KEY_ESPIONAGE_HELP_DESTROY_IMPROVEMENT_RADIATION", GC.getImprovementInfo(pPlot->getImprovementType()).getTextKeyWide()));
+                }
+			}
+			//TSHEEP End
 			szBuffer.append(NEWLINE);
 		}
 	}
@@ -13423,7 +13780,13 @@ void CvGameTextMgr::setEspionageCostHelp(CvWStringBuffer &szBuffer, EspionageMis
 
 			if (NULL != pCity)
 			{
-				szBuffer.append(gDLL->getText("TXT_KEY_ESPIONAGE_HELP_POISON", kMission.getCityPoisonWaterCounter(), gDLL->getSymbolID(UNHEALTHY_CHAR), pCity->getNameKey(), kMission.getCityPoisonWaterCounter()));
+				//TSHEEP Display bonus unhealthiness
+				if(NULL != pSpyUnit)
+                    szBuffer.append(gDLL->getText("TXT_KEY_ESPIONAGE_HELP_POISON", (kMission.getCityPoisonWaterCounter() * (100 + pSpyUnit->getExtraFriendlyHeal()))/100, gDLL->getSymbolID(UNHEALTHY_CHAR), pCity->getNameKey(), (kMission.getCityPoisonWaterCounter() * (100 + pSpyUnit->getExtraFriendlyHeal()))/100));
+                else
+                    szBuffer.append(gDLL->getText("TXT_KEY_ESPIONAGE_HELP_POISON", kMission.getCityPoisonWaterCounter(), gDLL->getSymbolID(UNHEALTHY_CHAR), pCity->getNameKey(), kMission.getCityPoisonWaterCounter()));
+				//szBuffer.append(gDLL->getText("TXT_KEY_ESPIONAGE_HELP_POISON", kMission.getCityPoisonWaterCounter(), gDLL->getSymbolID(UNHEALTHY_CHAR), pCity->getNameKey(), kMission.getCityPoisonWaterCounter()));
+				//TSHEEP End
 				szBuffer.append(NEWLINE);
 			}
 		}
@@ -13437,7 +13800,13 @@ void CvGameTextMgr::setEspionageCostHelp(CvWStringBuffer &szBuffer, EspionageMis
 
 			if (NULL != pCity)
 			{
-				szBuffer.append(gDLL->getText("TXT_KEY_ESPIONAGE_HELP_POISON", kMission.getCityUnhappinessCounter(), gDLL->getSymbolID(UNHAPPY_CHAR), pCity->getNameKey(), kMission.getCityUnhappinessCounter()));
+				//TSHEEP Display bonus unrest properly
+				if(NULL != pSpyUnit)
+                    szBuffer.append(gDLL->getText("TXT_KEY_ESPIONAGE_HELP_POISON", (kMission.getCityUnhappinessCounter() * (100 + pSpyUnit->getExtraEnemyHeal()))/100, gDLL->getSymbolID(UNHAPPY_CHAR), pCity->getNameKey(), (kMission.getCityUnhappinessCounter() * (100 + pSpyUnit->getExtraEnemyHeal()))/100));
+                else
+                    szBuffer.append(gDLL->getText("TXT_KEY_ESPIONAGE_HELP_POISON", kMission.getCityUnhappinessCounter(), gDLL->getSymbolID(UNHAPPY_CHAR), pCity->getNameKey(), kMission.getCityUnhappinessCounter()));
+				//szBuffer.append(gDLL->getText("TXT_KEY_ESPIONAGE_HELP_POISON", kMission.getCityUnhappinessCounter(), gDLL->getSymbolID(UNHAPPY_CHAR), pCity->getNameKey(), kMission.getCityUnhappinessCounter()));
+				//TSHEEP End
 				szBuffer.append(NEWLINE);
 			}
 		}
@@ -13451,7 +13820,13 @@ void CvGameTextMgr::setEspionageCostHelp(CvWStringBuffer &szBuffer, EspionageMis
 
 			if (NULL != pCity)
 			{
-				szBuffer.append(gDLL->getText("TXT_KEY_ESPIONAGE_HELP_REVOLT", pCity->getNameKey(), kMission.getCityRevoltCounter()));
+				//TSHEEP Display bonus revolt properly
+				if(NULL != pSpyUnit)
+                    szBuffer.append(gDLL->getText("TXT_KEY_ESPIONAGE_HELP_REVOLT", pCity->getNameKey(), (kMission.getCityRevoltCounter() * (100 + pSpyUnit->getExtraNeutralHeal()))/100));
+                else
+                    szBuffer.append(gDLL->getText("TXT_KEY_ESPIONAGE_HELP_REVOLT", pCity->getNameKey(), kMission.getCityRevoltCounter()));
+				//szBuffer.append(gDLL->getText("TXT_KEY_ESPIONAGE_HELP_REVOLT", pCity->getNameKey(), kMission.getCityRevoltCounter()));
+				//TSHEEP End
 				szBuffer.append(NEWLINE);
 			}
 		}
@@ -13519,7 +13894,13 @@ void CvGameTextMgr::setEspionageCostHelp(CvWStringBuffer &szBuffer, EspionageMis
 		{
 			int iTurns = (kMission.getCounterespionageNumTurns() * GC.getGameSpeedInfo(GC.getGameINLINE().getGameSpeedType()).getResearchPercent()) / 100;
 
-			szBuffer.append(gDLL->getText("TXT_KEY_ESPIONAGE_HELP_COUNTERESPIONAGE", kMission.getCounterespionageMod(), GET_PLAYER(eTargetPlayer).getCivilizationAdjectiveKey(), iTurns));
+			//TSHEEP Make Intercept Affect Counter Espionage Modifier
+			if(NULL != pSpyUnit)
+                szBuffer.append(gDLL->getText("TXT_KEY_ESPIONAGE_HELP_COUNTERESPIONAGE", (kMission.getCounterespionageMod() + (GC.getDefineINT("SUPER_SPIES_COUNTERESPIONAGE_BONUS_MULTIPLIER") * pSpyUnit->currInterceptionProbability())), GET_PLAYER(eTargetPlayer).getCivilizationAdjectiveKey(), iTurns)); //KEVIN
+            else
+                szBuffer.append(gDLL->getText("TXT_KEY_ESPIONAGE_HELP_COUNTERESPIONAGE", kMission.getCounterespionageMod(), GET_PLAYER(eTargetPlayer).getCivilizationAdjectiveKey(), iTurns));
+			//szBuffer.append(gDLL->getText("TXT_KEY_ESPIONAGE_HELP_COUNTERESPIONAGE", kMission.getCounterespionageMod(), GET_PLAYER(eTargetPlayer).getCivilizationAdjectiveKey(), iTurns));
+			//TSHEEP End
 			szBuffer.append(NEWLINE);
 		}		
 	}
@@ -13644,7 +14025,13 @@ void CvGameTextMgr::setEspionageCostHelp(CvWStringBuffer &szBuffer, EspionageMis
 		// Spy presence mission cost alteration
 		if (NULL != pSpyUnit)
 		{
-			iTempModifier = -(pSpyUnit->getFortifyTurns() * GC.getDefineINT("ESPIONAGE_EACH_TURN_UNIT_COST_DECREASE"));
+			//TSHEEP - Display Improvise Discount Properly
+			//iTempModifier = -(pSpyUnit->getFortifyTurns() * GC.getDefineINT("ESPIONAGE_EACH_TURN_UNIT_COST_DECREASE"));
+			if(NULL != pSpyUnit)
+                iTempModifier = -(std::min(5,(pSpyUnit->getFortifyTurns() + (pSpyUnit->getUpgradeDiscount()/10))) * GC.getDefineINT("ESPIONAGE_EACH_TURN_UNIT_COST_DECREASE"));
+            else
+                iTempModifier = -(pSpyUnit->getFortifyTurns() * GC.getDefineINT("ESPIONAGE_EACH_TURN_UNIT_COST_DECREASE"));
+			//TSHEEP End
 			if (0 != iTempModifier)
 			{
 				szBuffer.append(NEWLINE);

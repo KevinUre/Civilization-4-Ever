@@ -106,6 +106,9 @@ public:
 	CvInfoBase* getMemoryInfo(int i) const;
 	CvInfoBase* getConceptInfo(int i) const;
 	CvInfoBase* getNewConceptInfo(int i) const;
+	//DeathMaker900 Begin
+	CvInfoBase* getForeverConceptInfo(int i) const;
+	//DeathMaker900 End
 	CvInfoBase* getCityTabInfo(int i) const;
 	CvInfoBase* getCalendarInfo(int i) const;
 	CvInfoBase* getGameOptionInfo(int i) const;
@@ -202,6 +205,9 @@ public:
 	int getNumClimateInfos() const { return GC.getNumClimateInfos(); }
 	int getNumConceptInfos() const { return GC.getNumConceptInfos(); }
 	int getNumNewConceptInfos() const { return GC.getNumNewConceptInfos(); }
+	//DeathMaker900 Begin
+	int getNumForeverConceptInfos() const { return GC.getNumForeverConceptInfos(); }
+	//DeathMaker900 End
 	int getNumCityTabInfos() const { return GC.getNumCityTabInfos(); }
 	int getNumCalendarInfos() const { return GC.getNumCalendarInfos(); }
 	int getNumPlayerOptionInfos() const { return GC.getNumPlayerOptionInfos(); }

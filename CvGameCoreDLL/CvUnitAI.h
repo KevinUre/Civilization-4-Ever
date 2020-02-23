@@ -113,6 +113,7 @@ protected:
 	bool AI_guardBonus(int iMinValue = 0);
 	int AI_getPlotDefendersNeeded(CvPlot* pPlot, int iExtra);
 	bool AI_guardFort(bool bSearch = true);
+	bool AI_guardFortMinDefender(bool bSearch = true); // Super Forts *AI_defense*
 	bool AI_guardCitySite();
 	bool AI_guardSpy(int iRandomPercent);
 	bool AI_destroySpy();

@@ -167,6 +167,7 @@ public:
 	bool airBomb(int iX, int iY);
 
 	CvCity* bombardTarget(const CvPlot* pPlot) const;																							// Exposed to Python
+	CvPlot* bombardImprovementTarget(const CvPlot* pPlot) const; 	// Super Forts *bombard*
 	bool canBombard(const CvPlot* pPlot) const;																										// Exposed to Python
 	bool bombard();
 
@@ -176,6 +177,10 @@ public:
 
 	bool canPillage(const CvPlot* pPlot) const;																										// Exposed to Python
 	bool pillage();
+
+	//TSHEEP Other functions
+	bool awardSpyExperience(TeamTypes eTargetTeam, int iModifier);
+	//TSHEEP End
 
 	bool canPlunder(const CvPlot* pPlot, bool bTestVisible = false) const;																					// Exposed to Python
 	bool plunder();
@@ -770,6 +775,30 @@ public:
 	virtual void AI_setUnitAIType(UnitAITypes eNewValue) = 0;
     virtual int AI_sacrificeValue(const CvPlot* pPlot) const = 0;
 
+	//@MOD Commanders
+
+	//for combat units:
+	CvUnit* getCommander() const;
+	void tryUseCommander();			//assigns m_pUsedCommander by call to getCommander() and consumes command points from used commander.
+	bool isCommander() const;																//Exposed to python
+	void gameLoadingAssignUsedCommander();
+	void nullUsedCommander();	//delete m_pUsedCommander
+	CvUnit* getUsedCommander();
+
+	//for commander units:
+	int controlPointsLeft() const;		//number of units can be commanded this turn		//Exposed to python
+	int controlPoints() const;																	//Exposed to python
+	int commandRange() const;																//Exposed to python
+	bool isOnslaught() const;
+	//from promotions:
+	int getExtraControlPoints() const;			//control
+	void changeExtraControlPoints(int iChange);
+	int getExtraCommandRange() const;			//command
+	void changeExtraCommandRange(int iChange);
+	int getOnslaughtCount() const;
+	void changeOnslaughtCount(int iChange);
+	//end mod
+
 protected:
 
 	int m_iID;
@@ -885,6 +914,17 @@ protected:
 	void resolveCombat(CvUnit* pDefender, CvPlot* pPlot, CvBattleDefinition& kBattle);
 	void resolveAirCombat(CvUnit* pInterceptor, CvPlot* pPlot, CvAirMissionDefinition& kBattle);
 	void checkRemoveSelectionAfterAttack();
+
+	//@MOD Commanders: effects obtained from promotions
+	int m_iOnslaughtCount;
+	int m_iExtraControlPoints;
+	int m_iExtraCommandRange;
+	//auxillary members:
+	int m_iControlPointsLeft;
+	CvUnit* m_pUsedCommander;	//commander that is used by unit
+	int m_iCommanderID;			//id of commander. used for game save/load
+	//end mod
+
 };
 
 #endif

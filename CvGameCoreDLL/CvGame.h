@@ -369,6 +369,21 @@ public:
 	bool isNukesValid() const;														// Exposed to Python  
 	void makeNukesValid(bool bValid = true);													// Exposed to Python
 
+	// < Air Combat Experience Start >
+	bool isRouteDestructionThroughAirBombs() const;
+	void setRouteDestructionThroughAirBombs(bool bNewValue);
+	bool isExperienceGainByDestroyingImprovements() const;
+	void setExperienceGainByDestroyingImprovements(bool bNewValue);
+	bool isExperienceGainByDestroyingRoutes() const;
+	void setExperienceGainByDestroyingRoutes(bool bNewValue);
+	bool isExperienceGainByAttackingCities() const;
+	void setExperienceGainByAttackingCities(bool bNewValue);
+	bool isExperienceGainByAttackingUnits() const;
+	void setExperienceGainByAttackingUnits(bool bNewValue);
+	bool isBombNoMansLand() const;
+	void setBombNoMansLand(bool bNewValue);
+	// < Air Combat Experience End   >
+
 	bool isInAdvancedStart() const;														// Exposed to Python  
 
 	DllExport void setVoteChosen(int iSelection, int iVoteId);
@@ -577,6 +592,15 @@ protected:
 	bool m_bHotPbemBetweenTurns;
 	bool m_bPlayerOptionsSent;
 	bool m_bNukesValid;
+
+	// < Air Combat Experience Start >
+	bool m_bRouteDestructionThroughAirBombs;
+	bool m_bExperienceGainByDestroyingImprovements;
+	bool m_bExperienceGainByDestroyingRoutes;
+	bool m_bExperienceGainByAttackingCities;
+	bool m_bExperienceGainByAttackingUnits;
+	bool m_bBombNoMansLand;
+	// < Air Combat Experience End   >
 
 	HandicapTypes m_eHandicap;
 	PlayerTypes m_ePausePlayer;

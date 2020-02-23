@@ -2309,6 +2309,21 @@ int CvCity::getProductionExperience(UnitTypes eUnit)
 		}
 	}
 
+	//TSHEEP - Only give spies spy specific xp
+	if (eUnit != NO_UNIT)
+	{
+        if(GC.getUnitInfo(eUnit).isSpy())
+        {
+            iExperience = 0;
+
+            if (GC.getUnitInfo(eUnit).getUnitCombatType() != NO_UNITCOMBAT)
+            {
+                iExperience += getUnitCombatFreeExperience((UnitCombatTypes)(GC.getUnitInfo(eUnit).getUnitCombatType()));
+            }
+        }
+	}
+	//TSHEEP end
+
 	return std::max(0, iExperience);
 }
 
@@ -2982,7 +2997,8 @@ void CvCity::changeProduction(int iChange)
 	}
 }
 
-
+//@HURRY
+//function returns any bonuses to production that may apply by querying sub functions
 int CvCity::getProductionModifier() const
 {
 	CLLNode<OrderData>* pOrderNode = headOrderQueueNode();
@@ -3015,7 +3031,8 @@ int CvCity::getProductionModifier() const
 	return 0;
 }
 
-
+//@HURRY 
+//Function seems to return all cumulative production bonuses that apply to this production
 int CvCity::getProductionModifier(UnitTypes eUnit) const
 {
 	int iI;
@@ -3049,6 +3066,8 @@ int CvCity::getProductionModifier(UnitTypes eUnit) const
 }
 
 
+//@HURRY 
+//Function seems to return all cumulative production bonuses that apply to this production
 int CvCity::getProductionModifier(BuildingTypes eBuilding) const
 {
 	int iMultiplier = GET_PLAYER(getOwnerINLINE()).getProductionModifier(eBuilding);
@@ -3073,6 +3092,8 @@ int CvCity::getProductionModifier(BuildingTypes eBuilding) const
 }
 
 
+//@HURRY 
+//Function seems to return all cumulative production bonuses that apply to this production
 int CvCity::getProductionModifier(ProjectTypes eProject) const
 {
 	int iMultiplier = GET_PLAYER(getOwnerINLINE()).getProductionModifier(eProject);
@@ -3158,6 +3179,35 @@ bool CvCity::canHurry(HurryTypes eHurry, bool bTestVisible) const
 	{
 		return false;
 	}
+
+	//Occupy prevents hurry KEVIN
+	for (int iI = 0; iI < NUM_DIRECTION_TYPES; iI++)
+	{
+		CvPlot* pLoopPlot = plotDirection(getX_INLINE(), getY_INLINE(), ((DirectionTypes)iI));
+		std::vector<CvUnit*> aUnits;
+		CLLNode<IDInfo>* pUnitNode = pLoopPlot->headUnitNode();
+		if(pUnitNode == NULL) { continue; }
+		while (pUnitNode != NULL)
+		{
+			CvUnit* pLoopUnit = ::getUnit(pUnitNode->m_data);
+			pUnitNode = pLoopPlot->nextUnitNode(pUnitNode);
+			if (NULL != pLoopUnit)
+			{
+				aUnits.push_back(pLoopUnit);
+			}
+		}
+		std::vector<CvUnit*>::iterator it = aUnits.begin();
+		while (it != aUnits.end())
+		{
+			CvUnit* pLoopUnit = *it;
+			if (pLoopUnit->isEnemy(getTeam()) && !pLoopUnit->isSpy())
+			{
+				return false;
+			}
+			++it;
+		}
+	}
+	//END KEVIN
 
 	if (!bTestVisible)
 	{
@@ -4546,6 +4596,8 @@ int CvCity::productionLeft() const
 	return (getProductionNeeded() - getProduction());
 }
 
+//@HURRY
+//Functions seems to return the modifier value from the xml
 int CvCity::getHurryCostModifier(bool bIgnoreNew) const
 {
 	int iModifier = 100;
@@ -4586,6 +4638,8 @@ int CvCity::getHurryCostModifier(BuildingTypes eBuilding, bool bIgnoreNew) const
 	return getHurryCostModifier(GC.getBuildingInfo(eBuilding).getHurryCostModifier(), getBuildingProduction(eBuilding), bIgnoreNew);
 }
 
+//@HURRY
+//function only returns something other than no modifier if no hammers have been put forth to production as of yet
 int CvCity::getHurryCostModifier(int iBaseModifier, int iProduction, bool bIgnoreNew) const
 {
 	int iModifier = 100;
@@ -4594,7 +4648,7 @@ int CvCity::getHurryCostModifier(int iBaseModifier, int iProduction, bool bIgnor
 
 	if (iProduction == 0 && !bIgnoreNew)
 	{
-		iModifier *= std::max(0, (GC.getDefineINT("NEW_HURRY_MODIFIER") + 100));
+		iModifier *= std::max(0, (GC.getDefineINT("NEW_HURRY_MODIFIER") + 100)); // value defined in globals xml
 		iModifier /= 100;
 	}
 
@@ -4604,12 +4658,13 @@ int CvCity::getHurryCostModifier(int iBaseModifier, int iProduction, bool bIgnor
 	return iModifier;
 }
 
-
 int CvCity::hurryCost(bool bExtra) const
 {
 	return (getHurryCost(bExtra, productionLeft(), getHurryCostModifier(), getProductionModifier()));
 }
 
+//@HURRY
+//function redirects to function after next
 int CvCity::getHurryCost(bool bExtra, UnitTypes eUnit, bool bIgnoreNew) const
 {
 	int iProductionLeft = getProductionNeeded(eUnit) - getUnitProduction(eUnit);
@@ -4617,6 +4672,8 @@ int CvCity::getHurryCost(bool bExtra, UnitTypes eUnit, bool bIgnoreNew) const
 	return getHurryCost(bExtra, iProductionLeft, getHurryCostModifier(eUnit, bIgnoreNew), getProductionModifier(eUnit));
 }
 
+//@HURRY
+//function redirects to next function
 int CvCity::getHurryCost(bool bExtra, BuildingTypes eBuilding, bool bIgnoreNew) const
 {
 	int iProductionLeft = getProductionNeeded(eBuilding) - getBuildingProduction(eBuilding);
@@ -4624,8 +4681,10 @@ int CvCity::getHurryCost(bool bExtra, BuildingTypes eBuilding, bool bIgnoreNew) 
 	return getHurryCost(bExtra, iProductionLeft, getHurryCostModifier(eBuilding, bIgnoreNew), getProductionModifier(eBuilding));
 }
 
+//@HURRY
 int CvCity::getHurryCost(bool bExtra, int iProductionLeft, int iHurryModifier, int iModifier) const
 {
+	//remaining production to be paid for
 	int iProduction = (iProductionLeft * iHurryModifier + 99) / 100; // round up
 
 	if (bExtra)
@@ -4648,6 +4707,7 @@ int CvCity::hurryGold(HurryTypes eHurry) const
 	return getHurryGold(eHurry, hurryCost(false));
 }
 
+//@HURRY
 int CvCity::getHurryGold(HurryTypes eHurry, int iHurryCost) const
 {
 	int iGold;
@@ -4668,6 +4728,7 @@ int CvCity::hurryPopulation(HurryTypes eHurry) const
 	return (getHurryPopulation(eHurry, hurryCost(true)));
 }
 
+//@HURRY
 int CvCity::getHurryPopulation(HurryTypes eHurry, int iHurryCost) const
 {
 	if (GC.getHurryInfo(eHurry).getProductionPerPopulation() == 0)
@@ -4676,18 +4737,49 @@ int CvCity::getHurryPopulation(HurryTypes eHurry, int iHurryCost) const
 	}
 
 	int iPopulation = (iHurryCost - 1) / GC.getGameINLINE().getProductionPerPopulation(eHurry);
+	
+	iPopulation += 1;
 
-	return std::max(1, (iPopulation + 1));
+	//KEVIN HURRY WONDER SLAVERY
+	/*
+	BuildingTypes eCurBuilding = getProductionBuilding();
+	if(eCurBuilding != NO_BUILDING)
+	{
+		CvBuildingClassInfo temp = GC.getBuildingClassInfo((BuildingClassTypes)GC.getBuildingInfo(eCurBuilding).getBuildingClassType());
+		if(temp.getMaxGlobalInstances() != -1 || temp.getMaxPlayerInstances() != -1 || temp.getMaxTeamInstances() != -1)
+		{
+			iPopulation += 1;
+			iPopulation /= 2;
+		}
+	}
+	*/
+	return std::max(1, iPopulation);
 }
-
+//@HURRY
 int CvCity::hurryProduction(HurryTypes eHurry) const
 {
 	int iProduction;
 
 	if (GC.getHurryInfo(eHurry).getProductionPerPopulation() > 0)
 	{
+		//KEVIN HURRY WONDER SLAVERY BUG FIX
+		/*
+		BuildingTypes eCurBuilding = getProductionBuilding();
+		int iTemp = hurryPopulation(eHurry);
+		if(eCurBuilding != NO_BUILDING)
+		{
+			CvBuildingClassInfo temp = GC.getBuildingClassInfo((BuildingClassTypes)GC.getBuildingInfo(eCurBuilding).getBuildingClassType());
+			if(temp.getMaxGlobalInstances() != -1 || temp.getMaxPlayerInstances() != -1 || temp.getMaxTeamInstances() != -1)
+			{
+				iTemp *= 2;
+			}
+		}*/
 		iProduction = (100 * getExtraProductionDifference(hurryPopulation(eHurry) * GC.getGameINLINE().getProductionPerPopulation(eHurry))) / std::max(1, getHurryCostModifier());
-		FAssert(iProduction >= productionLeft());
+		//iProduction = (100 * getExtraProductionDifference(iTemp * GC.getGameINLINE().getProductionPerPopulation(eHurry))) / std::max(1, getHurryCostModifier());
+		//END FIX
+		
+		int iTemp2 = productionLeft();
+		FAssert(iProduction >= iTemp2);
 	}
 	else
 	{
@@ -4697,7 +4789,7 @@ int CvCity::hurryProduction(HurryTypes eHurry) const
 	return iProduction;
 }
 
-
+//@HURRY
 int CvCity::flatHurryAngerLength() const
 {
 	int iAnger;
@@ -7823,7 +7915,7 @@ int CvCity::getBaseTradeProfit(CvCity* pCity) const
 	return iProfit;
 }
 
-int CvCity::calculateTradeProfit(CvCity* pCity) const
+int CvCity::calculateTradeProfit(CvCity* pCity) const //TRADE
 {
 	int iProfit = getBaseTradeProfit(pCity);
 
@@ -7834,7 +7926,7 @@ int CvCity::calculateTradeProfit(CvCity* pCity) const
 }
 
 
-int CvCity::calculateTradeYield(YieldTypes eIndex, int iTradeProfit) const
+int CvCity::calculateTradeYield(YieldTypes eIndex, int iTradeProfit) const //TRADE
 {
 	if ((iTradeProfit > 0) && (GET_PLAYER(getOwnerINLINE()).getTradeYieldModifier(eIndex) > 0))
 	{
@@ -10522,12 +10614,13 @@ void CvCity::updateTradeRoutes()
 		{
 			pLoopCity->setTradeRoute(getOwnerINLINE(), true);
 
-			iTradeProfit += calculateTradeProfit(pLoopCity);
+			iTradeProfit += calculateTradeProfit(pLoopCity); //KEVIN
 		}
 	}
 
 	for (iI = 0; iI < NUM_YIELD_TYPES; iI++)
 	{
+		//TRADE
 		setTradeYield(((YieldTypes)iI), calculateTradeYield(((YieldTypes)iI), iTradeProfit)); // XXX could take this out if handled when CvPlotGroup changes...
 	}
 
@@ -11248,7 +11341,16 @@ void CvCity::doPlotCulture(bool bUpdate, PlayerTypes ePlayer, int iCultureRate)
 						{
 							if (pLoopPlot->isPotentialCityWorkForArea(area()))
 							{
-								pLoopPlot->changeCulture(ePlayer, (((eCultureLevel - iCultureRange) * iFreeCultureRate) + iCultureRate + 1), (bUpdate || !(pLoopPlot->isOwned())));
+								if(GC.getGameINLINE().isOption(GAMEOPTION_ADV_CULTURE))
+								{
+									pLoopPlot->changeCulture(ePlayer,
+										( ( ( ( ( ( ( 100 * ( eCultureLevel - iCultureRange + 1 ) ) / eCultureLevel ) * iCultureRate) / 100 ) + iCultureRate ) / 2 ) + 1), 
+										(bUpdate || !(pLoopPlot->isOwned()))); //DEATHMAKER900
+								}
+								else
+								{
+									pLoopPlot->changeCulture(ePlayer, (((eCultureLevel - iCultureRange) * iFreeCultureRate) + iCultureRate + 1), (bUpdate || !(pLoopPlot->isOwned())));
+								}
 							}
 						}
 					}

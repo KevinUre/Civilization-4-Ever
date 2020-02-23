@@ -9539,6 +9539,8 @@ int CvPlayerAI::AI_religionValue(ReligionTypes eReligion) const
 	return iValue;
 }
 
+//TSHEEP - Redid this entire function, all individual changes are noted though
+/*
 EspionageMissionTypes CvPlayerAI::AI_bestPlotEspionage(CvPlot* pSpyPlot, PlayerTypes& eTargetPlayer, CvPlot*& pPlot, int& iData) const
 {
 	//ooookay what missions are possible
@@ -9717,6 +9719,213 @@ EspionageMissionTypes CvPlayerAI::AI_bestPlotEspionage(CvPlot* pSpyPlot, PlayerT
 	
 	return eBestMission;
 }
+*/
+EspionageMissionTypes CvPlayerAI::AI_bestPlotEspionage(CvPlot* pSpyPlot, PlayerTypes& eTargetPlayer, CvPlot*& pPlot, int& iData) const
+{
+	//ooookay what missions are possible
+
+	FAssert(pSpyPlot != NULL);
+
+	pPlot = NULL;
+	iData = -1;
+
+	EspionageMissionTypes eBestMission = NO_ESPIONAGEMISSION;
+	int iBestValue = 0;
+
+	if (pSpyPlot->isOwned())
+	{
+		if (pSpyPlot->getTeam() != getTeam())
+		{
+			if (!AI_isDoStrategy(AI_STRATEGY_BIG_ESPIONAGE) && (GET_TEAM(getTeam()).AI_getWarPlan(pSpyPlot->getTeam()) != NO_WARPLAN || AI_getAttitudeWeight(pSpyPlot->getOwner()) < (GC.getGameINLINE().isOption(GAMEOPTION_AGGRESSIVE_AI) ? 50 : 0)))//Fix to require annoyed TSHEEP
+			{
+				//Destroy Improvement.
+				if (pSpyPlot->getImprovementType() != NO_IMPROVEMENT)
+				{
+					for (int iMission = 0; iMission < GC.getNumEspionageMissionInfos(); ++iMission)
+					{
+						CvEspionageMissionInfo& kMissionInfo = GC.getEspionageMissionInfo((EspionageMissionTypes)iMission);
+
+						if (kMissionInfo.isDestroyImprovement())
+						{
+							int iValue = AI_espionageVal(pSpyPlot->getOwnerINLINE(), (EspionageMissionTypes)iMission, pSpyPlot, -1);
+
+							if (iValue > iBestValue)
+							{
+								iBestValue = iValue;
+								eBestMission = (EspionageMissionTypes)iMission;
+								eTargetPlayer = pSpyPlot->getOwnerINLINE();
+								pPlot = pSpyPlot;
+								iData = -1;
+							}
+						}
+					}
+				}
+			}
+
+			CvCity* pCity = pSpyPlot->getPlotCity();
+			if (pCity != NULL)
+			{
+				//Something malicious
+				if (AI_getAttitudeWeight(pSpyPlot->getOwner()) < (GC.getGameINLINE().isOption(GAMEOPTION_AGGRESSIVE_AI) ? 50 : 0)) //Fix to require annoyed TSHEEP
+				{
+					//Destroy Building.
+					if (!AI_isDoStrategy(AI_STRATEGY_BIG_ESPIONAGE))
+					{
+						for (int iMission = 0; iMission < GC.getNumEspionageMissionInfos(); ++iMission)
+						{
+							CvEspionageMissionInfo& kMissionInfo = GC.getEspionageMissionInfo((EspionageMissionTypes)iMission);
+							if (kMissionInfo.getDestroyBuildingCostFactor() > 0)
+							{
+								for (int iBuilding = 0; iBuilding < GC.getNumBuildingInfos(); iBuilding++)
+								{
+									BuildingTypes eBuilding = (BuildingTypes)iBuilding;
+
+									if (pCity->getNumBuilding(eBuilding) > 0)
+									{
+										int iValue = AI_espionageVal(pSpyPlot->getOwnerINLINE(), (EspionageMissionTypes)iMission, pSpyPlot, iBuilding);
+
+										if (iValue > iBestValue)
+										{
+											iBestValue = iValue;
+											eBestMission = (EspionageMissionTypes)iMission;
+											eTargetPlayer = pSpyPlot->getOwnerINLINE();
+											pPlot = pSpyPlot;
+											iData = iBuilding;
+										}
+									}
+								}
+							}
+						}
+					}
+
+					//Destroy Project
+					for (int iMission = 0; iMission < GC.getNumEspionageMissionInfos(); ++iMission)
+					{
+						CvEspionageMissionInfo& kMissionInfo = GC.getEspionageMissionInfo((EspionageMissionTypes)iMission);
+						if (kMissionInfo.getDestroyProjectCostFactor() > 0)
+						{
+							for (int iProject = 0; iProject < GC.getNumProjectInfos(); iProject++)
+							{
+								ProjectTypes eProject = (ProjectTypes)iProject;
+
+								int iValue = AI_espionageVal(pSpyPlot->getOwnerINLINE(), (EspionageMissionTypes)iMission, pSpyPlot, iProject);
+
+								if (iValue > iBestValue)
+								{
+									iBestValue = iValue;
+									eBestMission = (EspionageMissionTypes)iMission;
+									eTargetPlayer = pSpyPlot->getOwnerINLINE();
+									pPlot = pSpyPlot;
+									iData = iProject;
+								}
+							}
+						}
+					}
+
+					//General dataless city mission.
+					if (!AI_isDoStrategy(AI_STRATEGY_BIG_ESPIONAGE))
+					{
+						for (int iMission = 0; iMission < GC.getNumEspionageMissionInfos(); ++iMission)
+						{
+							CvEspionageMissionInfo& kMissionInfo = GC.getEspionageMissionInfo((EspionageMissionTypes)iMission);
+							{
+								if ((kMissionInfo.getCityPoisonWaterCounter() > 0) || (kMissionInfo.getDestroyProductionCostFactor() > 0)
+									|| (kMissionInfo.getStealTreasuryTypes() > 0))
+								{
+									int iValue = AI_espionageVal(pSpyPlot->getOwnerINLINE(), (EspionageMissionTypes)iMission, pSpyPlot, -1);
+
+									if (iValue > iBestValue)
+									{
+										iBestValue = iValue;
+										eBestMission = (EspionageMissionTypes)iMission;
+										eTargetPlayer = pSpyPlot->getOwnerINLINE();
+										pPlot = pSpyPlot;
+										iData = -1;
+									}
+								}
+							}
+						}
+					}
+
+					//Disruption suitable for war.
+					if (GET_TEAM(getTeam()).isAtWar(pSpyPlot->getTeam()))
+					{
+						for (int iMission = 0; iMission < GC.getNumEspionageMissionInfos(); ++iMission)
+						{
+							CvEspionageMissionInfo& kMissionInfo = GC.getEspionageMissionInfo((EspionageMissionTypes)iMission);
+							if ((kMissionInfo.getCityRevoltCounter() > 0) || (kMissionInfo.getPlayerAnarchyCounter() > 0))
+							{
+								int iValue = AI_espionageVal(pSpyPlot->getOwnerINLINE(), (EspionageMissionTypes)iMission, pSpyPlot, -1);
+
+								if (iValue > iBestValue)
+								{
+									iBestValue = iValue;
+									eBestMission = (EspionageMissionTypes)iMission;
+									eTargetPlayer = pSpyPlot->getOwnerINLINE();
+									pPlot = pSpyPlot;
+									iData = -1;
+								}
+							}
+						}
+					}
+				}
+				//TSHEEP - Counter Espionage (Why the heck don't AIs use this in vanilla?) - Requires either hatred or memory of past Spy transgression
+				if ((AI_getAttitudeWeight(pSpyPlot->getOwner()) < (GC.getGameINLINE().isOption(GAMEOPTION_AGGRESSIVE_AI) ? 50 : 0) ||
+					AI_getMemoryCount(pSpyPlot->getOwner(), MEMORY_SPY_CAUGHT) > 0) &&
+					GET_TEAM(getTeam()).getCounterespionageTurnsLeftAgainstTeam(GET_PLAYER(eTargetPlayer).getTeam()) <= 0)
+				{
+					for (int iMission = 0; iMission < GC.getNumEspionageMissionInfos(); ++iMission)
+					{
+						CvEspionageMissionInfo& kMissionInfo = GC.getEspionageMissionInfo((EspionageMissionTypes)iMission);
+						if (kMissionInfo.getCounterespionageNumTurns() > 0)
+						{
+							int iValue = AI_espionageVal(pSpyPlot->getOwnerINLINE(), (EspionageMissionTypes)iMission, pSpyPlot, -1);
+							if (iValue > iBestValue)
+							{
+								iBestValue = iValue;
+								eBestMission = (EspionageMissionTypes)iMission;
+								eTargetPlayer = pSpyPlot->getOwnerINLINE();
+								pPlot = pSpyPlot;
+								iData = -1;
+							}
+						}
+					}
+				}
+				//TSHEEP End of Counter Espionage
+
+
+				//Steal Technology
+				for (int iMission = 0; iMission < GC.getNumEspionageMissionInfos(); ++iMission)
+				{
+					CvEspionageMissionInfo& kMissionInfo = GC.getEspionageMissionInfo((EspionageMissionTypes)iMission);
+					if (kMissionInfo.getBuyTechCostFactor() > 0)
+					{
+						for (int iTech = 0; iTech < GC.getNumTechInfos(); iTech++)
+						{
+							TechTypes eTech = (TechTypes)iTech;
+							int iValue = AI_espionageVal(pSpyPlot->getOwnerINLINE(), (EspionageMissionTypes)iMission, pSpyPlot, eTech);
+
+							iValue *= 2;		//Increase AI weight of techvalues TSHEEP
+
+							if (iValue > iBestValue)
+							{
+								iBestValue = iValue;
+								eBestMission = (EspionageMissionTypes)iMission;
+								eTargetPlayer = pSpyPlot->getOwnerINLINE();
+								pPlot = pSpyPlot;
+								iData = eTech;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	return eBestMission;
+}
+//TSHEEP End
+
 
 int CvPlayerAI::AI_espionageVal(PlayerTypes eTargetPlayer, EspionageMissionTypes eMission, CvPlot* pPlot, int iData) const
 {
@@ -9871,6 +10080,17 @@ int CvPlayerAI::AI_espionageVal(PlayerTypes eTargetPlayer, EspionageMissionTypes
 	if (GC.getEspionageMissionInfo(eMission).getCounterespionageNumTurns() > 0)
 	{
 		//iValue += 100 * GET_TEAM(getTeam()).AI_getAttitudeVal(GET_PLAYER(eTargetPlayer).getTeam());
+		//TSHEEP - Make Counterespionage matter
+		if (NULL != pPlot)
+		{
+			CvCity* pCity = pPlot->getPlotCity();
+
+			if (NULL != pCity)
+			{
+				iValue += std::max((100 - GET_TEAM(getTeam()).AI_getAttitudeVal(GET_PLAYER(eTargetPlayer).getTeam())) * (1 + std::max(AI_getMemoryCount(eTargetPlayer, MEMORY_SPY_CAUGHT), 0)),0);
+			}
+		}
+		//TSHEEP End
 	}
 
 	if (GC.getEspionageMissionInfo(eMission).getBuyCityCostFactor() > 0)
@@ -10676,13 +10896,19 @@ void CvPlayerAI::AI_doCommerce()
 	if (isCommerceFlexible(COMMERCE_ESPIONAGE) && !bFirstTech)
 	{
 		int iEspionageTargetRate = 0;
+		//TSHEEP Additional variables for targetting tech leader
+		int iTechTeam = MAX_CIV_TEAMS;
+		int iTechScore = 0;
+		int iTechHighScore = 0;
+		//TSHEEP End
 
 		for (int iTeam = 0; iTeam < MAX_CIV_TEAMS; ++iTeam)
 		{
 			CvTeam& kLoopTeam = GET_TEAM((TeamTypes)iTeam);
 			if (kLoopTeam.isAlive() && iTeam != getTeam() && !kLoopTeam.isVassal(getTeam()) && !GET_TEAM(getTeam()).isVassal((TeamTypes)iTeam))
 			{
-				int iTarget = (kLoopTeam.getEspionagePointsAgainstTeam(getTeam()) - GET_TEAM(getTeam()).getEspionagePointsAgainstTeam((TeamTypes)iTeam)) / 8;
+				//TSHEEP - Redid entire targetting scheme for overall espionage spending
+				/*int iTarget = (kLoopTeam.getEspionagePointsAgainstTeam(getTeam()) - GET_TEAM(getTeam()).getEspionagePointsAgainstTeam((TeamTypes)iTeam)) / 8;
 
 				iTarget -= GET_TEAM(getTeam()).AI_getAttitudeVal((TeamTypes)iTeam);
 
@@ -10690,9 +10916,43 @@ void CvPlayerAI::AI_doCommerce()
 				{
 					iEspionageTargetRate += iTarget;
 					changeEspionageSpendingWeightAgainstTeam((TeamTypes)iTeam, iTarget);
+				}*/
+				int iTarget = 1;
+				iTarget -= GET_TEAM(getTeam()).AI_getAttitudeVal((TeamTypes)iTeam);
+
+				PlayerTypes ePlayer = kLoopTeam.getLeaderID();
+
+				iTechScore = 0;
+
+				for (int iTechLoop = 0; iTechLoop < GC.getNumTechInfos(); iTechLoop++)//Find Tech leader
+				{
+					TechTypes eTechLoop = (TechTypes) iTechLoop;
+
+					if(canStealTech(ePlayer, eTechLoop))
+					{
+						iTechScore += kLoopTeam.getResearchCost(eTechLoop);
+					}
 				}
+				if(iTechScore > iTechHighScore)
+				{
+					iTechTeam = iTeam;
+					iTechHighScore = iTechScore;
+				}
+
+				iTarget = std::max(iTarget,0);
+
+				iEspionageTargetRate += iTarget;
+				setEspionageSpendingWeightAgainstTeam((TeamTypes)iTeam,iTarget);
+				//TSHEEP End
 			}
 		}
+
+		//TSHEEP apply bonus towards tech leader
+		if(iTechTeam != MAX_CIV_TEAMS)
+		{
+			changeEspionageSpendingWeightAgainstTeam((TeamTypes)iTechTeam,100);
+		}
+		//TSHEEP End
 
 		//if economy is weak, neglect espionage spending.
 		//instead invest hammers into espionage via spies/builds

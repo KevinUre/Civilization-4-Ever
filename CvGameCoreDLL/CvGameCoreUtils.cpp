@@ -236,7 +236,9 @@ bool isPromotionValid(PromotionTypes ePromotion, UnitTypes eUnit, bool bLeader)
 		return false;
 	}
 
+	//THSEEP KEVIN
 	if (kUnit.isOnlyDefensive())
+	if (kUnit.isOnlyDefensive() && !kUnit.isSpy())//TSHEEP END
 	{
 		if ((kPromotion.getCityAttackPercent() != 0) ||
 			  (kPromotion.getWithdrawalChange() != 0) ||
@@ -274,7 +276,9 @@ bool isPromotionValid(PromotionTypes ePromotion, UnitTypes eUnit, bool bLeader)
 		}
 	}
 
-	if (kUnit.getInterceptionProbability() == 0)
+	//TSHEEP - Spy Promotion Override
+	//if (kUnit.getInterceptionProbability() == 0)
+	if(kUnit.getInterceptionProbability() == 0 && !kUnit.isSpy()) // END TSHEEP KEVIN
 	{
 		if (kPromotion.getInterceptChange() != 0)
 		{

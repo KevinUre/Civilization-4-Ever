@@ -2377,7 +2377,7 @@ int CvTeam::countEnemyDangerByArea(CvArea* pArea) const
 }
 
 
-int CvTeam::getResearchCost(TechTypes eTech) const
+int CvTeam::getResearchCost(TechTypes eTech) const //KEVIN TECH
 {
 	int iCost;
 
@@ -4373,7 +4373,7 @@ void CvTeam::changeResearchProgress(TechTypes eIndex, int iChange, PlayerTypes e
 	setResearchProgress(eIndex, (getResearchProgress(eIndex) + iChange), ePlayer);
 }
 
-int CvTeam::changeResearchProgressPercent(TechTypes eIndex, int iPercent, PlayerTypes ePlayer)
+int CvTeam::changeResearchProgressPercent(TechTypes eIndex, int iPercent, PlayerTypes ePlayer) //KEVIN TECH
 {
 	int iBeakers = 0;
 

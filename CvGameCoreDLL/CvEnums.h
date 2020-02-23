@@ -728,6 +728,16 @@ enum GameOptionTypes				// Exposed to Python
 	GAMEOPTION_NO_GOODY_HUTS,
 	GAMEOPTION_NO_EVENTS,
 	GAMEOPTION_NO_ESPIONAGE,
+	//Lemon's Spy Mod Begin
+	GAMEOPTION_SPIES_RETURN_TO_NEAREST_CITY,
+	//Lemon's Spy Mod End
+	//DeathMaker900 Advanced Technology Bleeding Begin
+	GAMEOPTION_ADV_TECH_BLEED,
+	//DeathMaker900 Advanced Technology Bleeding End
+	//DeathMaker900 Tech Pillage Begin
+	GAMEOPTION_PILLAGE_TECH,
+	//DeathMaker900 Tech Pillage End
+	GAMEOPTION_ADV_CULTURE,
 
 #ifdef _USRDLL
 	NUM_GAMEOPTION_TYPES
@@ -1170,6 +1180,13 @@ enum NewConceptTypes				// Exposed to Python
 {
 	NO_NEW_CONCEPT = -1,
 };
+
+//DeathMaker900 Begin
+enum ForeverConceptTypes				// Exposed to Python
+{
+	NO_FOREVER_CONCEPT = -1,
+};
+//DeathMaker900 End
 
 enum CalendarTypes			// Exposed to Python
 {
@@ -2463,6 +2480,9 @@ enum CivilopediaPageTypes		// Exposed to Python
 	CIVILOPEDIA_PAGE_PROJECT,
 	CIVILOPEDIA_PAGE_CONCEPT,
 	CIVILOPEDIA_PAGE_CONCEPT_NEW,
+	//DeathMaker900 Begin
+	CIVILOPEDIA_PAGE_CONCEPT_FOREVER,
+	//DeathMaker900 End
 	CIVILOPEDIA_PAGE_HINTS,
 
 	NUM_CIVILOPEDIA_PAGE_TYPES

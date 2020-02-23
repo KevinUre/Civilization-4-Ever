@@ -448,6 +448,15 @@ void CvGame::reset(HandicapTypes eHandicap, bool bConstructorCall)
 	m_bPlayerOptionsSent = false;
 	m_bNukesValid = false;
 
+	// < Air Combat Experience Start >
+	m_bRouteDestructionThroughAirBombs = true;
+	m_bExperienceGainByDestroyingImprovements = true;
+	m_bExperienceGainByDestroyingRoutes = true;
+	m_bExperienceGainByAttackingCities = true;
+	m_bExperienceGainByAttackingUnits = true;
+	m_bBombNoMansLand = true;
+	// < Air Combat Experience End   >
+
 	m_eHandicap = eHandicap;
 	m_ePausePlayer = NO_PLAYER;
 	m_eBestLandUnit = NO_UNIT;
@@ -2589,6 +2598,7 @@ int CvGame::getProductionPerPopulation(HurryTypes eHurry)
 	{
 		return 0;
 	}
+	//SLAVES
 	return (GC.getHurryInfo(eHurry).getProductionPerPopulation() * 100) / std::max(1, GC.getGameSpeedInfo(getGameSpeedType()).getHurryPercent());
 }
 
@@ -5243,6 +5253,69 @@ void CvGame::makeNukesValid(bool bValid)
 	m_bNukesValid = bValid;
 }
 
+// < Air Combat Experience Start >
+bool CvGame::isRouteDestructionThroughAirBombs() const
+{
+	return m_bRouteDestructionThroughAirBombs;
+}
+
+void CvGame::setRouteDestructionThroughAirBombs(bool bNewValue)
+{
+	m_bRouteDestructionThroughAirBombs = bNewValue;
+}
+
+bool CvGame::isExperienceGainByDestroyingImprovements() const
+{
+	return m_bExperienceGainByDestroyingImprovements;
+}
+
+void CvGame::setExperienceGainByDestroyingImprovements(bool bNewValue)
+{
+	m_bExperienceGainByDestroyingImprovements = bNewValue;
+}
+
+bool CvGame::isExperienceGainByDestroyingRoutes() const
+{
+	return m_bExperienceGainByDestroyingRoutes;
+}
+
+void CvGame::setExperienceGainByDestroyingRoutes(bool bNewValue)
+{
+	m_bExperienceGainByDestroyingRoutes = bNewValue;
+}
+
+bool CvGame::isExperienceGainByAttackingCities() const
+{
+	return m_bExperienceGainByAttackingCities;
+}
+
+void CvGame::setExperienceGainByAttackingCities(bool bNewValue)
+{
+	m_bExperienceGainByAttackingCities = bNewValue;
+}
+
+bool CvGame::isExperienceGainByAttackingUnits() const
+{
+	return m_bExperienceGainByAttackingUnits;
+}
+
+void CvGame::setExperienceGainByAttackingUnits(bool bNewValue)
+{
+	m_bExperienceGainByAttackingUnits = bNewValue;
+}
+
+bool CvGame::isBombNoMansLand() const
+{
+	return m_bBombNoMansLand;
+}
+
+void CvGame::setBombNoMansLand(bool bNewValue)
+{
+	m_bBombNoMansLand = bNewValue;
+}
+
+// < Air Combat Experience End   >
+
 bool CvGame::isInAdvancedStart() const
 {
 	for (int iPlayer = 0; iPlayer < MAX_PLAYERS; ++iPlayer)
@@ -7543,6 +7616,15 @@ void CvGame::read(FDataStreamBase* pStream)
 	// m_bPlayerOptionsSent not saved
 	pStream->Read(&m_bNukesValid);
 
+	// < Air Combat Experience Start >
+	pStream->Read(&m_bRouteDestructionThroughAirBombs);
+	pStream->Read(&m_bExperienceGainByDestroyingImprovements);
+	pStream->Read(&m_bExperienceGainByDestroyingRoutes);
+	pStream->Read(&m_bExperienceGainByAttackingCities);
+	pStream->Read(&m_bExperienceGainByAttackingUnits);
+	pStream->Read(&m_bBombNoMansLand);
+	// < Air Combat Experience End   >
+
 	pStream->Read((int*)&m_eHandicap);
 	pStream->Read((int*)&m_ePausePlayer);
 	pStream->Read((int*)&m_eBestLandUnit);
@@ -7762,6 +7844,15 @@ void CvGame::write(FDataStreamBase* pStream)
 	pStream->Write(m_bHotPbemBetweenTurns);
 	// m_bPlayerOptionsSent not saved
 	pStream->Write(m_bNukesValid);
+
+	// < Air Combat Experience Start >
+	pStream->Write(m_bRouteDestructionThroughAirBombs);
+	pStream->Write(m_bExperienceGainByDestroyingImprovements);
+	pStream->Write(m_bExperienceGainByDestroyingRoutes);
+	pStream->Write(m_bExperienceGainByAttackingCities);
+	pStream->Write(m_bExperienceGainByAttackingUnits);
+	pStream->Write(m_bBombNoMansLand);
+	// < Air Combat Experience End   >
 
 	pStream->Write(m_eHandicap);
 	pStream->Write(m_ePausePlayer);

@@ -1424,6 +1424,37 @@ void CvPlayer::acquireCity(CvCity* pOldCity, bool bConquest, bool bTrade, bool b
 		delete pyOldCity;	// python fxn must not hold on to this pointer 
 
 		iCaptureGold = (int)lCaptureGold;
+
+		//DeathMaker900 Tech Pillage Begin
+		if(GC.getGameINLINE().isOption(GAMEOPTION_PILLAGE_TECH))
+		{
+			TeamTypes eAttackerTeam = getTeam();
+			TeamTypes eCityTeam = pCityPlot->getTeam();
+			std::vector<int> vPossibilities;
+			if(!GET_TEAM(eCityTeam).isBarbarian() && !GET_TEAM(eAttackerTeam).isBarbarian())
+			{
+				for (int iCTech = 0; iCTech < GC.getNumTechInfos(); iCTech++)
+				{
+					if(!GET_TEAM(eCityTeam).isHasTech((TechTypes)iCTech)) { continue; }
+					if(GET_TEAM(eAttackerTeam).isHasTech((TechTypes)iCTech)) { continue; }
+					vPossibilities.push_back(iCTech);
+				}
+				if (vPossibilities.size() > 0)
+				{
+					for(int iIttr = 0; iIttr < GC.getDefineINT("TECH_PILLAGE_CITY_TECHS"); iIttr++)
+					{
+						int iChoice = GC.getGameINLINE().getSorenRandNum(vPossibilities.size(), "Pillage Tech");
+						int iAmount = (GET_TEAM(eAttackerTeam).getResearchCost((TechTypes)iChoice) * GC.getDefineINT("TECH_PILLAGE_CITY_PERCENT") / 100);
+						GET_TEAM(eAttackerTeam).setResearchProgress((TechTypes)vPossibilities[iChoice], 
+							GET_TEAM(eAttackerTeam).getResearchProgress((TechTypes)vPossibilities[iChoice])	+ iAmount, 
+							getID());
+						szBuffer = gDLL->getText("TXT_KEY_TECH_PILLAGED", iAmount, GC.getTechInfo((TechTypes)vPossibilities[iChoice]).getTextKeyWide());
+						gDLL->getInterfaceIFace()->addMessage(getID(),true,GC.getEVENT_MESSAGE_TIME(),szBuffer,"AS2D_PILLAGE", MESSAGE_TYPE_INFO);				
+					}
+				}
+			}
+		}
+		//DeathMaker900 Tech Pillage End
 	}
 
 	changeGold(iCaptureGold);
@@ -1924,6 +1955,12 @@ CvUnit* CvPlayer::initUnit(UnitTypes eUnit, int iX, int iY, UnitAITypes eUnitAI,
 	if (NULL != pUnit)
 	{
 		pUnit->init(pUnit->getID(), eUnit, ((eUnitAI == NO_UNITAI) ? ((UnitAITypes)(GC.getUnitInfo(eUnit).getDefaultUnitAIType())) : eUnitAI), getID(), iX, iY, eFacingDirection);
+		//@MOD Commanders: if added unit is a GG, add it to the commanders array
+		if (pUnit->isCommander())
+		{
+			Commanders.push_back(pUnit);
+		}
+		//end mod
 	}
 
 	return pUnit;
@@ -6361,7 +6398,7 @@ int CvPlayer::calculateBaseNetGold() const
 	return iNetGold;
 }
 
-int CvPlayer::calculateResearchModifier(TechTypes eTech) const
+int CvPlayer::calculateResearchModifier(TechTypes eTech) const //KEVIN TECH
 {
 	int iModifier = 100;
 
@@ -6370,6 +6407,8 @@ int CvPlayer::calculateResearchModifier(TechTypes eTech) const
 		return iModifier;
 	}
 
+	//DeathMaker900 Advanced Technology Bleeding Begin
+	/* --- ORIGINAL CODE ---
 	int iKnownCount = 0;
 	int iPossibleKnownCount = 0;
 
@@ -6393,6 +6432,91 @@ int CvPlayer::calculateResearchModifier(TechTypes eTech) const
 	{
 		iModifier += (GC.getDefineINT("TECH_COST_TOTAL_KNOWN_TEAM_MODIFIER") * iKnownCount) / iPossibleKnownCount;
 	}
+	*/
+	if (!GC.getGameINLINE().isOption(GAMEOPTION_ADV_TECH_BLEED))
+	{
+		int iKnownCount = 0;
+		int iPossibleKnownCount = 0;
+
+		for (int iI = 0; iI < MAX_CIV_TEAMS; iI++)
+		{
+			if (GET_TEAM((TeamTypes)iI).isAlive())
+			{
+				if (GET_TEAM(getTeam()).isHasMet((TeamTypes)iI))
+				{
+					if (GET_TEAM((TeamTypes)iI).isHasTech(eTech))
+					{
+						iKnownCount++;
+					}
+				}
+
+				iPossibleKnownCount++;
+			}
+		}
+
+		if (iPossibleKnownCount > 0)
+		{
+			iModifier += (GC.getDefineINT("TECH_COST_TOTAL_KNOWN_TEAM_MODIFIER") * iKnownCount) / iPossibleKnownCount;
+		}
+	}
+	else
+	{
+		int iKnownCount = 0;
+		int iPossibleKnownCount = 0;
+		int iOpenBordersCount = 0;
+		int iAtWarCount = 0;
+		int iIsVassel = 0;
+
+		for (int iI = 0; iI < MAX_CIV_TEAMS; iI++)
+		{
+			if (GET_TEAM((TeamTypes)iI).isAlive())
+			{
+				if (GET_TEAM(getTeam()).isHasMet((TeamTypes)iI))
+				{
+					if (GET_TEAM((TeamTypes)iI).isHasTech(eTech))
+					{
+						iKnownCount++;
+					}
+				}
+
+				if(GET_TEAM(getTeam()).isOpenBorders((TeamTypes)iI))
+				{
+					if (GET_TEAM((TeamTypes)iI).isHasTech(eTech))
+					{
+						iOpenBordersCount++;
+					}
+				}
+
+				if(GET_TEAM(getTeam()).isAtWar((TeamTypes)iI))
+				{
+					if (GET_TEAM((TeamTypes)iI).isHasTech(eTech))
+					{
+						iAtWarCount++;
+					}
+				}
+
+				if(GET_TEAM(getTeam()).isVassal((TeamTypes)iI))
+				{
+					if (GET_TEAM((TeamTypes)iI).isHasTech(eTech))
+					{
+						iIsVassel = 1;
+					}
+				}
+
+				iPossibleKnownCount++;
+			}
+		}
+
+		if (iPossibleKnownCount > 0)
+		{
+			iModifier += (GC.getDefineINT("TECH_BLEED_COST_TOTAL_KNOWN_MODIFIER") * iKnownCount) / iPossibleKnownCount;
+			iModifier += (GC.getDefineINT("TECH_BLEED_COST_TOTAL_OPEN_BORDERS_MODIFIER") * iOpenBordersCount) / iPossibleKnownCount;
+			iModifier += (GC.getDefineINT("TECH_BLEED_COST_TOTAL_WAR_MODIFIER") * iAtWarCount);// / iPossibleKnownCount;
+			iModifier += GC.getDefineINT("TECH_BLEED_COST_VASSAL_MODIFIER") * iIsVassel;
+		}
+
+	}
+	//DeathMaker900 Advanced Technology Bleeding End
 
 	int iPossiblePaths = 0;
 	int iUnknownPaths = 0;
@@ -6417,7 +6541,7 @@ int CvPlayer::calculateResearchModifier(TechTypes eTech) const
 	return iModifier;
 }
 
-int CvPlayer::calculateBaseNetResearch(TechTypes eTech) const
+int CvPlayer::calculateBaseNetResearch(TechTypes eTech) const //KEVIN TECH
 {
 	TechTypes eResearchTech;
 
@@ -6451,7 +6575,7 @@ int CvPlayer::calculateGoldRate() const
 }
 
 
-int CvPlayer::calculateResearchRate(TechTypes eTech) const
+int CvPlayer::calculateResearchRate(TechTypes eTech) const //KEVIN TECH
 {
 	int iRate = 0;
 
@@ -10370,7 +10494,7 @@ void CvPlayer::updateExtraYieldThreshold(YieldTypes eIndex)
 }
 
 
-int CvPlayer::getTradeYieldModifier(YieldTypes eIndex) const	
+int CvPlayer::getTradeYieldModifier(YieldTypes eIndex) const	//TRADE
 {
 	FAssertMsg(eIndex >= 0, "eIndex is expected to be non-negative (invalid Index)");
 	FAssertMsg(eIndex < NUM_YIELD_TYPES, "eIndex is expected to be within maximum bounds (invalid Index)");
@@ -12191,6 +12315,31 @@ CvUnit* CvPlayer::addUnit()
 
 void CvPlayer::deleteUnit(int iID)																	
 {
+	//@MOD Commanders: delete from commanders array
+	if (getUnit(iID)->isCommander())
+	{
+		for (int i=0; i < Commanders.size(); i++)
+		{
+			if (Commanders[i]->getID() == iID)
+			{
+				Commanders.erase(Commanders.begin() + i);
+				//1.0 beta fix 1:
+				//loop through units and delete commander from m_pUsedCommander fields:
+				CvUnit* pLoopUnit;
+				int iLoop;
+				for(pLoopUnit = firstUnit(&iLoop); pLoopUnit != NULL; pLoopUnit = nextUnit(&iLoop))
+				{
+					if (pLoopUnit->getUsedCommander() != NULL && pLoopUnit->getUsedCommander()->getID() == iID)
+					{
+						pLoopUnit->nullUsedCommander();
+					}
+				}
+				//end 1.0 beta fix 1
+				break;
+			}
+		}
+	}
+	//end mod
 	m_units.removeAt(iID);
 }
 
@@ -12632,7 +12781,7 @@ void CvPlayer::doGold()
 }
 
 
-void CvPlayer::doResearch()
+void CvPlayer::doResearch() //KEVIN TECH
 {
 	bool bForceResearchChoice;
 	int iOverflowResearch;
@@ -13167,8 +13316,20 @@ int CvPlayer::getEspionageMissionBaseCost(EspionageMissionTypes eMission, Player
 
 						if (iValue < iCost)
 						{
-							iCost = iValue;
-							eBuilding = (BuildingTypes)iBuilding;
+							//TSHEEP - Main fix for sabotage buildings, the "overall" test for whether or not the mission
+							//could be performed or not looked for the lowest cost building in the game rather than the city
+							//if the city did not actually have that building it would return an invalid cost and not allow the mission
+							//iCost = iValue;
+							//eBuilding = (BuildingTypes)iBuilding;
+							if (NULL != pCity)
+							{
+								if(pCity->getNumRealBuilding((BuildingTypes)iBuilding) > 0)
+								{
+									iCost = iValue;
+									eBuilding = (BuildingTypes)iBuilding;
+								}
+							}
+						//TSHEEP - End
 						}
 					}
 				}
@@ -13373,7 +13534,10 @@ int CvPlayer::getEspionageMissionCostModifier(EspionageMissionTypes eMission, Pl
 	// Spy presence mission cost alteration
 	if (NULL != pSpyUnit)
 	{
-		iModifier *= 100 - (pSpyUnit->getFortifyTurns() * GC.getDefineINT("ESPIONAGE_EACH_TURN_UNIT_COST_DECREASE"));
+		//TSHEEP - add in discount promotions
+        //iModifier *= 100 - (pSpyUnit->getFortifyTurns() * GC.getDefineINT("ESPIONAGE_EACH_TURN_UNIT_COST_DECREASE"));
+        iModifier *= 100 - (std::min(5,(pSpyUnit->getFortifyTurns() + (pSpyUnit->getUpgradeDiscount()/10))) * GC.getDefineINT("ESPIONAGE_EACH_TURN_UNIT_COST_DECREASE"));
+        //TSHEEP End
 		iModifier /= 100;
 	}
 
@@ -13418,7 +13582,7 @@ bool CvPlayer::doEspionageMission(EspionageMissionTypes eMission, PlayerTypes eT
 	
 	//////////////////////////////
 	// Destroy Improvement
-
+	/* Original Code
 	if (kMission.isDestroyImprovement())
 	{
 		if (NULL != pPlot)
@@ -13442,6 +13606,57 @@ bool CvPlayer::doEspionageMission(EspionageMissionTypes eMission, PlayerTypes eT
 				bShowExplosion = true;
 			}
 		}		
+	}*/
+	if (kMission.isDestroyImprovement())
+	{
+		if (NULL != pPlot)
+		{
+			// Blow it up
+			//TSHEEP - Add nearby city to plot destruction message (if any)
+			CvCity* pNearCity = GC.getMapINLINE().findCity(pPlot->getX_INLINE(), pPlot->getY_INLINE(), eTargetPlayer, GET_PLAYER(eTargetPlayer).getTeam(), true, false);
+			if (pNearCity != NULL)
+			{
+				if (pPlot->getImprovementType() != NO_IMPROVEMENT)
+				{
+					szBuffer = gDLL->getText("TXT_KEY_ESPIONAGE_TARGET_SOMETHING_DESTROYED_NEAR_CITY", GC.getImprovementInfo(pPlot->getImprovementType()).getDescription(), pNearCity->getNameKey()).GetCString();
+					pPlot->setImprovementType((ImprovementTypes)(GC.getImprovementInfo(pPlot->getImprovementType()).getImprovementPillage()));
+					bSomethingHappened = true;
+				}
+				else if (pPlot->getRouteType() != NO_ROUTE)
+				{
+					szBuffer = gDLL->getText("TXT_KEY_ESPIONAGE_TARGET_SOMETHING_DESTROYED_NEAR_CITY", GC.getRouteInfo(pPlot->getRouteType()).getDescription(), pNearCity->getNameKey()).GetCString();
+					pPlot->setRouteType(NO_ROUTE, true);
+					bSomethingHappened = true;
+				}
+			}
+		    else if (pPlot->getImprovementType() != NO_IMPROVEMENT)
+			//if (pPlot->getImprovementType() != NO_IMPROVEMENT)
+			//TSHEEP End
+			{
+				szBuffer = gDLL->getText("TXT_KEY_ESPIONAGE_TARGET_SOMETHING_DESTROYED", GC.getImprovementInfo(pPlot->getImprovementType()).getDescription()).GetCString();
+				pPlot->setImprovementType((ImprovementTypes)(GC.getImprovementInfo(pPlot->getImprovementType()).getImprovementPillage()));
+				bSomethingHappened = true;
+			}
+			else if (pPlot->getRouteType() != NO_ROUTE)
+			{
+				szBuffer = gDLL->getText("TXT_KEY_ESPIONAGE_TARGET_SOMETHING_DESTROYED", GC.getRouteInfo(pPlot->getRouteType()).getDescription()).GetCString();
+				pPlot->setRouteType(NO_ROUTE, true);
+				bSomethingHappened = true;
+			}
+			//TSHEEP Add Radiation Effect
+			if(pSpyUnit->isAmphib())
+			{
+				pPlot->setFeatureType((FeatureTypes)(GC.getDefineINT("NUKE_FEATURE")));
+				szBuffer.append(NEWLINE);
+				szBuffer.append(gDLL->getText("TXT_KEY_ESPIONAGE_USED_RADIATION").GetCString());
+			}
+			//TSHEEP End
+
+			if (bSomethingHappened)
+			{
+				bShowExplosion = true;
+			}
+		}
 	}
 
 	//////////////////////////////
@@ -13458,8 +13673,11 @@ bool CvPlayer::doEspionageMission(EspionageMissionTypes eMission, PlayerTypes eT
 			if (NULL != pCity)
 			{
 				szBuffer = gDLL->getText("TXT_KEY_ESPIONAGE_TARGET_SOMETHING_DESTROYED_IN", GC.getBuildingInfo(eTargetBuilding).getDescription(), pCity->getNameKey()).GetCString();
-				pCity->setNumRealBuilding(eTargetBuilding, pCity->getNumRealBuilding(eTargetBuilding) - 1);
-
+				//TSHEEP - This part of the fix may not actually be necessary
+				//During the test game though it appeared that the AIs had somehow managed to accrue more than one instance of the same building, although it did not display as such.
+				//pCity->setNumRealBuilding(eTargetBuilding, pCity->getNumRealBuilding(eTargetBuilding) - 1);
+				pCity->setNumRealBuilding(eTargetBuilding, 0);//Setting the number of buildings to 0 guarantees a successful destruction, only drawback would be mods that use multiple instances of buildings, base game does not appear to.
+				//TSHEEP - End
 				bSomethingHappened = true;
 				bShowExplosion = true;
 			}
@@ -13625,8 +13843,10 @@ bool CvPlayer::doEspionageMission(EspionageMissionTypes eMission, PlayerTypes eT
 			if (NULL != pCity)
 			{
 				szBuffer = gDLL->getText("TXT_KEY_ESPIONAGE_TARGET_CITY_POISONED", pCity->getNameKey()).GetCString();
-				pCity->changeEspionageHealthCounter(kMission.getCityPoisonWaterCounter());
-
+				//TSHEEP Modify Unhappiness Based on Promotions
+				//pCity->changeEspionageHealthCounter(kMission.getCityPoisonWaterCounter());
+				pCity->changeEspionageHealthCounter((kMission.getCityPoisonWaterCounter() * (100 + pSpyUnit->getExtraFriendlyHeal()))/100);
+				//TSHEEP End
 				bShowExplosion = true;
 				bSomethingHappened = true;
 			}
@@ -13645,7 +13865,10 @@ bool CvPlayer::doEspionageMission(EspionageMissionTypes eMission, PlayerTypes eT
 			if (NULL != pCity)
 			{
 				szBuffer = gDLL->getText("TXT_KEY_ESPIONAGE_TARGET_CITY_UNHAPPY", pCity->getNameKey()).GetCString();
-				pCity->changeEspionageHappinessCounter(kMission.getCityUnhappinessCounter());
+				//TSHEEP Modify Unhappiness Based on Promotions
+				//pCity->changeEspionageHappinessCounter(kMission.getCityUnhappinessCounter());
+				pCity->changeEspionageHappinessCounter((kMission.getCityUnhappinessCounter() * (100 + pSpyUnit->getExtraEnemyHeal()))/100);
+				//TSHEEP End
 
 				bShowExplosion = true;
 				bSomethingHappened = true;
@@ -13665,8 +13888,12 @@ bool CvPlayer::doEspionageMission(EspionageMissionTypes eMission, PlayerTypes eT
 			if (NULL != pCity)
 			{
 				szBuffer = gDLL->getText("TXT_KEY_ESPIONAGE_TARGET_CITY_REVOLT", pCity->getNameKey()).GetCString();
-				pCity->changeCultureUpdateTimer(kMission.getCityRevoltCounter());
-				pCity->changeOccupationTimer(kMission.getCityRevoltCounter());
+				//TSHEEP Modify Revolt Time Based on Promotions
+				//pCity->changeCultureUpdateTimer(kMission.getCityRevoltCounter());
+				pCity->changeCultureUpdateTimer((kMission.getCityRevoltCounter() * (100 + pSpyUnit->getExtraNeutralHeal()))/100);
+				//pCity->changeOccupationTimer(kMission.getCityRevoltCounter());
+				pCity->changeOccupationTimer((kMission.getCityRevoltCounter() * (100 + pSpyUnit->getExtraNeutralHeal()))/100);
+				//TSHEEP End
 
 				bSomethingHappened = true;
 				bShowExplosion = true;
@@ -13777,8 +14004,10 @@ bool CvPlayer::doEspionageMission(EspionageMissionTypes eMission, PlayerTypes eT
 		{
 			int iTurns = (kMission.getCounterespionageNumTurns() * GC.getGameSpeedInfo(GC.getGameINLINE().getGameSpeedType()).getResearchPercent()) / 100;
 			GET_TEAM(getTeam()).changeCounterespionageTurnsLeftAgainstTeam(eTargetTeam, iTurns);
-			GET_TEAM(getTeam()).changeCounterespionageModAgainstTeam(eTargetTeam, kMission.getCounterespionageMod());
-	
+			//TSHEEP Add Intercept to counter espionage mod
+			GET_TEAM(getTeam()).changeCounterespionageModAgainstTeam(eTargetTeam, (kMission.getCounterespionageMod() + (GC.getDefineINT("SUPER_SPIES_COUNTERESPIONAGE_BONUS_MULTIPLIER") * pSpyUnit->currInterceptionProbability()))); //KEVIN
+			//GET_TEAM(getTeam()).changeCounterespionageModAgainstTeam(eTargetTeam, kMission.getCounterespionageMod());
+			//TSHEEP End
 			bSomethingHappened = true;
 
 		}		
@@ -15767,7 +15996,22 @@ void CvPlayer::read(FDataStreamBase* pStream)
 
 	ReadStreamableFFreeListTrashArray(m_plotGroups, pStream);
 	ReadStreamableFFreeListTrashArray(m_cities, pStream);
-	ReadStreamableFFreeListTrashArray(m_units, pStream);
+	ReadStreamableFFreeListTrashArray(m_units, pStream);	//load units into the game
+	//@MOD Commanders: saved game loading
+	Commanders.clear();
+	int iLoop;
+	for (CvUnit* pLoopUnit = firstUnit(&iLoop); pLoopUnit != NULL; pLoopUnit = nextUnit(&iLoop))
+	{
+		if (pLoopUnit->isCommander())	//search for GGs among loaded units and add them to Commanders array
+		{
+			Commanders.push_back(pLoopUnit);
+		}
+		else
+		{
+			pLoopUnit->gameLoadingAssignUsedCommander();
+		}
+	}
+	//end mod
 	ReadStreamableFFreeListTrashArray(m_selectionGroups, pStream);
 	ReadStreamableFFreeListTrashArray(m_eventsTriggered, pStream);
 
