@@ -725,6 +725,7 @@ void CvUnit::doTurn()
 
 	if (hasMoved())
 	{
+		// DEATHMAKER900 NON-LETHAL COMBAT BEGIN
 		if (isAlwaysHeal())
 		{
 			if (GC.getGameINLINE().isOption(GAMEOPTION_NON_LETHAL_COMBAT))
@@ -736,14 +737,16 @@ void CvUnit::doTurn()
 			}
 			else 
 			{
-				doHeal();
+				doHeal(); // original code
 			}
 		}
+		// DEATHMAKER900 NON-LETHAL COMBAT END
 	}
 	else
 	{
 		if (isHurt())
 		{
+			// DEATHMAKER900 NON-LETHAL COMBAT BEGIN
 			if (GC.getGameINLINE().isOption(GAMEOPTION_NON_LETHAL_COMBAT))
 			{
 				if (canHeal(plot()))
@@ -753,8 +756,9 @@ void CvUnit::doTurn()
 			}
 			else
 			{
-				doHeal();
+				doHeal(); // original code
 			}
+			// DEATHMAKER900 NON-LETHAL COMBAT BEGIN
 		}
 
 		if (!isCargo())
