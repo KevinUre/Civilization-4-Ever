@@ -1400,10 +1400,7 @@ void CvUnit::updateCombat(bool bQuick)
 		}
 		else
 		{
-			//@MOD Commanders                
-
-
-
+			//@MOD Commanders KEVIN
 			//USE commanders here (so their command points will be decreased) for attacker and defender:
 			this->nullUsedCommander();
 			pDefender->nullUsedCommander();
@@ -6918,7 +6915,7 @@ void CvUnit::promote(PromotionTypes ePromotion, int iLeaderUnitId)
 			if (!pWarlord->getNameNoDesc().empty())
 			{
 				setName(pWarlord->getNameKey());
-			}\
+			}
 
 			//update graphics models
 			m_eLeaderUnitType = pWarlord->getUnitType();
