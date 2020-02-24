@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by lcollins (Firaxis Games) -->
+<!-- Sid Meier's Civilization 4 -->
+<!-- Copyright Firaxis Games 2005 -->
+<!-- -->
+<!-- Game Text - New -->
+<Civ4GameText xmlns="http://www.firaxis.com">
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_LOGISTICS1</Tag>
+		<English>Logistics I</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_LOGISTICS2</Tag>
+		<English>Logistics II</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_LOGISTICS3</Tag>
+		<English>Logistics III</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_DECEPTION1</Tag>
+		<English>Deception I</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_DECEPTION2</Tag>
+		<English>Deception II</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_DECEPTION3</Tag>
+		<English>Deception III</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_SECURITY1</Tag>
+		<English>Security I</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_SECURITY2</Tag>
+		<English>Security II</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_SECURITY3</Tag>
+		<English>Security III</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_IMPROVISE1</Tag>
+		<English>Improvise I</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_IMPROVISE2</Tag>
+		<English>Improvise II</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_IMPROVISE3</Tag>
+		<English>Improvise III</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_IMPROVISE4</Tag>
+		<English>Improvise IV</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_IMPROVISE5</Tag>
+		<English>Improvise V</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_LOYALTY</Tag>
+		<English>Loyalty</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_INSTIGATOR1</Tag>
+		<English>Instigator I</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_INSTIGATOR2</Tag>
+		<English>Instigator II</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_INSTIGATOR3</Tag>
+		<English>Instigator III</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_ALCHEMIST1</Tag>
+		<English>Alchemist I</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_ALCHEMIST2</Tag>
+		<English>Alchemist II</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_ALCHEMIST3</Tag>
+		<English>Alchemist III</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_ESCAPE1</Tag>
+		<English>Escape Artist I</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_ESCAPE2</Tag>
+		<English>Escape Artist II</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNITCOMBAT_SPY</Tag>
+		<English>Espionage Units</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_UPGRADE_DISCOUNT_TEXT_SPY</Tag>
+		<English>[ICON_BULLET]%d1_percent%% Free Preparation Bonus</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_EVASION_TEXT_SPY</Tag>
+		<English>[ICON_BULLET]%d1_percent%% Detection Evasion Bonus</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_INTERCEPT_TEXT_SPY</Tag>
+		<English>[ICON_BULLET]%d1_percent%% Enemy Spy Detection Bonus</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_INTERCEPT_TEXT_SPY_COUNTER</Tag>
+		<English>[ICON_BULLET]%d1_percent%% Bonus To Counter Espionage Missions</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_EVADE_INTERCEPTION_SPY</Tag>
+		<English>[ICON_BULLET]Can Evade Enemy Detection (%d1_Amount%% Chance)</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_INTERCEPT_AIRCRAFT_SPY</Tag>
+		<English>[ICON_BULLET]Can Intercept Enemy Spies (%d1_Amount%% Chance)</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_INTERCEPT_AIRCRAFT_SPY_COUNTER</Tag>
+		<English>[ICON_BULLET]Improved Counter Espionage Missions (%d1_Amount%%)</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_LOYALTY_TEXT_SPY</Tag>
+		<English>[ICON_BULLET]Never Reveals Nationality</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_INSTIGATE_TEXT_SPY</Tag>
+		<English>[ICON_BULLET]%d1_percent%% Bonus Unrest From Missions</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_INSTIGATE2_TEXT_SPY</Tag>
+		<English>[ICON_BULLET]%d1_percent%% Bonus City Revolt From Missions</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_POISON_TEXT_SPY</Tag>
+		<English>[ICON_BULLET]%d1_percent%% Bonus Unhealthiness From Missions</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_UNIT_ESCAPE_SPY</Tag>
+		<English>[ICON_BULLET]Can Escape Capture (%d1_Amount%% Chance)</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_ESCAPE_TEXT_SPY</Tag>
+		<English>[ICON_BULLET]%d1_percent%% Bonus Escape Chance</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROMOTION_RADIATION_TEXT_SPY</Tag>
+		<English>[ICON_BULLET]Creates fallout on sabotaged improvements.</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_SPY_ESCAPED_REVEAL</Tag>
+		<English>A %s1_civ_adjective %s2_unit managed to escape from the %s3_civ_adjective city of %s4_city!</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_SPY_ESCAPED</Tag>
+		<English>A %s1_unit managed to escape from the %s2_civ_adjective city of %s3_city!</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_ESPIONAGE_TARGET_SOMETHING_DESTROYED_NEAR_CITY</Tag>
+		<English>A %s1_ThingName was destroyed by enemy infiltrators near %s2_CityName!</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_ESPIONAGE_HELP_DESTROY_IMPROVEMENT_RADIATION</Tag>
+		<English>Will create fallout on the tile.</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_ESPIONAGE_USED_RADIATION</Tag>
+		<English>A dirty bomb was used, radioactive fallout has covered the area!</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_ACTION_ASSASSIN_MISSION</Tag>
+		<English>Eliminate %s1_unit for %d2[ICON_ESPIONAGE] %d3_percent%% chance of success.</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MISSION_ASSASSIN</Tag>
+		<English>Assassinate Unit</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_MISSION_ASSASSIN_HELP</Tag>
+		<English>The spy attempts to eliminate a unit from a rival nation in the same tile.</English>
+	</TEXT>
+</Civ4GameText>

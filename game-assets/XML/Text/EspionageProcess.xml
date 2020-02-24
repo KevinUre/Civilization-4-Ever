@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by lcollins (Firaxis Games) -->
+<!-- Sid Meier's Civilization 4 -->
+<!-- Copyright Firaxis Games 2005 -->
+<!-- -->
+<!-- Game Text - New -->
+<Civ4GameText xmlns="http://www.firaxis.com">
+	<TEXT>
+		<Tag>TXT_KEY_PROCESS_ESPIONAGE</Tag>
+		<English>Espionage</English>
+		<French>
+			<Text>Espionnage</Text>
+			<Gender>Male</Gender>
+			<Plural>0</Plural>
+		</French>
+		<German>
+			<Text>Spionage</Text>
+			<Gender>Female</Gender>
+			<Plural>0</Plural>
+		</German>
+		<Italian>
+			<Text>Spionaggio</Text>
+			<Gender>Male</Gender>
+			<Plural>0</Plural>
+		</Italian>
+		<Spanish>
+			<Text>Espionaje</Text>
+			<Gender>Male</Gender>
+			<Plural>0</Plural>
+		</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_PROCESS_ESPIONAGE_STRATEGY</Tag>
+		<English>Focusing on espionage converts production into espionage within that particular city.</English>
+		<French>Si vous favorisez le espionnage, la production est transform&#233;e en espionnage dans cette ville.</French>
+		<German>Konzentrieren Sie sich auf der Spionage, tritt in der jeweiligen Stadt der Spionage an die Stelle der Produktion.</German>
+		<Italian>Concentrandoti su spionaggio, trasformerai la produzione in spionaggio in una determinata citt&#224;.</Italian>
+		<Spanish>Al centrarse en el espionaje, la producci&#243;n se convierte en cultura en esa ciudad en concreto.</Spanish>
+	</TEXT>
+</Civ4GameText>

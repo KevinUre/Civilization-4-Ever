@@ -532,6 +532,9 @@ void CyEnumsPythonInterface()
 		//DeathMaker900 Tech Pillage Begin
 		.value("GAMEOPTION_PILLAGE_TECH", GAMEOPTION_PILLAGE_TECH)
 		//DeathMaker900 Tech Pillage End
+		//DeathMaker900 Non-Lethal Combat Begin
+		.value("GAMEOPTION_NON_LETHAL_COMBAT", GAMEOPTION_NON_LETHAL_COMBAT)
+		//DeathMaker900 Non-Lethal Combat End
 		.value("GAMEOPTION_ADV_CULTURE", GAMEOPTION_ADV_CULTURE)
 		.value("NUM_GAMEOPTION_TYPES", NUM_GAMEOPTION_TYPES)
 		;

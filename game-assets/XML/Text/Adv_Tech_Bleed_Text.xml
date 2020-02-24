@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Sid Meier's Civilization 4 Beyond the Sword -->
+<!-- Modified by the World of Civilization Team -->
+<!-- Game Text Infos -->
+<!-- -->
+<Civ4GameText xmlns="http://www.firaxis.com">
+	<TEXT>
+		<Tag>TXT_KEY_GAME_OPTION_ADV_TECH_BLEED</Tag>
+		<English>Advanced Technology Bleeding</English>
+		<French>Advanced Technology Bleeding</French>
+		<German>Advanced Technology Bleeding</German>
+		<Italian>Advanced Technology Bleeding</Italian>
+		<Spanish>Advanced Technology Bleeding</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_GAME_OPTION_ADV_TECH_BLEED_HELP</Tag>
+		<English>Enables a more in depth technology bleeding system, replacing the standard one</English>
+		<French>Enables a more in depth technology bleeding system, replacing the standard one</French>
+		<German>Enables a more in depth technology bleeding system, replacing the standard one</German>
+		<Italian>Enables a more in depth technology bleeding system, replacing the standard one</Italian>
+		<Spanish>Enables a more in depth technology bleeding system, replacing the standard one</Spanish>
+	</TEXT>
+</Civ4GameText>

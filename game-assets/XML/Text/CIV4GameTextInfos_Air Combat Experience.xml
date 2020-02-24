@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by XMLSPY 2004 Professional Ed. Release 2, Installed Multi + SMP for 3 users (Firaxis Games) -->
+<!-- Sid Meier's Civilization 4 -->
+<!-- Copyright Firaxis Games 2005 -->
+<!-- -->
+<!-- Game Text Objects -->
+<Civ4GameText xmlns="http://www.firaxis.com">
+  <TEXT>
+    <Tag>TXT_KEY_MISC_YOU_UNIT_DESTROYED_ROUTE</Tag>
+    <English>Your %s1_UnitName has destroyed a %s2_RouteName!</English>
+    <French>Votre %s1_UnitName a d&#233;truit 1 %s2_RouteName !</French>
+    <German>Eure Einheit %s1_UnitName hat eine Modernisierung %s2_RouteName zerst&#246;rt!</German>
+    <Italian>La tua unit&#224; %s1_UnitName ha distrutto [NUM2:un:una] %s2_RouteName!</Italian>
+    <Spanish>[NUM1:Vuestro:Vuestra:Vuestros:Vuestras] %s1_UnitName [NUM1:ha:ha:han:han] destruido [NUM2:un:una:unos:unas] %s2_RouteName.</Spanish>
+  </TEXT>
+  <TEXT>
+    <Tag>TXT_KEY_MISC_YOU_ROUTE_WAS_DESTROYED</Tag>
+    <English>A %s1_RouteName has been destroyed by a %s3_civ_adjective %s2_UnitName!</English>
+    <French>Destruction de 1 %s1_RouteName - %s2_UnitName (%s3_civ_adjective) !</French>
+    <German>Eine Modernisierung %s1_RouteName wurde zerst&#246;rt - %s2_UnitName (%s3_civ_adjective)!</German>
+    <Italian>[NUM1:Un:Una] %s1_RouteName &#232; [NUM1:stato distrutto:stata distrutta] - %s2_UnitName (%s3_civ_adjective)!</Italian>
+    <Spanish>[NUM1:Un:Una:Unos:Unas] %s1_RouteName [NUM1:ha sido destruido:ha sido destruida:han sido destruidos:han sido destruidas] - %s2_UnitName (%s3_civ_adjective).</Spanish>
+  </TEXT>
+  <TEXT>
+    <Tag>TXT_KEY_MISC_YOU_UNIT_FAIL_DESTROY_ROUTE</Tag>
+    <English>Your %s1_UnitName has failed to destroy the %s2_RouteName!</English>
+    <French>Votre unit&#233; (%s1_UnitName) n'a pas pu d&#233;truire 1 %s2_RouteName !</French>
+    <German>Eurer Einheit %s1_UnitName ist es nicht gelungen, die Modernisierung %s2_RouteName zu zerst&#246;ren!</German>
+    <Italian>[NUM1:Il tuo: La tua: I tuoi: Le tue] %s1_UnitName non sono riusciti a distruggere %s2_RouteName!</Italian>
+    <Spanish>[NUM1:Vuestro:Vuestra:Vuestros:Vuestras] %s1_UnitName no [NUM1:ha:ha:han:han] conseguido destruir [NUM2:un:una:unos:unas] %s2_RouteName.</Spanish>
+  </TEXT>
+  <TEXT>
+    <Tag>TXT_KEY_INTERFACEMODE_AIRBOMB_HELP</Tag>
+    <English>Order the air unit to bomb the city, improvement or route in the selected tile</English>
+    <French>Order the air unit to bomb the city, improvement or route in the selected tile</French>
+    <German>Order the air unit to bomb the city, improvement or route in the selected tile</German>
+    <Italian>Order the air unit to bomb the city, improvement or route in the selected tile</Italian>
+    <Spanish>Order the air unit to bomb the city, improvement or route in the selected tile</Spanish>
+  </TEXT>
+
+</Civ4GameText>

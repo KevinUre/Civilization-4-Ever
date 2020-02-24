@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Sid Meier's Civilization 4 Beyond the Sword -->
+<!-- Modified by the World of Civilization Team -->
+<!-- Game Text Infos -->
+<!-- -->
+<Civ4GameText xmlns="http://www.firaxis.com">
+	<TEXT>
+		<Tag>TXT_KEY_GAME_OPTION_NON_LETHAL_COMBAT</Tag>
+		<English>Non-Lethal Combat</English>
+		<French>Non-Lethal Combat</French>
+		<German>Non-Lethal Combat</German>
+		<Italian>Non-Lethal Combat</Italian>
+		<Spanish>Non-Lethal Combat</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_GAME_OPTION_NON_LETHAL_COMBAT_HELP</Tag>
+		<English>Combat Rarely kills a hale soldier in one round</English>
+		<French>Combat Rarely kills a hale soldier in one round</French>
+		<German>Combat Rarely kills a hale soldier in one round</German>
+		<Italian>Combat Rarely kills a hale soldier in one round</Italian>
+		<Spanish>Combat Rarely kills a hale soldier in one round</Spanish>
+	</TEXT>
+</Civ4GameText>

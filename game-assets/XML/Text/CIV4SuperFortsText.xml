@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by lcollins (Firaxis Games) -->
+<Civ4GameText xmlns="http://www.firaxis.com">
+	<TEXT>
+		<Tag>TXT_KEY_PLOT_FORTIFY_TO_UPGRADE</Tag>
+		<English>[SPACE](Must Fortify to Become %s1_ImpName)</English>
+		<French>[SPACE](Doit fortifier pour devenir 1 %s1_ImpName)</French>
+		<German>[SPACE](Muss starken, um zur Modernisierung %s1_ImpName zu werden)</German>
+		<Italian>[SPACE](Deve fortificare per diventare %s1_ImpName)</Italian>
+		<Spanish>[SPACE](Debe fortalecer para convertirse en [NUM1:un:una:unos:unas] %s1:1_ImpName)</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_IMPROVEMENT_PLOT_CULTURE</Tag>
+		<English>[ICON_BULLET]%D1_Change[ICON_CULTURE] for owner in plot</English>
+		<French>[ICON_BULLET]%D1_Change[ICON_CULTURE] pour le propriétaire dans la parcelle</French>
+		<German>[ICON_BULLET]%D1_Change[ICON_CULTURE] für Besitzer in Plot</German>
+		<Italian>[ICON_BULLET]%D1_Change[ICON_CULTURE] per il proprietario di complotto</Italian>
+		<Spanish>[ICON_BULLET]%D1_Change[ICON_CULTURE] para el propietario de la parcela</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_IMPROVEMENT_CULTURE_RANGE</Tag>
+		<English>[ICON_BULLET]Influences plots within a distance of %d1_Num</English>
+		<French>[ICON_BULLET]Influences des parcelles dans un rayon de %d1_Num</French>
+		<German>[ICON_BULLET]Einflüsse Plots innerhalb einer Entfernung von %d1_Num</German>
+		<Italian>[ICON_BULLET]Trame influenze entro una distanza di %d1_Num</Italian>
+		<Spanish>[ICON_BULLET]Influye en las parcelas dentro de una distancia de %d1_Num</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_IMPROVEMENT_BOMBARD</Tag>
+		<English>[ICON_BULLET]Can be bombarded</English>
+		<French>[ICON_BULLET]Peut-être bombardés</French>
+		<German>[ICON_BULLET]Beschossen werden kann</German>
+		<Italian>[ICON_BULLET]Può essere bombardati</Italian>
+		<Spanish>[ICON_BULLET]Puede ser bombardeado</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_IMPROVEMENT_FORTIFY_TO_UPGRADE</Tag>
+		<English>[ICON_BULLET]A unit must fortify to upgrade</English>
+		<French>[ICON_BULLET]Une unité doit renforcer pour mettre à niveau</French>
+		<German>[ICON_BULLET]Eine Unit muss stärken, um ein Upgrade</German>
+		<Italian>[ICON_BULLET]Una unità deve fortificare l'aggiornamento</Italian>
+		<Spanish>[ICON_BULLET]Una unidad debe fortalecer para mejorar</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_IMPROVEMENT_VISIBILITY_RANGE</Tag>
+		<English>[ICON_BULLET]%D1_Change Visibility Range</English>
+		<French>[ICON_BULLET]Champ de vision %D1_Change</French>
+		<German>[ICON_BULLET]%D1_Change Sichtweite</German>
+		<Italian>[ICON_BULLET]%D1_Change raggio di visibilit&#224;</Italian>
+		<Spanish>[ICON_BULLET]%D1_Change al alcance de la visibilidad</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_IMPROVEMENT_SEE_FROM</Tag>
+		<English>[ICON_BULLET]%D1_Change Visibility Height</English>
+		<French>[ICON_BULLET]%D1_Change Hauteur Visibilité</French>
+		<German>[ICON_BULLET]%D1_Change Visibility Height</German>
+		<Italian>[ICON_BULLET]%D1_Change visibilità Altezza</Italian>
+		<Spanish>[ICON_BULLET]%D1_Change visibilidad Altura</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_IMPROVEMENT_UNIQUE_RANGE</Tag>
+		<English>[ICON_BULLET]Cannot build another within a distance of %d1_Num</English>
+		<French>[ICON_BULLET]Impossible de construire un autre a une distance de %d1_Num</French>
+		<German>[ICON_BULLET]Kann nicht bauen ein anderer in einem Abstand von %d1_Num</German>
+		<Italian>[ICON_BULLET]Non è possibile costruire un altro ad una distanza di %d1_Num</Italian>
+		<Spanish>[ICON_BULLET]No se puede construir otro a una distancia de %d1_Num</Spanish>
+	</TEXT>
+</Civ4GameText>

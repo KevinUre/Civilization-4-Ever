@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Sid Meier's Civilization 4 Beyond the Sword -->
+<!-- Modified by the World of Civilization Team -->
+<!-- Game Text Infos -->
+<!-- -->
+<Civ4GameText xmlns="http://www.firaxis.com">
+	<TEXT>
+		<Tag>TXT_KEY_GAME_OPTION_ADV_CULTURE</Tag>
+		<English>Improved Culture Warfare</English>
+		<French>Improved Culture Warfare</French>
+		<German>Improved Culture Warfare</German>
+		<Italian>Improved Culture Warfare</Italian>
+		<Spanish>Improved Culture Warfare</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_GAME_OPTION_ADV_CULTURE_HELP</Tag>
+		<English>This removes the free culture from cities, replacing it with a system which is entirely dependent on distance from city and culture production.</English>
+		<French>This removes the free culture from cities, replacing it with a system which is entirely dependent on distance from city and culture production.</French>
+		<German>This removes the free culture from cities, replacing it with a system which is entirely dependent on distance from city and culture production.</German>
+		<Italian>This removes the free culture from cities, replacing it with a system which is entirely dependent on distance from city and culture production.</Italian>
+		<Spanish>This removes the free culture from cities, replacing it with a system which is entirely dependent on distance from city and culture production.</Spanish>
+	</TEXT>
+</Civ4GameText>
