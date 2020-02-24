@@ -1209,6 +1209,7 @@ void CvUnit::resolveCombat(CvUnit* pDefender, CvPlot* pPlot, CvBattleDefinition&
 			break;
 		}
 
+		// DEATHMAKER900 NON-LETHAL COMBAT BEGIN
 		if (GC.getGameINLINE().isOption(GAMEOPTION_NON_LETHAL_COMBAT)) 
 		{
 			if (iCombatRoundCount >= GC.getDefineINT("MAX_COMBAT_ROUNDS")) {
@@ -1223,6 +1224,7 @@ void CvUnit::resolveCombat(CvUnit* pDefender, CvPlot* pPlot, CvBattleDefinition&
 				iCombatRoundCount++;
 			}
 		}
+		// DEATHMAKER900 NON-LETHAL COMBAT END
 
 		if (getCombatFirstStrikes() > 0)
 		{
@@ -3503,6 +3505,7 @@ bool CvUnit::canHeal(const CvPlot* pPlot) const
 		return false;
 	}
 
+	// DEATHMAKER900 NON-LETHAL COMBAT BEGIN
 	if (GC.getGameINLINE().isOption(GAMEOPTION_NON_LETHAL_COMBAT))
 	{
 		for (int iI = 0; iI < NUM_DIRECTION_TYPES; iI++)
@@ -3532,6 +3535,7 @@ bool CvUnit::canHeal(const CvPlot* pPlot) const
 			}
 		}
 	}
+	// DEATHMAKER900 NON-LETHAL COMBAT END
 
 	return true;
 }
@@ -6921,10 +6925,12 @@ void CvUnit::promote(PromotionTypes ePromotion, int iLeaderUnitId)
 	if (!GC.getPromotionInfo(ePromotion).isLeader())
 	{
 		changeLevel(1);
+		// DEATHMAKER900 NON-LETHAL COMBAT BEGIN
 		if (!GC.getGameINLINE().isOption(GAMEOPTION_NON_LETHAL_COMBAT)) 
 		{
-			changeDamage(-(getDamage() / 2));
+			changeDamage(-(getDamage() / 2)); //origional code
 		}
+		// DEATHMAKER900 NON-LETHAL COMBAT END
 	}
 
 	setHasPromotion(ePromotion, true);
@@ -13232,11 +13238,13 @@ void CvUnit::getDefenderCombatValues(CvUnit& kDefender, const CvPlot* pPlot, int
 
 	int iStrengthFactor = ((iOurFirepower + iTheirFirepower + 1) / 2);
 
+	// DEATHMAKER900 NON-LETHAL COMBAT BEGIN
 	if (GC.getGameINLINE().isOption(GAMEOPTION_NON_LETHAL_COMBAT)) 
 	{
 		iOurDamage = std::max(1, ((GC.getDefineINT("NLCGO_COMBAT_STRENGTH_NOMINATOR") * GC.getDefineINT("COMBAT_DAMAGE") / GC.getDefineINT("NLCGO_COMBAT_STRENGTH_DENUMERATOR")) * (iTheirFirepower + iStrengthFactor)) / (iOurFirepower + iStrengthFactor));
 		iTheirDamage = std::max(1, ((GC.getDefineINT("NLCGO_COMBAT_STRENGTH_NOMINATOR") * GC.getDefineINT("COMBAT_DAMAGE") / GC.getDefineINT("NLCGO_COMBAT_STRENGTH_DENUMERATOR")) * (iOurFirepower + iStrengthFactor)) / (iTheirFirepower + iStrengthFactor));
 	}
+	// DEATHMAKER900 NON-LETHAL COMBAT END
 	else
 	{
 		iOurDamage = std::max(1, ((GC.getDefineINT("COMBAT_DAMAGE") * (iTheirFirepower + iStrengthFactor)) / (iOurFirepower + iStrengthFactor)));
