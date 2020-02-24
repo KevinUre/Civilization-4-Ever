@@ -6929,7 +6929,7 @@ void CvUnit::promote(PromotionTypes ePromotion, int iLeaderUnitId)
 		// DEATHMAKER900 NON-LETHAL COMBAT BEGIN
 		if (!GC.getGameINLINE().isOption(GAMEOPTION_NON_LETHAL_COMBAT)) 
 		{
-			changeDamage(-(getDamage() / 2)); //origional code
+			changeDamage(-(getDamage() / 2)); //original code
 		}
 		// DEATHMAKER900 NON-LETHAL COMBAT END
 	}
