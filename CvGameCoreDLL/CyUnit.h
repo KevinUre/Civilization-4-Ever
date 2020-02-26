@@ -59,6 +59,9 @@ public:
 	bool canAirPatrol(CyPlot* pPlot);
 	bool canSeaPatrol(CyPlot* pPlot);
 	bool canHeal(CyPlot* pPlot);
+	// DEATHMAKER900 NON-LETHAL COMBAT BEGIN
+	bool canHealAtEndOfTurn(CyPlot* pPlot);
+	// DEATHMAKER900 NON-LETHAL COMBAT END
 	bool canSentry(CyPlot* pPlot);
 
 	bool canAirlift(CyPlot* pPlot);

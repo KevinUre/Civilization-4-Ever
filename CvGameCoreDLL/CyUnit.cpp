@@ -206,6 +206,13 @@ bool CyUnit::canHeal(CyPlot* pPlot)
 	return m_pUnit ? m_pUnit->canHeal(pPlot->getPlot()) : false;
 }
 
+// DEATHMAKER900 NON-LETHAL COMBAT BEGIN
+bool CyUnit::canHealAtEndOfTurn(CyPlot* pPlot)
+{
+	return m_pUnit ? m_pUnit->canHealAtEndOfTurn(pPlot->getPlot()) : false;
+}
+// DEATHMAKER900 NON-LETHAL COMBAT END
+
 bool CyUnit::canSentry(CyPlot* pPlot)
 {
 	return m_pUnit ? m_pUnit->canSentry(pPlot->getPlot()) : false;

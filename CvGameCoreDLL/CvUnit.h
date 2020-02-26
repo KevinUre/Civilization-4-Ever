@@ -143,6 +143,9 @@ public:
 	bool canSeaPatrol(const CvPlot* pPlot) const;																									// Exposed to Python
 
 	bool canHeal(const CvPlot* pPlot) const;																											// Exposed to Python
+	// DEATHMAKER900 NON-LETHAL COMBAT BEGIN
+	bool canHealAtEndOfTurn(const CvPlot* pPlot) const;																											// Exposed to Python
+	// DEATHMAKER900 NON-LETHAL COMBAT BEGIN
 	bool canSentry(const CvPlot* pPlot) const;																										// Exposed to Python
 
 	int healRate(const CvPlot* pPlot) const;

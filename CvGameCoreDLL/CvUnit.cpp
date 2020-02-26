@@ -730,7 +730,7 @@ void CvUnit::doTurn()
 			// DEATHMAKER900 NON-LETHAL COMBAT BEGIN
 			if (GC.getGameINLINE().isOption(GAMEOPTION_NON_LETHAL_COMBAT))
 			{
-				if (canHeal(plot())) 
+				if (canHealAtEndOfTurn(plot()))
 				{
 					doHeal();
 				}
@@ -749,7 +749,7 @@ void CvUnit::doTurn()
 			// DEATHMAKER900 NON-LETHAL COMBAT BEGIN
 			if (GC.getGameINLINE().isOption(GAMEOPTION_NON_LETHAL_COMBAT))
 			{
-				if (canHeal(plot()))
+				if (canHealAtEndOfTurn(plot()))
 				{
 					doHeal();
 				}
@@ -3486,6 +3486,51 @@ void CvUnit::airCircle(bool bStart)
 
 		gDLL->getEntityIFace()->AddMission( &kDefinition );
 	}
+}
+
+bool CvUnit::canHealAtEndOfTurn(const CvPlot* pPlot) const
+{
+	if (!isHurt())
+	{
+		return false;
+	}
+
+	if (healRate(pPlot) <= 0)
+	{
+		return false;
+	}
+
+	if (GC.getGameINLINE().isOption(GAMEOPTION_NON_LETHAL_COMBAT))
+	{
+		for (int iI = 0; iI < NUM_DIRECTION_TYPES; iI++)
+		{
+			CvPlot* pLoopPlot = plotDirection(getX_INLINE(), getY_INLINE(), ((DirectionTypes)iI));
+			std::vector<CvUnit*> aUnits;
+			CLLNode<IDInfo>* pUnitNode = pLoopPlot->headUnitNode();
+			if (pUnitNode == NULL) { continue; }
+			while (pUnitNode != NULL)
+			{
+				CvUnit* pLoopUnit = ::getUnit(pUnitNode->m_data);
+				pUnitNode = pLoopPlot->nextUnitNode(pUnitNode);
+				if (NULL != pLoopUnit)
+				{
+					aUnits.push_back(pLoopUnit);
+				}
+			}
+			std::vector<CvUnit*>::iterator it = aUnits.begin();
+			while (it != aUnits.end())
+			{
+				CvUnit* pLoopUnit = *it;
+				if (pLoopUnit->isEnemy(getTeam()) && !pLoopUnit->isSpy())
+				{
+					return false;
+				}
+				++it;
+			}
+		}
+	}
+
+	return true;
 }
 
 
