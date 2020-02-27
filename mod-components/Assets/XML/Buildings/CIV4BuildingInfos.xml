@@ -68,7 +68,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>160</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -238,7 +238,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>200</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -304,13 +304,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>4</iCommerce>
+				<iCommerce>2</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -422,7 +418,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>800</iCost>
-			<iHurryCostModifier>100</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -488,13 +484,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>10</iCommerce>
+				<iCommerce>5</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -606,7 +598,7 @@
 			<bCenterInCity>1</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>50</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -658,7 +650,7 @@
 			<iGlobalPopulationChange>0</iGlobalPopulationChange>
 			<iFreeTechs>0</iFreeTechs>
 			<iDefense>50</iDefense>
-			<iBombardDefense>50</iBombardDefense>
+			<iBombardDefense>25</iBombardDefense>
 			<iAllCityDefense>0</iAllCityDefense>
 			<iEspionageDefense>0</iEspionageDefense>
 			<iAsset>1</iAsset>
@@ -778,7 +770,7 @@
 			<bCenterInCity>1</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>50</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -830,7 +822,7 @@
 			<iGlobalPopulationChange>0</iGlobalPopulationChange>
 			<iFreeTechs>0</iFreeTechs>
 			<iDefense>50</iDefense>
-			<iBombardDefense>50</iBombardDefense>
+			<iBombardDefense>25</iBombardDefense>
 			<iAllCityDefense>0</iAllCityDefense>
 			<iEspionageDefense>0</iEspionageDefense>
 			<iAsset>1</iAsset>
@@ -950,7 +942,7 @@
 			<bCenterInCity>1</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>100</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -1002,7 +994,7 @@
 			<iGlobalPopulationChange>0</iGlobalPopulationChange>
 			<iFreeTechs>0</iFreeTechs>
 			<iDefense>50</iDefense>
-			<iBombardDefense>25</iBombardDefense>
+			<iBombardDefense>50</iBombardDefense>
 			<iAllCityDefense>0</iAllCityDefense>
 			<iEspionageDefense>0</iEspionageDefense>
 			<iAsset>2</iAsset>
@@ -1018,11 +1010,7 @@
 				<iCommerce>0</iCommerce>
 				<iCommerce>1</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
@@ -1148,7 +1136,7 @@
 			<bCenterInCity>1</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>100</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -1200,7 +1188,7 @@
 			<iGlobalPopulationChange>0</iGlobalPopulationChange>
 			<iFreeTechs>0</iFreeTechs>
 			<iDefense>50</iDefense>
-			<iBombardDefense>25</iBombardDefense>
+			<iBombardDefense>50</iBombardDefense>
 			<iAllCityDefense>0</iAllCityDefense>
 			<iEspionageDefense>0</iEspionageDefense>
 			<iAsset>2</iAsset>
@@ -1216,11 +1204,7 @@
 				<iCommerce>0</iCommerce>
 				<iCommerce>1</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
@@ -1351,7 +1335,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>50</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier> 
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -1523,7 +1507,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>60</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -1694,7 +1678,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>60</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -1861,7 +1845,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>60</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -2028,7 +2012,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>100</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -2190,7 +2174,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>100</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -2357,7 +2341,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>60</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -2537,7 +2521,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>60</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -2605,11 +2589,7 @@
 				<iCommerce>0</iCommerce>
 				<iCommerce>2</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -2724,7 +2704,7 @@
 			<bCenterInCity>1</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>100</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -2891,7 +2871,7 @@
 			<bCenterInCity>1</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>100</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -3057,7 +3037,7 @@
 			<bCenterInCity>1</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>100</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -3223,7 +3203,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>200</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -3385,7 +3365,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>300</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -3552,7 +3532,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>60</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>10</iMinAreaSize>
@@ -3721,7 +3701,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>60</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>10</iMinAreaSize>
@@ -3890,7 +3870,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>80</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>10</iMinAreaSize>
@@ -4070,7 +4050,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>100</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>10</iMinAreaSize>
@@ -4245,7 +4225,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>180</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>10</iMinAreaSize>
@@ -4412,7 +4392,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>180</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>10</iMinAreaSize>
@@ -4588,7 +4568,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>120</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>20</iMinAreaSize>
@@ -4760,7 +4740,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>250</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -4932,7 +4912,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>120</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -5011,7 +4991,7 @@
 			<SpecialistCounts>
 				<SpecialistCount>
 					<SpecialistType>SPECIALIST_ENGINEER</SpecialistType>
-					<iSpecialistCount>1</iSpecialistCount>
+					<iSpecialistCount>2</iSpecialistCount>
 				</SpecialistCount>
 			</SpecialistCounts>
 			<FreeSpecialistCounts/>
@@ -5122,7 +5102,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>120</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -5203,7 +5183,7 @@
 			<SpecialistCounts>
 				<SpecialistCount>
 					<SpecialistType>SPECIALIST_ENGINEER</SpecialistType>
-					<iSpecialistCount>1</iSpecialistCount>
+					<iSpecialistCount>2</iSpecialistCount>
 				</SpecialistCount>
 			</SpecialistCounts>
 			<FreeSpecialistCounts/>
@@ -5318,7 +5298,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>250</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -5509,7 +5489,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>250</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -5700,7 +5680,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>150</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -5775,7 +5755,7 @@
 			<FreeSpecialistCounts/>
 			<CommerceFlexibles/>
 			<CommerceChangeOriginalOwners/>
-			<ConstructSound>AS2D_BUILD_PLANTCOAL</ConstructSound>
+			<ConstructSound/>
 			<BonusHealthChanges/>
 			<BonusHappinessChanges/>
 			<BonusProductionModifiers/>
@@ -5867,7 +5847,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>150</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -6039,7 +6019,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>200</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -6206,7 +6186,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>250</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -6373,7 +6353,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>200</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -6566,7 +6546,7 @@
 			<bCenterInCity>1</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>30</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier> 
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -6634,11 +6614,7 @@
 				<iCommerce>0</iCommerce>
 				<iCommerce>1</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -6741,7 +6717,7 @@
 			<bCenterInCity>1</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>30</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -6809,11 +6785,7 @@
 				<iCommerce>0</iCommerce>
 				<iCommerce>1</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -6921,7 +6893,7 @@
 			<bCenterInCity>1</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>30</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -6989,11 +6961,7 @@
 				<iCommerce>0</iCommerce>
 				<iCommerce>1</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
@@ -7100,7 +7068,7 @@
 			<bCenterInCity>1</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>30</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -7168,11 +7136,7 @@
 				<iCommerce>0</iCommerce>
 				<iCommerce>1</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -7275,7 +7239,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>150</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -7442,7 +7406,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>-1</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -7620,7 +7584,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>90</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -7688,11 +7652,7 @@
 				<iCommerce>0</iCommerce>
 				<iCommerce>2</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers>
 				<iCommerce>0</iCommerce>
 				<iCommerce>25</iCommerce>
@@ -7705,7 +7665,7 @@
 			<SpecialistCounts>
 				<SpecialistCount>
 					<SpecialistType>SPECIALIST_SCIENTIST</SpecialistType>
-					<iSpecialistCount>2</iSpecialistCount>
+					<iSpecialistCount>1</iSpecialistCount>
 				</SpecialistCount>
 			</SpecialistCounts>
 			<FreeSpecialistCounts/>
@@ -7803,7 +7763,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>90</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -7871,11 +7831,7 @@
 				<iCommerce>0</iCommerce>
 				<iCommerce>4</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers>
 				<iCommerce>0</iCommerce>
 				<iCommerce>25</iCommerce>
@@ -7888,7 +7844,7 @@
 			<SpecialistCounts>
 				<SpecialistCount>
 					<SpecialistType>SPECIALIST_SCIENTIST</SpecialistType>
-					<iSpecialistCount>2</iSpecialistCount>
+					<iSpecialistCount>1</iSpecialistCount>
 				</SpecialistCount>
 				<SpecialistCount>
 					<SpecialistType>SPECIALIST_PRIEST</SpecialistType>
@@ -7990,7 +7946,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>200</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -8056,13 +8012,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>3</iCommerce>
+				<iCommerce>2</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers>
 				<iCommerce>0</iCommerce>
 				<iCommerce>25</iCommerce>
@@ -8072,7 +8024,12 @@
 			<StateReligionCommerces/>
 			<CommerceHappinesses/>
 			<ReligionChanges/>
-			<SpecialistCounts/>
+			<SpecialistCounts>
+				<SpecialistCount>
+					<SpecialistType>SPECIALIST_SCIENTIST</SpecialistType>
+					<iSpecialistCount>1</iSpecialistCount>
+				</SpecialistCount>
+			</SpecialistCounts>
 			<FreeSpecialistCounts/>
 			<CommerceFlexibles/>
 			<CommerceChangeOriginalOwners/>
@@ -8173,7 +8130,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>200</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -8241,11 +8198,7 @@
 				<iCommerce>0</iCommerce>
 				<iCommerce>3</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers>
 				<iCommerce>0</iCommerce>
 				<iCommerce>35</iCommerce>
@@ -8255,7 +8208,12 @@
 			<StateReligionCommerces/>
 			<CommerceHappinesses/>
 			<ReligionChanges/>
-			<SpecialistCounts/>
+			<SpecialistCounts>
+				<SpecialistCount>
+					<SpecialistType>SPECIALIST_SCIENTIST</SpecialistType>
+					<iSpecialistCount>1</iSpecialistCount>
+				</SpecialistCount>
+			</SpecialistCounts>
 			<FreeSpecialistCounts/>
 			<CommerceFlexibles/>
 			<CommerceChangeOriginalOwners/>
@@ -8351,7 +8309,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>150</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -8521,7 +8479,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>150</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -8696,7 +8654,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>250</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -8871,7 +8829,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>250</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -9056,7 +9014,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>50</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -9124,11 +9082,7 @@
 				<iCommerce>0</iCommerce>
 				<iCommerce>3</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -9245,7 +9199,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>50</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -9313,11 +9267,7 @@
 				<iCommerce>0</iCommerce>
 				<iCommerce>3</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
@@ -9438,7 +9388,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>50</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -9506,11 +9456,7 @@
 				<iCommerce>0</iCommerce>
 				<iCommerce>3</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -9622,7 +9568,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>80</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -9788,7 +9734,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>80</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -9856,11 +9802,7 @@
 				<iCommerce>0</iCommerce>
 				<iCommerce>3</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -9972,7 +9914,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>80</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -10138,7 +10080,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>80</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -10304,7 +10246,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>175</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -10457,7 +10399,12 @@
 			<TechTypes/>
 			<Bonus>NONE</Bonus>
 			<PrereqBonuses/>
-			<ProductionTraits/>
+			<ProductionTraits>
+				<ProductionTrait>
+					<ProductionTraitType>TRAIT_FINANCIAL</ProductionTraitType>
+					<iProductionTrait>100</iProductionTrait>
+				</ProductionTrait>
+			</ProductionTraits>
 			<HappinessTraits/>
 			<NoBonus>NONE</NoBonus>
 			<PowerBonus>NONE</PowerBonus>
@@ -10492,7 +10439,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>150</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -10643,7 +10590,12 @@
 			<TechTypes/>
 			<Bonus>NONE</Bonus>
 			<PrereqBonuses/>
-			<ProductionTraits/>
+			<ProductionTraits>
+				<ProductionTrait>
+					<ProductionTraitType>TRAIT_FINANCIAL</ProductionTraitType>
+					<iProductionTrait>100</iProductionTrait>
+				</ProductionTrait>
+			</ProductionTraits>
 			<HappinessTraits/>
 			<NoBonus>NONE</NoBonus>
 			<PowerBonus>NONE</PowerBonus>
@@ -10678,7 +10630,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>150</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -10868,7 +10820,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>150</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -11058,7 +11010,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>150</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -11244,7 +11196,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>200</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -11408,7 +11360,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>200</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -11572,7 +11524,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>150</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -11649,7 +11601,7 @@
 			<FreeSpecialistCounts/>
 			<CommerceFlexibles/>
 			<CommerceChangeOriginalOwners/>
-			<ConstructSound>AS2D_BUILD_SUPERMARKET</ConstructSound>
+			<ConstructSound>AS2D_BUILD_GROCERY</ConstructSound>
 			<BonusHealthChanges>
 				<BonusHealthChange>
 					<BonusType>BONUS_COW</BonusType>
@@ -11758,7 +11710,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>150</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -11964,7 +11916,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>120</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -12145,7 +12097,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>90</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -12326,7 +12278,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>120</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -12507,7 +12459,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>90</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -12683,7 +12635,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>120</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -12864,7 +12816,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>120</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -13045,7 +12997,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>180</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -13210,7 +13162,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>180</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -13343,7 +13295,12 @@
 			<TechTypes/>
 			<Bonus>NONE</Bonus>
 			<PrereqBonuses/>
-			<ProductionTraits/>
+			<ProductionTraits>
+				<ProductionTrait>
+					<ProductionTraitType>TRAIT_PROTECTIVE</ProductionTraitType>
+					<iProductionTrait>100</iProductionTrait>
+				</ProductionTrait>
+			</ProductionTraits>
 			<HappinessTraits/>
 			<NoBonus>NONE</NoBonus>
 			<PowerBonus>NONE</PowerBonus>
@@ -13472,7 +13429,12 @@
 			<BonusHealthChanges/>
 			<BonusHappinessChanges/>
 			<BonusProductionModifiers/>
-			<UnitCombatFreeExperiences/>
+			<UnitCombatFreeExperiences>
+				<UnitCombatFreeExperience>
+					<UnitCombatType>UNITCOMBAT_SPY</UnitCombatType>
+					<iExperience>2</iExperience>
+				</UnitCombatFreeExperience>
+			</UnitCombatFreeExperiences>
 			<DomainFreeExperiences/>
 			<DomainProductionModifiers/>
 			<BuildingHappinessChanges/>
@@ -13520,14 +13482,19 @@
 			<TechTypes/>
 			<Bonus>NONE</Bonus>
 			<PrereqBonuses/>
-			<ProductionTraits/>
+			<ProductionTraits>
+				<ProductionTrait>
+					<ProductionTraitType>TRAIT_PROTECTIVE</ProductionTraitType>
+					<iProductionTrait>100</iProductionTrait>
+				</ProductionTrait>
+			</ProductionTraits>
 			<HappinessTraits/>
 			<NoBonus>NONE</NoBonus>
 			<PowerBonus>NONE</PowerBonus>
 			<FreeBonus>NONE</FreeBonus>
 			<iNumFreeBonuses>0</iNumFreeBonuses>
 			<FreeBuilding>NONE</FreeBuilding>
-			<FreePromotion>NONE</FreePromotion>
+			<FreePromotion>PROMOTION_SECURITY1</FreePromotion>
 			<CivicOption>NONE</CivicOption>
 			<GreatPeopleUnitClass>NONE</GreatPeopleUnitClass>
 			<iGreatPeopleRateChange>0</iGreatPeopleRateChange>
@@ -13727,7 +13694,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>80</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -13795,11 +13762,7 @@
 				<iCommerce>0</iCommerce>
 				<iCommerce>1</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -13902,7 +13865,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>300</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -14088,7 +14051,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>60</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -14156,11 +14119,7 @@
 				<iCommerce>0</iCommerce>
 				<iCommerce>2</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers>
 				<iCommerce>0</iCommerce>
 				<iCommerce>10</iCommerce>
@@ -14261,7 +14220,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>-1</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -14327,13 +14286,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>4</iCommerce>
+				<iCommerce>2</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -14445,7 +14400,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>80</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -14513,11 +14468,7 @@
 				<iCommerce>0</iCommerce>
 				<iCommerce>1</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -14620,7 +14571,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>300</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -14806,7 +14757,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>60</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -14874,11 +14825,7 @@
 				<iCommerce>0</iCommerce>
 				<iCommerce>2</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers>
 				<iCommerce>0</iCommerce>
 				<iCommerce>10</iCommerce>
@@ -14979,7 +14926,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>-1</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -15045,13 +14992,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>4</iCommerce>
+				<iCommerce>2</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -15163,7 +15106,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>80</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -15231,11 +15174,7 @@
 				<iCommerce>0</iCommerce>
 				<iCommerce>1</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -15338,7 +15277,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>300</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -15524,7 +15463,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>60</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -15592,11 +15531,7 @@
 				<iCommerce>0</iCommerce>
 				<iCommerce>2</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers>
 				<iCommerce>0</iCommerce>
 				<iCommerce>10</iCommerce>
@@ -15697,7 +15632,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>-1</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -15763,13 +15698,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>4</iCommerce>
+				<iCommerce>2</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -15881,7 +15812,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>80</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -15949,11 +15880,7 @@
 				<iCommerce>0</iCommerce>
 				<iCommerce>1</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -16056,7 +15983,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>300</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -16242,7 +16169,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>60</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -16310,11 +16237,7 @@
 				<iCommerce>0</iCommerce>
 				<iCommerce>2</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers>
 				<iCommerce>0</iCommerce>
 				<iCommerce>10</iCommerce>
@@ -16415,7 +16338,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>-1</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -16481,13 +16404,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>4</iCommerce>
+				<iCommerce>2</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -16599,7 +16518,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>80</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -16667,11 +16586,7 @@
 				<iCommerce>0</iCommerce>
 				<iCommerce>1</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -16774,7 +16689,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>300</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -16960,7 +16875,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>60</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -17028,11 +16943,7 @@
 				<iCommerce>0</iCommerce>
 				<iCommerce>2</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers>
 				<iCommerce>0</iCommerce>
 				<iCommerce>10</iCommerce>
@@ -17133,7 +17044,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>-1</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -17199,13 +17110,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>4</iCommerce>
+				<iCommerce>2</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -17317,7 +17224,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>80</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -17385,11 +17292,7 @@
 				<iCommerce>0</iCommerce>
 				<iCommerce>1</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -17492,7 +17395,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>300</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -17678,7 +17581,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>60</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -17746,11 +17649,7 @@
 				<iCommerce>0</iCommerce>
 				<iCommerce>2</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers>
 				<iCommerce>0</iCommerce>
 				<iCommerce>10</iCommerce>
@@ -17851,7 +17750,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>-1</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -17917,13 +17816,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>4</iCommerce>
+				<iCommerce>2</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -18035,7 +17930,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>80</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -18103,11 +17998,7 @@
 				<iCommerce>0</iCommerce>
 				<iCommerce>1</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -18210,7 +18101,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>300</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -18396,7 +18287,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>60</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -18464,11 +18355,7 @@
 				<iCommerce>0</iCommerce>
 				<iCommerce>2</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers>
 				<iCommerce>0</iCommerce>
 				<iCommerce>10</iCommerce>
@@ -18569,7 +18456,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>-1</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -18635,13 +18522,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>4</iCommerce>
+				<iCommerce>2</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -18753,7 +18636,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>200</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -18819,13 +18702,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>4</iCommerce>
+				<iCommerce>2</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -18933,7 +18812,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>250</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -18999,13 +18878,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>4</iCommerce>
+				<iCommerce>2</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -19113,7 +18988,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>300</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -19179,13 +19054,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>6</iCommerce>
+				<iCommerce>3</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -19298,7 +19169,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>300</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -19364,13 +19235,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>3</iCommerce>
+				<iCommerce>2</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -19473,7 +19340,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>300</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -19644,7 +19511,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>400</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -19710,13 +19577,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>4</iCommerce>
+				<iCommerce>3</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers>
 				<iCommerce>0</iCommerce>
 				<iCommerce>100</iCommerce>
@@ -19837,7 +19700,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>600</iCost>
-			<iHurryCostModifier>100</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -20016,7 +19879,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>700</iCost>
-			<iHurryCostModifier>100</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -20210,7 +20073,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>800</iCost>
-			<iHurryCostModifier>100</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -20381,7 +20244,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>500</iCost>
-			<iHurryCostModifier>100</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -20447,13 +20310,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>4</iCommerce>
+				<iCommerce>2</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -20556,7 +20415,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>600</iCost>
-			<iHurryCostModifier>100</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -20622,13 +20481,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>2</iCommerce>
+				<iCommerce>1</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -20703,7 +20558,7 @@
 			<FreeBonus>NONE</FreeBonus>
 			<iNumFreeBonuses>0</iNumFreeBonuses>
 			<FreeBuilding>NONE</FreeBuilding>
-			<FreePromotion>NONE</FreePromotion>
+			<FreePromotion>PROMOTION_LOYALTY</FreePromotion>
 			<CivicOption>NONE</CivicOption>
 			<GreatPeopleUnitClass>NONE</GreatPeopleUnitClass>
 			<iGreatPeopleRateChange>0</iGreatPeopleRateChange>
@@ -20815,7 +20670,12 @@
 			<BonusHealthChanges/>
 			<BonusHappinessChanges/>
 			<BonusProductionModifiers/>
-			<UnitCombatFreeExperiences/>
+			<UnitCombatFreeExperiences>
+				<UnitCombatFreeExperience>
+					<UnitCombatType>UNITCOMBAT_SPY</UnitCombatType>
+					<iExperience>3</iExperience>
+				</UnitCombatFreeExperience>
+			</UnitCombatFreeExperiences>
 			<DomainFreeExperiences/>
 			<DomainProductionModifiers/>
 			<BuildingHappinessChanges/>
@@ -20898,7 +20758,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>500</iCost>
-			<iHurryCostModifier>100</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -20964,13 +20824,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>6</iCommerce>
+				<iCommerce>3</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -21072,7 +20928,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>120</iCost>
-			<iHurryCostModifier>100</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -21138,13 +20994,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>8</iCommerce>
+				<iCommerce>4</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -21251,7 +21103,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>350</iCost>
-			<iHurryCostModifier>100</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -21317,13 +21169,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>8</iCommerce>
+				<iCommerce>4</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -21442,7 +21290,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>200</iCost>
-			<iHurryCostModifier>100</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>10</iMinAreaSize>
@@ -21487,7 +21335,7 @@
 			<iSpaceProductionModifier>0</iSpaceProductionModifier>
 			<iGlobalSpaceProductionModifier>0</iGlobalSpaceProductionModifier>
 			<iTradeRoutes>0</iTradeRoutes>
-			<iCoastalTradeRoutes>2</iCoastalTradeRoutes>
+			<iCoastalTradeRoutes>1</iCoastalTradeRoutes>
 			<iGlobalTradeRoutes>0</iGlobalTradeRoutes>
 			<iTradeRouteModifier>0</iTradeRouteModifier>
 			<iForeignTradeRouteModifier>0</iForeignTradeRouteModifier>
@@ -21508,13 +21356,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>6</iCommerce>
+				<iCommerce>3</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -21621,7 +21465,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>300</iCost>
-			<iHurryCostModifier>100</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -21687,13 +21531,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>6</iCommerce>
+				<iCommerce>3</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -21805,7 +21645,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>250</iCost>
-			<iHurryCostModifier>100</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>10</iMinAreaSize>
@@ -21863,25 +21703,21 @@
 			<iAsset>10</iAsset>
 			<iPower>0</iPower>
 			<fVisibilityPriority>1.0</fVisibilityPriority>
-			<SeaPlotYieldChanges/>
-			<RiverPlotYieldChanges/>
-			<GlobalSeaPlotYieldChanges>
+			<SeaPlotYieldChanges>
 				<iYield>0</iYield>
 				<iYield>0</iYield>
 				<iYield>1</iYield>
-			</GlobalSeaPlotYieldChanges>
+			</SeaPlotYieldChanges>
+			<RiverPlotYieldChanges/>
+			<GlobalSeaPlotYieldChanges/>
 			<YieldChanges/>
 			<CommerceChanges/>
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>6</iCommerce>
+				<iCommerce>3</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -21993,7 +21829,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>150</iCost>
-			<iHurryCostModifier>100</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -22059,13 +21895,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>8</iCommerce>
+				<iCommerce>4</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -22174,7 +22006,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>400</iCost>
-			<iHurryCostModifier>100</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -22240,13 +22072,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>10</iCommerce>
+				<iCommerce>5</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -22348,7 +22176,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>500</iCost>
-			<iHurryCostModifier>100</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -22414,13 +22242,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>8</iCommerce>
+				<iCommerce>4</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -22541,7 +22365,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>500</iCost>
-			<iHurryCostModifier>100</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -22607,13 +22431,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>8</iCommerce>
+				<iCommerce>4</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -22720,7 +22540,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>500</iCost>
-			<iHurryCostModifier>100</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -22786,13 +22606,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>6</iCommerce>
+				<iCommerce>3</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -22899,7 +22715,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>600</iCost>
-			<iHurryCostModifier>100</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -22965,24 +22781,20 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>10</iCommerce>
+				<iCommerce>5</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>2</iCommerce>
+				<iCommerce>1</iCommerce>
 			</SpecialistExtraCommerces>
 			<StateReligionCommerces>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>5</iCommerce>
+				<iCommerce>3</iCommerce>
 			</StateReligionCommerces>
 			<CommerceHappinesses/>
 			<ReligionChanges/>
@@ -23086,7 +22898,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>550</iCost>
-			<iHurryCostModifier>100</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -23152,13 +22964,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>8</iCommerce>
+				<iCommerce>4</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -23267,7 +23075,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>550</iCost>
-			<iHurryCostModifier>100</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -23333,13 +23141,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>10</iCommerce>
+				<iCommerce>5</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -23446,7 +23250,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>700</iCost>
-			<iHurryCostModifier>100</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -23512,13 +23316,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>10</iCommerce>
+				<iCommerce>5</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -23871,13 +23671,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>6</iCommerce>
+				<iCommerce>3</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -24055,13 +23851,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>6</iCommerce>
+				<iCommerce>3</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -25019,7 +24811,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>1000</iCost>
-			<iHurryCostModifier>300</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>3</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -25083,11 +24875,7 @@
 			<YieldChanges/>
 			<CommerceChanges/>
 			<ObsoleteSafeCommerceChanges/>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -25188,7 +24976,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>2000</iCost>
-			<iHurryCostModifier>300</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -25359,7 +25147,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>-1</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -25529,7 +25317,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>350</iCost>
-			<iHurryCostModifier>100</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -25595,13 +25383,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>8</iCommerce>
+				<iCommerce>4</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -25713,7 +25497,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>550</iCost>
-			<iHurryCostModifier>100</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -25779,13 +25563,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>8</iCommerce>
+				<iCommerce>4</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -25895,7 +25675,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>150</iCost>
-			<iHurryCostModifier>100</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -25961,13 +25741,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>2</iCommerce>
+				<iCommerce>1</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -26074,7 +25850,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>300</iCost>
-			<iHurryCostModifier>100</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -26140,13 +25916,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>10</iCommerce>
+				<iCommerce>5</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -26258,7 +26030,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>450</iCost>
-			<iHurryCostModifier>100</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -26324,13 +26096,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>10</iCommerce>
+				<iCommerce>5</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -26437,7 +26205,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>1000</iCost>
-			<iHurryCostModifier>100</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -26503,13 +26271,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>5</iCommerce>
+				<iCommerce>3</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -26610,7 +26374,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>450</iCost>
-			<iHurryCostModifier>100</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -26676,13 +26440,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>8</iCommerce>
+				<iCommerce>4</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -26789,7 +26549,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>250</iCost>
-			<iHurryCostModifier>100</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>10</iMinAreaSize>
@@ -26858,13 +26618,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>4</iCommerce>
+				<iCommerce>2</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -26975,7 +26731,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>-1</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -27041,13 +26797,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>2</iCommerce>
+				<iCommerce>1</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -27153,7 +26905,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>-1</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -27219,13 +26971,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>2</iCommerce>
+				<iCommerce>1</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -27331,7 +27079,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>-1</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -27397,13 +27145,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>2</iCommerce>
+				<iCommerce>1</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -27509,7 +27253,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>-1</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -27575,13 +27319,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>2</iCommerce>
+				<iCommerce>1</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -27687,7 +27427,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>-1</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -27753,13 +27493,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>2</iCommerce>
+				<iCommerce>1</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -27865,7 +27601,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>-1</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -27931,13 +27667,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>2</iCommerce>
+				<iCommerce>1</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -28043,7 +27775,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>-1</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>25</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -28109,13 +27841,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>2</iCommerce>
+				<iCommerce>1</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>
@@ -28217,7 +27945,7 @@
 			<bCenterInCity>0</bCenterInCity>
 			<iAIWeight>0</iAIWeight>
 			<iCost>400</iCost>
-			<iHurryCostModifier>300</iHurryCostModifier>
+			<iHurryCostModifier>200</iHurryCostModifier>
 			<iAdvancedStartCost>-1</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>3</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -28283,13 +28011,9 @@
 			<ObsoleteSafeCommerceChanges>
 				<iCommerce>0</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>4</iCommerce>
+				<iCommerce>2</iCommerce>
 			</ObsoleteSafeCommerceChanges>
-			<CommerceChangeDoubleTimes>
-				<iCommerce>0</iCommerce>
-				<iCommerce>0</iCommerce>
-				<iCommerce>1000</iCommerce>
-			</CommerceChangeDoubleTimes>
+			<CommerceChangeDoubleTimes/>
 			<CommerceModifiers/>
 			<GlobalCommerceModifiers/>
 			<SpecialistExtraCommerces/>

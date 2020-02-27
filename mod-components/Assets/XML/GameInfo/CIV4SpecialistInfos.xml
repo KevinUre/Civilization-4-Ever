@@ -184,7 +184,7 @@
 			<bShiftDown>0</bShiftDown>
 			<bCtrlDown>0</bCtrlDown>
 			<iHotKeyPriority>0</iHotKeyPriority>
-			<Button>Art/Interface/MainScreen/CityScreen/spy.dds</Button>
+			<Button>,Art/Interface/Buttons/TechTree/Corporation.dds,Art/Interface/Buttons/Beyond_the_Sword_Atlas.dds,5,14</Button>
 		</SpecialistInfo>
 		<SpecialistInfo>
 			<Type>SPECIALIST_GREAT_PRIEST</Type>
@@ -229,7 +229,7 @@
 			<Commerces>
 				<iCommerce>3</iCommerce>
 				<iCommerce>0</iCommerce>
-				<iCommerce>12</iCommerce>
+				<iCommerce>8</iCommerce>
 			</Commerces>
 			<iExperience>0</iExperience>
 			<Flavors/>
@@ -380,7 +380,7 @@
 			<bShiftDown>0</bShiftDown>
 			<bCtrlDown>0</bCtrlDown>
 			<iHotKeyPriority>0</iHotKeyPriority>
-			<Button>Art/Interface/MainScreen/CityScreen/great_spy.dds</Button>
+			<Button>,Art/Interface/Buttons/TechTree/Corporation.dds,Art/Interface/Buttons/Beyond_the_Sword_Atlas.dds,6,14</Button>
 		</SpecialistInfo>
 	</SpecialistInfos>
 </Civ4SpecialistInfos>
