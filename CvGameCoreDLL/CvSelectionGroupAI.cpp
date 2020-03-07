@@ -78,7 +78,12 @@ void CvSelectionGroupAI::AI_separate()
 	}
 }
 
-void CvSelectionGroupAI::AI_seperateNonAI(UnitAITypes eUnitAI)
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      06/02/09                                jdog5000      */
+/*                                                                                              */
+/* General AI, Bugfix                                                                           */
+/************************************************************************************************/
+void CvSelectionGroupAI::AI_separateNonAI(UnitAITypes eUnitAI)
 {
 	CLLNode<IDInfo>* pEntityNode;
 	CvUnit* pLoopUnit;
@@ -100,7 +105,7 @@ void CvSelectionGroupAI::AI_seperateNonAI(UnitAITypes eUnitAI)
 	}
 }
 
-void CvSelectionGroupAI::AI_seperateAI(UnitAITypes eUnitAI)
+void CvSelectionGroupAI::AI_separateAI(UnitAITypes eUnitAI)
 {
 	CLLNode<IDInfo>* pEntityNode;
 	CvUnit* pLoopUnit;
@@ -114,13 +119,64 @@ void CvSelectionGroupAI::AI_seperateAI(UnitAITypes eUnitAI)
 		if (pLoopUnit->AI_getUnitAIType() == eUnitAI)
 		{
 			pLoopUnit->joinGroup(NULL);
-			if (plot()->getTeam() == getTeam())
+			// Was potential crash in use of plot() if group emptied
+			if (pLoopUnit->plot()->getTeam() == getTeam())
 			{
 				pLoopUnit->getGroup()->pushMission(MISSION_SKIP);
 			}
 		}
 	}
 }
+
+void CvSelectionGroupAI::AI_separateImpassable()
+{
+	CLLNode<IDInfo>* pEntityNode;
+	CvUnit* pLoopUnit;
+	CvPlayerAI& kPlayer = GET_PLAYER(getOwner());
+
+	pEntityNode = headUnitNode();
+
+	while (pEntityNode != NULL)
+	{
+		pLoopUnit = ::getUnit(pEntityNode->m_data);
+		pEntityNode = nextUnitNode(pEntityNode);
+		if( (kPlayer.AI_unitImpassableCount(pLoopUnit->getUnitType()) > 0) )
+		{
+			pLoopUnit->joinGroup(NULL);
+			if (pLoopUnit->plot()->getTeam() == getTeam())
+			{
+				pLoopUnit->getGroup()->pushMission(MISSION_SKIP);
+			}
+		}
+	}
+}
+
+void CvSelectionGroupAI::AI_separateEmptyTransports()
+{
+	CLLNode<IDInfo>* pEntityNode;
+	CvUnit* pLoopUnit;
+
+	pEntityNode = headUnitNode();
+
+	while (pEntityNode != NULL)
+	{
+		pLoopUnit = ::getUnit(pEntityNode->m_data);
+		pEntityNode = nextUnitNode(pEntityNode);
+		if ((pLoopUnit->AI_getUnitAIType() == UNITAI_ASSAULT_SEA) && (pLoopUnit->getCargo() == 0))
+		{
+			pLoopUnit->joinGroup(NULL);
+			if (pLoopUnit->plot()->getTeam() == getTeam())
+			{
+				pLoopUnit->getGroup()->pushMission(MISSION_SKIP);
+			}
+		}
+	}
+}
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
+
+
 // Returns true if the group has become busy...
 bool CvSelectionGroupAI::AI_update()
 {
@@ -142,6 +198,19 @@ bool CvSelectionGroupAI::AI_update()
 	{
 		return false;
 	}
+
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      04/28/10                                jdog5000      */
+/*                                                                                              */
+/* Unit AI                                                                                      */
+/************************************************************************************************/
+	if( !(isHuman()) && !(getHeadUnit()->isCargo()) && getActivityType() == ACTIVITY_SLEEP )
+	{
+		setForceUpdate(true);
+	}
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 
 	if (isForceUpdate())
 	{
@@ -266,6 +335,16 @@ bool CvSelectionGroupAI::AI_update()
 					pushMission(MISSION_SKIP);
 				}
 			}
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      04/28/10                                jdog5000      */
+/*                                                                                              */
+/* Unit AI                                                                                      */
+/************************************************************************************************/
+			// AI should never put units to sleep, how does this ever happen?
+			//FAssert( getHeadUnit()->isCargo() || getActivityType() != ACTIVITY_SLEEP );
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 		}
 	}
 
@@ -281,11 +360,25 @@ bool CvSelectionGroupAI::AI_update()
 // Returns attack odds out of 100 (the higher, the better...)
 int CvSelectionGroupAI::AI_attackOdds(const CvPlot* pPlot, bool bPotentialEnemy) const
 {
+	PROFILE_FUNC();
+
 	CvUnit* pAttacker;
 
 	FAssert(getOwnerINLINE() != NO_PLAYER);
 
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      02/21/10                                jdog5000      */
+/*                                                                                              */
+/* Efficiency, Lead From Behind                                                                 */
+/************************************************************************************************/
+	// From Lead From Behind by UncutDragon
+	// original
 	if (pPlot->getBestDefender(NO_PLAYER, getOwnerINLINE(), NULL, !bPotentialEnemy, bPotentialEnemy) == NULL)
+	// modified
+	//if (!pPlot->hasDefender(false, NO_PLAYER, getOwnerINLINE(), NULL, !bPotentialEnemy, bPotentialEnemy))
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 	{
 		return 100;
 	}
@@ -304,6 +397,8 @@ int CvSelectionGroupAI::AI_attackOdds(const CvPlot* pPlot, bool bPotentialEnemy)
 
 CvUnit* CvSelectionGroupAI::AI_getBestGroupAttacker(const CvPlot* pPlot, bool bPotentialEnemy, int& iUnitOdds, bool bForce, bool bNoBlitz) const
 {
+	PROFILE_FUNC();
+
 	CLLNode<IDInfo>* pUnitNode;
 	CvUnit* pLoopUnit;
 	CvUnit* pBestUnit;
@@ -349,29 +444,39 @@ CvUnit* CvSelectionGroupAI::AI_getBestGroupAttacker(const CvPlot* pPlot, bool bP
 				{
 					if (bForce || pLoopUnit->canMoveInto(pPlot, /*bAttack*/ true, /*bDeclareWar*/ bPotentialEnemy))
 					{
-						iOdds = pLoopUnit->AI_attackOdds(pPlot, bPotentialEnemy);
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      02/21/10                                jdog5000      */
+/*                                                                                              */
+/* Lead From Behind                                                                             */
+/************************************************************************************************/
 						
-						iValue = iOdds;
-						FAssertMsg(iValue > 0, "iValue is expected to be greater than 0");
-
-						if (pLoopUnit->collateralDamage() > 0)
-						{
-							iPossibleTargets = std::min((pPlot->getNumVisibleEnemyDefenders(pLoopUnit) - 1), pLoopUnit->collateralDamageMaxUnits());
-
-							if (iPossibleTargets > 0)
+							iOdds = pLoopUnit->AI_attackOdds(pPlot, bPotentialEnemy);
+							
+							iValue = iOdds;
+							FAssertMsg(iValue > 0, "iValue is expected to be greater than 0");
+	
+							if (pLoopUnit->collateralDamage() > 0)
 							{
-								iValue *= (100 + ((pLoopUnit->collateralDamage() * iPossibleTargets) / 5));
-								iValue /= 100;
+								iPossibleTargets = std::min((pPlot->getNumVisibleEnemyDefenders(pLoopUnit) - 1), pLoopUnit->collateralDamageMaxUnits());
+	
+								if (iPossibleTargets > 0)
+								{
+									iValue *= (100 + ((pLoopUnit->collateralDamage() * iPossibleTargets) / 5));
+									iValue /= 100;
+								}
 							}
-						}
-
-						// if non-human, prefer the last unit that has the best value (so as to avoid splitting the group)
-						if (iValue > iBestValue || (!bIsHuman && iValue > 0 && iValue == iBestValue))
-						{
-							iBestValue = iValue;
-							iBestOdds = iOdds;
-							pBestUnit = pLoopUnit;
-						}
+	
+							// if non-human, prefer the last unit that has the best value (so as to avoid splitting the group)
+							if (iValue > iBestValue || (!bIsHuman && iValue > 0 && iValue == iBestValue))
+							{
+								iBestValue = iValue;
+								iBestOdds = iOdds;
+								pBestUnit = pLoopUnit;
+							}
+						
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 					}
 				}
 			}
@@ -463,7 +568,19 @@ int CvSelectionGroupAI::AI_compareStacks(const CvPlot* pPlot, bool bPotentialEne
 	}
 	FAssert(eOwner != NO_PLAYER);
 	
+/************************************************************************************************/
+/* UNOFFICIAL_PATCH                       03/04/10                                jdog5000      */
+/*                                                                                              */
+/* Bugfix                                                                                       */
+/************************************************************************************************/
+/* original bts code
 	int defenderSum = pPlot->AI_sumStrength(NO_PLAYER, getOwnerINLINE(), eDomainType, true, !bPotentialEnemy, bPotentialEnemy);
+*/
+	// Clearly meant to use eOwner here ...
+	int defenderSum = pPlot->AI_sumStrength(NO_PLAYER, eOwner, eDomainType, true, !bPotentialEnemy, bPotentialEnemy);
+/************************************************************************************************/
+/* UNOFFICIAL_PATCH                        END                                                  */
+/************************************************************************************************/
 	compareRatio /= std::max(1, defenderSum);
 
 	return compareRatio;
@@ -662,6 +779,8 @@ MissionAITypes CvSelectionGroupAI::AI_getMissionAIType()
 
 void CvSelectionGroupAI::AI_setMissionAI(MissionAITypes eNewMissionAI, CvPlot* pNewPlot, CvUnit* pNewUnit)
 {
+	//PROFILE_FUNC();
+
 	m_eMissionAIType = eNewMissionAI;
 
 	if (pNewPlot != NULL)

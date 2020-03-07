@@ -47,6 +47,16 @@ void CySelectionGroupInterface()
 		.def("isInvisible", &CySelectionGroup::isInvisible, "bool (int eTeam)")
 		.def("countNumUnitAIType", &CySelectionGroup::countNumUnitAIType, "int (int (UnitAITypes) eUnitAI")
 		.def("hasWorker", &CySelectionGroup::hasWorker, "bool ()")
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      11/30/08                                jdog5000      */
+/*                                                                                              */
+/* General AI                                                                                   */
+/************************************************************************************************/
+		.def("isStranded", &CySelectionGroup::isStranded, "bool ()")
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
+
 
 		.def("at", &CySelectionGroup::at, "bool (iX, iY) - is the group at plot iX, iY?")
 		.def("atPlot", &CySelectionGroup::atPlot, "bool (CyPlot* pPlot) - is the group at pPlot?")

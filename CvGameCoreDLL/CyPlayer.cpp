@@ -25,6 +25,31 @@ CyPlayer::CyPlayer(CvPlayer* pPlayer) : m_pPlayer(pPlayer)
 {
 }
 
+/************************************************************************************************/
+/* CHANGE_PLAYER                         08/27/08                                 jdog5000      */
+/*                                                                                              */
+/*                                                                                              */
+/************************************************************************************************/
+void CyPlayer::changeLeader( int /*LeaderHeadTypes*/ eNewLeader )
+{
+	if( m_pPlayer )
+		m_pPlayer->changeLeader( (LeaderHeadTypes)eNewLeader );
+}
+
+void CyPlayer::changeCiv( int /*CivilizationTypes*/ eNewCiv )
+{
+	if( m_pPlayer )
+		m_pPlayer->changeCiv( (CivilizationTypes)eNewCiv );
+}
+void CyPlayer::setIsHuman( bool bNewValue )
+{
+	if( m_pPlayer )
+		m_pPlayer->setIsHuman( bNewValue );
+}
+/************************************************************************************************/
+/* CHANGE_PLAYER                          END                                                   */
+/************************************************************************************************/
+
 int CyPlayer::startingPlotRange()
 {
 	return m_pPlayer ? m_pPlayer->startingPlotRange() : -1;

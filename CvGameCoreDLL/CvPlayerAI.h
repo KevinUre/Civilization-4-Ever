@@ -58,6 +58,16 @@ public:
 
 	void AI_makeProductionDirty();
 
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      05/08/09                                jdog5000      */
+/*                                                                                              */
+/* City AI                                                                                      */
+/************************************************************************************************/
+	void AI_doCentralizedProduction();
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
+
 	void AI_conquerCity(CvCity* pCity);
 
 	bool AI_acceptUnit(CvUnit* pUnit) const;
@@ -80,8 +90,17 @@ public:
 	CvCity* AI_findTargetCity(CvArea* pArea) const;
 
 	bool AI_isCommercePlot(CvPlot* pPlot) const;
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      08/20/09                                jdog5000      */
+/*                                                                                              */
+/*                                                                                              */
+/************************************************************************************************/
+	bool AI_getAnyPlotDanger(CvPlot* pPlot, int iRange = -1, bool bTestMoves = true) const;
 	int AI_getPlotDanger(CvPlot* pPlot, int iRange = -1, bool bTestMoves = true) const;
-	int AI_getUnitDanger(CvUnit* pUnit, int iRange = -1, bool bTestMoves = true, bool bAnyDanger = true) const;
+	//int AI_getUnitDanger(CvUnit* pUnit, int iRange = -1, bool bTestMoves = true, bool bAnyDanger = true) const;
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 	int AI_getWaterDanger(CvPlot* pPlot, int iRange, bool bTestMoves = true) const;
 
 	bool AI_avoidScience() const;
@@ -89,6 +108,17 @@ public:
 	int AI_goldTarget() const;
 
 	TechTypes AI_bestTech(int iMaxPathLength = 1, bool bIgnoreCost = false, bool bAsync = false, TechTypes eIgnoreTech = NO_TECH, AdvisorTypes eIgnoreAdvisor = NO_ADVISOR) const;
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      03/18/10                                jdog5000      */
+/*                                                                                              */
+/* Tech AI                                                                                      */
+/************************************************************************************************/
+	int AI_techValue( TechTypes eTech, int iPathLength, bool bIgnoreCost, bool bAsync, int* paiBonusClassRevealed, int* paiBonusClassUnrevealed, int* paiBonusClassHave ) const;
+	int AI_techBuildingValue( TechTypes eTech, int iPathLength, bool &bEnablesWonder ) const;
+	int AI_techUnitValue( TechTypes eTech, int iPathLength, bool &bEnablesUnitWonder ) const;
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 	void AI_chooseFreeTech();
 	void AI_chooseResearch();
 
@@ -179,8 +209,27 @@ public:
 	int AI_enemyTargetMissionAIs(MissionAITypes eMissionAI, CvSelectionGroup* pSkipSelectionGroup = NULL) const;
 	int AI_enemyTargetMissionAIs(MissionAITypes* aeMissionAI, int iMissionAICount, CvSelectionGroup* pSkipSelectionGroup = NULL) const;
 	int AI_wakePlotTargetMissionAIs(CvPlot* pPlot, MissionAITypes eMissionAI, CvSelectionGroup* pSkipSelectionGroup = NULL) const;
-	
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      05/19/10                                jdog5000      */
+/*                                                                                              */
+/* General AI                                                                                   */
+/************************************************************************************************/
+	int AI_cityTargetUnitsByPath(CvCity* pCity, CvSelectionGroup* pSkipSelectionGroup, int iMaxPathTurns) const;
+	int AI_enemyTargetMissions(TeamTypes eTargetTeam, CvSelectionGroup* pSkipSelectionGroup = NULL) const;
+	int AI_unitTargetMissionAIs(CvUnit* pUnit, MissionAITypes* aeMissionAI, int iMissionAICount, CvSelectionGroup* pSkipSelectionGroup, int iMaxPathTurns) const;
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/		
 
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      07/19/09                                jdog5000      */
+/*                                                                                              */
+/* Civic AI                                                                                     */
+/************************************************************************************************/
+	CivicTypes AI_bestCivic(CivicOptionTypes eCivicOption, int* iBestValue) const;
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 	CivicTypes AI_bestCivic(CivicOptionTypes eCivicOption) const;
 	int AI_civicValue(CivicTypes eCivic) const;
 
@@ -258,6 +307,24 @@ public:
 	virtual void AI_launch(VictoryTypes eVictory);
 
 	int AI_getCultureVictoryStage() const;
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      03/17/10                                jdog5000      */
+/*                                                                                              */
+/* Victory Strategy AI                                                                          */
+/************************************************************************************************/
+	int AI_getSpaceVictoryStage() const;
+	int AI_getConquestVictoryStage() const;
+	int AI_getDominationVictoryStage() const;
+	int AI_getDiplomacyVictoryStage() const;
+	bool AI_isDoVictoryStrategy(int iVictoryStrategy) const;
+	bool AI_isDoVictoryStrategyLevel4() const;
+	bool AI_isDoVictoryStrategyLevel3() const;
+	void AI_forceUpdateVictoryStrategies();
+	int AI_getVictoryStrategyHash() const;
+	int AI_getStrategyRand() const;
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/		
 	
 	int AI_cultureVictoryTechValue(TechTypes eTech) const;
 	
@@ -338,6 +405,19 @@ public:
 
 	bool AI_isFirstTech(TechTypes eTech) const;
 
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      09/03/09                       poyuzhe & jdog5000     */
+/*                                                                                              */
+/* Efficiency                                                                                   */
+/************************************************************************************************/
+	// From Sanguo Mod Performance, ie the CAR Mod
+	// Attitude cache
+	void AI_invalidateAttitudeCache(PlayerTypes ePlayer);
+	void AI_invalidateAttitudeCache();
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
+
 	// for serialization
   virtual void read(FDataStreamBase* pStream);
   virtual void write(FDataStreamBase* pStream);
@@ -355,7 +435,17 @@ protected:
 	
 	mutable int m_iStrategyHash;
 	mutable int m_iStrategyHashCacheTurn;
-	
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      03/18/10                                jdog5000      */
+/*                                                                                              */
+/* Victory Strategy AI                                                                          */
+/************************************************************************************************/
+	mutable int m_iStrategyRand;
+	mutable int m_iVictoryStrategyHash;
+	mutable int m_iVictoryStrategyHashCacheTurn;
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/		
 	
 	mutable int m_iAveragesCacheTurn;
 	
@@ -386,6 +476,17 @@ protected:
 
 	mutable int* m_aiCloseBordersAttitudeCache;
 
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      09/03/09                       poyuzhe & jdog5000     */
+/*                                                                                              */
+/* Efficiency                                                                                   */
+/************************************************************************************************/
+	// From Sanguo Mod Performance, ie the CAR Mod
+	// Attitude cache
+	mutable int* m_aiAttitudeCache;
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 
 	bool* m_abFirstContact;
 

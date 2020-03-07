@@ -27,6 +27,16 @@
 #include "CvDLLInterfaceIFaceBase.h"
 #include "CvEventReporter.h"
 
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      10/02/09                                jdog5000      */
+/*                                                                                              */
+/* AI logging                                                                                   */
+/************************************************************************************************/
+#include "BetterBTSAI.h"
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
+
 // Public Functions...
 
 CvCity::CvCity()
@@ -764,6 +774,17 @@ void CvCity::kill(bool bUpdatePlotGroups)
 	{
 		abEspionageVisibility.push_back(getEspionageVisibility((TeamTypes)iI));
 	}
+
+/************************************************************************************************/
+/* UNOFFICIAL_PATCH                       08/04/09                                jdog5000      */
+/*                                                                                              */
+/* Bugfix                                                                                       */
+/************************************************************************************************/
+	// Need to clear trade routes of dead city, else they'll be claimed for the owner forever
+	clearTradeRoutes();
+/************************************************************************************************/
+/* UNOFFICIAL_PATCH                        END                                                  */
+/************************************************************************************************/
 
 	pPlot->setPlotCity(NULL);
 
@@ -3507,8 +3528,15 @@ void CvCity::conscript()
 		return;
 	}
 
-	changePopulation(-(getConscriptPopulation()));
-	changeConscriptAngerTimer(flatConscriptAngerLength());
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      10/02/09                                jdog5000      */
+/*                                                                                              */
+/* AI logging                                                                                   */
+/************************************************************************************************/
+	int iPopChange = -(getConscriptPopulation());
+	int iAngerLength = flatConscriptAngerLength();
+	changePopulation(iPopChange);
+	changeConscriptAngerTimer(iAngerLength);
 
 	setDrafted(true);
 
@@ -3523,6 +3551,13 @@ void CvCity::conscript()
 		{
 			gDLL->getInterfaceIFace()->selectUnit(pUnit, true, false, true);
 		}
+		if( gCityLogLevel >= 2 )
+		{
+			logBBAI("      City %S does conscript of a %S at cost of %d pop, %d anger", getName().GetCString(), pUnit->getName().GetCString(), iPopChange, iAngerLength );
+		}
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 	}
 }
 
@@ -4778,8 +4813,7 @@ int CvCity::hurryProduction(HurryTypes eHurry) const
 		//iProduction = (100 * getExtraProductionDifference(iTemp * GC.getGameINLINE().getProductionPerPopulation(eHurry))) / std::max(1, getHurryCostModifier());
 		//END FIX
 		
-		int iTemp2 = productionLeft();
-		FAssert(iProduction >= iTemp2);
+		FAssert(iProduction >= productionLeft());
 	}
 	else
 	{
@@ -4943,6 +4977,34 @@ bool CvCity::hasActiveWorldWonder() const
 	return false;
 }
 
+/************************************************************************************************/
+/* UNOFFICIAL_PATCH                       03/04/10                     Mongoose & jdog5000      */
+/*                                                                                              */
+/* Bugfix                                                                                       */
+/************************************************************************************************/
+// From Mongoose SDK
+int CvCity::getNumActiveWorldWonders() const
+{
+	int iI;
+	int iCount = 0;
+
+	for (iI = 0; iI < GC.getNumBuildingInfos(); iI++)
+	{
+		if (isWorldWonderClass((BuildingClassTypes)(GC.getBuildingInfo((BuildingTypes)iI).getBuildingClassType())))
+		{
+			if (getNumRealBuilding((BuildingTypes)iI) > 0 && !(GET_TEAM(getTeam()).isObsoleteBuilding((BuildingTypes)iI)))
+			{
+				iCount++;
+			}
+		}
+	}
+
+	return iCount;
+}
+/************************************************************************************************/
+/* UNOFFICIAL_PATCH                        END                                                  */
+/************************************************************************************************/
+
 
 int CvCity::getReligionCount() const
 {
@@ -5064,12 +5126,82 @@ CvArea* CvCity::area() const
 	return plot()->area();
 }
 
-
-CvArea* CvCity::waterArea() const
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      01/02/09                                jdog5000      */
+/*                                                                                              */
+/* General AI                                                                                   */
+/************************************************************************************************/
+CvArea* CvCity::waterArea(bool bNoImpassable) const
 {
-	return plot()->waterArea();
+	return plot()->waterArea(bNoImpassable);
 }
 
+// Expose plot function through city
+CvArea* CvCity::secondWaterArea() const
+{
+	return plot()->secondWaterArea();
+}
+
+// Find the largest water area shared by this city and other city, if any
+CvArea* CvCity::sharedWaterArea(CvCity* pOtherCity) const
+{
+	CvArea* pWaterArea = waterArea(true);
+	if( pWaterArea != NULL )
+	{
+		CvArea* pOtherWaterArea = pOtherCity->waterArea(true);
+		if( pOtherWaterArea != NULL )
+		{
+			if( pWaterArea == pOtherWaterArea )
+			{
+				return pWaterArea;
+			}
+			else
+			{
+				CvArea* pSecondWaterArea = secondWaterArea();
+				CvArea* pOtherSecondWaterArea = pOtherCity->secondWaterArea();
+
+				if( pSecondWaterArea != NULL && pSecondWaterArea == pOtherWaterArea )
+				{
+					return pSecondWaterArea;
+				}
+				else if( pOtherSecondWaterArea != NULL && pWaterArea == pOtherSecondWaterArea )
+				{
+					return pWaterArea;
+				}
+				else if( pSecondWaterArea != NULL && pOtherSecondWaterArea != NULL && pSecondWaterArea == pOtherSecondWaterArea )
+				{
+					return pSecondWaterArea;
+				}
+			}
+		}
+	}
+
+	return NULL;
+}
+
+bool CvCity::isBlockaded() const
+{
+	int iI;
+	CvPlot* pAdjacentPlot;
+
+	for (iI = 0; iI < NUM_DIRECTION_TYPES; iI++)
+	{
+		pAdjacentPlot = plotDirection(getX_INLINE(), getY_INLINE(), ((DirectionTypes)iI));
+
+		if (pAdjacentPlot != NULL)
+		{
+			if( pAdjacentPlot->getBlockadedCount(getTeam()) > 0 )
+			{
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 
 CvPlot* CvCity::getRallyPlot() const
 {
@@ -6219,6 +6351,217 @@ void CvCity::updateExtraBuildingHappiness()
 		AI_setAssignWorkDirty(true);
 	}
 }
+
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      02/24/10                            EmperorFool       */
+/*                                                                                              */
+/* City AI                                                                                      */
+/************************************************************************************************/
+// BUG - Building Additional Happiness - start
+/*
+ * Returns the total additional happiness that adding one of the given buildings will provide
+ * and sets the good and bad levels individually.
+ *
+ * Doesn't reset iGood or iBad to zero.
+ * Doesn't check if the building can be constructed in this city.
+ */
+int CvCity::getAdditionalHappinessByBuilding(BuildingTypes eBuilding, int& iGood, int& iBad) const
+{
+	FAssertMsg(eBuilding >= 0, "eBuilding expected to be >= 0");
+	FAssertMsg(eBuilding < GC.getNumBuildingInfos(), "eBuilding expected to be < GC.getNumBuildingInfos()");
+
+	CvBuildingInfo& kBuilding = GC.getBuildingInfo(eBuilding);
+	int iI;
+	int iStarting = iGood - iBad;
+	int iStartingBad = iBad;
+
+	// Basic
+	addGoodOrBad(kBuilding.getHappiness(), iGood, iBad);
+
+	// Building Class
+	addGoodOrBad(getBuildingHappyChange((BuildingClassTypes)kBuilding.getBuildingClassType()), iGood, iBad);
+
+	// Player Building
+	addGoodOrBad(GET_PLAYER(getOwnerINLINE()).getExtraBuildingHappiness(eBuilding), iGood, iBad);
+
+	// Area
+	addGoodOrBad(kBuilding.getAreaHappiness(), iGood, iBad);
+
+	// Religion
+	if (kBuilding.getReligionType() != NO_RELIGION && kBuilding.getReligionType() == GET_PLAYER(getOwnerINLINE()).getStateReligion())
+	{
+		iGood += kBuilding.getStateReligionHappiness();
+	}
+
+	// Bonus
+	for (iI = 0; iI < GC.getNumBonusInfos(); iI++)
+	{
+		if ((hasBonus((BonusTypes)iI) || kBuilding.getFreeBonus() == iI) && kBuilding.getNoBonus() != iI)
+		{
+			addGoodOrBad(kBuilding.getBonusHappinessChanges(iI), iGood, iBad);
+		}
+	}
+
+	// Commerce
+	for (iI = 0; iI < NUM_COMMERCE_TYPES; iI++)
+	{
+		addGoodOrBad(kBuilding.getCommerceHappiness(iI) * GET_PLAYER(getOwnerINLINE()).getCommercePercent((CommerceTypes)iI) / 100, iGood, iBad);
+	}
+
+	// War Weariness Modifier
+	if (kBuilding.getWarWearinessModifier() != 0)
+	{
+		int iBaseAngerPercent = 0;
+
+		iBaseAngerPercent += getOvercrowdingPercentAnger();
+		iBaseAngerPercent += getNoMilitaryPercentAnger();
+		iBaseAngerPercent += getCulturePercentAnger();
+		iBaseAngerPercent += getReligionPercentAnger();
+		iBaseAngerPercent += getHurryPercentAnger();
+		iBaseAngerPercent += getConscriptPercentAnger();
+		iBaseAngerPercent += getDefyResolutionPercentAnger();
+		for (iI = 0; iI < GC.getNumCivicInfos(); iI++)
+		{
+			iBaseAngerPercent += GET_PLAYER(getOwnerINLINE()).getCivicPercentAnger((CivicTypes)iI);
+		}
+
+		int iCurrentAngerPercent = iBaseAngerPercent + getWarWearinessPercentAnger();
+		int iCurrentUnhappiness = iCurrentAngerPercent * getPopulation() / GC.getPERCENT_ANGER_DIVISOR();
+
+		int iNewWarAngerPercent = GET_PLAYER(getOwnerINLINE()).getWarWearinessPercentAnger();
+		iNewWarAngerPercent *= std::max(0, (kBuilding.getWarWearinessModifier() + getWarWearinessModifier() + GET_PLAYER(getOwnerINLINE()).getWarWearinessModifier() + 100));
+		iNewWarAngerPercent /= 100;
+		int iNewAngerPercent = iBaseAngerPercent + iNewWarAngerPercent;
+		int iNewUnhappiness = iNewAngerPercent * getPopulation() / GC.getPERCENT_ANGER_DIVISOR();
+
+		iBad += iNewUnhappiness - iCurrentUnhappiness;
+	}
+
+	// No Unhappiness
+	if (kBuilding.isNoUnhappiness())
+	{
+		// override extra unhappiness and completely negate all existing unhappiness
+		iBad = iStartingBad - unhappyLevel();
+	}
+
+	return iGood - iBad - iStarting;
+}
+
+/*
+ * Returns the total additional health that adding one of the given buildings will provide
+ * and sets the good and bad levels individually.
+ *
+ * Doesn't reset iGood or iBad to zero.
+ * Doesn't check if the building can be constructed in this city.
+ */
+int CvCity::getAdditionalHealthByBuilding(BuildingTypes eBuilding, int& iGood, int& iBad) const
+{
+	FAssertMsg(eBuilding >= 0, "eBuilding expected to be >= 0");
+	FAssertMsg(eBuilding < GC.getNumBuildingInfos(), "eBuilding expected to be < GC.getNumBuildingInfos()");
+
+	CvBuildingInfo& kBuilding = GC.getBuildingInfo(eBuilding);
+	int iI;
+	int iStarting = iGood - iBad;
+	int iStartingBad = iBad;
+
+	// Basic
+	addGoodOrBad(kBuilding.getHealth(), iGood, iBad);
+
+	// Building Class
+	addGoodOrBad(getBuildingHealthChange((BuildingClassTypes)kBuilding.getBuildingClassType()), iGood, iBad);
+
+	// Player Building
+	addGoodOrBad(GET_PLAYER(getOwnerINLINE()).getExtraBuildingHealth(eBuilding), iGood, iBad);
+
+	// Area
+	addGoodOrBad(kBuilding.getAreaHealth(), iGood, iBad);
+
+	// No Unhealthiness from Buildings
+	if (isBuildingOnlyHealthy())
+	{
+		// undo bad from this building
+		iBad = iStartingBad;
+	}
+	if (kBuilding.isBuildingOnlyHealthy())
+	{
+		// undo bad from this and all existing buildings
+		iBad = iStartingBad + totalBadBuildingHealth();
+	}
+
+	// Bonus
+	for (iI = 0; iI < GC.getNumBonusInfos(); iI++)
+	{
+		if ((hasBonus((BonusTypes)iI) || kBuilding.getFreeBonus() == iI) && kBuilding.getNoBonus() != iI)
+		{
+			addGoodOrBad(kBuilding.getBonusHealthChanges(iI), iGood, iBad);
+		}
+	}
+
+	// Power
+	if (kBuilding.isPower() || kBuilding.isAreaCleanPower() || (kBuilding.getPowerBonus() != NO_BONUS && hasBonus((BonusTypes)kBuilding.getPowerBonus())))
+	{
+		// adding power
+		if (!isPower())
+		{
+			addGoodOrBad(GC.getDefineINT("POWER_HEALTH_CHANGE"), iGood, iBad);
+
+			// adding dirty power
+			if (kBuilding.isDirtyPower())
+			{
+				addGoodOrBad(GC.getDefineINT("DIRTY_POWER_HEALTH_CHANGE"), iGood, iBad);
+			}
+		}
+		else
+		{
+			// replacing dirty power with clean power
+			if (isDirtyPower() && !kBuilding.isDirtyPower())
+			{
+				subtractGoodOrBad(GC.getDefineINT("DIRTY_POWER_HEALTH_CHANGE"), iGood, iBad);
+			}
+		}
+	}
+
+	// No Unhealthiness from Population
+	if (kBuilding.isNoUnhealthyPopulation())
+	{
+		iBad -= getPopulation();
+	}
+
+	return iGood - iBad - iStarting;
+}
+
+/*
+ * Adds iValue to iGood if it is positive or its negative to iBad if it is negative.
+ */
+void addGoodOrBad(int iValue, int& iGood, int& iBad)
+{
+	if (iValue > 0)
+	{
+		iGood += iValue;
+	}
+	else if (iValue < 0)
+	{
+		iBad -= iValue;
+	}
+}
+
+/*
+ * Subtracts iValue from iGood if it is positive or its negative from iBad if it is negative.
+ */
+void subtractGoodOrBad(int iValue, int& iGood, int& iBad)
+{
+	if (iValue > 0)
+	{
+		iGood -= iValue;
+	}
+	else if (iValue < 0)
+	{
+		iBad += iValue;
+	}
+}
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 
 
 int CvCity::getExtraBuildingGoodHealth() const
@@ -10674,6 +11017,20 @@ void CvCity::pushOrder(OrderTypes eOrder, int iData1, int iData2, bool bSave, bo
 			bValid = true;
 			bBuildingUnit = true;
 			CvEventReporter::getInstance().cityBuildingUnit(this, (UnitTypes)iData1);
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      10/02/09                                jdog5000      */
+/*                                                                                              */
+/* AI logging                                                                                   */
+/************************************************************************************************/
+			if( gCityLogLevel >= 1 )
+			{
+				CvWString szString;
+				getUnitAIString(szString, (UnitAITypes)iData2);
+				logBBAI("    City %S pushes production of unit %S with UNITAI %S", getName().GetCString(), GC.getUnitInfo((UnitTypes) iData1).getDescription(), szString.GetCString() );
+			}
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 		}
     break;
 
@@ -10685,6 +11042,18 @@ void CvCity::pushOrder(OrderTypes eOrder, int iData1, int iData2, bool bSave, bo
 			bValid = true;
 			bBuildingBuilding = true;
 			CvEventReporter::getInstance().cityBuildingBuilding(this, (BuildingTypes)iData1);
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      10/02/09                                jdog5000      */
+/*                                                                                              */
+/* AI logging                                                                                   */
+/************************************************************************************************/
+			if( gCityLogLevel >= 1 )
+			{
+				logBBAI("    City %S pushes production of building %S", getName().GetCString(), GC.getBuildingInfo((BuildingTypes)iData1).getDescription() );
+			}
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 		}
 		break;
 
@@ -10694,6 +11063,18 @@ void CvCity::pushOrder(OrderTypes eOrder, int iData1, int iData2, bool bSave, bo
 			GET_TEAM(getTeam()).changeProjectMaking(((ProjectTypes)iData1), 1);
 
 			bValid = true;
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      10/02/09                                jdog5000      */
+/*                                                                                              */
+/* AI logging                                                                                   */
+/************************************************************************************************/
+			if( gCityLogLevel >= 1 )
+			{
+				logBBAI("    City %S pushes production of project %S", getName().GetCString(), GC.getProjectInfo((ProjectTypes)iData1).getDescription() );
+			}
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 		}
 		break;
 
@@ -10701,6 +11082,18 @@ void CvCity::pushOrder(OrderTypes eOrder, int iData1, int iData2, bool bSave, bo
 		if (canMaintain((ProcessTypes)iData1) || bForce)
 		{
 			bValid = true;
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      10/02/09                                jdog5000      */
+/*                                                                                              */
+/* AI logging                                                                                   */
+/************************************************************************************************/
+			if( gCityLogLevel >= 1 )
+			{
+				logBBAI("    City %S pushes production of process %S", getName().GetCString(), GC.getProcessInfo((ProcessTypes)iData1).getDescription() );
+			}
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 		}
 		break;
 
@@ -10880,6 +11273,21 @@ void CvCity::popOrder(int iNum, bool bFinish, bool bChoose)
 
 			CvEventReporter::getInstance().unitBuilt(this, pUnit);
 
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      10/02/09                                jdog5000      */
+/*                                                                                              */
+/* AI logging                                                                                   */
+/************************************************************************************************/
+			if( gCityLogLevel >= 1 )
+			{
+				CvWString szString;
+				getUnitAIString(szString, pUnit->AI_getUnitAIType());
+				logBBAI("    City %S finishes production of unit %S with UNITAI %S", getName().GetCString(), pUnit->getName(0).GetCString(), szString.GetCString() );
+			}
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
+
 			if (GC.getUnitInfo(eTrainUnit).getDomainType() == DOMAIN_AIR)
 			{
 				if (plot()->countNumAirUnits(getTeam()) > getAirUnitCapacity(getTeam()))
@@ -10897,7 +11305,18 @@ void CvCity::popOrder(int iNum, bool bFinish, bool bChoose)
 
 		if (bFinish)
 		{
+/*************************************************************************************************/
+/* UNOFFICIAL_PATCH                       10/08/09                  davidlallen & jdog5000       */
+/*                                                                                               */
+/* Bugfix                                                                                        */
+/*************************************************************************************************/
+/* original bts code
 			if (GET_PLAYER(getOwnerINLINE()).isBuildingClassMaxedOut(((BuildingClassTypes)(GC.getBuildingInfo(eConstructBuilding).getBuildingClassType())), 1))
+*/
+			if (GET_PLAYER(getOwnerINLINE()).isBuildingClassMaxedOut(((BuildingClassTypes)(GC.getBuildingInfo(eConstructBuilding).getBuildingClassType())), GC.getBuildingClassInfo((BuildingClassTypes)(GC.getBuildingInfo(eConstructBuilding).getBuildingClassType())).getExtraPlayerInstances()))
+/*************************************************************************************************/
+/* UNOFFICIAL_PATCH                         END                                                  */
+/*************************************************************************************************/
 			{
 				GET_PLAYER(getOwnerINLINE()).removeBuildingClass((BuildingClassTypes)(GC.getBuildingInfo(eConstructBuilding).getBuildingClassType()));
 			}
@@ -10923,6 +11342,19 @@ void CvCity::popOrder(int iNum, bool bFinish, bool bChoose)
 			}
 
 			CvEventReporter::getInstance().buildingBuilt(this, eConstructBuilding);
+
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      10/02/09                                jdog5000      */
+/*                                                                                              */
+/* AI logging                                                                                   */
+/************************************************************************************************/
+			if( gCityLogLevel >= 1 )
+			{
+				logBBAI("    City %S finishes production of building %S", getName().GetCString(), GC.getBuildingInfo(eConstructBuilding).getDescription() );
+			}
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 		}
 		break;
 
@@ -11007,6 +11439,18 @@ void CvCity::popOrder(int iNum, bool bFinish, bool bChoose)
 			{
 				GET_PLAYER(getOwnerINLINE()).changeGold(iProductionGold);
 			}
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      10/02/09                                jdog5000      */
+/*                                                                                              */
+/* AI logging                                                                                   */
+/************************************************************************************************/
+			if( gCityLogLevel >= 1 )
+			{
+				logBBAI("    City %S finishes production of project %S", getName().GetCString(), GC.getProjectInfo(eCreateProject).getDescription() );
+			}
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 		}
 		break;
 
@@ -11527,6 +11971,19 @@ void CvCity::doProduction(bool bAllowNoProduction)
 
 	if (isProductionProcess())
 	{
+/************************************************************************************************/
+/* UNOFFICIAL_PATCH                       12/07/09                         denev & jdog5000     */
+/*                                                                                              */
+/* Bugfix, Odd behavior                                                                         */
+/************************************************************************************************/
+		if (m_bPopProductionProcess)
+		{
+			popOrder(0, false, true);
+			m_bPopProductionProcess = false;
+		}
+/************************************************************************************************/
+/* UNOFFICIAL_PATCH                        END                                                  */
+/************************************************************************************************/
 		return;
 	}
 

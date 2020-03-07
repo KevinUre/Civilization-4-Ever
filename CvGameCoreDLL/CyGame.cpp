@@ -1168,6 +1168,22 @@ void CyGame::addPlayer(int eNewPlayer, int eLeader, int eCiv)
 	}
 }
 
+/********************************************************************************/
+/* 	BETTER_BTS_AI_MOD						8/1/08				jdog5000	*/
+/* 																			*/
+/* 	Debug																	*/
+/********************************************************************************/
+void CyGame::changeHumanPlayer( int /*PlayerTypes*/ eNewHuman )
+{
+	if (m_pGame)
+	{
+		m_pGame->changeHumanPlayer((PlayerTypes)eNewHuman);
+	}
+}
+/********************************************************************************/
+/* 	BETTER_BTS_AI_MOD						END								*/
+/********************************************************************************/
+
 int CyGame::getCultureThreshold(int eLevel)
 {
 	return (m_pGame ? m_pGame->getCultureThreshold((CultureLevelTypes) eLevel) : -1);
