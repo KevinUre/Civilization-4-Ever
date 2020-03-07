@@ -499,6 +499,10 @@ def pediaShowHistorical(argsList):
 	if (bUsingSevopedia):
 		if (argsList[0] == CivilopediaPageTypes.CIVILOPEDIA_PAGE_CONCEPT_NEW):
 			pediaMainScreen.pediaJump(SevoScreenEnums.PEDIA_BTS_CONCEPTS, argsList[1], True, False)
+		# KEVIN BEGIN
+		elif (argsList[0] == CivilopediaPageTypes.CIVILOPEDIA_PAGE_CONCEPT_FOREVER):
+			pediaMainScreen.pediaJump(SevoScreenEnums.PEDIA_4EVER_CONCEPTS, argsList[1], True, False)
+		# KEVIN END
 		else:
 			pediaMainScreen.pediaJump(SevoScreenEnums.PEDIA_CONCEPTS, argsList[1], True, False)
 	else:

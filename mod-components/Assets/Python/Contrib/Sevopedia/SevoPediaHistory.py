@@ -50,6 +50,8 @@ class SevoPediaHistory:
 	def getCivilopedia(self, iEntry):
 		if (self.top.iCategory == SevoScreenEnums.PEDIA_CONCEPTS):
 			info = gc.getConceptInfo(iEntry)
+		elif (self.top.iCategory == SevoScreenEnums.PEDIA_4EVER_CONCEPTS): # KEVIN
+			info = gc.getForeverConceptInfo(iEntry) # KEVIN
 		else:
 			info = gc.getNewConceptInfo(iEntry)
 		return info.getCivilopedia()

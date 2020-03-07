@@ -66,6 +66,7 @@ class SevoPediaIndex:
 		
 		conceptList = self.top.getConceptList()
 		newConceptList = self.top.getNewConceptList()
+		foreverList = self.top.get4EverList() # KEVIN
 		
 		list=[]
 		for item in techList:
@@ -144,6 +145,10 @@ class SevoPediaIndex:
 			list.append([item[0],"Concept",item])
 		for item in newConceptList:
 			list.append([item[0],"NewConcept",item])
+		# KEVIN BEGIN
+		for item in foreverList:
+			list.append([item[0],"4EverConcept",item])
+		# KEVIN END
 		
 		list.sort()
 		self.index = list
@@ -236,6 +241,10 @@ class SevoPediaIndex:
 			
 			elif (type == "Concept"):
 				screen.setTableText(self.tableName, iColumn, iRow, u"<font=3>%c %s</font>" % (CONCEPT_CHAR, item[0]), gc.getConceptInfo(item[1]).getButton(), WidgetTypes.WIDGET_PEDIA_DESCRIPTION, CivilopediaPageTypes.CIVILOPEDIA_PAGE_CONCEPT, item[1], CvUtil.FONT_LEFT_JUSTIFY)
+			# KEVIN BEGIN
+			elif (type == "4EverConcept"):
+				screen.setTableText(self.tableName, iColumn, iRow, u"<font=3>%c %s</font>" % (CONCEPT_CHAR, item[0]), gc.getForeverConceptInfo(item[1]).getButton(), WidgetTypes.WIDGET_PEDIA_DESCRIPTION, CivilopediaPageTypes.CIVILOPEDIA_PAGE_CONCEPT_FOREVER, item[1], CvUtil.FONT_LEFT_JUSTIFY)
+			# KEVIN END
 			elif (type == "NewConcept"):
 				screen.setTableText(self.tableName, iColumn, iRow, u"<font=3>%c %s</font>" % (CONCEPT_CHAR, item[0]), gc.getConceptInfo(item[1]).getButton(), WidgetTypes.WIDGET_PEDIA_DESCRIPTION, CivilopediaPageTypes.CIVILOPEDIA_PAGE_CONCEPT_NEW, item[1], CvUtil.FONT_LEFT_JUSTIFY)
 		
