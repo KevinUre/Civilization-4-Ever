@@ -1023,9 +1023,9 @@ class CvPediaMain( CvPediaScreen.CvPediaScreen ):
 				iEntryId = self.pediaHistorical.getIdFromEntryInfo(CivilopediaPageTypes.CIVILOPEDIA_PAGE_CONCEPT_NEW, i)
 				return self.pediaJump(CvScreenEnums.PEDIA_HISTORY, iEntryId, True)
 ##### DeathMaker900 START
-		for i in range(gc.getNumNewConceptInfos()):
-			if (gc.getNewConceptInfo(i).isMatchForLink(szLink, False)):
-				iEntryId = self.pediaHistorical.getIdFromEntryInfo(CivilopediaPageTypes.CIVILOPEDIA_PAGE_CONCEPT_DCM, i)
+		for i in range(gc.getNumForeverConceptInfos()):
+			if (gc.getForeverConceptInfo(i).isMatchForLink(szLink, False)):
+				iEntryId = self.pediaHistorical.getIdFromEntryInfo(CivilopediaPageTypes.CIVILOPEDIA_PAGE_CONCEPT_FOREVER, i)
 				return self.pediaJump(CvScreenEnums.PEDIA_HISTORY, iEntryId, True)
 ##### DeathMaker900 END
 		for i in range(gc.getNumTechInfos()):

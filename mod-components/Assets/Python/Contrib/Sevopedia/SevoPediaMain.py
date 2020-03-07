@@ -161,6 +161,7 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 			SevoScreenEnums.PEDIA_CORPORATIONS	: self.placeCorporations,
 			SevoScreenEnums.PEDIA_CONCEPTS		: self.placeConcepts,
 			SevoScreenEnums.PEDIA_BTS_CONCEPTS	: self.placeBTSConcepts,
+			SevoScreenEnums.PEDIA_4EVER_CONCEPTS	: self.place4EverConcepts, # KEVIN
 			SevoScreenEnums.PEDIA_HINTS		: self.placeHints,
 			SevoScreenEnums.PEDIA_SHORTCUTS  	: self.placeShortcuts,
 			SevoScreenEnums.PEDIA_STRATEGY  	: self.placeStrategy,
@@ -192,6 +193,7 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 			SevoScreenEnums.PEDIA_CORPORATIONS	: SevoPediaCorporation.SevoPediaCorporation(self),
 			SevoScreenEnums.PEDIA_CONCEPTS		: SevoPediaHistory.SevoPediaHistory(self),
 			SevoScreenEnums.PEDIA_BTS_CONCEPTS	: SevoPediaHistory.SevoPediaHistory(self),
+			SevoScreenEnums.PEDIA_4EVER_CONCEPTS	: SevoPediaHistory.SevoPediaHistory(self), # KEVIN
 			SevoScreenEnums.PEDIA_SHORTCUTS  	: SevoPediaHistory.SevoPediaHistory(self),
 			SevoScreenEnums.PEDIA_STRATEGY  	: SevoPediaHistory.SevoPediaHistory(self),
 			}
@@ -358,6 +360,7 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 		self.szCategoryCorporations	= localText.getText("TXT_KEY_CONCEPT_CORPORATIONS", ())
 		self.szCategoryConcepts		= localText.getText("TXT_KEY_PEDIA_CATEGORY_CONCEPT", ())
 		self.szCategoryConceptsNew	= localText.getText("TXT_KEY_PEDIA_CATEGORY_CONCEPT_NEW", ())
+		self.szCategory4EverConcepts	= localText.getText("TXT_KEY_PEDIA_CATEGORY_CONCEPT_FOREVER", ()) # KEVIN
 		self.szCategoryHints		= localText.getText("TXT_KEY_PEDIA_CATEGORY_HINTS", ())
 		self.szCategoryShortcuts	= localText.getText("TXT_KEY_PEDIA_CATEGORY_SHORTCUTS", ())
 		self.szCategoryStrategy   	= localText.getText("TXT_KEY_PEDIA_CATEGORY_STRATEGY", ())
@@ -386,6 +389,7 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 			["CIVICS",	self.szCategoryCorporations],
 			["HINTS",	self.szCategoryConcepts],
 			["HINTS",	self.szCategoryConceptsNew],
+			["HINTS",	self.szCategory4EverConcepts], # KEVIN
 			["HINTS",	self.szCategoryHints],
 			["HINTS",	self.szCategoryShortcuts],
 			["HINTS",	self.szCategoryStrategy],
@@ -636,6 +640,14 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 	def getConceptList(self):
 		return self.getSortedList(gc.getNumConceptInfos(), gc.getConceptInfo)
 
+	# KEVIN BEGIN
+	def place4EverConcepts(self):
+		self.list = self.get4EverList()
+		self.placeItems(WidgetTypes.WIDGET_PEDIA_DESCRIPTION, gc.getForeverConceptInfo)
+	
+	def get4EverList(self):
+		return self.getSortedList(gc.getNumForeverConceptInfos(), gc.getForeverConceptInfo)
+	# KEVIN END
 
 	def placeBTSConcepts(self):
 		self.list = self.getNewConceptList()
@@ -708,6 +720,11 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 			if (info == gc.getConceptInfo):
 				data1 = CivilopediaPageTypes.CIVILOPEDIA_PAGE_CONCEPT
 				data2 = item[1]
+			#KEVIN BEGIN
+			elif (info == gc.getForeverConceptInfo):
+				data1 = CivilopediaPageTypes.CIVILOPEDIA_PAGE_CONCEPT_FOREVER
+				data2 = item[1] 
+			#KEVIN END
 			elif (info == self.getNewConceptInfo):
 				data1 = CivilopediaPageTypes.CIVILOPEDIA_PAGE_CONCEPT_NEW
 				data2 = item[1]
@@ -782,6 +799,10 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 			return self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_RELIGIONS, True, True)
 		elif (szLink == "PEDIA_MAIN_CONCEPT"):
 			return self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_CONCEPTS, True, True)
+		# KEVIN BEGIN
+		elif (szLink == "PEDIA_MAIN_CONCEPT_FOREVER"): 
+			return self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_4EVER_CONCEPTS, True, True)
+		# KEVIN END
 		elif (szLink == "PEDIA_MAIN_HINTS"):
 			return self.pediaJump(SevoScreenEnums.PEDIA_MAIN, SevoScreenEnums.PEDIA_HINTS, True, True)
 		elif (szLink == "PEDIA_MAIN_SHORTCUTS"):
@@ -843,6 +864,11 @@ class SevoPediaMain(CvPediaScreen.CvPediaScreen):
 		for i in range(gc.getNumNewConceptInfos()):
 			if (gc.getNewConceptInfo(i).isMatchForLink(szLink, False)):
 				return self.pediaJump(SevoScreenEnums.PEDIA_BTS_CONCEPTS, i, True, True)
+		# KEVIN BEGIN
+		for i in range(gc.getNumForeverConceptInfos()):
+			if (gc.getForeverConceptInfo(i).isMatchForLink(szLink, False)):
+				return self.pediaJump(SevoScreenEnums.PEDIA_4EVER_CONCEPTS, i, True, True)
+		# KEVIN END
 
 
 
