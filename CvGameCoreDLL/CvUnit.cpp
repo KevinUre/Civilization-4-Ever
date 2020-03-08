@@ -5212,7 +5212,7 @@ bool CvUnit::pillage()
 							for(int iIttr = 0; iIttr < GC.getDefineINT("TECH_PILLAGE_IMPROVEMENT_TECHS"); iIttr++)
 							{		
 								int iChoice = GC.getGameINLINE().getSorenRandNum(vPossibilities.size(), "Pillage Tech");
-								int iAmount = GET_TEAM(eUnitTeam).getResearchCost((TechTypes)iChoice);
+								int iAmount = GET_TEAM(eUnitTeam).getResearchCost((TechTypes)vPossibilities[iChoice]);
 								iAmount *= GC.getDefineINT("TECH_PILLAGE_IMPROVEMENT_PERCENT");
 								iAmount /= 100;
 								GET_TEAM(eUnitTeam).setResearchProgress((TechTypes)vPossibilities[iChoice], 

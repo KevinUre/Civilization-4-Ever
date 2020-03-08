@@ -2230,7 +2230,7 @@ void CvPlayer::acquireCity(CvCity* pOldCity, bool bConquest, bool bTrade, bool b
 					for(int iIttr = 0; iIttr < GC.getDefineINT("TECH_PILLAGE_CITY_TECHS"); iIttr++)
 					{
 						int iChoice = GC.getGameINLINE().getSorenRandNum(vPossibilities.size(), "Pillage Tech");
-						int iAmount = (GET_TEAM(eAttackerTeam).getResearchCost((TechTypes)iChoice) * GC.getDefineINT("TECH_PILLAGE_CITY_PERCENT") / 100);
+						int iAmount = (GET_TEAM(eAttackerTeam).getResearchCost((TechTypes)vPossibilities[iChoice]) * GC.getDefineINT("TECH_PILLAGE_CITY_PERCENT") / 100);
 						GET_TEAM(eAttackerTeam).setResearchProgress((TechTypes)vPossibilities[iChoice], 
 							GET_TEAM(eAttackerTeam).getResearchProgress((TechTypes)vPossibilities[iChoice])	+ iAmount, 
 							getID());
