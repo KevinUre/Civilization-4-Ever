@@ -17646,7 +17646,7 @@ bool CvUnitAI::AI_settlerSeaFerry()
 // Returns true if a mission was pushed...
 bool CvUnitAI::AI_specialSeaTransportMissionary()
 {
-	//PROFILE_FUNC();
+	PROFILE_FUNC();
 
 	CLLNode<IDInfo>* pUnitNode;
 	CvCity* pCity;
@@ -17870,7 +17870,7 @@ bool CvUnitAI::AI_specialSeaTransportMissionary()
 // Returns true if a mission was pushed...
 bool CvUnitAI::AI_specialSeaTransportSpy()
 {
-	//PROFILE_FUNC();
+	PROFILE_FUNC();
 
 	CvPlot* pLoopPlot;
 	CvPlot* pBestPlot;
@@ -20340,7 +20340,7 @@ bool CvUnitAI::AI_pickupStranded(UnitAITypes eUnitAI, int iMaxPath)
 // Returns true if a mission was pushed...
 bool CvUnitAI::AI_airOffensiveCity()
 {
-	//PROFILE_FUNC();
+	PROFILE_FUNC();
 
 	CvPlot* pBestPlot;
 	int iValue;
@@ -20756,7 +20756,7 @@ int CvUnitAI::AI_airOffenseBaseValue( CvPlot* pPlot )
 // Returns true if a mission was pushed...
 bool CvUnitAI::AI_airDefensiveCity()
 {
-	//PROFILE_FUNC();
+	PROFILE_FUNC();
 
 	CvCity* pCity;
 	CvCity* pLoopCity;
@@ -20874,7 +20874,7 @@ bool CvUnitAI::AI_airDefensiveCity()
 // Returns true if a mission was pushed...
 bool CvUnitAI::AI_airCarrier()
 {
-	//PROFILE_FUNC();
+	PROFILE_FUNC();
 
 	CvUnit* pLoopUnit;
 	CvUnit* pBestUnit;
@@ -20956,7 +20956,7 @@ bool CvUnitAI::AI_airCarrier()
 
 bool CvUnitAI::AI_missileLoad(UnitAITypes eTargetUnitAI, int iMaxOwnUnitAI, bool bStealthOnly)
 {
-	//PROFILE_FUNC();
+	PROFILE_FUNC();
 
 	CvUnit* pBestUnit = NULL;
 	int iBestValue = 0;
@@ -21012,7 +21012,7 @@ bool CvUnitAI::AI_missileLoad(UnitAITypes eTargetUnitAI, int iMaxOwnUnitAI, bool
 // Returns true if a mission was pushed...
 bool CvUnitAI::AI_airStrike()
 {
-	//PROFILE_FUNC();
+	PROFILE_FUNC();
 
 	CvUnit* pDefender;
 	CvUnit* pInterceptor;
@@ -21325,7 +21325,7 @@ bool CvUnitAI::AI_defendBaseAirStrike()
 
 bool CvUnitAI::AI_airBombPlots()
 {
-	//PROFILE_FUNC();
+	PROFILE_FUNC();
 
 	CvUnit* pInterceptor;
 	CvPlot* pLoopPlot;
@@ -21414,7 +21414,7 @@ bool CvUnitAI::AI_airBombPlots()
 
 bool CvUnitAI::AI_airBombDefenses()
 {
-	//PROFILE_FUNC();
+	PROFILE_FUNC();
 
 	CvCity* pCity;
 	CvUnit* pInterceptor;

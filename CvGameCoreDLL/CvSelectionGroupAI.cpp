@@ -779,7 +779,7 @@ MissionAITypes CvSelectionGroupAI::AI_getMissionAIType()
 
 void CvSelectionGroupAI::AI_setMissionAI(MissionAITypes eNewMissionAI, CvPlot* pNewPlot, CvUnit* pNewUnit)
 {
-	//PROFILE_FUNC();
+	PROFILE_FUNC();
 
 	m_eMissionAIType = eNewMissionAI;
 

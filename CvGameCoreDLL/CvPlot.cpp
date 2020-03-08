@@ -8241,7 +8241,7 @@ bool CvPlot::changeBuildProgress(BuildTypes eBuild, int iChange, TeamTypes eTeam
 
 void CvPlot::updateFeatureSymbolVisibility()
 {
-	//PROFILE_FUNC();
+	PROFILE_FUNC();
 
 	if (!GC.IsGraphicsInitialized())
 	{
@@ -8269,7 +8269,7 @@ void CvPlot::updateFeatureSymbolVisibility()
 
 void CvPlot::updateFeatureSymbol(bool bForce)
 {
-	//PROFILE_FUNC();
+	PROFILE_FUNC();
 
 	FeatureTypes eFeature;
 
@@ -8380,7 +8380,7 @@ CvFeature* CvPlot::getFeatureSymbol() const
 
 void CvPlot::updateRiverSymbol(bool bForce, bool bAdjacent)
 {
-	//PROFILE_FUNC();
+	PROFILE_FUNC();
 
 	CvPlot* pAdjacentPlot;
 
@@ -8479,7 +8479,7 @@ CvFlagEntity* CvPlot::getFlagSymbolOffset() const
 
 void CvPlot::updateFlagSymbol()
 {
-	//PROFILE_FUNC();
+	PROFILE_FUNC();
 
 	if (!GC.IsGraphicsInitialized())
 	{

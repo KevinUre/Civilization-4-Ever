@@ -693,7 +693,7 @@ CvPlot* CvSelectionGroup::lastMissionPlot()
 
 bool CvSelectionGroup::canStartMission(int iMission, int iData1, int iData2, CvPlot* pPlot, bool bTestVisible, bool bUseCache)
 {
-	//PROFILE_FUNC();
+	PROFILE_FUNC();
 
 	CLLNode<IDInfo>* pUnitNode;
 	CvUnit* pTargetUnit;
@@ -3602,7 +3602,7 @@ bool CvSelectionGroup::groupAttack(int iX, int iY, int iFlags, bool& bFailedAlre
 
 void CvSelectionGroup::groupMove(CvPlot* pPlot, bool bCombat, CvUnit* pCombatUnit, bool bEndMove)
 {
-	//PROFILE_FUNC();
+	PROFILE_FUNC();
 
 	CLLNode<IDInfo>* pUnitNode;
 	CvUnit* pLoopUnit;
@@ -4437,7 +4437,7 @@ void CvSelectionGroup::clearUnits()
 // Returns true if the unit is added...
 bool CvSelectionGroup::addUnit(CvUnit* pUnit, bool bMinimalChange)
 {
-	//PROFILE_FUNC();
+	PROFILE_FUNC();
 
 	CLLNode<IDInfo>* pUnitNode;
 	CvUnit* pLoopUnit;
@@ -4934,7 +4934,7 @@ MissionData* CvSelectionGroup::getMissionFromQueue(int iIndex) const
 
 void CvSelectionGroup::insertAtEndMissionQueue(MissionData mission, bool bStart)
 {
-	//PROFILE_FUNC();
+	PROFILE_FUNC();
 
 	FAssert(getOwnerINLINE() != NO_PLAYER);
 
