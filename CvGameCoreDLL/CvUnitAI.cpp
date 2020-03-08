@@ -2659,8 +2659,10 @@ void CvUnitAI::AI_attackCityMove()
 		// can we remove this or call AI_heal here?
 		if ((getGroup()->getNumUnits() == 1) && (getDamage() > 0))
 		{
-			getGroup()->pushMission(MISSION_HEAL);
-			return;
+			if (AI_heal())
+			{
+				return;
+			}
 		}
 
 		if( bIgnoreFaster )
@@ -12010,7 +12012,10 @@ bool CvUnitAI::AI_heal(int iDamagePercent, int iMaxPath)
 	}
 	
 	bool bPushedMission = false;
-    if (plot()->isCity() && (plot()->getOwnerINLINE() == getOwnerINLINE()))
+	// DEATHMAKER900 NON-LETHAL COMBAT BEGIN
+    // if (plot()->isCity() && (plot()->getOwnerINLINE() == getOwnerINLINE()))
+	if (plot()->isCity() && (plot()->getOwnerINLINE() == getOwnerINLINE()) && healRate(plot()) > 0)
+	// DEATHMAKER900 NON-LETHAL COMBAT END
 	{
 		FAssertMsg(((int) aeDamagedUnits.size()) <= iHurtUnitCount, "damaged units array is larger than our hurt unit count");
 

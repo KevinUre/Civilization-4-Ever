@@ -3857,6 +3857,38 @@ int CvUnit::healRate(const CvPlot* pPlot) const
 
 	iTotalHeal = 0;
 
+	// DEATHMAKER900 NON-LETHAL COMABT BEGIN
+	if (GC.getGameINLINE().isOption(GAMEOPTION_NON_LETHAL_COMBAT))
+	{
+		for (int iI = 0; iI < NUM_DIRECTION_TYPES; iI++)
+		{
+			CvPlot* pLoopPlot = plotDirection(pPlot->getX_INLINE(), pPlot->getY_INLINE(), ((DirectionTypes)iI));
+			std::vector<CvUnit*> aUnits;
+			CLLNode<IDInfo>* pUnitNode = pLoopPlot->headUnitNode();
+			if (pUnitNode == NULL) { continue; }
+			while (pUnitNode != NULL)
+			{
+				CvUnit* pLoopUnit = ::getUnit(pUnitNode->m_data);
+				pUnitNode = pLoopPlot->nextUnitNode(pUnitNode);
+				if (NULL != pLoopUnit)
+				{
+					aUnits.push_back(pLoopUnit);
+				}
+			}
+			std::vector<CvUnit*>::iterator it = aUnits.begin();
+			while (it != aUnits.end())
+			{
+				CvUnit* pLoopUnit = *it;
+				if (pLoopUnit->isEnemy(getTeam()) && !pLoopUnit->isSpy())
+				{
+					return 0;
+				}
+				++it;
+			}
+		}
+	}
+	// DEATHMAKER900 NON-LETHAL COMABT END
+
 	if (pPlot->isCity(true, getTeam()))
 	{
 		iTotalHeal += GC.getDefineINT("CITY_HEAL_RATE") + (GET_TEAM(getTeam()).isFriendlyTerritory(pPlot->getTeam()) ? getExtraFriendlyHeal() : getExtraNeutralHeal());
