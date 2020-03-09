@@ -166,7 +166,7 @@
 			<Civilopedia>TXT_KEY_CONCEPT_GREAT_SPY_PEDIA</Civilopedia>
 			<Strategy>TXT_KEY_SPECIALIST_SPY_STRATEGY</Strategy>
 			<Help/>
-			<Texture>,Art/Interface/Buttons/TechTree/Corporation.dds,Art/Interface/Buttons/Beyond_the_Sword_Atlas.dds,5,14</Texture>
+			<Texture>Art/Interface/MainScreen/CityScreen/great_spy.dds</Texture>
 			<bVisible>1</bVisible>
 			<GreatPeopleUnitClass>UNITCLASS_GREAT_SPY</GreatPeopleUnitClass>
 			<iGreatPeopleRateChange>3</iGreatPeopleRateChange>
@@ -184,7 +184,7 @@
 			<bShiftDown>0</bShiftDown>
 			<bCtrlDown>0</bCtrlDown>
 			<iHotKeyPriority>0</iHotKeyPriority>
-			<Button>,Art/Interface/Buttons/TechTree/Corporation.dds,Art/Interface/Buttons/Beyond_the_Sword_Atlas.dds,5,14</Button>
+			<Button>Art/Interface/MainScreen/CityScreen/great_spy.dds</Button>
 		</SpecialistInfo>
 		<SpecialistInfo>
 			<Type>SPECIALIST_GREAT_PRIEST</Type>
@@ -362,7 +362,7 @@
 			<Civilopedia>TXT_KEY_CONCEPT_GREAT_SPY_PEDIA</Civilopedia>
 			<Strategy>TXT_KEY_SPECIALIST_GREAT_SPY_STRATEGY</Strategy>
 			<Help/>
-			<Texture>,Art/Interface/Buttons/TechTree/Corporation.dds,Art/Interface/Buttons/Beyond_the_Sword_Atlas.dds,6,14</Texture>
+			<Texture>Art/Interface/MainScreen/CityScreen/spy.dds</Texture>
 			<bVisible>0</bVisible>
 			<GreatPeopleUnitClass>NONE</GreatPeopleUnitClass>
 			<iGreatPeopleRateChange>0</iGreatPeopleRateChange>
@@ -380,7 +380,7 @@
 			<bShiftDown>0</bShiftDown>
 			<bCtrlDown>0</bCtrlDown>
 			<iHotKeyPriority>0</iHotKeyPriority>
-			<Button>,Art/Interface/Buttons/TechTree/Corporation.dds,Art/Interface/Buttons/Beyond_the_Sword_Atlas.dds,6,14</Button>
+			<Button>Art/Interface/MainScreen/CityScreen/spy.dds</Button>
 		</SpecialistInfo>
 	</SpecialistInfos>
 </Civ4SpecialistInfos>
