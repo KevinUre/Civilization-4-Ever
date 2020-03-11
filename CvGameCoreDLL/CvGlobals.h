@@ -1198,6 +1198,52 @@ protected:
 
 	FProfiler* m_Profiler;		// profiler
 	CvString m_szDllProfileText;
+
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      02/21/10                                jdog5000      */
+/*                                                                                              */
+/* Efficiency, Options                                                                          */
+/************************************************************************************************/
+public:
+	int getDefineINT( const char * szName, const int iDefault ) const;
+	
+// BBAI Options
+public:
+	bool getBBAI_AIR_COMBAT();
+	bool getBBAI_HUMAN_VASSAL_WAR_BUILD();
+	int  getBBAI_DEFENSIVE_PACT_BEHAVIOR();
+	bool getBBAI_HUMAN_AS_VASSAL_OPTION();
+
+protected:
+	bool m_bBBAI_AIR_COMBAT;
+	bool m_bBBAI_HUMAN_VASSAL_WAR_BUILD;
+	int  m_iBBAI_DEFENSIVE_PACT_BEHAVIOR;
+	bool m_bBBAI_HUMAN_AS_VASSAL_OPTION;
+
+// BBAI AI Variables
+public:
+	int getWAR_SUCCESS_CITY_CAPTURING();
+	int getBBAI_ATTACK_CITY_STACK_RATIO();
+	int getBBAI_SKIP_BOMBARD_BEST_ATTACK_ODDS();
+	int getBBAI_SKIP_BOMBARD_BASE_STACK_RATIO();
+	int getBBAI_SKIP_BOMBARD_MIN_STACK_RATIO();
+
+protected:
+	int m_iWAR_SUCCESS_CITY_CAPTURING;
+	int m_iBBAI_ATTACK_CITY_STACK_RATIO;
+	int m_iBBAI_SKIP_BOMBARD_BEST_ATTACK_ODDS;
+	int m_iBBAI_SKIP_BOMBARD_BASE_STACK_RATIO;
+	int m_iBBAI_SKIP_BOMBARD_MIN_STACK_RATIO;
+public:
+	int getCOMBAT_DIE_SIDES();
+	int getCOMBAT_DAMAGE();
+
+protected:
+	int m_iCOMBAT_DIE_SIDES;
+	int m_iCOMBAT_DAMAGE;
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 };
 
 extern CvGlobals gGlobals;	// for debugging

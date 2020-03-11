@@ -72,6 +72,21 @@ public:
 	bool canDefend();																																										// Exposed to Python
 	bool canBombard(const CvPlot* pPlot);
 	bool visibilityRange();
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      08/19/09                                jdog5000      */
+/*                                                                                              */
+/* General AI                                                                                   */
+/************************************************************************************************/
+	int getBombardTurns( CvCity* pCity );
+	bool isHasPathToAreaPlayerCity( PlayerTypes ePlayer, int iFlags = 0, int iMaxPathTurns = -1 );
+	bool isHasPathToAreaEnemyCity( bool bIgnoreMinors = true, int iFlags = 0, int iMaxPathTurns = -1 );
+	bool isStranded();
+	void invalidateIsStrandedCache();
+	bool calculateIsStranded();
+	bool canMoveAllTerrain() const;
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 
 	void unloadAll();
 	bool alwaysInvisible() const;																																							// Exposed to Python
@@ -100,7 +115,16 @@ public:
 	bool groupPathTo(int iX, int iY, int iFlags);
 	bool groupRoadTo(int iX, int iY, int iFlags);
 	bool groupBuild(BuildTypes eBuild);
-	void setTransportUnit(CvUnit* pTransportUnit);
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      04/18/10                                jdog5000      */
+/*                                                                                              */
+/* General AI                                                                                   */
+/************************************************************************************************/
+	void setTransportUnit(CvUnit* pTransportUnit, CvSelectionGroup** pOtherGroup = NULL);
+	void setRemoteTransportUnit(CvUnit* pTransportUnit);
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 
 	bool isAmphibPlot(const CvPlot* pPlot) const;																																		// Exposed to Python
 	bool groupAmphibMove(CvPlot* pPlot, int iFlags);
@@ -198,8 +222,19 @@ public:
 	virtual void AI_setMissionAI(MissionAITypes eNewMissionAI, CvPlot* pNewPlot, CvUnit* pNewUnit) = 0;
 	virtual CvUnit* AI_getMissionAIUnit() = 0;
 	virtual CvUnit* AI_ejectBestDefender(CvPlot* pTargetPlot) = 0;
-	virtual void AI_seperateNonAI(UnitAITypes eUnitAI) = 0;
-	virtual void AI_seperateAI(UnitAITypes eUnitAI) = 0;
+	virtual void AI_separateNonAI(UnitAITypes eUnitAI) = 0;
+	virtual void AI_separateAI(UnitAITypes eUnitAI) = 0;
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      06/02/09                                jdog5000      */
+/*                                                                                              */
+/* General AI                                                                                   */
+/************************************************************************************************/
+	virtual void AI_separateImpassable() = 0;
+	virtual void AI_separateEmptyTransports() = 0;
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
+
 	virtual bool AI_isFull() = 0;
 
 protected:
@@ -219,6 +254,17 @@ protected:
 	CLinkList<MissionData> m_missionQueue;
 	std::vector<CvUnit *> m_aDifferentUnitCache;
 	bool m_bIsBusyCache;
+
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      08/19/09                                jdog5000      */
+/*                                                                                              */
+/* General AI                                                                                   */
+/************************************************************************************************/
+	bool m_bIsStrandedCache;
+	bool m_bIsStrandedCacheValid;
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 
 	void activateHeadMission();
 	void deactivateHeadMission();

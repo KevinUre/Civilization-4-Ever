@@ -49,6 +49,68 @@ void CvGame::updateColoredPlots()
 		return;
 	}
 
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      06/25/09                                jdog5000      */
+/*                                                                                              */
+/* Debug                                                                                        */
+/************************************************************************************************/
+	// City circles for debugging
+	if (isDebugMode())
+	{
+		for (int iPlotLoop = 0; iPlotLoop < GC.getMap().numPlots(); iPlotLoop++)
+		{
+			CvPlot* pLoopPlot = GC.getMap().plotByIndex(iPlotLoop);
+
+			if (pLoopPlot != NULL)
+			{
+				for( int iI = 0; iI < MAX_CIV_PLAYERS; iI++ )
+				{
+					if( GET_PLAYER((PlayerTypes)iI).isAlive() )
+					{
+						if (GET_PLAYER((PlayerTypes)iI).AI_isPlotCitySite(pLoopPlot))
+						{
+							gDLL->getEngineIFace()->addColoredPlot(pLoopPlot->getX_INLINE(), pLoopPlot->getY_INLINE(), GC.getColorInfo((ColorTypes)GC.getPlayerColorInfo(GET_PLAYER((PlayerTypes)iI).getPlayerColor()).getColorTypePrimary()).getColor(), PLOT_STYLE_CIRCLE, PLOT_LANDSCAPE_LAYER_BASE);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// Plot improvement replacement circles for debugging
+	if (isDebugMode())
+	{
+		for (int iPlotLoop = 0; iPlotLoop < GC.getMap().numPlots(); iPlotLoop++)
+		{
+			CvPlot* pLoopPlot = GC.getMap().plotByIndex(iPlotLoop);
+
+			if (pLoopPlot != NULL)
+			{
+				CvCity* pWorkingCity = pLoopPlot->getWorkingCity();
+				ImprovementTypes eImprovement = pLoopPlot->getImprovementType();
+
+				if( pWorkingCity != NULL && eImprovement != NO_IMPROVEMENT )
+				{
+					int iPlotIndex = pWorkingCity->getCityPlotIndex(pLoopPlot);
+					int iBuildValue = pWorkingCity->AI_getBestBuildValue(iPlotIndex);
+					BuildTypes eBestBuild = pWorkingCity->AI_getBestBuild(iPlotIndex);
+
+					if (NO_BUILD != eBestBuild)
+					{
+						if( GC.getBuildInfo(eBestBuild).getImprovement() != NO_IMPROVEMENT && eImprovement != GC.getBuildInfo(eBestBuild).getImprovement() )
+						{
+							gDLL->getEngineIFace()->addColoredPlot(pLoopPlot->getX_INLINE(), pLoopPlot->getY_INLINE(), GC.getColorInfo((ColorTypes)GC.getInfoTypeForString("COLOR_RED")).getColor(), PLOT_STYLE_CIRCLE, PLOT_LANDSCAPE_LAYER_BASE);
+						}
+					}
+				}
+			}
+		}
+	}
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
+
+
 	// City circles when in Advanced Start
 	if (gDLL->getInterfaceIFace()->isInAdvancedStart())
 	{
@@ -309,6 +371,20 @@ void CvGame::updateColoredPlots()
 									CvPlot* pLoopPlot = ::plotXY(pLoopUnit->getX_INLINE(), pLoopUnit->getY_INLINE(), i, j);
 									if (NULL != pLoopPlot && pLoopPlot->isRevealed(getActiveTeam(), false))
 									{
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      12/11/08                                jdog5000      */
+/*                                                                                              */
+/* Bugfix                                                                                       */
+/************************************************************************************************/
+										if( GC.getMapINLINE().calculatePathDistance(pLoopUnit->plot(),pLoopPlot) > iBlockadeRange )
+										{
+											// No blockading on other side of an isthmus
+											continue;
+										}
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
+
 										if (pLoopPlot->isWater() && pLoopPlot->area() == pLoopUnit->area())
 										{
 											NiColorA color(GC.getColorInfo((ColorTypes)GC.getPlayerColorInfo(GET_PLAYER(getActivePlayer()).getPlayerColor()).getColorTypePrimary()).getColor());

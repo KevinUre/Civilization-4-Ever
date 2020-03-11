@@ -1,5 +1,32 @@
+#!/usr/bin/env python2
 ##############################################################################
-## File: Totestra.py version 20120615 (June 15, 2012)
+## File: Totestra.py version 2019-07-13 (July 13, 2019)
+## This version uses the old "Perfect World" MT19937 random number
+## generator, but can also use RadioGatun[32] to make random numbers.
+
+## It's possible to run this
+## generator stand alone.  Make sure to have Python2 installed (yes, I know,
+## but this generator is from the mid-first-2000s-decade), then type in
+## something like: python Totestra.py 5
+## Note that, when run standalone, the map
+## generator will generate a plot map then exit.  The map is all of the
+## default options, which can not be changed (in particular, in the stand
+## alone mode, we only generate 144x96 huge medium patience world maps)
+## This allows us to make random worlds without needing Civilization IV
+## installed.  This has two benefits:
+## 1) People without Civilization IV can enjoy this map generator
+## 2) We can now automate the generation of maps to better find really
+##    good random worlds
+
+## 2019-08 Updates: Same script can use RG32 or MT19937; can run standalone
+## 2018-07-14 Update: Update preset seeds to make good 3:2 maps
+## 2018-07-04 Update: Make sure RG32 maps use different service tags
+## than MT19937 maps, so there is no confusion.  Increase number of possible
+## maps from 9007199254740992 to 95428956661682176; the preset seed
+## maps use different seeds and will never show up if random seed chosen
+## The service tag now has the literal base-26 string used as the map seed
+## (more RNGs should have support for string seeds)
+## Note: We use RagioGatun[32] instead of MT19937 for RNG
 ## Note: This is a finished product.  
 ## Original file: PerfectWorld.py version 2.06
 ## Author: Rich Marinaccio
@@ -50,6 +77,14 @@
 ##############################################################################
 ## Version History
 ## Totestra - Sam Trenholme's update of PerfectWorld2.py
+##
+## 2017-03-30:
+## 1) Converted line feeds in to DOS format so the script can be edited
+##    in Notepad on Windows.  No other changes done.
+##
+## 2017-03-29:
+## 1) Update tropical climate done by q3max, see http://bit.ly/2oAKQSx
+##    for original patch
 ##
 ## 20120615:
 ## 1) One-line bugfix for multi-player maps
@@ -223,9 +258,11 @@
 ## bugs that caused deserts to get out of control.
 ##
 
-from CvPythonExtensions import *
-import CvUtil
-import CvMapGeneratorUtil 
+IsStandAlone = False
+if __name__ != "__main__":
+    from CvPythonExtensions import *
+    import CvUtil
+    import CvMapGeneratorUtil 
 
 from array import array
 from random import random,randint,seed
@@ -247,9 +284,13 @@ OPTION_Handicap = 7
 OPTION_NoRotate = 8
 OPTION_SmoothPeaks = 9
 OPTION_MAX = OPTION_MapSeed + 1 # Add 1 because it's 1-indexed
+# If this is set to "True" (no quotes), we will use RadioGatun[32] to 
+# make random numbers
+UseRG32 = False
 
-# Setting this to 1 will allow the buggy 1:2 ratio; this ratio has
-# problems because of limitations in Civ 4's engine.  You have been warned.
+# Setting this to 1 will allow the buggy 1:2 ratio and the huge 6:4 ratio
+# these ratios have problems because of limitations in Civ 4's engine.  
+# You have been warned.
 ALLOW_EXTREME_RATIOS = 0
 
 # Setting this to 0 will make it so the map does not have a "Service Tag"
@@ -616,6 +657,14 @@ class MapConstants :
         clim = mmap.getClimate() 
         if clim == 1: # Tropical
             self.tropicsLatitude = 46
+            # q3max changes
+            self.DesertPercent = .10 # added
+            self.PlainsPercent = .30 # added
+            self.SnowTemp = .20 # added
+            self.TundraTemp = .30 # added
+            self.ForestTemp = .35 # added
+            self.JungleTemp = .50 # added
+            # End q3max changes
 	    self.iceSlope = 0.33 # Less ice
         elif clim == 2: # Arid
             self.DesertPercent = 0.40
@@ -718,7 +767,10 @@ class MapConstants :
 	elif ratioValue == 5: # 3:3, Big square (untested)
 		self.ratioX = 3
 		self.ratioY = 3
-        elif ratioValue == 6: # 1:2; down here because it's buggy
+	elif ratioValue == 6: # 3:2 but twice the size
+		self.ratioX = 6
+		self.ratioY = 4
+        elif ratioValue == 7: # 1:2; down here because it's buggy
 		self.ratioX = 2
 		self.ratioY = 4
 
@@ -830,43 +882,22 @@ class MapConstants :
         selectionID = mmap.getCustomMapOption(OPTION_MapSeed)
         mapRString = "Random"
         self.totestra = 0 
-        if selectionID == 1: # Totestra
-            self.totestra = 8885098498360902 # Fixed map seed
-            #mapRstring = "Totestra"
-            # Ignore most map parameters
-            #self.wrapX = True
-            #self.wrapY = False
-            #wrapString = "Cylindrical"
-            #self.hmWidth = 240
-            #self.hmHeight = 161
-            #heightmap_size_factor = 5
-            #self.AllowPangeas = False
+        if selectionID > 0 and UseRG32:
+            self.totestra = 2997 # Interesting map
+        elif selectionID == 1: 
+            self.totestra = 8885098498360902 # Totestra
         elif selectionID == 2: # Cephalo
-            self.totestra = 4316490043753041 # Fixed map seed
-            #mapRstring = "Cephalo"
-            # Ignore most map parameters
-            #self.wrapX = True
-            #self.wrapY = False
-            #wrapString = "Cylindrical"
-            #self.hmWidth = 144
-            #self.hmHeight = 97
-            #heightmap_size_factor = 3
-            #self.AllowPangeas = False
-        elif selectionID == 3: # Caulixtla
-            self.totestra = 8939185639133313 # Fixed map seed
-            #mapRstring = "Caulixtla"
-            # Ignore most map parameters
-            #self.wrapX = True
-            #self.wrapY = False
-            #wrapString = "Cylindrical"
-            #self.hmWidth = 144
-            #self.hmHeight = 97
-            #heightmap_size_factor = 3
-            #self.AllowPangeas = False
-	elif selectionID == 4: # En Dotter 1
-            self.totestra = 0x8f3d2735334af # En Dotter's low on resources map 
+            self.totestra = 4316490043753041 # Cephalo 
+        elif selectionID == 3: 
+            self.totestra = 8939185639133313 # Caulixtla 
+	elif selectionID == 4: 
+            self.totestra = 0x8f3d2735334af
 	elif selectionID == 5:
-	    self.totestra = 0x1fcdc6f76b8c1b# En Dotter's nearby starts map
+	    self.totestra = 0x1fcdc6f76b8c1b
+	elif selectionID == 6:
+	    self.totestra = 0x1e52818fad64 # Atlixco
+        elif selectionID > 0:
+            self.totestra = 8939185639133313 # Caulixtla
 
         #Number of tectonic plates
         self.hmNumberOfPlates = int(float(self.hmWidth * self.hmHeight) * 0.0016)
@@ -907,8 +938,206 @@ class MapConstants :
         print str(self.optionsString) + "\n" 
         return
     
-mc = MapConstants()
 
+# Class RadioGatun32 is under different copyright:
+# Copyright (c) 2012-2017 Sam Trenholme
+# 
+# TERMS
+# 
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+#
+# 1. Redistributions of source code must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright
+#    notice, this list of conditions and the following disclaimer in the
+#    documentation and/or other materials provided with the distribution.
+#
+# This software is provided 'as is' with no guarantees of correctness or
+# fitness for purpose.
+
+# This is a Python implementation of RadioGatun32.  It takes about 10
+# seconds to set up the RNG, then it can output approximately
+# 30,000 16-bit random numbers per second on a Core i5-2430M
+
+# There is another open-source Python RadioGatun implementation here:
+# https://github.com/doegox/python-cryptoplus
+
+# I would like to thank Lorenzo for his suggestion to use xrange to speed up
+# the program
+
+class RadioGatun32:
+	def __init__(self, m):
+		self.wordsize = 32
+		self.millsize = 19
+		self.beltrows = 3
+		self.beltcol = 13
+		self.beltfeed = 12
+		self.mask = 0xffffffff # 32-bit
+		self.index = 0
+		(self.a, self.b) = self.seed(str(m))
+	def mill(self,a):
+		aa = []
+		for g in xrange(self.millsize):
+			aa.append(0)
+		x = 0
+		i = 0
+		y = 0
+		r = 0
+		z = 0
+		for i in xrange(self.millsize):
+			y = (i * 7) % self.millsize
+			r = ((i * (i + 1)) / 2) % self.wordsize
+			x = a[y] ^ (a[ ((y + 1) % self.millsize) ] |
+			    (a[ ((y + 2) % self.millsize) ] ^ self.mask))
+			aa[i] = ((x >> r) | (x << (self.wordsize - r))
+			        & self.mask)
+		for i in xrange(self.millsize):
+			y = i
+			r = (i + 1) % self.millsize
+			z = (i + 4) % self.millsize
+			a[i] = aa[y] ^ aa[r] ^ aa[z]
+		a[0] ^= 1
+		return a
+	def belt(self,a,b):
+		q = []
+		for g in xrange(self.beltrows):
+			q.append(0)
+		s = 0	
+		i = 0
+		v = 0
+		for s in xrange(self.beltrows):
+			q[s] = b[((s * self.beltcol) + self.beltcol - 1)]
+		i = self.beltcol - 1
+		while i > 0:
+			for s in xrange(self.beltrows):
+				v = i - 1
+				if v < 0:
+					v = self.beltcol - 1
+				b[((s * self.beltcol) + i)] = (
+					b[((s * self.beltcol) + v)])
+			i -= 1
+		for s in xrange(self.beltrows):
+			b[(s * self.beltcol)] = q[s]
+		for i in xrange(self.beltfeed):
+			s = (i + 1) + ((i % self.beltrows) * self.beltcol)
+			b[s] ^= a[(i + 1)]
+		a = self.mill(a)
+		for i in xrange(self.beltrows):
+			a[(i + self.beltcol)] ^= q[i]
+		return (a, b)
+	def seed(self,m):
+		p = []
+		for g in xrange(3):
+			p.append(0)
+		q = 0
+		c = 0
+		r = 0
+		done = 0
+		index = 0
+		counter = 0
+		a = []
+		b = []
+		for g in xrange(self.millsize):
+			a.append(0)
+		for g in xrange(self.beltrows * self.beltcol):
+			b.append(0)
+		for counter in xrange(16777218): # Infinite loop protection
+			p[0] = p[1] = p[2] = 0
+			for r in xrange(3):
+				q = 0
+				while q < self.wordsize:
+					x = 0
+					try:
+						x = ord(m[index])
+					except:
+						x = 1
+					index += 1
+					if(index > len(m)):
+						done = 1
+						x = 1
+					p[r] |= x << q
+					if done == 1:
+						for c in xrange(3):
+							b[c * 13] ^= p[c]
+							a[16 + c] ^= p[c]
+						(a,b) = self.belt(a,b)
+						for c in xrange(16):	
+							(a,b) = self.belt(a,b)
+						return (a,b)
+					q += 8
+			for c in xrange(3):
+				b[c * 13] ^= p[c]
+				a[16 + c] ^= p[c]
+			(a,b) = self.belt(a,b)
+		return (a,b) # We should never get here
+	# Return 16-bit random integer (between 0 and 65535)
+	def rng16(self):
+		if (self.index % 4) == 0:
+			(self.a, self.b) = self.belt(self.a, self.b)
+			self.index += 1
+			return (((self.a[1] & 0xff) << 8) | 
+				 ((self.a[1] & 0xff00) >> 8))
+		self.index += 1
+		if (self.index % 4) == 2:
+			return(((self.a[1] & 0xff0000) >> 8) |
+				((self.a[1] & 0xff000000) >> 24))
+		elif (self.index % 4) == 3:
+			return(((self.a[2] & 0xff) << 8) |
+				((self.a[2] & 0xff00) >> 8))
+		elif (self.index % 4) == 0:
+			return(((self.a[2] & 0xff0000) >> 8) |
+				((self.a[2] & 0xff000000) >> 24))
+		else: # Should never get here
+			return -1
+	# Return 32-bit random integer
+	def rng32(self):
+		if(self.index & 1):
+			self.index += 1
+		self.index &= 2
+		if(self.index):
+			self.index = 0
+			return (((self.a[2] & 0xff) << 24) |
+				((self.a[2] & 0xff000000) >> 24) |
+				((self.a[2] & 0xff00) << 8) |
+				((self.a[2] & 0xff0000) >> 8))
+		(self.a, self.b) = self.belt(self.a, self.b)
+		self.index = 2
+		return (((self.a[1] & 0xff) << 24) |
+			((self.a[1] & 0xff000000) >> 24) |
+			((self.a[1] & 0xff00) << 8) |
+			((self.a[1] & 0xff0000) >> 8))
+	# Return 64-bit random integer
+	def rng64(self):
+		left = self.rng32()
+		right = self.rng32()
+		return ((left << 32) | right)
+	# Return number between 0 (can be 0) and 1 (can be slightly smaller
+	# than 1 but never 1)
+	def random(self):
+		return float(self.rng64()) / 18446744073709551616
+	# Return a number between a and b
+	def randint(self, low, high):
+		if(low == high):
+			return low
+		if(high < low):
+			swap = low
+			low = high
+			high = swap
+		range = 1 + high - low	
+		# For low ranges, we can use 16-bit ints to get number
+		if(range <= 10000):
+			max = 65536 - (65536 % range)
+			number = max
+			while number >= max:
+				number = self.rng16()
+			return low + (number % range)
+		# int() returns the floor, e.g. int(1.99999) returns 1
+		return int(low + (self.random() * range))
+##### END BSD LICENSED CODE ##############################################
+
+mc = MapConstants()
 class PythonRandom :
     def __init__(self):
         return
@@ -918,20 +1147,33 @@ class PythonRandom :
             self.usePR = True
         else:
             self.usePR = False
-        if self.usePR and CyGame().isNetworkMultiPlayer():
+        if not IsStandAlone and self.usePR and CyGame().isNetworkMultiPlayer():
             print "Detecting network game. Setting UsePythonRandom to False."
             self.usePR = False
         if self.usePR:
             # Python 'long' has unlimited precision, while the random generator
             # has 53 bits of precision, so I'm using a 53 bit integer to seed the map!
             seed() #Start with system time
-            if(mc.totestra == 0):
-                seedValue = randint(0,9007199254740991)
-                self.seedString = "Random seed (Using Python rands) for this map is %(s)20d" % {"s":seedValue}
+            if UseRG32:
+                if(mc.totestra == 0):
+                    seedValue = "R"
+                    seedletter="abcdefghijkl7nopqrstuv8xyz" # No wide letters
+                    for seedMake in range(10):
+                        seedMe = randint(0,25)
+                        seedValue += seedletter[seedMe:seedMe+1]
+                    self.seedString = "Random seed (Using Python rands) for this map is " + seedValue
+                else:
+                    seedValue = "RT" + str(mc.totestra)
+                    self.seedString = "Fixed seed (Using Python rands) for this map is " + seedValue
+	        mc.serviceTag = 0
             else:
-                seedValue = mc.totestra
-                self.seedString = "Fixed seed (Using Python rands) for this map is %(s)20d" % {"s":seedValue}
-	    mc.serviceTag = (seedValue & 0xffffffffffffff)
+                if(mc.totestra == 0):
+                    seedValue = randint(0,9007199254740991)
+                    self.seedString = "Random seed (Using Python rands) for this map is %(s)20d" % {"s":seedValue}
+                else:
+                    seedValue = mc.totestra
+                    self.seedString = "Fixed seed (Using Python rands) for this map is %(s)20d" % {"s":seedValue}
+	        mc.serviceTag = (seedValue & 0xffffffffffffff)
 	    mc.serviceTag |= (mc.serviceFlags << 60)
 	    mc.serviceTag |= (mc.xtraFlags << 53)
 	    if(mc.noRotate == 0):
@@ -939,10 +1181,15 @@ class PythonRandom :
 	    if(mc.smoothPeaks == 1):
 		mc.serviceTag |= (1 << 75)
 	    mc.serviceTag |= (a91a15d7(mc.serviceTag) << 53)
-	    mc.serviceString = ("%x" % mc.serviceTag)
+            if UseRG32:
+                mc.serviceTag >>= 52
+                mc.serviceString = ("%x" % mc.serviceTag)
+                mc.serviceString += seedValue
+                self.rg32 = RadioGatun32(seedValue)
+            else:
+	        mc.serviceString = ("%x" % mc.serviceTag)
+                seed(seedValue)
             print "SERVICE TAG: " + mc.serviceString 
-            seed(seedValue)
-            
         else:
             gc = CyGlobalContext()
             self.mapRand = gc.getGame().getMapRand()
@@ -959,7 +1206,10 @@ class PythonRandom :
         return
     def random(self):
         if self.usePR:
-            return random()
+            if UseRG32:
+                return self.rg32.random()
+            else:
+                return random()
         else:
             #This formula is identical to the getFloat function in CvRandom. It
             #is not exposed to Python so I have to recreate it.
@@ -972,7 +1222,10 @@ class PythonRandom :
             return rMin
         #returns a number between rMin and rMax inclusive
         if self.usePR:
-            return randint(rMin,rMax)
+            if UseRG32:
+                return self.rg32.randint(rMin,rMax)
+            else:
+                return randint(rMin,rMax)
         else:
             #mapRand.get() is not inclusive, so we must make it so
             return rMin + self.mapRand.get(rMax + 1 - rMin,"Getting a randint - FairWeather.py")
@@ -5511,7 +5764,7 @@ def getNumCustomMapOptionValues(argsList):
         elif optionID == OPTION_Wrap:
             return 4
         elif optionID == OPTION_MapSeed: # Map world
-            return 6
+            return 7 # Number of possible map seed to choose
         elif optionID == OPTION_IslandFactor: # Number continents
             return 4
         elif optionID == OPTION_Patience: # Speed/quality tradeoff
@@ -5519,9 +5772,9 @@ def getNumCustomMapOptionValues(argsList):
             return 2
         elif optionID == OPTION_MapRatio: # Map ratio
 	    if ALLOW_EXTREME_RATIOS == 1:
-	    	return 7 
+	    	return 8 
 	    else:
-                return 6
+                return 7
         elif optionID == OPTION_Handicap:
 	    return 4
 	elif optionID == OPTION_MapResources:
@@ -5571,10 +5824,14 @@ def getCustomMapOptionDescAt(argsList):
             return "Preset #2 (Cephalo)"
         elif selectionID == 3:
             return "Preset #3 (Caulixtla)"
-	elif selectionID == 4:
-	    return "Preset #4 (En Dotter 1)"
-	elif selectionID == 5:
-	    return "Preset #5 (En Dotter 2)"
+        elif selectionID == 4:
+            return "Preset #4 (En Dotter 1)"
+        elif selectionID == 5:
+            return "Preset #5 (En Dotter 2)"
+        elif selectionID == 6:
+            return "Preset #6 (Atlixco)"
+        else:
+            return "Unknown, using Caulixtla"
     elif optionID == OPTION_IslandFactor:
         if selectionID == 0:
             return "Few (faster)"
@@ -5602,12 +5859,14 @@ def getCustomMapOptionDescAt(argsList):
             return "3:2 (Earth-like)"
         elif selectionID == 3:
             return "2:1 (Wide map)"
-        elif selectionID == 6: 
-            return "1:2 (BUGGY)" 
         elif selectionID == 4:
             return "7:1 (Ringworld)"
         elif selectionID == 5:
             return "3:3 (Big square)"
+        elif selectionID == 6:
+            return "6:4 (Huge earth-like; can be buggy)"
+        elif selectionID == 7: 
+            return "1:2 (BUGGY)" 
     elif optionID == OPTION_Handicap:
 	if selectionID == 0:
 	    return "None (Player equal to AI)"
@@ -6374,3 +6633,128 @@ def beforeInit():
 ##rm.printRiverAndTerrainAlign()
 
 ##sm.printHeightMap()
+
+if __name__ == "__main__":
+    IsStandAlone = True
+    import sys
+    mc.UsePythonRandom = True
+    try:
+        arg1 = sys.argv[1]
+        mySeed = arg1
+    except:
+        arg1 = "8939185639133313" # Caulixtla
+        mySeed = "Caulixtla"
+    if(arg1[0:1] == "T"):
+        arg1 = arg1[1:]
+        UseRG32 = True
+    try:
+        mc.totestra = int(arg1)
+    except:
+        mc.totestra = 8939185639133313 # Caulixtla
+    mc.initialize()
+    # This stuff has to be hard coded here
+    mc.width = 144
+    mc.height = 96
+    mc.landPercent = 0.29
+    mc.tropicsLatitude = 23
+    mc.PeakPercent = 0.12
+    mc.HillPercent = 0.35
+    mc.HillChanceAtOne = .50
+    mc.PeakChanceAtOne = .27
+    mc.DesertPercent = 0.20
+    mc.PlainsPercent = 0.42
+    mc.SnowTemp = .30
+    mc.TundraTemp = .35
+    mc.ForestTemp = .50
+    mc.JungleTemp = .7
+    mc.iceChance = 1.0
+    mc.iceRange = 4
+    mc.iceSlope = 0.66
+    if len(sys.argv) < 2: # Arid map
+        mc.DesertPercent = 0.40
+        mc.PlainsPercent = 0.82
+        mc.iceSlope = 0.33 # Less ice 
+    mc.AllowPangeas = False
+    mc.hmMaxGrain = 2 ** (2 + 2) # Patience is two
+    mc.hmWidth = (mc.hmMaxGrain * 3 * 3)
+    mc.hmHeight =  (mc.hmMaxGrain * 2 * 3) + 1
+    mc.WrapX = True
+    mc.WrapY = False
+    mc.BonusBonus = 1.5 # Full of resources
+    mc.spreadResources = True # Full of resources
+    mc.noRotate = 0
+    mc.smoothPeaks = 1
+    mc.northWaterBand = 10
+    mc.southWaterBand = 10
+    mc.eastWaterBand = 0
+    mc.westWaterBand = 0
+    mc.northCrop = 10
+    mc.southCrop = 10
+    mc.eastCrop = 0
+    mc.westCrop = 0
+    mc.maxMapWidth = int(mc.hmWidth / 4)
+    mc.maxMapHeight = int(mc.hmHeight / 4)
+    mc.hmNumberOfPlates = int(float(mc.hmWidth * mc.hmHeight) * 0.0016)
+
+    mc.minimumMeteorSize = (1 + int(round(float(mc.hmWidth)/float(mc.width)))) * 3
+    mc.patience = 2
+    mc.AllowNewWorld = True
+    mc.ShareContinent = True
+    PRand.seed()
+    hm.performTectonics()
+    hm.generateHeightMap()
+    hm.combineMaps()
+    hm.calculateSeaLevel()
+    hm.fillInLakes()
+    pb.breakPangaeas()
+##    hm.Erode()
+##    hm.printHeightMap()
+    hm.rotateMap()
+    hm.addWaterBands()
+##    hm.printHeightMap()
+    cm.createClimateMaps()
+    sm.initialize()
+    rm.generateRiverMap()
+
+    # Scan the map and give the user a summary of the map
+    floodPlainCount = 0
+    tally = {}
+    bigAM = Areamap(mc.width,mc.height,True,True)
+    bigAM.defineAreas(isNonCoastWaterMatch)
+    maxLandAmount = -1
+    maxLandArea = -1
+    for x in range(mc.width):
+        for y in range(mc.height): 
+            i = (y * mc.width) + x 
+            #area = continentMap.areaMap.areaMap[i]
+            area = bigAM.areaMap[i]
+            if not area in tally:
+                tally[area] = {
+                    "Land": 0,
+                    "Desert": 0, 
+                    "floodPlains": 0, 
+                    "Tundra": 0
+                }
+            if sm.terrainMap[i] != mc.OCEAN and sm.terrainMap[i] != mc.COAST:
+                tally[area]["Land"] += 1
+                if(tally[area]["Land"] > maxLandAmount):
+                    maxLandAmount = tally[area]["Land"]
+                    maxLandArea = area
+            if sm.terrainMap[i] == mc.DESERT:
+                tally[area]["Desert"] += 1
+                if rm.riverMap[i] != 5:
+                    floodPlainCount += 1
+                    tally[area]["floodPlains"] += 1
+            if sm.terrainMap[i] == mc.TUNDRA:
+                tally[area]["Tundra"] += 1
+    print("Flood plain count: " + str(floodPlainCount))
+    for area in tally:
+        print("Tally for continent " + str(area) + ": " + 
+              str(tally[area]))
+    print("Biggest is " + str(maxLandArea) + " with :"+str(tally[maxLandArea]))
+    if(maxLandArea >= 0 and tally[maxLandArea]["Tundra"] < 10 and 
+       tally[maxLandArea]["floodPlains"] > 30 and 
+       tally[maxLandArea]["Desert"] > 500 and
+       tally[maxLandArea]["Land"] > 1000):
+        print("Nice land found seed " + mySeed)
+

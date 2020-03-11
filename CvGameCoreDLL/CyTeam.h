@@ -217,6 +217,15 @@ public:
 
 	bool AI_shareWar(int /*TeamTypes*/ eTeam);
 	void AI_setWarPlan(int /*TeamTypes*/ eIndex, int /*WarPlanTypes*/ eNewValue);
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      01/12/09                                jdog5000      */
+/*                                                                                              */
+/* Player Interface                                                                             */
+/************************************************************************************************/
+	int AI_getWarPlan(int /*TeamTypes*/ eIndex) const;
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 	int AI_getAtWarCounter(int /*TeamTypes*/ eTeam) const;
 	int AI_getAtPeaceCounter(int /*TeamTypes*/ eTeam) const;
 	int AI_getWarSuccess(int /*TeamTypes*/ eIndex) const;

@@ -6582,7 +6582,20 @@ m_pbCommerceFlexible(NULL),
 m_pbCommerceChangeOriginalOwner(NULL),
 m_pbBuildingClassNeededInCity(NULL),
 m_ppaiSpecialistYieldChange(NULL),
+/************************************************************************************************/
+/* UNOFFICIAL_PATCH                       06/27/10                    Afforess & jdog5000       */
+/*                                                                                              */
+/* Efficiency                                                                                   */
+/************************************************************************************************/
+/* original bts code
 m_ppaiBonusYieldModifier(NULL)
+*/
+m_ppaiBonusYieldModifier(NULL),
+m_bAnySpecialistYieldChange(false),
+m_bAnyBonusYieldModifier(false)
+/************************************************************************************************/
+/* UNOFFICIAL_PATCH                        END                                                  */
+/************************************************************************************************/
 {
 }
 
@@ -7581,6 +7594,24 @@ int* CvBuildingInfo::getSpecialistYieldChangeArray(int i) const
 	return m_ppaiSpecialistYieldChange[i];
 }
 
+/************************************************************************************************/
+/* UNOFFICIAL_PATCH                       06/27/10                    Afforess & jdog5000       */
+/*                                                                                              */
+/* Efficiency                                                                                   */
+/************************************************************************************************/
+bool CvBuildingInfo::isAnySpecialistYieldChange() const
+{
+	return m_bAnySpecialistYieldChange;
+}
+
+bool CvBuildingInfo::isAnyBonusYieldModifier() const
+{
+	return m_bAnyBonusYieldModifier;
+}
+/************************************************************************************************/
+/* UNOFFICIAL_PATCH                        END                                                  */
+/************************************************************************************************/
+
 int CvBuildingInfo::getBonusYieldModifier(int i, int j) const
 {
 	FAssertMsg(i < GC.getNumBonusInfos(), "Index out of bounds");
@@ -7932,6 +7963,27 @@ void CvBuildingInfo::read(FDataStreamBase* stream)
 		stream->Read(NUM_YIELD_TYPES, m_ppaiSpecialistYieldChange[i]);
 	}
 
+/************************************************************************************************/
+/* UNOFFICIAL_PATCH                       06/27/10                    Afforess & jdog5000       */
+/*                                                                                              */
+/* Efficiency                                                                                   */
+/************************************************************************************************/
+	m_bAnySpecialistYieldChange = false;
+	for(i=0;(!m_bAnySpecialistYieldChange) && i<GC.getNumSpecialistInfos();i++)
+	{
+		for(int j=0; j < NUM_YIELD_TYPES; j++ )
+		{
+			if( m_ppaiSpecialistYieldChange[i][j] != 0 )
+			{
+				m_bAnySpecialistYieldChange = true;
+				break;
+			}
+		}
+	}
+/************************************************************************************************/
+/* UNOFFICIAL_PATCH                        END                                                  */
+/************************************************************************************************/
+
 	if (m_ppaiBonusYieldModifier != NULL)
 	{
 		for(i=0;i<GC.getNumBonusInfos();i++)
@@ -7947,6 +7999,27 @@ void CvBuildingInfo::read(FDataStreamBase* stream)
 		m_ppaiBonusYieldModifier[i]  = new int[NUM_YIELD_TYPES];
 		stream->Read(NUM_YIELD_TYPES, m_ppaiBonusYieldModifier[i]);
 	}
+
+/************************************************************************************************/
+/* UNOFFICIAL_PATCH                       06/27/10                    Afforess & jdog5000       */
+/*                                                                                              */
+/* Efficiency                                                                                   */
+/************************************************************************************************/
+	m_bAnyBonusYieldModifier = false;
+	for(i=0;(!m_bAnyBonusYieldModifier) && i<GC.getNumBonusInfos();i++)
+	{
+		for(int j=0; j < NUM_YIELD_TYPES; j++ )
+		{
+			if( m_ppaiBonusYieldModifier[i][j] != 0 )
+			{
+				m_bAnyBonusYieldModifier = true;
+				break;
+			}
+		}
+	}
+/************************************************************************************************/
+/* UNOFFICIAL_PATCH                        END                                                  */
+/************************************************************************************************/
 }
 
 //
@@ -8601,6 +8674,12 @@ bool CvBuildingInfo::read(CvXMLLoadUtility* pXML)
 	pXML->SetVariableListTagPair(&m_piPrereqNumOfBuildingClass, "PrereqBuildingClasses", sizeof(GC.getBuildingClassInfo((BuildingClassTypes)0)), GC.getNumBuildingClassInfos());
 	pXML->SetVariableListTagPair(&m_pbBuildingClassNeededInCity, "BuildingClassNeededs", sizeof(GC.getBuildingClassInfo((BuildingClassTypes)0)), GC.getNumBuildingClassInfos());
 
+/************************************************************************************************/
+/* UNOFFICIAL_PATCH                       06/27/10                    Afforess & jdog5000       */
+/*                                                                                              */
+/* Efficiency                                                                                   */
+/************************************************************************************************/
+	m_bAnySpecialistYieldChange = false;
 	pXML->Init2DIntList(&m_ppaiSpecialistYieldChange, GC.getNumSpecialistInfos(), NUM_YIELD_TYPES);
 	if (gDLL->getXMLIFace()->SetToChildByTagName(pXML->GetXML(),"SpecialistYieldChanges"))
 	{
@@ -8634,6 +8713,18 @@ bool CvBuildingInfo::read(CvXMLLoadUtility* pXML)
 				}
 			}
 
+			for(int ii=0;(!m_bAnySpecialistYieldChange) && ii<GC.getNumSpecialistInfos();ii++)
+			{
+				for(int ij=0; ij < NUM_YIELD_TYPES; ij++ )
+				{
+					if( m_ppaiSpecialistYieldChange[ii][ij] != 0 )
+					{
+						m_bAnySpecialistYieldChange = true;
+						break;
+					}
+				}
+			}
+
 			// set the current xml node to it's parent node
 			gDLL->getXMLIFace()->SetToParent(pXML->GetXML());
 		}
@@ -8641,7 +8732,16 @@ bool CvBuildingInfo::read(CvXMLLoadUtility* pXML)
 		// set the current xml node to it's parent node
 		gDLL->getXMLIFace()->SetToParent(pXML->GetXML());
 	}
+/************************************************************************************************/
+/* UNOFFICIAL_PATCH                        END                                                  */
+/************************************************************************************************/
 
+/************************************************************************************************/
+/* UNOFFICIAL_PATCH                       06/27/10                    Afforess & jdog5000       */
+/*                                                                                              */
+/* Efficiency                                                                                   */
+/************************************************************************************************/
+	m_bAnyBonusYieldModifier = false;
 	pXML->Init2DIntList(&m_ppaiBonusYieldModifier, GC.getNumBonusInfos(), NUM_YIELD_TYPES);
 	if (gDLL->getXMLIFace()->SetToChildByTagName(pXML->GetXML(),"BonusYieldModifiers"))
 	{
@@ -8676,6 +8776,18 @@ bool CvBuildingInfo::read(CvXMLLoadUtility* pXML)
 				}
 			}
 
+			for(int ii=0;(!m_bAnyBonusYieldModifier) && ii<GC.getNumBonusInfos(); ii++)
+			{
+				for(int ij=0; ij < NUM_YIELD_TYPES; ij++ )
+				{
+					if( m_ppaiBonusYieldModifier[ii][ij] != 0 )
+					{
+						m_bAnyBonusYieldModifier = true;
+						break;
+					}
+				}
+			}
+
 			// set the current xml node to it's parent node
 			gDLL->getXMLIFace()->SetToParent(pXML->GetXML());
 		}
@@ -8683,6 +8795,9 @@ bool CvBuildingInfo::read(CvXMLLoadUtility* pXML)
 		// set the current xml node to it's parent node
 		gDLL->getXMLIFace()->SetToParent(pXML->GetXML());
 	}
+/************************************************************************************************/
+/* UNOFFICIAL_PATCH                        END                                                  */
+/************************************************************************************************/
 
 	pXML->SetVariableListTagPair(&m_piFlavorValue, "Flavors", GC.getFlavorTypes(), GC.getNumFlavorTypes());
 	pXML->SetVariableListTagPair(&m_piImprovementFreeSpecialist, "ImprovementFreeSpecialists", sizeof(GC.getImprovementInfo((ImprovementTypes)0)), GC.getNumImprovementInfos());
@@ -13804,6 +13919,19 @@ m_iNoTechTradeThreshold(0),
 m_iTechTradeKnownPercent(0),
 m_iMaxGoldTradePercent(0),
 m_iMaxGoldPerTurnTradePercent(0),
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      03/21/10                                jdog5000      */
+/*                                                                                              */
+/* Victory Strategy AI                                                                          */
+/************************************************************************************************/
+m_iCultureVictoryWeight(0),
+m_iSpaceVictoryWeight(0),
+m_iConquestVictoryWeight(0),
+m_iDominationVictoryWeight(0),
+m_iDiplomacyVictoryWeight(0),
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 m_iMaxWarRand(0),
 m_iMaxWarNearbyPowerRatio(0),
 m_iMaxWarDistantPowerRatio(0),
@@ -13974,6 +14102,39 @@ int CvLeaderHeadInfo::getMaxGoldPerTurnTradePercent() const
 {
 	return m_iMaxGoldPerTurnTradePercent; 
 }
+
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      03/21/10                                jdog5000      */
+/*                                                                                              */
+/* Victory Strategy AI                                                                          */
+/************************************************************************************************/
+int CvLeaderHeadInfo::getCultureVictoryWeight() const
+{
+	return m_iCultureVictoryWeight;
+}
+
+int CvLeaderHeadInfo::getSpaceVictoryWeight() const
+{
+	return m_iSpaceVictoryWeight;
+}
+
+int CvLeaderHeadInfo::getConquestVictoryWeight() const
+{
+	return m_iConquestVictoryWeight;
+}
+
+int CvLeaderHeadInfo::getDominationVictoryWeight() const
+{
+	return m_iDominationVictoryWeight;
+}
+
+int CvLeaderHeadInfo::getDiplomacyVictoryWeight() const
+{
+	return m_iDiplomacyVictoryWeight;
+}
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 
 int CvLeaderHeadInfo::getMaxWarRand() const
 {
@@ -14420,6 +14581,22 @@ void CvLeaderHeadInfo::read(FDataStreamBase* stream)
 	stream->Read(&m_iTechTradeKnownPercent);
 	stream->Read(&m_iMaxGoldTradePercent);
 	stream->Read(&m_iMaxGoldPerTurnTradePercent);
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      03/21/10                                jdog5000      */
+/*                                                                                              */
+/* Victory Strategy AI                                                                          */
+/************************************************************************************************/
+	if( uiFlag > 0 )
+	{
+		stream->Read(&m_iCultureVictoryWeight);
+		stream->Read(&m_iSpaceVictoryWeight);
+		stream->Read(&m_iConquestVictoryWeight);
+		stream->Read(&m_iDominationVictoryWeight);
+		stream->Read(&m_iDiplomacyVictoryWeight);
+	}
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 	stream->Read(&m_iMaxWarRand);
 	stream->Read(&m_iMaxWarNearbyPowerRatio);
 	stream->Read(&m_iMaxWarDistantPowerRatio);
@@ -14544,7 +14721,16 @@ void CvLeaderHeadInfo::write(FDataStreamBase* stream)
 {
 	CvInfoBase::write(stream);
 
-	uint uiFlag=0;
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      03/21/10                                jdog5000      */
+/*                                                                                              */
+/*                                                                                              */
+/************************************************************************************************/
+	uint uiFlag=1;
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
+
 	stream->Write(uiFlag);		// flag for expansion
 
 	stream->Write(m_iWonderConstructRand);
@@ -14558,6 +14744,19 @@ void CvLeaderHeadInfo::write(FDataStreamBase* stream)
 	stream->Write(m_iTechTradeKnownPercent);
 	stream->Write(m_iMaxGoldTradePercent);
 	stream->Write(m_iMaxGoldPerTurnTradePercent);
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      03/21/10                                jdog5000      */
+/*                                                                                              */
+/* Victory Strategy AI                                                                          */
+/************************************************************************************************/
+	stream->Write(m_iCultureVictoryWeight);
+	stream->Write(m_iSpaceVictoryWeight);
+	stream->Write(m_iConquestVictoryWeight);
+	stream->Write(m_iDominationVictoryWeight);
+	stream->Write(m_iDiplomacyVictoryWeight);
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 	stream->Write(m_iMaxWarRand);
 	stream->Write(m_iMaxWarNearbyPowerRatio);
 	stream->Write(m_iMaxWarDistantPowerRatio);
@@ -14669,6 +14868,19 @@ bool CvLeaderHeadInfo::read(CvXMLLoadUtility* pXML)
 	pXML->GetChildXmlValByName(&m_iTechTradeKnownPercent, "iTechTradeKnownPercent");
 	pXML->GetChildXmlValByName(&m_iMaxGoldTradePercent, "iMaxGoldTradePercent");
 	pXML->GetChildXmlValByName(&m_iMaxGoldPerTurnTradePercent, "iMaxGoldPerTurnTradePercent");
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      03/21/10                                jdog5000      */
+/*                                                                                              */
+/* Victory Strategy AI                                                                          */
+/************************************************************************************************/
+	pXML->GetChildXmlValByName(&m_iCultureVictoryWeight, "iCultureVictoryWeight", 0);
+	pXML->GetChildXmlValByName(&m_iSpaceVictoryWeight, "iSpaceVictoryWeight", 0);
+	pXML->GetChildXmlValByName(&m_iConquestVictoryWeight, "iConquestVictoryWeight", 0);
+	pXML->GetChildXmlValByName(&m_iDominationVictoryWeight, "iDominationVictoryWeight", 0);
+	pXML->GetChildXmlValByName(&m_iDiplomacyVictoryWeight, "iDiplomacyVictoryWeight", 0);
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 	pXML->GetChildXmlValByName(&m_iMaxWarRand, "iMaxWarRand");
 	pXML->GetChildXmlValByName(&m_iMaxWarNearbyPowerRatio, "iMaxWarNearbyPowerRatio");
 	pXML->GetChildXmlValByName(&m_iMaxWarDistantPowerRatio, "iMaxWarDistantPowerRatio");

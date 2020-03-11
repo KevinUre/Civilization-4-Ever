@@ -261,6 +261,18 @@ public:
 	void resetPathDistance();																		// Exposed to Python
 	int calculatePathDistance(CvPlot *pSource, CvPlot *pDest);	// Exposed to Python
 
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      08/21/09                                jdog5000      */
+/*                                                                                              */
+/* Efficiency                                                                                   */
+/************************************************************************************************/
+	// Plot danger cache
+	void invalidateIsActivePlayerNoDangerCache();
+	void invalidateIsTeamBorderCache(TeamTypes eTeam);
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
+
 	// Serialization:
 	DllExport virtual void read(FDataStreamBase* pStream);
 	DllExport virtual void write(FDataStreamBase* pStream);

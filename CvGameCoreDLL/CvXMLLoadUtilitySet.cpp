@@ -196,6 +196,24 @@ bool CvXMLLoadUtility::SetGlobalDefines()
 		return false;
 	}
 
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      02/21/10                                jdog5000      */
+/*                                                                                              */
+/* XML Options                                                                                  */
+/************************************************************************************************/
+	if (!ReadGlobalDefines("xml\\BBAI_Game_Options_GlobalDefines.xml", cache))
+	{
+		//return false;
+	}
+
+	if (!ReadGlobalDefines("xml\\BBAI_AI_Variables_GlobalDefines.xml", cache))
+	{
+		//return false;
+	}
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
+
 	if (gDLL->isModularXMLLoading())
 	{
 		std::vector<CvString> aszFiles;

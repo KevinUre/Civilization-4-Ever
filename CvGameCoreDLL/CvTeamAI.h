@@ -38,6 +38,16 @@ public:
 
 	void AI_makeAssignWorkDirty();
 
+/********************************************************************************/
+/* 	BETTER_BTS_AI_MOD						10/6/08				jdog5000	    */
+/* 																			    */
+/* 																			    */
+/********************************************************************************/
+	int AI_getOurPlotStrength(CvPlot* pPlot, int iRange, bool bDefensiveBonuses, bool bTestMoves, bool bIncludeVassals = false);
+/********************************************************************************/
+/* 	BETTER_BTS_AI_MOD						END								    */
+/********************************************************************************/
+
 	void AI_updateAreaStragies(bool bTargets = true);
 	void AI_updateAreaTargets();
 
@@ -52,9 +62,26 @@ public:
 	int AI_calculateAdjacentLandPlots(TeamTypes eTeam) const;
 	int AI_calculateCapitalProximity(TeamTypes eTeam) const;
 	int AI_calculatePlotWarValue(TeamTypes eTeam) const;
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      07/10/08                                jdog5000      */
+/*                                                                                              */
+/* General AI                                                                                   */
+/************************************************************************************************/
+	int AI_calculateBonusWarValue(TeamTypes eTeam) const;
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 
 	bool AI_isWarPossible() const;
-	bool AI_isLandTarget(TeamTypes eTeam) const;
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      06/12/10                         Fuyu & jdog5000      */
+/*                                                                                              */
+/* War Strategy AI                                                                              */
+/************************************************************************************************/
+	bool AI_isLandTarget(TeamTypes eTeam, bool bNeighborsOnly = false) const;
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 	bool AI_isAllyLandTarget(TeamTypes eTeam) const;
 	bool AI_shareWar(TeamTypes eTeam) const;
 
@@ -78,6 +105,35 @@ public:
 
 	int AI_surrenderTradeVal(TeamTypes eTeam) const;
 	DenialTypes AI_surrenderTrade(TeamTypes eTeam, int iPowerMultiplier = 100) const;
+
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      03/20/10                                jdog5000      */
+/*                                                                                              */
+/* Victory Strategy AI                                                                          */
+/************************************************************************************************/
+	bool AI_isAnyMemberDoVictoryStrategy( int iVictoryStrategy ) const;
+	bool AI_isAnyMemberDoVictoryStrategyLevel4() const;
+	bool AI_isAnyMemberDoVictoryStrategyLevel3() const;
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      05/14/10                                jdog5000      */
+/*                                                                                              */
+/* War Strategy AI                                                                              */
+/************************************************************************************************/
+	int AI_getWarSuccessCapitulationRatio() const;
+	int AI_getEnemyPowerPercent( bool bConsiderOthers = false ) const;
+	int AI_getRivalAirPower( ) const;
+	bool AI_acceptSurrender( TeamTypes eSurrenderTeam );
+	bool AI_isOkayVassalTarget( TeamTypes eTeam );
+
+	void AI_getWarRands( int &iMaxWarRand, int &iLimitedWarRand, int &iDogpileWarRand ) const;
+	void AI_getWarThresholds( int &iMaxWarThreshold, int &iLimitedWarThreshold, int &iDogpileWarThreshold ) const;
+	int AI_getTotalWarOddsTimes100( ) const;
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 
 	int AI_makePeaceTradeVal(TeamTypes ePeaceTeam, TeamTypes eTeam) const;
 	DenialTypes AI_makePeaceTrade(TeamTypes ePeaceTeam, TeamTypes eTeam) const;

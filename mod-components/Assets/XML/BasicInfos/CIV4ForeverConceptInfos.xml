@@ -42,9 +42,19 @@
 			<Civilopedia>TXT_KEY_CONCEPT_FE_OPTIONS_PEDIA</Civilopedia>
 		</NewConceptInfo>
 		<NewConceptInfo>
+			<Type>CONCEPT_FE_AI</Type>
+			<Description>TXT_KEY_CONCEPT_FE_AI_TEXT</Description>
+			<Civilopedia>TXT_KEY_CONCEPT_FE_AI_PEDIA</Civilopedia>
+		</NewConceptInfo>
+		<NewConceptInfo>
 			<Type>CONCEPT_FE_MISC</Type>
 			<Description>TXT_KEY_CONCEPT_FE_MISC_TEXT</Description>
 			<Civilopedia>TXT_KEY_CONCEPT_FE_MISC_PEDIA</Civilopedia>
+		</NewConceptInfo>
+		<NewConceptInfo>
+			<Type>CONCEPT_FE_MAPS</Type>
+			<Description>TXT_KEY_CONCEPT_FE_MAPS_TEXT</Description>
+			<Civilopedia>TXT_KEY_CONCEPT_FE_MAPS_PEDIA</Civilopedia>
 		</NewConceptInfo>
 	</NewConceptInfos>
 </Civ4NewConceptInfos>

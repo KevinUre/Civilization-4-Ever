@@ -14,15 +14,24 @@ class CvUnitAI : public CvUnit
 
 public:
 
-  CvUnitAI();
-  virtual ~CvUnitAI();
+	CvUnitAI();
+	virtual ~CvUnitAI();
 
-  void AI_init(UnitAITypes eUnitAI);
+	void AI_init(UnitAITypes eUnitAI);
 	void AI_uninit();
 	void AI_reset(UnitAITypes eUnitAI = NO_UNITAI);
 
 	bool AI_update();
 	bool AI_follow();
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      04/05/10                                jdog5000      */
+/*                                                                                              */
+/* Unit AI                                                                                      */
+/************************************************************************************************/
+	bool AI_load(UnitAITypes eUnitAI, MissionAITypes eMissionAI, UnitAITypes eTransportedUnitAI = NO_UNITAI, int iMinCargo = -1, int iMinCargoSpace = -1, int iMaxCargoSpace = -1, int iMaxCargoOurUnitAI = -1, int iFlags = 0, int iMaxPath = MAX_INT, int iMaxTransportPath = MAX_INT);
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 
 	void AI_upgrade();
 
@@ -103,9 +112,20 @@ protected:
 
 	int AI_promotionValue(PromotionTypes ePromotion);
 
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      04/01/10                                jdog5000      */
+/*                                                                                              */
+/* Unit AI                                                                                      */
+/************************************************************************************************/
+/* original bts code
 	bool AI_shadow(UnitAITypes eUnitAI, int iMax = -1, int iMaxRatio = -1, bool bWithCargoOnly = true);
-	bool AI_group(UnitAITypes eUnitAI, int iMaxGroup = -1, int iMaxOwnUnitAI = -1, int iMinUnitAI = -1, bool bIgnoreFaster = false, bool bIgnoreOwnUnitType = false, bool bStackOfDoom = false, int iMaxPath = MAX_INT, bool bAllowRegrouping = false);
-	bool AI_load(UnitAITypes eUnitAI, MissionAITypes eMissionAI, UnitAITypes eTransportedUnitAI = NO_UNITAI, int iMinCargo = -1, int iMinCargoSpace = -1, int iMaxCargoSpace = -1, int iMaxCargoOurUnitAI = -1, int iFlags = 0, int iMaxPath = MAX_INT);
+*/
+	bool AI_shadow(UnitAITypes eUnitAI, int iMax = -1, int iMaxRatio = -1, bool bWithCargoOnly = true, bool bOutsideCityOnly = false, int iMaxPath = MAX_INT);
+	bool AI_group(UnitAITypes eUnitAI, int iMaxGroup = -1, int iMaxOwnUnitAI = -1, int iMinUnitAI = -1, bool bIgnoreFaster = false, bool bIgnoreOwnUnitType = false, bool bStackOfDoom = false, int iMaxPath = MAX_INT, bool bAllowRegrouping = false, bool bWithCargoOnly = false, bool bInCityOnly = false, MissionAITypes eIgnoreMissionAIType = NO_MISSIONAI);
+	//bool AI_load(UnitAITypes eUnitAI, MissionAITypes eMissionAI, UnitAITypes eTransportedUnitAI = NO_UNITAI, int iMinCargo = -1, int iMinCargoSpace = -1, int iMaxCargoSpace = -1, int iMaxCargoOurUnitAI = -1, int iFlags = 0, int iMaxPath = MAX_INT, int iMaxTransportPath = MAX_INT);
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 	bool AI_guardCityBestDefender();
 	bool AI_guardCityMinDefender(bool bSearch = true);
 	bool AI_guardCity(bool bLeave = false, bool bSearch = false, int iMaxPath = MAX_INT);
@@ -136,7 +156,15 @@ protected:
 	bool AI_greatWork();
 	bool AI_offensiveAirlift();
 	bool AI_paradrop(int iRange);
-	bool AI_protect(int iOddsThreshold);
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      09/01/09                                jdog5000      */
+/*                                                                                              */
+/*                                                                                              */
+/************************************************************************************************/
+	bool AI_protect(int iOddsThreshold, int iMaxPathTurns = MAX_INT);
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 	bool AI_patrol();
 	bool AI_defend();
 	bool AI_safety();
@@ -144,11 +172,21 @@ protected:
 	bool AI_goody(int iRange);
 	bool AI_explore();
 	bool AI_exploreRange(int iRange);
-	bool AI_targetCity(int iFlags = 0);
-	bool AI_targetBarbCity();
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      03/29/10                                jdog5000      */
+/*                                                                                              */
+/* War tactics AI                                                                               */
+/************************************************************************************************/
+	CvCity* AI_pickTargetCity(int iFlags = 0, int iMaxPath = MAX_INT, bool bHuntBarbs = false);
+	bool AI_goToTargetCity(int iFlags = 0, int iMaxPath = MAX_INT, CvCity* pTargetCity = NULL);
+	bool AI_goToTargetBarbCity(int iMaxPath = 10);
+	bool AI_pillageAroundCity(CvCity* pTargetCity, int iBonusValueThreshold = 0, int iMaxPathTurns = MAX_INT);
 	bool AI_bombardCity();
 	bool AI_cityAttack(int iRange, int iOddsThreshold, bool bFollow = false);
-	bool AI_anyAttack(int iRange, int iOddsThreshold, int iMinStack = 0, bool bFollow = false);
+	bool AI_anyAttack(int iRange, int iOddsThreshold, int iMinStack = 0, bool bAllowCities = true, bool bFollow = false);
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 	bool AI_rangeAttack(int iRange);
 	bool AI_leaveAttack(int iRange, int iThreshold, int iStrengthThreshold);
 	bool AI_blockade();
@@ -159,6 +197,15 @@ protected:
 	bool AI_found();
 	bool AI_foundRange(int iRange, bool bFollow = false);
 	bool AI_assaultSeaTransport(bool bBarbarian = false);
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      01/04/09                                jdog5000      */
+/*                                                                                              */
+/*                                                                                              */
+/************************************************************************************************/
+	bool AI_assaultSeaReinforce(bool bBarbarian = false);
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 	bool AI_settlerSeaTransport();
 	bool AI_settlerSeaFerry();
 	bool AI_specialSeaTransportMissionary();
@@ -180,22 +227,62 @@ protected:
 	bool AI_routeTerritory(bool bImprovementOnly = false);
 	bool AI_travelToUpgradeCity();
 	bool AI_retreatToCity(bool bPrimary = false, bool bAirlift = false, int iMaxPath = MAX_INT);
-	bool AI_pickup(UnitAITypes eUnitAI);
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      01/15/09                                jdog5000      */
+/*                                                                                              */
+/* Naval AI                                                                                     */
+/************************************************************************************************/
+	bool AI_pickup(UnitAITypes eUnitAI, bool bCountProduction = false, int iMaxPath = MAX_INT);
+	bool AI_pickupStranded(UnitAITypes eUnitAI = NO_UNITAI, int iMaxPath = MAX_INT);
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 	bool AI_airOffensiveCity();
 	bool AI_airDefensiveCity();
 	bool AI_airCarrier();
 	bool AI_missileLoad(UnitAITypes eTargetUnitAI, int iMaxOwnUnitAI = -1, bool bStealthOnly = false);
 	bool AI_airStrike();
+/********************************************************************************/
+/* 	BETTER_BTS_AI_MOD						9/26/08				jdog5000	    */
+/* 																			    */
+/* 	Air AI																	    */
+/********************************************************************************/
+	int AI_airOffenseBaseValue( CvPlot* pPlot );
+	bool AI_defensiveAirStrike();
+	bool AI_defendBaseAirStrike();
+/********************************************************************************/
+/* 	BETTER_BTS_AI_MOD						END								    */
+/********************************************************************************/
 	bool AI_airBombPlots();
 	bool AI_airBombDefenses();	
 	bool AI_exploreAir();
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      01/12/09                                jdog5000      */
+/*                                                                                              */
+/* Player Interface                                                                             */
+/************************************************************************************************/
+	int AI_exploreAirPlotValue( CvPlot* pPlot );
+	bool AI_exploreAir2();
+	void AI_exploreAirMove();
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 	bool AI_nuke();
 	bool AI_nukeRange(int iRange);
 	bool AI_trade(int iValueThreshold);
 	bool AI_infiltrate();
 	bool AI_reconSpy(int iRange);
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      10/20/09                                jdog5000      */
+/*                                                                                              */
+/* Espionage AI                                                                                 */
+/************************************************************************************************/
+	bool AI_revoltCitySpy();
 	bool AI_bonusOffenseSpy(int iMaxPath);
-	bool AI_cityOffenseSpy(int iRange);
+	bool AI_cityOffenseSpy(int iRange, CvCity* pSkipCity = NULL);
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 	bool AI_espionageSpy();
 	bool AI_moveToStagingCity();
 	bool AI_seaRetreatFromCityDanger();
@@ -226,8 +313,16 @@ protected:
 	bool AI_artistCultureVictoryMove();
 
 	bool AI_poach();
-	bool AI_choke(int iRange = 1);
-	
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      03/31/10                              jdog5000        */
+/*                                                                                              */
+/* War tactics AI                                                                               */
+/************************************************************************************************/
+	bool AI_choke(int iRange = 1, bool bDefensive = false);
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
+
 	bool AI_solveBlockageProblem(CvPlot* pDestPlot, bool bDeclareWar);
 	
 	int AI_calculatePlotWorkersNeeded(CvPlot* pPlot, BuildTypes eBuild);

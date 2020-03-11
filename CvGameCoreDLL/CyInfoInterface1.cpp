@@ -271,6 +271,15 @@ void CyInfoPythonInterface1()
 		.def("isAnimal", &CvUnitInfo::isAnimal, "bool ()")
 		.def("isFoodProduction", &CvUnitInfo::isFoodProduction, "bool ()")
 		.def("isNoBadGoodies", &CvUnitInfo::isNoBadGoodies, "bool ()")
+/************************************************************************************************/
+/* UNOFFICIAL_PATCH                       03/20/10                       Afforess & jdog5000    */
+/*                                                                                              */
+/* Bugfix                                                                                       */
+/************************************************************************************************/
+		.def("isOnlyDefensive", &CvUnitInfo::isOnlyDefensive, "bool ()")
+/************************************************************************************************/
+/* UNOFFICIAL_PATCH                        END                                                  */
+/************************************************************************************************/
 		.def("isNoCapture", &CvUnitInfo::isNoCapture, "bool ()")
 		.def("isRivalTerritory", &CvUnitInfo::isRivalTerritory, "bool ()")
 		.def("isMilitaryHappiness", &CvUnitInfo::isMilitaryHappiness, "bool ()")

@@ -23,6 +23,17 @@ public:
 	CvPlayer* getPlayer() { return m_pPlayer;	}	// Call from C++
 	bool isNone() { return (m_pPlayer==NULL); }
 
+/************************************************************************************************/
+/* CHANGE_PLAYER                         08/27/08                                 jdog5000      */
+/*                                                                                              */
+/*                                                                                              */
+/************************************************************************************************/
+	void changeLeader( int /*LeaderHeadTypes*/ eNewLeader );
+	void changeCiv( int /*CivilizationTypes*/ eNewCiv );
+	void setIsHuman( bool bNewValue );
+/************************************************************************************************/
+/* CHANGE_PLAYER                           END                                                  */
+/************************************************************************************************/
 	int startingPlotRange();
 	bool startingPlotWithinRange(CyPlot *pPlot, int /*PlayerTypes*/ ePlayer, int iRange, int iPass);
 

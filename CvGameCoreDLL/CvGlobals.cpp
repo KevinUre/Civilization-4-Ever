@@ -214,6 +214,29 @@ m_iUSE_ON_UNIT_CREATED_CALLBACK(0),
 m_iUSE_ON_UNIT_LOST_CALLBACK(0),
 m_paHints(NULL),
 m_paMainMenus(NULL)
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      02/21/10                                jdog5000      */
+/*                                                                                              */
+/* Efficiency, Options                                                                          */
+/************************************************************************************************/
+// BBAI Options
+,m_bBBAI_AIR_COMBAT(false)
+,m_bBBAI_HUMAN_VASSAL_WAR_BUILD(false)
+,m_iBBAI_DEFENSIVE_PACT_BEHAVIOR(0)
+,m_bBBAI_HUMAN_AS_VASSAL_OPTION(false)
+
+// BBAI AI Variables
+,m_iWAR_SUCCESS_CITY_CAPTURING(25)
+,m_iBBAI_ATTACK_CITY_STACK_RATIO(110)
+,m_iBBAI_SKIP_BOMBARD_BEST_ATTACK_ODDS(12)
+,m_iBBAI_SKIP_BOMBARD_BASE_STACK_RATIO(300)
+,m_iBBAI_SKIP_BOMBARD_MIN_STACK_RATIO(140)
+,m_iCOMBAT_DIE_SIDES(-1)
+,m_iCOMBAT_DAMAGE(-1)
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
+
 {
 }
 
@@ -2655,7 +2678,51 @@ void CvGlobals::cacheGlobals()
 	m_iUSE_ON_UPDATE_CALLBACK = getDefineINT("USE_ON_UPDATE_CALLBACK");
 	m_iUSE_ON_UNIT_CREATED_CALLBACK = getDefineINT("USE_ON_UNIT_CREATED_CALLBACK");
 	m_iUSE_ON_UNIT_LOST_CALLBACK = getDefineINT("USE_ON_UNIT_LOST_CALLBACK");
+
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      02/21/10                                jdog5000      */
+/*                                                                                              */
+/* Efficiency, Options                                                                          */
+/************************************************************************************************/
+// BBAI Options
+	m_bBBAI_AIR_COMBAT = !(getDefineINT("BBAI_AIR_COMBAT") == 0);
+	m_bBBAI_HUMAN_VASSAL_WAR_BUILD = !(getDefineINT("BBAI_HUMAN_VASSAL_WAR_BUILD") == 0);
+	m_iBBAI_DEFENSIVE_PACT_BEHAVIOR = getDefineINT("BBAI_DEFENSIVE_PACT_BEHAVIOR");
+	m_bBBAI_HUMAN_AS_VASSAL_OPTION = !(getDefineINT("BBAI_HUMAN_AS_VASSAL_OPTION") == 0);
+
+// BBAI AI Variables
+	m_iWAR_SUCCESS_CITY_CAPTURING = getDefineINT("WAR_SUCCESS_CITY_CAPTURING", m_iWAR_SUCCESS_CITY_CAPTURING);
+	m_iBBAI_ATTACK_CITY_STACK_RATIO = getDefineINT("BBAI_ATTACK_CITY_STACK_RATIO", m_iBBAI_ATTACK_CITY_STACK_RATIO);
+	m_iBBAI_SKIP_BOMBARD_BEST_ATTACK_ODDS = getDefineINT("BBAI_SKIP_BOMBARD_BEST_ATTACK_ODDS", m_iBBAI_SKIP_BOMBARD_BEST_ATTACK_ODDS);
+	m_iBBAI_SKIP_BOMBARD_BASE_STACK_RATIO = getDefineINT("BBAI_SKIP_BOMBARD_BASE_STACK_RATIO", m_iBBAI_SKIP_BOMBARD_BASE_STACK_RATIO);
+	m_iBBAI_SKIP_BOMBARD_MIN_STACK_RATIO = getDefineINT("BBAI_SKIP_BOMBARD_MIN_STACK_RATIO", m_iBBAI_SKIP_BOMBARD_MIN_STACK_RATIO);
+	m_iCOMBAT_DIE_SIDES = getDefineINT("COMBAT_DIE_SIDES");
+	m_iCOMBAT_DAMAGE = getDefineINT("COMBAT_DAMAGE");
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 }
+
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      02/21/10                                jdog5000      */
+/*                                                                                              */
+/*                                                                                              */
+/************************************************************************************************/
+int CvGlobals::getDefineINT( const char * szName, const int iDefault ) const
+{
+	int iReturn = 0;
+
+	if( GC.getDefinesVarSystem()->GetValue( szName, iReturn ) )
+	{
+		return iReturn;
+	}
+
+	return iDefault;
+}
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
+
 
 int CvGlobals::getDefineINT( const char * szName ) const
 {
@@ -3583,7 +3650,58 @@ void CvGlobals::setAreaFinder(FAStar* pVal) { m_areaFinder = pVal; }
 void CvGlobals::setPlotGroupFinder(FAStar* pVal) { m_plotGroupFinder = pVal; }
 CvDLLUtilityIFaceBase* CvGlobals::getDLLIFaceNonInl() { return m_pDLL; }
 
-//DeathMaker900 Start
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      02/21/10                                jdog5000      */
+/*                                                                                              */
+/* Efficiency, Options                                                                          */
+/************************************************************************************************/
+// BBAI Options
+bool CvGlobals::getBBAI_AIR_COMBAT()
+{
+	return m_bBBAI_AIR_COMBAT;
+}
+
+bool CvGlobals::getBBAI_HUMAN_VASSAL_WAR_BUILD()
+{
+	return m_bBBAI_HUMAN_VASSAL_WAR_BUILD;
+}
+
+int CvGlobals::getBBAI_DEFENSIVE_PACT_BEHAVIOR()
+{
+	return m_iBBAI_DEFENSIVE_PACT_BEHAVIOR;
+}
+
+bool CvGlobals::getBBAI_HUMAN_AS_VASSAL_OPTION()
+{
+	return m_bBBAI_HUMAN_AS_VASSAL_OPTION;
+}
+
+	
+// BBAI AI Variables
+int CvGlobals::getWAR_SUCCESS_CITY_CAPTURING()
+{
+	return m_iWAR_SUCCESS_CITY_CAPTURING;
+}
+
+int CvGlobals::getBBAI_ATTACK_CITY_STACK_RATIO()
+{
+	return m_iBBAI_ATTACK_CITY_STACK_RATIO;
+}
+
+int CvGlobals::getBBAI_SKIP_BOMBARD_BEST_ATTACK_ODDS()
+{
+	return m_iBBAI_SKIP_BOMBARD_BEST_ATTACK_ODDS;
+}
+
+int CvGlobals::getBBAI_SKIP_BOMBARD_BASE_STACK_RATIO()
+{
+	return m_iBBAI_SKIP_BOMBARD_BASE_STACK_RATIO;
+}
+
+int CvGlobals::getBBAI_SKIP_BOMBARD_MIN_STACK_RATIO()
+{
+	return m_iBBAI_SKIP_BOMBARD_MIN_STACK_RATIO;
+}
 int CvGlobals::getNumForeverConceptInfos()
 {
 	return (int)m_paForeverConceptInfo.size();
@@ -3600,3 +3718,17 @@ CvInfoBase& CvGlobals::getForeverConceptInfo(ForeverConceptTypes e)
 	FAssert(e < GC.getNumForeverConceptInfos());
 	return *(m_paForeverConceptInfo[e]);
 }
+
+int CvGlobals::getCOMBAT_DIE_SIDES()
+{
+	return m_iCOMBAT_DIE_SIDES;
+}
+
+int CvGlobals::getCOMBAT_DAMAGE()
+{
+	return m_iCOMBAT_DAMAGE;
+}
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
+

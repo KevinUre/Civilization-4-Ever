@@ -1242,6 +1242,54 @@ int CvMap::calculatePathDistance(CvPlot *pSource, CvPlot *pDest)
 	return -1; // no passable path exists
 }
 
+
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      08/21/09                                jdog5000      */
+/*                                                                                              */
+/* Efficiency                                                                                   */
+/************************************************************************************************/
+// Plot danger cache
+void CvMap::invalidateIsActivePlayerNoDangerCache()
+{
+	PROFILE_FUNC();
+
+	int iI;
+	CvPlot* pLoopPlot;
+
+	for( iI = 0; iI < numPlotsINLINE(); iI++ )
+	{
+		pLoopPlot = GC.getMapINLINE().plotByIndexINLINE(iI);
+
+		if( pLoopPlot != NULL )
+		{
+			pLoopPlot->setIsActivePlayerNoDangerCache(false);
+		}
+	}
+}
+
+
+void CvMap::invalidateIsTeamBorderCache(TeamTypes eTeam)
+{
+	PROFILE_FUNC();
+
+	int iI;
+	CvPlot* pLoopPlot;
+
+	for( iI = 0; iI < numPlotsINLINE(); iI++ )
+	{
+		pLoopPlot = GC.getMapINLINE().plotByIndexINLINE(iI);
+
+		if( pLoopPlot != NULL )
+		{
+			pLoopPlot->setIsTeamBorderCache(eTeam, false);
+		}
+	}
+}
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
+
+
 //
 // read object from a stream
 // used during load

@@ -14,6 +14,18 @@ class CvArea;
 class CvGenericBuilding;
 class CvArtInfoBuilding;
 
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      02/24/10                            EmperorFool       */
+/*                                                                                              */
+/*                                                                                              */
+/************************************************************************************************/
+// From BUG
+void addGoodOrBad(int iValue, int& iGood, int& iBad);
+void subtractGoodOrBad(int iValue, int& iGood, int& iBad);
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
+
 class CvCity : public CvDLLEntity
 {
 
@@ -215,6 +227,15 @@ public:
 	int getNumBuilding(BuildingTypes eIndex) const;									// Exposed to Python					
 	int getNumActiveBuilding(BuildingTypes eIndex) const;						// Exposed to Python
 	bool hasActiveWorldWonder() const;																			// Exposed to Python
+/************************************************************************************************/
+/* UNOFFICIAL_PATCH                       03/04/10                     Mongoose & jdog5000      */
+/*                                                                                              */
+/* Bugfix                                                                                       */
+/************************************************************************************************/
+	int getNumActiveWorldWonders() const;
+/************************************************************************************************/
+/* UNOFFICIAL_PATCH                        END                                                  */
+/************************************************************************************************/
 
 	int getReligionCount() const;																						// Exposed to Python  
 	int getCorporationCount() const;																						// Exposed to Python  
@@ -246,7 +267,18 @@ public:
 	bool isConnectedToCapital(PlayerTypes ePlayer = NO_PLAYER) const;			// Exposed to Python
 	int getArea() const;
 	CvArea* area() const;																						// Exposed to Python
-	CvArea* waterArea() const;																			// Exposed to Python
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      01/02/09                                jdog5000      */
+/*                                                                                              */
+/*                                                                                              */
+/************************************************************************************************/
+	CvArea* waterArea(bool bNoImpassable = false) const;																			// Exposed to Python
+	CvArea* secondWaterArea() const;
+	CvArea* sharedWaterArea(CvCity* pCity) const;
+	bool isBlockaded() const;
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 
 	CvPlot* getRallyPlot() const;																// Exposed to Python
 	void setRallyPlot(CvPlot* pPlot);
@@ -372,9 +404,32 @@ public:
 	int getExtraBuildingBadHappiness() const;															// Exposed to Python
 	void updateExtraBuildingHappiness();
 
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      02/24/10                            EmperorFool       */
+/*                                                                                              */
+/*                                                                                              */
+/************************************************************************************************/
+// From BUG
+	int getAdditionalHappinessByBuilding(BuildingTypes eBuilding, int& iGood, int& iBad) const;
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
+
 	int getExtraBuildingGoodHealth() const;														// Exposed to Python
 	int getExtraBuildingBadHealth() const;															// Exposed to Python
 	void updateExtraBuildingHealth();
+
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      02/24/10                            EmperorFool       */
+/*                                                                                              */
+/*                                                                                              */
+/************************************************************************************************/
+// From BUG
+	int getAdditionalHealthByBuilding(BuildingTypes eBuilding, int& iGood, int& iBad) const;
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
+
 
 	int getFeatureGoodHappiness() const;																	// Exposed to Python
 	int getFeatureBadHappiness() const;																		// Exposed to Python
@@ -885,7 +940,18 @@ public:
 	virtual int AI_projectValue(ProjectTypes eProject) = 0;
 	virtual int AI_neededSeaWorkers() = 0;
 	virtual bool AI_isDefended(int iExtra = 0) = 0;
+/********************************************************************************/
+/**		BETTER_BTS_AI_MOD							9/19/08		jdog5000		*/
+/**																				*/
+/**		Air AI																	*/
+/********************************************************************************/
+/* original BTS code
 	virtual bool AI_isAirDefended(int iExtra = 0) = 0;
+*/
+	virtual bool AI_isAirDefended(bool bCountLand = 0, int iExtra = 0) = 0;
+/********************************************************************************/
+/**		BETTER_BTS_AI_MOD						END								*/
+/********************************************************************************/
 	virtual bool AI_isDanger() = 0;
 	virtual int AI_neededDefenders() = 0;
 	virtual int AI_neededAirDefenders() = 0;
@@ -899,6 +965,18 @@ public:
 	virtual bool AI_isEmphasize(EmphasizeTypes eIndex) = 0;											// Exposed to Python
 	virtual void AI_setEmphasize(EmphasizeTypes eIndex, bool bNewValue) = 0;
 	virtual int AI_getBestBuildValue(int iIndex) = 0;
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                      06/25/09                                jdog5000      */
+/*                                                                                              */
+/* Debug                                                                                        */
+/************************************************************************************************/
+	virtual int AI_getTargetSize() = 0;
+	virtual int AI_getGoodTileCount() = 0;
+	virtual int AI_getImprovementValue( CvPlot* pPlot, ImprovementTypes eImprovement, int iFoodPriority, int iProductionPriority, int iCommercePriority, int iFoodChange, bool bOriginal = false ) = 0;
+	virtual void AI_getYieldMultipliers( int &iFoodMultiplier, int &iProductionMultiplier, int &iCommerceMultiplier, int &iDesiredFoodChange ) = 0;
+/************************************************************************************************/
+/* BETTER_BTS_AI_MOD                       END                                                  */
+/************************************************************************************************/
 	virtual int AI_totalBestBuildValue(CvArea* pArea) = 0;
 	virtual int AI_countBestBuilds(CvArea* pArea) = 0;													// Exposed to Python
 	virtual BuildTypes AI_getBestBuild(int iIndex) = 0;
@@ -1028,6 +1106,15 @@ protected:
 	bool m_bInfoDirty;
 	bool m_bLayoutDirty;
 	bool m_bPlundered;
+/************************************************************************************************/
+/* UNOFFICIAL_PATCH                       12/07/09                         denev & jdog5000     */
+/*                                                                                              */
+/* Bugfix                                                                                       */
+/************************************************************************************************/
+	bool m_bPopProductionProcess;
+/************************************************************************************************/
+/* UNOFFICIAL_PATCH                        END                                                  */
+/************************************************************************************************/
 
 	PlayerTypes m_eOwner;
 	PlayerTypes m_ePreviousOwner;
