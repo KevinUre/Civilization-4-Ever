@@ -90,4 +90,12 @@
 		<Tag>TXT_KEY_CONCEPT_FE_MAPS_PEDIA</Tag>
 		<English>[H1]New Map Generators[\H1][PARAGRAPH:2][BOLD]NewWorld[\BOLD][PARAGRAPH:1]A mix of Big and Small, Terra, and Hemispheres. This map script generates a mash up of large and small islands, with some large ones uninhabited. Bodies of water will be smaller, and combat will be tighter.[PARAGRAPH:2][BOLD]Planet_Generator_0_68[\BOLD][PARAGRAPH:1]Creates a wide variety of planets based on extensive customizable sliders.[PARAGRAPH:2][BOLD]PerfectWorld2[\BOLD][PARAGRAPH:1]The most famous map script, this script generates an earth like planet based on things like climate zones, plate tectonics, and ancient meteoric impacts. Has an option to keep one continent uninhabited. Unlike other civ 4 maps scripts climate regions will be very pronounced in this world.[PARAGRAPH:2][BOLD]Totestra[\BOLD][PARAGRAPH:1]A fork of pw2, this map script is just perfect world 2 but with several of the internal variables exposed for tweaking.[PARAGRAPH:2][BOLD]PerfectMongoose_v320[\BOLD][PARAGRAPH:1]A backword port of Perfect World 3 from civ 5, this is supposedly more refined version of perfect world 2</English>
 	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CONCEPT_FE_CREDITS_TEXT</Tag>
+		<English>Thanks</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CONCEPT_FE_CREDITS_PEDIA</Tag>
+		<English>[H1]Thanks[\H1][PARAGRAPH:2][BOLD]All mods and mod components included with implicit permission (due to age of community) and expicit thanks[\BOLD][PARAGRAPH:2][BOLD]TheLopez[\BOLD][PARAGRAPH:1]Air Combat Experience v0.3BtS[PARAGRAPH:2][BOLD]killmeplease[\BOLD][PARAGRAPH:1]Commanders v.1.0 beta fix 1[PARAGRAPH:2][BOLD]NeseryozniyVET[\BOLD][PARAGRAPH:1]Dynamic Civics Screen[PARAGRAPH:2][BOLD]deanej[\BOLD][PARAGRAPH:1]Convert Production to Espionage[PARAGRAPH:2][BOLD]Lemon Merchant[\BOLD][PARAGRAPH:1]Lemon's Spy Mod[PARAGRAPH:2][BOLD]Red Key[\BOLD][PARAGRAPH:1]Super Forts[PARAGRAPH:2][BOLD]Trojan Sheep[\BOLD][PARAGRAPH:1]Super Spies[PARAGRAPH:2][BOLD]akerum68 &amp; fellow contributors[\BOLD][PARAGRAPH:1]BUG Mod[PARAGRAPH:2][BOLD]jdog5000[\BOLD][PARAGRAPH:1]Better BTS AI[PARAGRAPH:2][BOLD]jdog5000 &amp; civfanatics community[\BOLD][PARAGRAPH:1]Unofficial Patch for 3.19</English>
+	</TEXT>
 </Civ4GameText>

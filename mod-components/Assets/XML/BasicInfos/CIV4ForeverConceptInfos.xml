@@ -56,5 +56,10 @@
 			<Description>TXT_KEY_CONCEPT_FE_MAPS_TEXT</Description>
 			<Civilopedia>TXT_KEY_CONCEPT_FE_MAPS_PEDIA</Civilopedia>
 		</NewConceptInfo>
+		<NewConceptInfo>
+			<Type>CONCEPT_FE_CREDITS</Type>
+			<Description>TXT_KEY_CONCEPT_FE_CREDITS_TEXT</Description>
+			<Civilopedia>TXT_KEY_CONCEPT_FE_CREDITS_PEDIA</Civilopedia>
+		</NewConceptInfo>
 	</NewConceptInfos>
 </Civ4NewConceptInfos>
