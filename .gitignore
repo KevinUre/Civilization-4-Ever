@@ -13,3 +13,6 @@ temp_files/
 
 .vs/
 UpgradeLog.htm
+
+*.zip
+*.7z
