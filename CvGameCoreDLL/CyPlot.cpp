@@ -1035,3 +1035,27 @@ void CyPlot::setScriptData(std::string szNewValue)
 	if (m_pPlot)
 		m_pPlot->setScriptData(szNewValue.c_str());
 }
+
+// Super Forts begin *canal* *choke*
+int CyPlot::getCanalValue()
+{
+	return m_pPlot ? m_pPlot->getCanalValue() : -1;
+}
+
+void CyPlot::calculateCanalValue()
+{
+	if (m_pPlot)
+		m_pPlot->calculateCanalValue();
+}
+
+int CyPlot::getChokeValue()
+{
+	return m_pPlot ? m_pPlot->getChokeValue() : -1;
+}
+
+void CyPlot::calculateChokeValue()
+{
+	if (m_pPlot)
+		m_pPlot->calculateChokeValue();
+}
+// Super Forts end

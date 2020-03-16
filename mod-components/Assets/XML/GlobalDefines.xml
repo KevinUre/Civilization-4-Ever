@@ -1672,12 +1672,12 @@
 	</Define>
 <!-- Super Forts begin -->
 	<Define>
-		<DefineName>SUPER_FORTS_SAFE_BUILD</DefineName>
-		<iDefineIntVal>1</iDefineIntVal>
-	</Define>
-	<Define>
 		<DefineName>AI_WORKER_MAX_DISTANCE_FROM_CITY_OUT_BORDERS</DefineName>
 		<iDefineIntVal>10</iDefineIntVal>
+	</Define>
+	<Define>
+		<DefineName>SUPER_FORTS_DURATION_BEFORE_REVOLT</DefineName>
+		<iDefineIntVal>5</iDefineIntVal>
 	</Define>
 <!-- Super Forts end -->
 <!-- Super Spies begin -->

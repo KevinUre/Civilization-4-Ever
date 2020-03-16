@@ -3,7 +3,7 @@
 <Civ4GameText xmlns="http://www.firaxis.com">
 	<TEXT>
 		<Tag>TXT_KEY_PLOT_FORTIFY_TO_UPGRADE</Tag>
-		<English>[SPACE](Must Fortify to Become %s1_ImpName)</English>
+		<English>[SPACE](Must garrison to become %s1_ImpName)</English>
 		<French>[SPACE](Doit fortifier pour devenir 1 %s1_ImpName)</French>
 		<German>[SPACE](Muss starken, um zur Modernisierung %s1_ImpName zu werden)</German>
 		<Italian>[SPACE](Deve fortificare per diventare %s1_ImpName)</Italian>
@@ -35,7 +35,7 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_IMPROVEMENT_FORTIFY_TO_UPGRADE</Tag>
-		<English>[ICON_BULLET]A unit must fortify to upgrade</English>
+		<English>[ICON_BULLET]A unit must guard it to upgrade</English>
 		<French>[ICON_BULLET]Une unité doit renforcer pour mettre à niveau</French>
 		<German>[ICON_BULLET]Eine Unit muss stärken, um ein Upgrade</German>
 		<Italian>[ICON_BULLET]Una unità deve fortificare l'aggiornamento</Italian>

@@ -200,7 +200,10 @@ void CvPlot::reset(int iX, int iY, bool bConstructorCall)
 	m_iMinOriginalStartDist = -1;
 	m_iReconCount = 0;
 	m_iRiverCrossingCount = 0;
-	
+	// Super Forts begin *canal* *choke*
+	m_iCanalValue = 0;
+	m_iChokeValue = 0;
+	// Super Forts end
 	// Super Forts begin *bombard*
 	m_iDefenseDamage = 0;
 	m_bBombarded = false;
@@ -428,6 +431,12 @@ void CvPlot::doTurn()
 	if (getImprovementType() != NO_IMPROVEMENT)
 	{
 		changeImprovementDuration(1);
+		// Super Forts begin *upgrade*
+		if (!isBeingWorked())
+		{
+			doImprovementUpgrade();
+		}
+		// Super Forts end
 	}
 
 	// Super Forts begin *bombard*
@@ -585,7 +594,7 @@ void CvPlot::doImprovementUpgrade()
 		if (eImprovementUpdrade != NO_IMPROVEMENT)
 		{
 			// Super Forts begin *upgrade* - added if-else statement
-			if(GC.getImprovementInfo(getImprovementType()).isUpgradeRequiresFortify())
+			if (GC.getImprovementInfo(getImprovementType()).isUpgradeRequiresFortify())
 			{
 				bool bDefenderFound = false;
 				CLinkList<IDInfo> oldUnits;
@@ -604,9 +613,9 @@ void CvPlot::doImprovementUpgrade()
 				{
 					pLoopUnit = ::getUnit(pUnitNode->m_data);
 					pUnitNode = nextUnitNode(pUnitNode);
-					if(pLoopUnit->getFortifyTurns() > 0)
+					if (pLoopUnit->getFortifyTurns() > 0)
 					{
-						if(pLoopUnit->getOwner() == getOwnerINLINE())
+						if (pLoopUnit->getTeam() == getTeam() && pLoopUnit->canDefend())
 						{
 							bDefenderFound = true;
 							break;
@@ -614,7 +623,7 @@ void CvPlot::doImprovementUpgrade()
 					}
 				}
 
-				if(bDefenderFound)
+				if (bDefenderFound)
 				{
 					changeUpgradeProgress(GET_PLAYER(getOwnerINLINE()).getImprovementUpgradeRate());
 
@@ -649,20 +658,27 @@ void CvPlot::doImprovementUpgrade()
 } Kevin */
 void CvPlot::updateCulture(bool bBumpUnits, bool bUpdatePlotGroups)
 {
+	//// Super Forts begin *culture*
+	//if (!isCity(true))
+	//// if (!isCity()) Original Code
+	//// Super Forts end
+	//{
+	//	setOwner(calculateCulturalOwner(), bBumpUnits, bUpdatePlotGroups);
+	//}
+	//// Super Forts begin *culture* (This prevents forts from keeping the culture of dead players)
+	//else if (getOwnerINLINE() != NO_PLAYER)
+	//{
+	//	if(!GET_PLAYER(getOwnerINLINE()).isAlive())
+	//	{
+	//		setOwner(calculateCulturalOwner(), bBumpUnits, bUpdatePlotGroups);
+	//	}
+	//}
+	//// Super Forts end
 	// Super Forts begin *culture*
-	if (!isCity(true))
-	// if (!isCity()) Original Code
-	// Super Forts end
+	if (!isCity(true) || (getOwnerINLINE() == NO_PLAYER))
+		// if (!isCity()) Original Code
 	{
 		setOwner(calculateCulturalOwner(), bBumpUnits, bUpdatePlotGroups);
-	}
-	// Super Forts begin *culture* (This prevents forts from keeping the culture of dead players)
-	else if (getOwnerINLINE() != NO_PLAYER)
-	{
-		if(!GET_PLAYER(getOwnerINLINE()).isAlive())
-		{
-			setOwner(calculateCulturalOwner(), bBumpUnits, bUpdatePlotGroups);
-		}
 	}
 	// Super Forts end
 }
@@ -1126,7 +1142,7 @@ bool CvPlot::isConnectedTo(const CvCity* pCity) const
 	//FAssert(isOwned());
 	//return ((getPlotGroup(getOwnerINLINE()) == pCity->plotGroup(getOwnerINLINE())) || (getPlotGroup(pCity->getOwnerINLINE()) == pCity->plotGroup(pCity->getOwnerINLINE())));
 	// Super Forts begin *AI_worker* (had to remove the assert and replace it with an if-else)
-	if(isOwned())
+	if (isOwned())
 	{
 		return ((getPlotGroup(getOwnerINLINE()) == pCity->plotGroup(getOwnerINLINE())) || (getPlotGroup(pCity->getOwnerINLINE()) == pCity->plotGroup(pCity->getOwnerINLINE())));
 	}
@@ -2437,11 +2453,11 @@ bool CvPlot::canBuild(BuildTypes eBuild, PlayerTypes ePlayer, bool bTestVisible)
 		if (GC.getImprovementInfo(eImprovement).getUniqueRange() > 0)
 		{
 			int iUniqueRange = GC.getImprovementInfo(eImprovement).getUniqueRange();
-			for (int iDX = -iUniqueRange; iDX <= iUniqueRange; iDX++) 
+			for (int iDX = -iUniqueRange; iDX <= iUniqueRange; iDX++)
 			{
 				for (int iDY = -iUniqueRange; iDY <= iUniqueRange; iDY++)
 				{
-					CvPlot *pLoopPlot = plotXY(getX_INLINE(), getY_INLINE(), iDX, iDY);
+					CvPlot* pLoopPlot = plotXY(getX_INLINE(), getY_INLINE(), iDX, iDY);
 					if (pLoopPlot != NULL && pLoopPlot->getImprovementType() != NO_IMPROVEMENT)
 					{
 						if (finalImprovementUpgrade(pLoopPlot->getImprovementType()) == finalImprovementUpgrade(eImprovement))
@@ -2462,14 +2478,11 @@ bool CvPlot::canBuild(BuildTypes eBuild, PlayerTypes ePlayer, bool bTestVisible)
 			}
 
 			// Super Forts begin *AI_worker* - prevent forts from being built over when outside culture range
-			if(GC.getDefineINT("SUPER_FORTS_SAFE_BUILD") != 0)
+			if (GC.getImprovementInfo(getImprovementType()).isActsAsCity())
 			{
-				if (GC.getImprovementInfo(getImprovementType()).isActsAsCity())
+				if (!isWithinCultureRange(ePlayer) && !(getCultureRangeForts(ePlayer) > 1))
 				{
-					if (!isWithinCultureRange(ePlayer) && !(getCultureRangeForts(ePlayer) > 1))
-					{
-						return false;
-					}
+					return false;
 				}
 			}
 			// Super Forts end
@@ -2508,37 +2521,34 @@ bool CvPlot::canBuild(BuildTypes eBuild, PlayerTypes ePlayer, bool bTestVisible)
 				}
 			}
 			// Super Forts begin *AI_worker* - prevent workers from two different players from building a fort in the same plot
-			if(GC.getDefineINT("SUPER_FORTS_SAFE_BUILD") != 0)
+			if (GC.getImprovementInfo(eImprovement).isActsAsCity())
 			{
-				if(GC.getImprovementInfo(eImprovement).isActsAsCity())
+				CLinkList<IDInfo> oldUnits;
+				CLLNode<IDInfo>* pUnitNode = headUnitNode();
+				CvUnit* pLoopUnit;
+
+				while (pUnitNode != NULL)
 				{
-					CLinkList<IDInfo> oldUnits;
-					CLLNode<IDInfo>* pUnitNode = headUnitNode();
-					CvUnit* pLoopUnit;
+					oldUnits.insertAtEnd(pUnitNode->m_data);
+					pUnitNode = nextUnitNode(pUnitNode);
+				}
 
-					while (pUnitNode != NULL)
+				pUnitNode = oldUnits.head();
+
+				while (pUnitNode != NULL)
+				{
+					pLoopUnit = ::getUnit(pUnitNode->m_data);
+					pUnitNode = nextUnitNode(pUnitNode);
+					if (pLoopUnit->getOwner() != ePlayer)
 					{
-						oldUnits.insertAtEnd(pUnitNode->m_data);
-						pUnitNode = nextUnitNode(pUnitNode);
-					}
-
-					pUnitNode = oldUnits.head();
-
-					while (pUnitNode != NULL)
-					{
-						pLoopUnit = ::getUnit(pUnitNode->m_data);
-						pUnitNode = nextUnitNode(pUnitNode);
-						if(pLoopUnit->getOwner() != ePlayer)	
+						if (pLoopUnit->getBuildType() != NO_BUILD)
 						{
-							if(pLoopUnit->getBuildType() != NO_BUILD)
+							ImprovementTypes eImprovementBuild = (ImprovementTypes)(GC.getBuildInfo(pLoopUnit->getBuildType()).getImprovement());
+							if (eImprovementBuild != NO_IMPROVEMENT)
 							{
-								ImprovementTypes eImprovementBuild = (ImprovementTypes)(GC.getBuildInfo(pLoopUnit->getBuildType()).getImprovement());
-								if(eImprovementBuild != NO_IMPROVEMENT)
+								if (GC.getImprovementInfo(eImprovementBuild).isActsAsCity())
 								{
-									if(GC.getImprovementInfo(eImprovementBuild).isActsAsCity())
-									{
-										return false;
-									}
+									return false;
 								}
 							}
 						}
@@ -3062,6 +3072,326 @@ void CvPlot::doImprovementCulture()
 			}
 		}
 	}
+}
+// Super Forts end
+
+// Super Forts begin *canal* *choke*
+int CvPlot::countRegionPlots(const CvPlot* pInvalidPlot) const
+{
+	int iCount = 0;
+	int iInvalidPlot = (pInvalidPlot == NULL) ? 0 : GC.getMapINLINE().plotNum(pInvalidPlot->getX_INLINE(), pInvalidPlot->getY_INLINE()) + 1;
+	FAStar* pRegionFinder = gDLL->getFAStarIFace()->create();
+	gDLL->getFAStarIFace()->Initialize(pRegionFinder, GC.getMapINLINE().getGridWidthINLINE(), GC.getMapINLINE().getGridHeightINLINE(), GC.getMapINLINE().isWrapXINLINE(), GC.getMapINLINE().isWrapYINLINE(),
+		NULL, NULL, NULL, stepValid, NULL, countPlotGroup, NULL);
+	gDLL->getFAStarIFace()->SetData(pRegionFinder, &iCount);
+	// Note to self: for GeneratePath() should bReuse be true or false?
+	gDLL->getFAStarIFace()->GeneratePath(pRegionFinder, getX_INLINE(), getY_INLINE(), -1, -1, false, iInvalidPlot, false);
+	gDLL->getFAStarIFace()->destroy(pRegionFinder);
+	return iCount;
+}
+
+int CvPlot::countAdjacentPassableSections(bool bWater) const
+{
+	CvPlot* pAdjacentPlot;
+	int iPassableSections = 0;
+	bool bInPassableSection = false;
+
+	// Are we looking for water passages or land passages?
+	if (bWater)
+	{
+		bool bPlotIsWater = isWater();
+		// This loop is for water
+		for (int iI = 0; iI < NUM_DIRECTION_TYPES; ++iI)
+		{
+			pAdjacentPlot = plotDirection(getX_INLINE(), getY_INLINE(), ((DirectionTypes)iI));
+			if (pAdjacentPlot != NULL)
+			{
+				if (pAdjacentPlot->isWater())
+				{
+					// Don't count diagonal hops across land isthmus
+					if (bPlotIsWater && !isCardinalDirection((DirectionTypes)iI))
+					{
+						if (!(GC.getMapINLINE().plotINLINE(getX_INLINE(), pAdjacentPlot->getY_INLINE())->isWater()) && !(GC.getMapINLINE().plotINLINE(pAdjacentPlot->getX_INLINE(), getY_INLINE())->isWater()))
+						{
+							continue;
+						}
+					}
+					if (pAdjacentPlot->isImpassable())
+					{
+						if (isCardinalDirection((DirectionTypes)iI))
+						{
+							bInPassableSection = false;
+						}
+					}
+					else if (!bInPassableSection)
+					{
+						bInPassableSection = true;
+						++iPassableSections;
+					}
+				}
+				else
+				{
+					bInPassableSection = false;
+				}
+			}
+		}
+	}
+	else
+	{
+		// This loop is for land
+		for (int iI = 0; iI < NUM_DIRECTION_TYPES; ++iI)
+		{
+			pAdjacentPlot = plotDirection(getX_INLINE(), getY_INLINE(), ((DirectionTypes)iI));
+			if (pAdjacentPlot != NULL)
+			{
+				if (pAdjacentPlot->isWater() || pAdjacentPlot->isImpassable())
+				{
+					if (isCardinalDirection((DirectionTypes)iI))
+					{
+						bInPassableSection = false;
+					}
+				}
+				else if (!bInPassableSection)
+				{
+					bInPassableSection = true;
+					++iPassableSections;
+				}
+			}
+		}
+	}
+	// Corner Case Correction
+	pAdjacentPlot = plotDirection(getX_INLINE(), getY_INLINE(), DIRECTION_NORTH);
+	if (pAdjacentPlot != NULL && (bWater == pAdjacentPlot->isWater()) && !pAdjacentPlot->isImpassable())
+	{
+		pAdjacentPlot = plotDirection(getX_INLINE(), getY_INLINE(), DIRECTION_NORTHWEST);
+		if (pAdjacentPlot != NULL && (bWater == pAdjacentPlot->isWater()))
+		{
+			if (pAdjacentPlot->isImpassable())
+			{
+				pAdjacentPlot = plotDirection(getX_INLINE(), getY_INLINE(), DIRECTION_WEST);
+				if (pAdjacentPlot != NULL && (bWater == pAdjacentPlot->isWater()) && !pAdjacentPlot->isImpassable())
+				{
+					--iPassableSections;
+				}
+			}
+			else
+			{
+				--iPassableSections;
+			}
+		}
+		else if (!bWater)
+		{
+			pAdjacentPlot = plotDirection(getX_INLINE(), getY_INLINE(), DIRECTION_WEST);
+			if (pAdjacentPlot != NULL && !pAdjacentPlot->isWater() && !pAdjacentPlot->isImpassable())
+			{
+				--iPassableSections;
+			}
+		}
+	}
+	return iPassableSections;
+}
+
+int CvPlot::countImpassableCardinalDirections() const
+{
+	CvPlot* pAdjacentPlot;
+	int iCount = 0;
+	for (int iI = 0; iI < NUM_CARDINALDIRECTION_TYPES; ++iI)
+	{
+		pAdjacentPlot = plotCardinalDirection(getX_INLINE(), getY_INLINE(), ((CardinalDirectionTypes)iI));
+		if (pAdjacentPlot != NULL)
+		{
+			if (pAdjacentPlot->isImpassable() || (area() != pAdjacentPlot->area()))
+			{
+				++iCount;
+			}
+		}
+	}
+	return iCount;
+}
+// Super Forts end
+
+// Super Forts begin *canal*
+int CvPlot::getCanalValue() const
+{
+	return m_iCanalValue;
+}
+
+void CvPlot::setCanalValue(int iNewValue)
+{
+	m_iCanalValue = iNewValue;
+}
+
+void CvPlot::calculateCanalValue()
+{
+	bool bInWaterSection;
+	CvPlot* pAdjacentPlot, * apPlotsToCheck[4];
+	int iWaterSections, iPlotsFound, iMaxDistance;
+	int iCanalValue = 0;
+
+	if (isCoastalLand() && !isImpassable())
+	{
+		iWaterSections = countAdjacentPassableSections(true);
+		if (iWaterSections > 1)
+		{
+			iMaxDistance = 0;
+			iPlotsFound = 0;
+			bInWaterSection = false;
+			// Find appropriate plots to be used for path distance calculations
+			for (int iI = 0; iI < NUM_DIRECTION_TYPES; ++iI)
+			{
+				pAdjacentPlot = plotDirection(getX_INLINE(), getY_INLINE(), ((DirectionTypes)iI));
+				if (pAdjacentPlot != NULL)
+				{
+					if (pAdjacentPlot->isWater())
+					{
+						if (pAdjacentPlot->isImpassable())
+						{
+							if (isCardinalDirection((DirectionTypes)iI))
+							{
+								bInWaterSection = false;
+							}
+						}
+						else if (!bInWaterSection)
+						{
+							bInWaterSection = true;
+							apPlotsToCheck[iPlotsFound] = pAdjacentPlot;
+							if ((++iPlotsFound) == iWaterSections)
+								break;
+						}
+					}
+					else
+					{
+						bInWaterSection = false;
+					}
+				}
+			}
+			// Find the max path distance out of all possible pairs of plots
+			for (int iI = 0; iI < (iPlotsFound - 1); ++iI)
+			{
+				for (int iJ = iI + 1; iJ < iPlotsFound; ++iJ)
+				{
+					if (!apPlotsToCheck[iI]->isLake() || !apPlotsToCheck[iJ]->isLake())
+					{
+						int iDistance = GC.getMapINLINE().calculatePathDistance(apPlotsToCheck[iI], apPlotsToCheck[iJ]);
+						if (iDistance == -1)
+						{
+
+							// If no path was found then value is based off the number of plots in the region minus a minimum area
+							iDistance = std::min(apPlotsToCheck[iI]->countRegionPlots(), apPlotsToCheck[iJ]->countRegionPlots()) - 7;
+							iDistance *= 4;
+						}
+						else
+						{
+							// Path already would have required 2 steps, and I don't care that much about saving just 1 or 2 moves
+							iDistance -= 4;
+						}
+						if (iDistance > iMaxDistance)
+						{
+							iMaxDistance = iDistance;
+						}
+					}
+				}
+			}
+			iCanalValue = iMaxDistance * (iPlotsFound - 1);
+		}
+	}
+
+	setCanalValue(iCanalValue);
+}
+// Super Forts end
+
+// Super Forts begin *choke*
+int CvPlot::getChokeValue() const
+{
+	return m_iChokeValue;
+}
+
+void CvPlot::setChokeValue(int iNewValue)
+{
+	m_iChokeValue = iNewValue;
+}
+
+void CvPlot::calculateChokeValue()
+{
+	bool bInPassableSection;
+	CvPlot* pAdjacentPlot, * apPlotsToCheck[4];
+	int iPassableSections, iPlotsFound, iMaxDistance;
+	int iChokeValue = 0;
+	bool bWater = isWater();
+
+	if (!isImpassable() && countImpassableCardinalDirections() > 1)
+	{
+		iPassableSections = countAdjacentPassableSections(bWater);
+		if (iPassableSections > 1)
+		{
+			iMaxDistance = 0;
+			iPlotsFound = 0;
+			bInPassableSection = false;
+			// Find appropriate plots to be used for path distance calculations
+			for (int iI = 0; iI < NUM_DIRECTION_TYPES; ++iI)
+			{
+				pAdjacentPlot = plotDirection(getX_INLINE(), getY_INLINE(), ((DirectionTypes)iI));
+				if (pAdjacentPlot != NULL)
+				{
+					if (pAdjacentPlot->isWater() == bWater)
+					{
+						// Don't count diagonal hops across land isthmus
+						if (bWater && !isCardinalDirection((DirectionTypes)iI))
+						{
+							if (!(GC.getMapINLINE().plotINLINE(getX_INLINE(), pAdjacentPlot->getY_INLINE())->isWater()) && !(GC.getMapINLINE().plotINLINE(pAdjacentPlot->getX_INLINE(), getY_INLINE())->isWater()))
+							{
+								continue;
+							}
+						}
+						if (pAdjacentPlot->isImpassable())
+						{
+							if (isCardinalDirection((DirectionTypes)iI))
+							{
+								bInPassableSection = false;
+							}
+						}
+						else if (!bInPassableSection)
+						{
+							bInPassableSection = true;
+							apPlotsToCheck[iPlotsFound] = pAdjacentPlot;
+							if ((++iPlotsFound) == iPassableSections)
+								break;
+						}
+					}
+					else if (bWater || isCardinalDirection((DirectionTypes)iI))
+					{
+						bInPassableSection = false;
+					}
+				}
+			}
+			// Find the max path distance out of all possible pairs of plots
+			for (int iI = 0; iI < (iPlotsFound - 1); ++iI)
+			{
+				for (int iJ = iI + 1; iJ < iPlotsFound; ++iJ)
+				{
+					int iDistance = GC.getMapINLINE().calculatePathDistance(apPlotsToCheck[iI], apPlotsToCheck[iJ], this);
+					if (iDistance == -1)
+					{
+						// If no path was found then value is based off the number of plots in the region minus a minimum area
+						iDistance = std::min(apPlotsToCheck[iI]->countRegionPlots(this), apPlotsToCheck[iJ]->countRegionPlots(this)) - 4;
+						iDistance *= 4;
+					}
+					else
+					{
+						// Path already would have required 2 steps, but we forced the enemy to go another way so there is some value
+						iDistance -= 1;
+					}
+					if (iDistance > iMaxDistance)
+					{
+						iMaxDistance = iDistance;
+					}
+				}
+			}
+			iChokeValue = iMaxDistance * (iPlotsFound - 1);
+		}
+	}
+
+	setChokeValue(iChokeValue);
 }
 // Super Forts end
 
@@ -3645,7 +3975,10 @@ PlayerTypes CvPlot::calculateCulturalOwner() const
 			}
 		}
 
-		if (!bValid)
+		if (!bValid
+			// Super Forts begin *culture*
+			|| !GET_PLAYER(eBestPlayer).isAlive())
+			// Super Forts end
 		{
 			eBestPlayer = NO_PLAYER;
 		}
@@ -3964,12 +4297,20 @@ bool CvPlot::isFriendlyCity(const CvUnit& kUnit, bool bCheckImprovement) const
 
 bool CvPlot::isEnemyCity(const CvUnit& kUnit) const
 {
+	// Super Forts begin *culture*
+	TeamTypes ePlotTeam = getTeam();
+	if (isCity(true) && (ePlotTeam != NO_TEAM))
+	{
+		return kUnit.isEnemy(ePlotTeam, this);
+	}
+	/* Original Code
 	CvCity* pCity = getPlotCity();
 
 	if (pCity != NULL)
 	{
 		return kUnit.isEnemy(pCity->getTeam(), this);
-	}
+	} */
+	// Super Forts end
 
 	return false;
 }
@@ -9364,6 +9705,10 @@ void CvPlot::read(FDataStreamBase* pStream)
 	pStream->Read(&m_iReconCount);
 	pStream->Read(&m_iRiverCrossingCount);
 
+	// Super Forts begin *canal* *choke*
+	pStream->Read(&m_iCanalValue);
+	pStream->Read(&m_iChokeValue);
+	// Super Forts end
 	// Super Forts begin *bombard*
 	pStream->Read(&m_iDefenseDamage);
 	pStream->Read(&m_bBombarded);
@@ -9615,7 +9960,11 @@ void CvPlot::write(FDataStreamBase* pStream)
 	pStream->Write(m_iMinOriginalStartDist);
 	pStream->Write(m_iReconCount);
 	pStream->Write(m_iRiverCrossingCount);
-	
+
+	// Super Forts begin *canal* *choke*
+	pStream->Write(m_iCanalValue);
+	pStream->Write(m_iChokeValue);
+	// Super Forts end
 	// Super Forts begin *bombard*
 	pStream->Write(m_iDefenseDamage);
 	pStream->Write(m_bBombarded);

@@ -4520,10 +4520,10 @@ void CvDLLWidgetData::parseFlagHelp(CvWidgetDataStruct &widgetDataStruct, CvWStr
 /*                                                                                              */
 /************************************************************************************************/
 	// Add string showing version number
-	szTempBuffer.Format(L"%S", "Unofficial 3.19 Patch v1.60");
+	/*szTempBuffer.Format(L"%S", "Unofficial 3.19 Patch v1.60");
 	szBuffer.append(szTempBuffer);
 	szBuffer.append(NEWLINE);
-	szBuffer.append(NEWLINE);
+	szBuffer.append(NEWLINE);*/
 /************************************************************************************************/
 /* UNOFFICIAL_PATCH                       END                                                   */
 /************************************************************************************************/
@@ -4533,12 +4533,18 @@ void CvDLLWidgetData::parseFlagHelp(CvWidgetDataStruct &widgetDataStruct, CvWStr
 /*                                                                                              */
 /************************************************************************************************/
 	// Add string showing version number
-	szTempBuffer.Format(L"%S", "Better BTS AI v1.01f");
+	/*szTempBuffer.Format(L"%S", "Better BTS AI v1.01f");
 	szBuffer.append(szTempBuffer);
-	szBuffer.append(NEWLINE);
+	szBuffer.append(NEWLINE);*/
 /************************************************************************************************/
 /* BETTER_BTS_AI_MOD                       END                                                  */
 /************************************************************************************************/
+
+	// DEATHMAKER900 VERSION BEGIN
+	szTempBuffer.Format(L"%S", "Civilization 4-Ever v3.0.1");
+	szBuffer.append(szTempBuffer);
+	szBuffer.append(NEWLINE);
+	// DEATHMAKER900 VERSION END
 
 	szTempBuffer.Format(SETCOLR L"%s" ENDCOLR, TEXT_COLOR("COLOR_HIGHLIGHT_TEXT"), GC.getCivilizationInfo(GC.getGameINLINE().getActiveCivilizationType()).getDescription());
 	szBuffer.append(szTempBuffer);

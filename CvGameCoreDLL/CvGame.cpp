@@ -346,6 +346,10 @@ void CvGame::regenerateMap()
 
 	setInitialItems();
 
+	// Super Forts begin *choke* *canal*
+	GC.getMapINLINE().calculateCanalAndChokePoints();
+	// Super Forts end
+
 	initScoreCalculation();
 	setFinalInitialized(true);
 

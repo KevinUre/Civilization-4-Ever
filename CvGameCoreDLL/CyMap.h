@@ -83,6 +83,9 @@ public:
 	void updateFog();
 	void updateMinimapColor();
 	void updateMinOriginalStartDist(CyArea* pArea);
+	// Super Forts begin *canal* *choke*
+	void calculateCanalAndChokePoints();
+	// Super Forts end
 
 	// PYTHON HELPER FUNCTIONS
 	//int getNumPlayerOwnedPlots(int /*PlayerTypes*/ iPlayer);
