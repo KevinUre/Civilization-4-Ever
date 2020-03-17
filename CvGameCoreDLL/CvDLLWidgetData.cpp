@@ -2521,6 +2521,12 @@ void CvDLLWidgetData::parseActionHelp(CvWidgetDataStruct &widgetDataStruct, CvWS
 						if (GC.getBuildInfo(eBuild).isFeatureRemove(pMissionPlot->getFeatureType()))
 						{
 							iYield -= GC.getFeatureInfo(pMissionPlot->getFeatureType()).getYieldChange(iI);
+							// DEATHMAKER900 UI BUGFIX BEGIN
+							if (((YieldTypes)iI) == YIELD_COMMERCE && pMissionPlot->isRiver())
+							{
+								iYield += 1;
+							}
+							// DEATHMAKER900 UI BUGFIX END
 						}
 					}
 
@@ -4541,7 +4547,7 @@ void CvDLLWidgetData::parseFlagHelp(CvWidgetDataStruct &widgetDataStruct, CvWStr
 /************************************************************************************************/
 
 	// DEATHMAKER900 VERSION BEGIN
-	szTempBuffer.Format(L"%S", "Civilization 4-Ever v3.0.1");
+	szTempBuffer.Format(L"%S", "Civilization 4-Ever v3.0.2");
 	szBuffer.append(szTempBuffer);
 	szBuffer.append(NEWLINE);
 	// DEATHMAKER900 VERSION END
