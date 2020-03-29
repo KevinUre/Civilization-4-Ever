@@ -141,6 +141,17 @@ public:
 	void changeCultureRangeFortsWithinRange(PlayerTypes ePlayer, int iChange, int iRange, bool bUpdate);
 	void doImprovementCulture();
 	// Super Forts end
+	// Super Forts begin *canal* *choke*
+	int countRegionPlots(const CvPlot* pInvalidPlot = NULL) const;
+	int countAdjacentPassableSections(bool bWater) const;
+	int countImpassableCardinalDirections() const;
+	int getCanalValue() const;
+	void setCanalValue(int iNewValue);
+	void calculateCanalValue();
+	int getChokeValue() const;
+	void setChokeValue(int iNewValue);
+	void calculateChokeValue();
+	// Super Forts end
 
 	int defenseModifier(TeamTypes eDefender, bool bIgnoreBuilding, bool bHelp = false) const;									// Exposed to Python				
 	int movementCost(const CvUnit* pUnit, const CvPlot* pFromPlot) const;														// Exposed to Python				
@@ -567,6 +578,10 @@ protected:
 	short m_iReconCount;
 	short m_iRiverCrossingCount;
 
+	// Super Forts begin *canal* *choke*
+	int m_iCanalValue;
+	int m_iChokeValue;
+	// Super Forts end
 	// Super Forts begin *bombard*
 	int m_iDefenseDamage;
 	bool m_bBombarded;

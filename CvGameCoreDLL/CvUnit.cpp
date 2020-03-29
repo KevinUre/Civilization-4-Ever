@@ -4076,6 +4076,22 @@ bool CvUnit::canAirliftAt(const CvPlot* pPlot, int iX, int iY) const
 		return false;
 	}
 
+	// Super Forts begin *airlift*
+	if (pTargetPlot->getTeam() != NO_TEAM)
+	{
+		if (pTargetPlot->getTeam() == getTeam() || GET_TEAM(pTargetPlot->getTeam()).isVassal(getTeam()))
+		{
+			if (pTargetPlot->getImprovementType() != NO_IMPROVEMENT)
+			{
+				if (GC.getImprovementInfo(pTargetPlot->getImprovementType()).isActsAsCity())
+				{
+					return true;
+				}
+			}
+		}
+	}
+	// Super Forts end
+
 	pTargetCity = pTargetPlot->getPlotCity();
 
 	if (pTargetCity == NULL)
@@ -4112,15 +4128,20 @@ bool CvUnit::airlift(int iX, int iY)
 	FAssert(pCity != NULL);
 	pTargetPlot = GC.getMapINLINE().plotINLINE(iX, iY);
 	FAssert(pTargetPlot != NULL);
-	pTargetCity = pTargetPlot->getPlotCity();
-	FAssert(pTargetCity != NULL);
-	FAssert(pCity != pTargetCity);
-
-	pCity->changeCurrAirlift(1);
-	if (pTargetCity->getMaxAirlift() == 0)
+	// Super Forts begin *airlift* - added if statement to allow airlifts to plots that aren't cities
+	if (pTargetPlot->isCity())
 	{
-		pTargetCity->setAirliftTargeted(true);
+		pTargetCity = pTargetPlot->getPlotCity();
+		FAssert(pTargetCity != NULL);
+		FAssert(pCity != pTargetCity);
+
+		if (pTargetCity->getMaxAirlift() == 0)
+		{
+			pTargetCity->setAirliftTargeted(true);
+		}
 	}
+	pCity->changeCurrAirlift(1);
+	// Super Forts end
 
 	finishMoves();
 

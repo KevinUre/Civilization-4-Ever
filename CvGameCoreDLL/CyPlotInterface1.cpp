@@ -253,5 +253,12 @@ void CyPlotPythonInterface1(python::class_<CyPlot>& x)
 
 		.def("getScriptData", &CyPlot::getScriptData, "str () - Get stored custom data")
 		.def("setScriptData", &CyPlot::setScriptData, "void (str) - Set stored custom data")
+
+		// Super Forts begin *canal* *choke*
+		.def("getCanalValue", &CyPlot::getCanalValue, "int ()")
+		.def("calculateCanalValue", &CyPlot::calculateCanalValue, "void ()")
+		.def("getChokeValue", &CyPlot::getChokeValue, "int ()")
+		.def("calculateChokeValue", &CyPlot::calculateChokeValue, "void ()")
+		// Super Forts end
 	;
 }

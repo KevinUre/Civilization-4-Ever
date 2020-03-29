@@ -1219,8 +1219,10 @@ void CvMap::resetPathDistance()
 	gDLL->getFAStarIFace()->ForceReset(&GC.getStepFinder());
 }
 
-
-int CvMap::calculatePathDistance(CvPlot *pSource, CvPlot *pDest)
+// Super Forts begin *canal* *choke*
+//int CvMap::calculatePathDistance(CvPlot *pSource, CvPlot *pDest)
+int CvMap::calculatePathDistance(CvPlot* pSource, CvPlot* pDest, CvPlot* pInvalidPlot)
+// Super Forts end
 {
 	FAStarNode* pNode;
 
@@ -1229,7 +1231,13 @@ int CvMap::calculatePathDistance(CvPlot *pSource, CvPlot *pDest)
 		return -1;
 	}
 
-	if (gDLL->getFAStarIFace()->GeneratePath(&GC.getStepFinder(), pSource->getX_INLINE(), pSource->getY_INLINE(), pDest->getX_INLINE(), pDest->getY_INLINE(), false, 0, true))
+	//if (gDLL->getFAStarIFace()->GeneratePath(&GC.getStepFinder(), pSource->getX_INLINE(), pSource->getY_INLINE(), pDest->getX_INLINE(), pDest->getY_INLINE(), false, 0, true))
+	// Super Forts begin *canal* *choke*
+	// 1 must be added because 0 is already being used as the default value for iInfo in GeneratePath()
+	int iInvalidPlot = (pInvalidPlot == NULL) ? 0 : GC.getMapINLINE().plotNum(pInvalidPlot->getX_INLINE(), pInvalidPlot->getY_INLINE()) + 1;
+
+	if (gDLL->getFAStarIFace()->GeneratePath(&GC.getStepFinder(), pSource->getX_INLINE(), pSource->getY_INLINE(), pDest->getX_INLINE(), pDest->getY_INLINE(), false, iInvalidPlot, true))
+		// Super Forts end
 	{
 		pNode = gDLL->getFAStarIFace()->GetLastNode(&GC.getStepFinder());
 
@@ -1242,6 +1250,27 @@ int CvMap::calculatePathDistance(CvPlot *pSource, CvPlot *pDest)
 	return -1; // no passable path exists
 }
 
+// Super Forts begin *canal* *choke*
+void CvMap::calculateCanalAndChokePoints()
+{
+	int iI;
+	for (iI = 0; iI < numPlotsINLINE(); iI++)
+	{
+		plotByIndexINLINE(iI)->calculateCanalValue();
+		plotByIndexINLINE(iI)->calculateChokeValue();
+		// TEMPORARY HARD CODE for testing purposes
+		/*if((plotByIndexINLINE(iI)->getChokeValue() > 0) || (plotByIndexINLINE(iI)->getCanalValue() > 0))
+		{
+			ImprovementTypes eImprovement = (ImprovementTypes) (plotByIndexINLINE(iI)->isWater() ? GC.getInfoTypeForString("IMPROVEMENT_OFFSHORE_PLATFORM") : GC.getInfoTypeForString("IMPROVEMENT_FORT"));
+			plotByIndexINLINE(iI)->setImprovementType(eImprovement);
+		}
+		else
+		{
+			plotByIndexINLINE(iI)->setImprovementType(NO_IMPROVEMENT);
+		}*/
+	}
+}
+// Super Forts end
 
 /************************************************************************************************/
 /* BETTER_BTS_AI_MOD                      08/21/09                                jdog5000      */
