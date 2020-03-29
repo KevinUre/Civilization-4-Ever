@@ -4547,8 +4547,9 @@ void CvDLLWidgetData::parseFlagHelp(CvWidgetDataStruct &widgetDataStruct, CvWStr
 /************************************************************************************************/
 
 	// DEATHMAKER900 VERSION BEGIN
-	szTempBuffer.Format(L"%S", "Civilization 4-Ever v3.0.2");
-	szBuffer.append(szTempBuffer);
+	//szTempBuffer.Format(L"%S", gDLL->getText("TXT_FOREVER_VERSION"));
+	szBuffer.append(gDLL->getText("TXT_FOREVER_VERSION"));
+	szBuffer.append(NEWLINE);
 	szBuffer.append(NEWLINE);
 	// DEATHMAKER900 VERSION END
 

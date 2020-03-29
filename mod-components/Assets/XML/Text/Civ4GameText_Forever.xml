@@ -7,6 +7,10 @@
 <!-- Game Text Cities -->
 <Civ4GameText xmlns="http://www.firaxis.com">
 	<TEXT>
+		<Tag>TXT_FOREVER_VERSION</Tag>
+		<English>Civilization 4-Ever v3.0.3</English>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_PEDIA_CATEGORY_CONCEPT_FOREVER</Tag>
 		<English>4-Ever Concepts</English>
 	</TEXT>
