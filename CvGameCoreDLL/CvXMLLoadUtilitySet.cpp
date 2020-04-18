@@ -1313,7 +1313,7 @@ void CvXMLLoadUtility::SetGlobalClassInfo(std::vector<T*>& aInfos, const char* s
 				}
 
 				bool bSuccess = pClassInfo->read(this);
-				FAssert(bSuccess);
+				// FAssert(bSuccess); DEATHMAKER900 REMOVING
 				if (!bSuccess)
 				{
 					delete pClassInfo;

@@ -2646,7 +2646,7 @@ void CvUnitAI::AI_attackCityMove()
 		}
 	}
 
-	bool bInCity = plot()->isCity(true);
+	bool bInCity = plot()->isCity(false);
 
 	if( bInCity && plot()->getOwnerINLINE() == getOwnerINLINE() )
 	{
@@ -2665,7 +2665,8 @@ void CvUnitAI::AI_attackCityMove()
 			// BBAI TODO: split out slow units ... will need to test to make sure this doesn't cause loops
 		}
 
-		if ((GC.getGame().getGameTurn() - plot()->getPlotCity()->getGameTurnAcquired()) <= 1)
+		if ( !(plot()->isCity()) ||
+			(GC.getGame().getGameTurn() - plot()->getPlotCity()->getGameTurnAcquired()) <= 1) // if we took it this turn
 		{
 			CvSelectionGroup* pOldGroup = getGroup();
 
@@ -19000,7 +19001,7 @@ bool CvUnitAI::AI_improveBonus(int iMinValue, CvPlot** ppBestPlot, BuildTypes* p
 					else if(!isHuman() || !GET_PLAYER(getOwnerINLINE()).hasBonus(eNonObsoleteBonus))
 					{
 						CvCity* pNearestCity = GC.getMapINLINE().findCity(pLoopPlot->getX_INLINE(), pLoopPlot->getY_INLINE(), getOwnerINLINE(), NO_TEAM, false);
-						if (pNearestCity != NULL)
+						if ((pNearestCity != NULL) && generatePath(pLoopPlot, 0, true, &iPathTurns))
 						{
 							int iDistanceModifier = 1;
 							if(GET_PLAYER(getOwnerINLINE()).hasBonus(eNonObsoleteBonus))
