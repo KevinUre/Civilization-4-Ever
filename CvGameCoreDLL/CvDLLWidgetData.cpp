@@ -1787,6 +1787,14 @@ void CvDLLWidgetData::parseHurryHelp(CvWidgetDataStruct &widgetDataStruct, CvWSt
 		{
 			szBuffer.append(NEWLINE);
 			szBuffer.append(gDLL->getText("TXT_KEY_MISC_HURRY_GOLD", iHurryGold));
+
+			//DEATHMAKER900 Occupy prevents hurry BEGIN
+			if (pHeadSelectedCity->isUnderSiege())
+			{
+				szBuffer.append(NEWLINE);
+				szBuffer.append(gDLL->getText("TXT_HURRY_EMBARGO"));
+			}
+			//DEATHMAKER900 Occupy prevents hurry END
 		}
 
 		iHurryPopulation = pHeadSelectedCity->hurryPopulation((HurryTypes)(widgetDataStruct.m_iData1));

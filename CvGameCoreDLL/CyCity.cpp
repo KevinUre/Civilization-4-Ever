@@ -348,6 +348,13 @@ bool CyCity::canHurry(int /*HurryTypes*/ iHurry, bool bTestVisible)
 	return m_pCity ? m_pCity->canHurry((HurryTypes)iHurry, bTestVisible) : false;
 }
 
+//Occupy prevents hurry KEVIN
+bool CyCity::isUnderSiege()
+{
+	return m_pCity ? m_pCity->isUnderSiege() : false;
+}
+//END KEVIN
+
 void CyCity::hurry(int /*HurryTypes*/ iHurry)
 {
 	if (m_pCity)

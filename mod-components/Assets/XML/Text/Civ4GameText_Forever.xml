@@ -8,7 +8,11 @@
 <Civ4GameText xmlns="http://www.firaxis.com">
 	<TEXT>
 		<Tag>TXT_FOREVER_VERSION</Tag>
-		<English>Civilization 4-Ever v3.0.4</English>
+		<English>Civilization 4-Ever v3.1.0</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_HURRY_EMBARGO</Tag>
+		<English>[COLOR_WARNING_TEXT]City Under Siege[COLOR_REVERT]</English>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_PEDIA_CATEGORY_CONCEPT_FOREVER</Tag>

@@ -136,6 +136,9 @@ public:
 	int getCurrentProductionDifference(bool bIgnoreFood, bool bOverflow) const;				// Exposed to Python
 	int getExtraProductionDifference(int iExtra) const;																					// Exposed to Python
 
+	//Occupy prevents hurry KEVIN
+	bool isUnderSiege() const;		// Exposed to Python
+	//END KEVIN
 	bool canHurry(HurryTypes eHurry, bool bTestVisible = false) const;		// Exposed to Python
 	void hurry(HurryTypes eHurry);																						// Exposed to Python
 

@@ -95,6 +95,9 @@ public:
 
 	int getExtraProductionDifference(int iExtra);
 
+	//Occupy prevents hurry KEVIN
+	bool isUnderSiege();
+	//END KEVIN
 	bool canHurry(int /*HurryTypes*/ iHurry, bool bTestVisible);
 	void hurry(int /*HurryTypes*/ iHurry);
 	int /*UnitTypes*/ getConscriptUnit();
