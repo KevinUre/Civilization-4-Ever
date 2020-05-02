@@ -492,34 +492,34 @@ void CvUnitAI::AI_upgrade()
 	UnitAITypes eUnitAI = AI_getUnitAIType();
 	CvArea* pArea = area();
 
-	// DeathMaker900 dont upgrade if you are next to an enemy because of the HP loss
-	for (int iI = 0; iI < NUM_DIRECTION_TYPES; iI++)
-	{
-		CvPlot* pLoopPlot = plotDirection(getX_INLINE(), getY_INLINE(), ((DirectionTypes)iI));
-		std::vector<CvUnit*> aUnits;
-		CLLNode<IDInfo>* pUnitNode = pLoopPlot->headUnitNode();
-		if (pUnitNode == NULL) { continue; }
-		while (pUnitNode != NULL)
-		{
-			CvUnit* pLoopUnit = ::getUnit(pUnitNode->m_data);
-			pUnitNode = pLoopPlot->nextUnitNode(pUnitNode);
-			if (NULL != pLoopUnit)
-			{
-				aUnits.push_back(pLoopUnit);
-			}
-		}
-		std::vector<CvUnit*>::iterator it = aUnits.begin();
-		while (it != aUnits.end())
-		{
-			CvUnit* pLoopUnit = *it;
-			if (pLoopUnit->isEnemy(getTeam()) && !pLoopUnit->isSpy())
-			{
-				return;
-			}
-			++it;
-		}
-	}
-	// DeathMaker900 end
+	//// DeathMaker900 dont upgrade if you are next to an enemy because of the HP loss
+	//for (int iI = 0; iI < NUM_DIRECTION_TYPES; iI++)
+	//{
+	//	CvPlot* pLoopPlot = plotDirection(getX_INLINE(), getY_INLINE(), ((DirectionTypes)iI));
+	//	std::vector<CvUnit*> aUnits;
+	//	CLLNode<IDInfo>* pUnitNode = pLoopPlot->headUnitNode();
+	//	if (pUnitNode == NULL) { continue; }
+	//	while (pUnitNode != NULL)
+	//	{
+	//		CvUnit* pLoopUnit = ::getUnit(pUnitNode->m_data);
+	//		pUnitNode = pLoopPlot->nextUnitNode(pUnitNode);
+	//		if (NULL != pLoopUnit)
+	//		{
+	//			aUnits.push_back(pLoopUnit);
+	//		}
+	//	}
+	//	std::vector<CvUnit*>::iterator it = aUnits.begin();
+	//	while (it != aUnits.end())
+	//	{
+	//		CvUnit* pLoopUnit = *it;
+	//		if (pLoopUnit->isEnemy(getTeam()) && !pLoopUnit->isSpy())
+	//		{
+	//			return;
+	//		}
+	//		++it;
+	//	}
+	//}
+	//// DeathMaker900 end
 
 	int iCurrentValue = kPlayer.AI_unitValue(getUnitType(), eUnitAI, pArea);
 	
