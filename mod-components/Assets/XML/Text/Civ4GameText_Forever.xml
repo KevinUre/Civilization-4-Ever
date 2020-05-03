@@ -8,11 +8,19 @@
 <Civ4GameText xmlns="http://www.firaxis.com">
 	<TEXT>
 		<Tag>TXT_FOREVER_VERSION</Tag>
-		<English>Civilization 4-Ever v3.1.1</English>
+		<English>Civilization 4-Ever v3.1.2</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_FOREVER_VERSION_SAVE</Tag>
+		<English>4-Ever v3.1.2</English>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_HURRY_EMBARGO</Tag>
-		<English>[COLOR_WARNING_TEXT]City Under Siege[COLOR_REVERT]</English>
+		<English>[COLOR_WARNING_TEXT]City under siege[COLOR_REVERT]</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_UPGRADE_DAMAGE</Tag>
+		<English>[COLOR_WARNING_TEXT]Reduces current strength by half[COLOR_REVERT]</English>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_PEDIA_CATEGORY_CONCEPT_FOREVER</Tag>
