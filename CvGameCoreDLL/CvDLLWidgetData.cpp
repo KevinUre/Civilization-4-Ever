@@ -2529,12 +2529,12 @@ void CvDLLWidgetData::parseActionHelp(CvWidgetDataStruct &widgetDataStruct, CvWS
 						if (GC.getBuildInfo(eBuild).isFeatureRemove(pMissionPlot->getFeatureType()))
 						{
 							iYield -= GC.getFeatureInfo(pMissionPlot->getFeatureType()).getYieldChange(iI);
-							// DEATHMAKER900 UI BUGFIX BEGIN
+							// DEATHMAKER900 TOOLTIPS BEGIN
 							if (((YieldTypes)iI) == YIELD_COMMERCE && pMissionPlot->isRiver())
 							{
 								iYield += 1;
 							}
-							// DEATHMAKER900 UI BUGFIX END
+							// DEATHMAKER900 TOOLTIPS END
 						}
 					}
 
@@ -2940,6 +2940,10 @@ void CvDLLWidgetData::parseActionHelp(CvWidgetDataStruct &widgetDataStruct, CvWS
 
 				szTempBuffer.Format(L"%s%d %c", NEWLINE, iPrice, GC.getCommerceInfo(COMMERCE_GOLD).getChar());
 				szBuffer.append(szTempBuffer);
+				// DEATHMAKER900 TOOLTIPS BEGIN
+				szBuffer.append(NEWLINE);
+				szBuffer.append(gDLL->getText("TXT_UPGRADE_DAMAGE"));
+				// DEATHMAKER900 TOOLTIPS END
 			}
 			else if (GC.getActionInfo(widgetDataStruct.m_iData1).getCommandType() == COMMAND_GIFT)
 			{

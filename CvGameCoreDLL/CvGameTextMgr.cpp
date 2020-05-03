@@ -153,6 +153,14 @@ void CvGameTextMgr::setYearStr(CvWString& szString, int iGameTurn, bool bSave, C
 			szString = gDLL->getText("TXT_KEY_TIME_AD", 1);
 		}
 	}
+	// DEATHMAKER900 VERSION IN SAVE BEGIN
+	if (bSave)
+	{
+		CvWString versionString = gDLL->getText("TXT_FOREVER_VERSION_SAVE");
+		CvWString time = szString;
+		szString = versionString + CvWString(" ") + time;
+	}
+	// DEATHMAKER900 VERSION IN SAVE END
 }
 
 
