@@ -3189,6 +3189,7 @@ bool CvCity::isUnderSiege() const
 	for (int iI = 0; iI < NUM_DIRECTION_TYPES; iI++)
 	{
 		CvPlot* pLoopPlot = plotDirection(getX_INLINE(), getY_INLINE(), ((DirectionTypes)iI));
+		if (pLoopPlot == NULL) { continue; }
 		std::vector<CvUnit*> aUnits;
 		CLLNode<IDInfo>* pUnitNode = pLoopPlot->headUnitNode();
 		if (pUnitNode == NULL) { continue; }

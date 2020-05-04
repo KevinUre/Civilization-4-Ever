@@ -3742,6 +3742,7 @@ bool CvUnit::canHealAtEndOfTurn(const CvPlot* pPlot) const
 		for (int iI = 0; iI < NUM_DIRECTION_TYPES; iI++)
 		{
 			CvPlot* pLoopPlot = plotDirection(pPlot->getX_INLINE(), pPlot->getY_INLINE(), ((DirectionTypes)iI));
+			if (pLoopPlot == NULL) { continue; }
 			std::vector<CvUnit*> aUnits;
 			CLLNode<IDInfo>* pUnitNode = pLoopPlot->headUnitNode();
 			if (pUnitNode == NULL) { continue; }
@@ -3794,6 +3795,7 @@ bool CvUnit::canHeal(const CvPlot* pPlot) const
 		for (int iI = 0; iI < NUM_DIRECTION_TYPES; iI++)
 		{
 			CvPlot* pLoopPlot = plotDirection(pPlot->getX_INLINE(), pPlot->getY_INLINE(), ((DirectionTypes)iI));
+			if (pLoopPlot == NULL) { continue; }
 			std::vector<CvUnit*> aUnits;
 			CLLNode<IDInfo>* pUnitNode = pLoopPlot->headUnitNode();
 			if (pUnitNode == NULL) { continue; }
@@ -3863,6 +3865,7 @@ int CvUnit::healRate(const CvPlot* pPlot) const
 		for (int iI = 0; iI < NUM_DIRECTION_TYPES; iI++)
 		{
 			CvPlot* pLoopPlot = plotDirection(pPlot->getX_INLINE(), pPlot->getY_INLINE(), ((DirectionTypes)iI));
+			if (pLoopPlot == NULL) { continue; }
 			std::vector<CvUnit*> aUnits;
 			CLLNode<IDInfo>* pUnitNode = pLoopPlot->headUnitNode();
 			if (pUnitNode == NULL) { continue; }
