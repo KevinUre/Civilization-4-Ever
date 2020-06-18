@@ -19,6 +19,7 @@
 #include "FProfiler.h"
 #include "FVariableSystem.h"
 #include "CvInitCore.h"
+#include <sstream>
 
 #define COPY(dst, src, typeName) \
 	{ \
@@ -3732,3 +3733,182 @@ int CvGlobals::getCOMBAT_DAMAGE()
 /* BETTER_BTS_AI_MOD                       END                                                  */
 /************************************************************************************************/
 
+static const int kBufSize = 2048;
+void CvGlobals::KevinLog(TCHAR* filename, char* format, ...)
+{
+	static char buf[kBufSize];
+	_vsnprintf(buf, kBufSize - 4, format, (char*)(&format + 1));
+	gDLL->logMsg(filename, buf, false, false);
+}
+
+void CvGlobals::LogEntireGameState(CvString context)
+{
+	KevinLog("Kevin.log", (char*)context.c_str());
+	CvString entireMessage = EntireGameState();
+	std::stringstream stream(entireMessage);
+	std::string segment;
+	std::vector<std::string> segments;
+	while (std::getline(stream, segment, '\n'))
+		segments.push_back(segment);
+	std::vector<std::string>::iterator iter = segments.begin();
+	while (iter != segments.end())
+	{
+		CvString message = CvString(*iter) + "\n";
+		KevinLog("Kevin.log", (char*)message.c_str());
+		++iter;
+	}
+}
+
+void CvGlobals::LogGameStateCheckSum(CvString context)
+{
+	KevinLog("Kevin.log", (char*)context.c_str());
+	CvString entireMessage = EntireGameState();
+	CvString checksum = KevinChecksum(entireMessage);
+	KevinLog("Kevin.log", (char*)checksum.c_str());
+}
+
+CvString CvGlobals::KevinChecksum(CvString input)
+{
+	return "not implemented";
+	/*const void* data = input.c_str();
+	const size_t data_size = input.GetLength();
+	HCRYPTPROV hProv = NULL;
+	if (!CryptAcquireContext(&hProv, NULL, NULL, PROV_RSA_AES, CRYPT_VERIFYCONTEXT)) {
+		return "";
+	}
+	BOOL hash_ok = FALSE;
+	HCRYPTPROV hHash = NULL;
+	hash_ok = CryptCreateHash(hProv, CALG_MD5, 0, 0, &hHash);
+	if (!hash_ok) {
+		CryptReleaseContext(hProv, 0);
+		return "";
+	}
+	if (!CryptHashData(hHash, static_cast<const BYTE*>(data), data_size, 0)) {
+		CryptDestroyHash(hHash);
+		CryptReleaseContext(hProv, 0);
+		return "";
+	}
+	DWORD cbHashSize = 0, dwCount = sizeof(DWORD);
+	if (!CryptGetHashParam(hHash, HP_HASHSIZE, (BYTE*)&cbHashSize, &dwCount, 0)) {
+		CryptDestroyHash(hHash);
+		CryptReleaseContext(hProv, 0);
+		return "";
+	}
+	std::vector<BYTE> buffer(cbHashSize);
+	if (!CryptGetHashParam(hHash, HP_HASHVAL, reinterpret_cast<BYTE*>(&buffer[0]), &cbHashSize, 0)) {
+		CryptDestroyHash(hHash);
+		CryptReleaseContext(hProv, 0);
+		return "";
+	}
+	std::ostringstream oss;
+	for (std::vector<BYTE>::const_iterator iter = buffer.begin(); iter != buffer.end(); ++iter) {
+		oss.fill('0');
+		oss.width(2);
+		oss << std::hex << static_cast<const int>(*iter);
+	}
+	CryptDestroyHash(hHash);
+	CryptReleaseContext(hProv, 0);
+	return CvString(oss.str());*/
+}
+
+CvString CvGlobals::IntToCvString(int input) {
+	std::ostringstream o;
+	o << input;
+	CvString out = CvString(o.str().c_str());
+	return out;
+}
+
+CvString CvGlobals::EntireGameState()
+{
+	CvString everything = "";
+	for (int iPlayer = 0; iPlayer < MAX_PLAYERS; iPlayer++)
+	{
+		if (GET_PLAYER((PlayerTypes)iPlayer).isAlive())
+		{
+			CvPlayerAI* currentPlayer = &GET_PLAYER((PlayerTypes)iPlayer);
+			CvTeamAI* currentTeam = &GET_TEAM((TeamTypes)currentPlayer->getTeam());
+			CvWString w_playername = currentPlayer->getName();
+			CvString playername = CvString(w_playername.c_str());
+			CvString PlayerMessage = "Player: " + playername + "\n";
+			//KevinLog("Kevin.log", (char*)PlayerMessage.c_str());
+			everything = everything + PlayerMessage;
+			everything = everything + "Treasuary: " + IntToCvString(currentPlayer->getGold()) + "\n";
+			//KevinLog("Kevin.log", "Treasuary: %d\n", currentPlayer->getGold());
+			for (int iTech = 0; iTech < GC.getNumTechInfos(); iTech++)
+			{
+				CvString id = IntToCvString(iTech);
+				CvWString w_tk = GC.getTechInfo((TechTypes)iTech).getTextKeyWide();
+				CvWString w_name = gDLL->getText(w_tk);
+				CvString name = CvString(w_name.c_str());
+				CvString has = currentTeam->isHasTech((TechTypes)iTech) ? "Yes" : "No";
+				CvString progress = IntToCvString(currentTeam->getResearchProgress((TechTypes)iTech));
+				CvString cost = IntToCvString(currentTeam->getResearchCost((TechTypes)iTech));
+				CvString TechMessage = "Research Id: " + id + ", Name: " + name + ", has: " + has + ", Amount: " + progress + " of " + cost + "\n";
+				//KevinLog("Kevin.log", (char*)TechMessage.c_str());
+				everything = everything + TechMessage;
+			}
+			CvCity* pLoopCity;
+			int iLoop;
+			for (pLoopCity = currentPlayer->firstCity(&iLoop); pLoopCity != NULL; pLoopCity = currentPlayer->nextCity(&iLoop))
+			{
+				CvString buildings = "";
+				for (int iBuilding = 0; iBuilding < GC.getNumBuildingInfos(); iBuilding++)
+				{
+					if (pLoopCity->getNumBuilding((BuildingTypes)iBuilding) > 0)
+					{
+						CvWString w_tk = GC.getBuildingInfo((BuildingTypes)iBuilding).getTextKeyWide();
+						CvWString w_name = gDLL->getText(w_tk);
+						CvString name = CvString(w_name.c_str());
+						buildings = buildings + (buildings.GetLength() > 0 ? ", " : "") + name;
+					}
+				}
+				CvWString w_name = pLoopCity->getName();
+				CvString name = CvString(w_name.c_str());
+				CvString x = IntToCvString(pLoopCity->getX_INLINE());
+				CvString y = IntToCvString(pLoopCity->getY_INLINE());
+				CvString pop = IntToCvString(pLoopCity->getPopulation());
+				CvString food = IntToCvString(pLoopCity->getFood());
+				CvWString w_sProd = pLoopCity->getProductionName();
+				CvString sProd = CvString(w_sProd.c_str());
+				CvString iProd = IntToCvString(pLoopCity->getProduction());
+				CvString health = IntToCvString(pLoopCity->goodHealth());
+				CvString unhealth = IntToCvString(pLoopCity->badHealth());
+				CvString happy = IntToCvString(pLoopCity->happyLevel());
+				CvString unhappy = IntToCvString(pLoopCity->unhappyLevel());
+				CvString culture = IntToCvString(pLoopCity->getCulture((PlayerTypes)iPlayer));
+				CvString CityMessage = "City Name: " + name + ", Location: " + x + "," + y + ", Population: " + pop + ", Stored Food: " + food + ", CurProdName: " + sProd
+					+ ", CurProdAmt: " + iProd + ", Health: " + health + ", Unhealth: " + unhealth + ", Happy: " + happy + ", Unhappy: " + unhappy + ", Culture: " + culture + ", Buildings: " + buildings + "\n";
+				//KevinLog("Kevin.log", (char*)CityMessage.c_str());
+				everything = everything + CityMessage;
+			}
+			CvUnit* pLoopUnit;
+			iLoop = 0;
+			for (pLoopUnit = currentPlayer->firstUnit(&iLoop); pLoopUnit != NULL; pLoopUnit = currentPlayer->nextUnit(&iLoop))
+			{
+				CvString promotions = "";
+				for (int iPromo = 0; iPromo < GC.getNumPromotionInfos(); iPromo++)
+				{
+					if (pLoopUnit->isHasPromotion((PromotionTypes)iPromo))
+					{
+						CvWString w_tk = GC.getPromotionInfo((PromotionTypes)iPromo).getTextKeyWide();
+						CvWString w_name = gDLL->getText(w_tk);
+						CvString name = CvString(w_name.c_str());
+						promotions = promotions + (promotions.GetLength() > 0 ? ", " : "") + name;
+					}
+				}
+				CvString id = IntToCvString(iLoop);
+				CvWString w_name = pLoopUnit->getName();
+				CvString name = CvString(w_name.c_str());
+				CvString x = IntToCvString(pLoopUnit->getX_INLINE());
+				CvString y = IntToCvString(pLoopUnit->getY_INLINE());
+				CvString hp = IntToCvString(pLoopUnit->currHitPoints());
+				CvString lvl = IntToCvString(pLoopUnit->getLevel());
+				CvString xp = IntToCvString(pLoopUnit->getExperience());
+				CvString UnitMessage = "Unit Number: " + id + ", Unit Name: " + name + ", Position: " + x + "," + y + ", Current Strength: " + hp + ", Level: " + lvl + ", XP: " + xp + ", Promotions: " + promotions + "\n";
+				//KevinLog("Kevin.log", (char*)UnitMessage.c_str());
+				everything = everything + UnitMessage;
+			}
+		}
+	}
+	return everything;
+}

@@ -718,6 +718,8 @@ protected:
 	CvPlot* normalizeFindLakePlot(PlayerTypes ePlayer);
 
 	void doUpdateCacheOnTurn();
+
+	
 };
 
 #endif

@@ -5713,6 +5713,7 @@ void CvGame::doTurn()
 
 	// END OF TURN
 	CvEventReporter::getInstance().beginGameTurn( getGameTurn() );
+	GC.KevinLog("Kevin.log", "Doing End of Turn logic for turn %d\n", getGameTurn());
 
 	doUpdateCacheOnTurn();
 
@@ -5841,7 +5842,14 @@ void CvGame::doTurn()
 	stopProfilingDLL();
 
 	gDLL->getEngineIFace()->AutoSave();
+
+	GC.LogEntireGameState("End of Game.DoTurn() Logic");
+	GC.KevinLog("Kevin.log", "\nNew Turn\n\n");
 }
+
+
+
+
 
 
 void CvGame::doDeals()

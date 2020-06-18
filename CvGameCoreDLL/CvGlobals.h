@@ -136,6 +136,15 @@ class CvGlobals
 	friend class CvXMLLoadUtility;
 public:
 
+	//DeathMaker900 BEGIN OOS LOGGING
+	void KevinLog(TCHAR* filename, char* format, ...);
+	void LogEntireGameState(CvString context);
+	void LogGameStateCheckSum(CvString context);
+	CvString KevinChecksum(CvString input);
+	CvString EntireGameState();
+	CvString IntToCvString(int input);
+	//DeathMaker900 BEGIN OOS LOGGING
+
 	// singleton accessor
 	DllExport inline static CvGlobals& getInstance();
 
