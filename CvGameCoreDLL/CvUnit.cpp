@@ -3725,6 +3725,7 @@ void CvUnit::airCircle(bool bStart)
 	}
 }
 
+//DEATHMAKER900 NON-LETHAL COMBAT BEGIN
 bool CvUnit::canHealAtEndOfTurn(const CvPlot* pPlot) const
 {
 	if (!isHurt())
@@ -3743,6 +3744,7 @@ bool CvUnit::canHealAtEndOfTurn(const CvPlot* pPlot) const
 		{
 			CvPlot* pLoopPlot = plotDirection(pPlot->getX_INLINE(), pPlot->getY_INLINE(), ((DirectionTypes)iI));
 			if (pLoopPlot == NULL) { continue; }
+			if (getArea() != pLoopPlot->getArea()) { continue; }
 			std::vector<CvUnit*> aUnits;
 			CLLNode<IDInfo>* pUnitNode = pLoopPlot->headUnitNode();
 			if (pUnitNode == NULL) { continue; }
@@ -3770,6 +3772,7 @@ bool CvUnit::canHealAtEndOfTurn(const CvPlot* pPlot) const
 
 	return true;
 }
+//DEATHMAKER900 NON-LETHAL COMBAT END
 
 
 bool CvUnit::canHeal(const CvPlot* pPlot) const
@@ -3796,6 +3799,7 @@ bool CvUnit::canHeal(const CvPlot* pPlot) const
 		{
 			CvPlot* pLoopPlot = plotDirection(pPlot->getX_INLINE(), pPlot->getY_INLINE(), ((DirectionTypes)iI));
 			if (pLoopPlot == NULL) { continue; }
+			if (getArea() != pLoopPlot->getArea()) { continue; }
 			std::vector<CvUnit*> aUnits;
 			CLLNode<IDInfo>* pUnitNode = pLoopPlot->headUnitNode();
 			if (pUnitNode == NULL) { continue; }
@@ -3866,6 +3870,7 @@ int CvUnit::healRate(const CvPlot* pPlot) const
 		{
 			CvPlot* pLoopPlot = plotDirection(pPlot->getX_INLINE(), pPlot->getY_INLINE(), ((DirectionTypes)iI));
 			if (pLoopPlot == NULL) { continue; }
+			if (getArea() != pLoopPlot->getArea()) { continue; }
 			std::vector<CvUnit*> aUnits;
 			CLLNode<IDInfo>* pUnitNode = pLoopPlot->headUnitNode();
 			if (pUnitNode == NULL) { continue; }

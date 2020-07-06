@@ -497,6 +497,7 @@ void CvUnitAI::AI_upgrade()
 	{
 		CvPlot* pLoopPlot = plotDirection(getX_INLINE(), getY_INLINE(), ((DirectionTypes)iI));
 		if (pLoopPlot == NULL) { continue; }
+		if (getArea() != pLoopPlot->getArea()) { continue; }
 		std::vector<CvUnit*> aUnits;
 		CLLNode<IDInfo>* pUnitNode = pLoopPlot->headUnitNode();
 		if (pUnitNode == NULL) { continue; }
