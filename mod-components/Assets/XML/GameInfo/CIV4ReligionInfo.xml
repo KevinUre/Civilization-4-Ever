@@ -44,7 +44,7 @@
 			<Civilopedia>TXT_KEY_RELIGION_CHRISTIANITY_PEDIA</Civilopedia>
 			<TechPrereq>TECH_THEOLOGY</TechPrereq>
 			<FreeUnitClass>UNITCLASS_CHRISTIAN_MISSIONARY</FreeUnitClass>
-			<iFreeUnits>1</iFreeUnits>
+			<iFreeUnits>2</iFreeUnits>
 			<iSpreadFactor>150</iSpreadFactor>
 			<GlobalReligionCommerces>
 				<iGlobalReligionCommerce>1</iGlobalReligionCommerce>
@@ -75,7 +75,7 @@
 			<Civilopedia>TXT_KEY_RELIGION_ISLAM_PEDIA</Civilopedia>
 			<TechPrereq>TECH_DIVINE_RIGHT</TechPrereq>
 			<FreeUnitClass>UNITCLASS_ISLAMIC_MISSIONARY</FreeUnitClass>
-			<iFreeUnits>1</iFreeUnits>
+			<iFreeUnits>3</iFreeUnits>
 			<iSpreadFactor>200</iSpreadFactor>
 			<GlobalReligionCommerces>
 				<iGlobalReligionCommerce>1</iGlobalReligionCommerce>
@@ -199,7 +199,7 @@
 			<Civilopedia>TXT_KEY_RELIGION_TAOISM_PEDIA</Civilopedia>
 			<TechPrereq>TECH_PHILOSOPHY</TechPrereq>
 			<FreeUnitClass>UNITCLASS_TAOIST_MISSIONARY</FreeUnitClass>
-			<iFreeUnits>1</iFreeUnits>
+			<iFreeUnits>2</iFreeUnits>
 			<iSpreadFactor>150</iSpreadFactor>
 			<GlobalReligionCommerces>
 				<iGlobalReligionCommerce>1</iGlobalReligionCommerce>
