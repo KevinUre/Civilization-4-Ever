@@ -5713,7 +5713,9 @@ void CvGame::doTurn()
 
 	// END OF TURN
 	CvEventReporter::getInstance().beginGameTurn( getGameTurn() );
+	// DeathMaker900 BEGIN OOS LOGGING
 	GC.KevinLog("Kevin.log", "Doing End of Turn logic for turn %d\n", getGameTurn());
+	// DeathMaker900 END OOS LOGGING
 
 	doUpdateCacheOnTurn();
 
@@ -5843,8 +5845,10 @@ void CvGame::doTurn()
 
 	gDLL->getEngineIFace()->AutoSave();
 
+	// DeathMaker900 BEGIN OOS LOGGING
 	GC.LogEntireGameState("End of Game.DoTurn() Logic");
-	GC.KevinLog("Kevin.log", "\nNew Turn\n\n");
+	GC.KevinLog("Kevin.log", "New Turn\n\n");
+	// DeathMaker900 END OOS LOGGING
 }
 
 

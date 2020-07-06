@@ -19,7 +19,9 @@
 #include "FProfiler.h"
 #include "FVariableSystem.h"
 #include "CvInitCore.h"
+//DeathMaker900 BEGIN OOS LOGGING
 #include <sstream>
+//DeathMaker900 END OOS LOGGING
 
 #define COPY(dst, src, typeName) \
 	{ \
@@ -3733,9 +3735,12 @@ int CvGlobals::getCOMBAT_DAMAGE()
 /* BETTER_BTS_AI_MOD                       END                                                  */
 /************************************************************************************************/
 
+//DeathMaker900 BEGIN OOS LOGGING
 static const int kBufSize = 2048;
 void CvGlobals::KevinLog(TCHAR* filename, char* format, ...)
 {
+	if (!GC.getLogging() || !GC.getSynchLogging())
+		return;
 	static char buf[kBufSize];
 	_vsnprintf(buf, kBufSize - 4, format, (char*)(&format + 1));
 	gDLL->logMsg(filename, buf, false, false);
@@ -3743,6 +3748,8 @@ void CvGlobals::KevinLog(TCHAR* filename, char* format, ...)
 
 void CvGlobals::LogEntireGameState(CvString context)
 {
+	if (!GC.getLogging() || !GC.getSynchLogging())
+		return;
 	KevinLog("Kevin.log", (char*)context.c_str());
 	CvString entireMessage = EntireGameState();
 	std::stringstream stream(entireMessage);
@@ -3761,6 +3768,8 @@ void CvGlobals::LogEntireGameState(CvString context)
 
 void CvGlobals::LogGameStateCheckSum(CvString context)
 {
+	if (!GC.getLogging() || !GC.getSynchLogging())
+		return;
 	KevinLog("Kevin.log", (char*)context.c_str());
 	CvString entireMessage = EntireGameState();
 	CvString checksum = KevinChecksum(entireMessage);
@@ -3912,3 +3921,4 @@ CvString CvGlobals::EntireGameState()
 	}
 	return everything;
 }
+//DeathMaker900 END OOS LOGGING
