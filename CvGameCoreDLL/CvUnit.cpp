@@ -5256,6 +5256,24 @@ bool CvUnit::pillage()
 			{
 				TeamTypes eUnitTeam = getTeam();
 				TeamTypes ePlotTeam = pPlot->getTeam();
+				if (ePlotTeam == NO_TEAM)
+				{
+					int leadingPlayerIndex = -1;
+					int leadingCulture = 0;
+					for (int iI = 0; iI < MAX_PLAYERS; iI++) // was it owned before?
+					{
+						int culture = pPlot->getCulture((PlayerTypes)iI);
+						if (culture > leadingCulture)
+						{
+							leadingCulture = pPlot->getCulture((PlayerTypes)iI);
+							leadingPlayerIndex = iI;
+						}
+					}
+					if (leadingCulture > 0) // it had a previous owner
+					{
+						ePlotTeam = GET_PLAYER((PlayerTypes)leadingPlayerIndex).getTeam();
+					}
+				}
 				if(ePlotTeam != NO_TEAM)
 				{
 					if(!GET_TEAM(ePlotTeam).isBarbarian() && !GET_TEAM(eUnitTeam).isBarbarian())
