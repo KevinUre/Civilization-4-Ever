@@ -5139,7 +5139,7 @@ bool CvUnit::pillage()
 {
 	CvWString szBuffer;
 	int iPillageGold;
-	long lPillageGold;
+	//long lPillageGold;
 	ImprovementTypes eTempImprovement = NO_IMPROVEMENT;
 	RouteTypes eTempRoute = NO_ROUTE;
 
@@ -5189,22 +5189,37 @@ bool CvUnit::pillage()
 
 		if (pPlot->getTeam() != getTeam())
 		{
+			// DEATHMAKER900 PILLAGE GOLD REWORK BEGIN
 			// Use python to determine pillage amounts...
-			lPillageGold = 0;
+			//lPillageGold = 0;
 			
-			CyPlot* pyPlot = new CyPlot(pPlot);
-			CyUnit* pyUnit = new CyUnit(this);
+			//CyPlot* pyPlot = new CyPlot(pPlot);
+			//CyUnit* pyUnit = new CyUnit(this);
 
-			CyArgsList argsList;
-			argsList.add(gDLL->getPythonIFace()->makePythonObject(pyPlot));	// pass in plot class
-			argsList.add(gDLL->getPythonIFace()->makePythonObject(pyUnit));	// pass in unit class
+			//CyArgsList argsList;
+			//argsList.add(gDLL->getPythonIFace()->makePythonObject(pyPlot));	// pass in plot class
+			//argsList.add(gDLL->getPythonIFace()->makePythonObject(pyUnit));	// pass in unit class
 
-			gDLL->getPythonIFace()->callFunction(PYGameModule, "doPillageGold", argsList.makeFunctionArgs(),&lPillageGold);
+			//gDLL->getPythonIFace()->callFunction(PYGameModule, "doPillageGold", argsList.makeFunctionArgs(),&lPillageGold);
 
-			delete pyPlot;	// python fxn must not hold on to this pointer 
-			delete pyUnit;	// python fxn must not hold on to this pointer 
+			//delete pyPlot;	// python fxn must not hold on to this pointer
+			//delete pyUnit;	// python fxn must not hold on to this pointer
 
-			iPillageGold = (int)lPillageGold;
+			//iPillageGold = (int)lPillageGold;
+			iPillageGold = 0;
+			int randCap = GC.getImprovementInfo(pPlot->getImprovementType()).getPillageGold();
+			int rolls = 0;
+
+			if (pPlot->getOwner() > -1)
+				rolls = 2 * (GET_PLAYER(pPlot->getOwner()).getCurrentEra() + 1); //owner's current era
+			else // improvement is in no-mans land so we guess its a era behind you
+				rolls = 2 * GET_PLAYER(getOwner()).getCurrentEra(); // your current era - 1
+
+			for(int iI = 0; iI < rolls; iI++)
+				iPillageGold += GC.getGameINLINE().getSorenRandNum(randCap, (CvString("Pillage Gold Roll ")+GC.IntToCvString(iI)).c_str());
+
+			iPillageGold += (getPillageChange() * iPillageGold) / 100;
+			//DEATHMAKER900 PILLAGE GOLD REWORK END
 
 			if (iPillageGold > 0)
 			{
