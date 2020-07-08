@@ -5212,8 +5212,24 @@ bool CvUnit::pillage()
 
 			if (pPlot->getOwner() > -1)
 				rolls = 2 * (GET_PLAYER(pPlot->getOwner()).getCurrentEra() + 1); //owner's current era
-			else // improvement is in no-mans land so we guess its a era behind you
-				rolls = 2 * GET_PLAYER(getOwner()).getCurrentEra(); // your current era - 1
+			else // improvement is in no-mans land
+			{
+				int leadingPlayerIndex = -1;
+				int leadingCulture = 0;
+				for (int iI = 0; iI < MAX_PLAYERS; iI++) // was it owned before?
+				{
+					int culture = pPlot->getCulture((PlayerTypes)iI);
+					if (culture > leadingCulture)
+					{
+						leadingCulture = pPlot->getCulture((PlayerTypes)iI);
+						leadingPlayerIndex = iI;
+					}
+				}
+				if (leadingCulture > 0) // it had a previous owner
+					rolls = 2 * GET_PLAYER((PlayerTypes)leadingPlayerIndex).getCurrentEra();
+				else //it has never been owned, lets set its era to yours minus one
+					rolls = 2 * GET_PLAYER(getOwner()).getCurrentEra(); // your current era - 1
+			}
 
 			for(int iI = 0; iI < rolls; iI++)
 				iPillageGold += GC.getGameINLINE().getSorenRandNum(randCap, (CvString("Pillage Gold Roll ")+GC.IntToCvString(iI)).c_str());
