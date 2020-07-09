@@ -7502,7 +7502,7 @@ int CvPlayer::calculateResearchModifier(TechTypes eTech) const //KEVIN TECH
 		{
 			iModifier += (GC.getDefineINT("TECH_BLEED_COST_TOTAL_KNOWN_MODIFIER") * iKnownCount) / iPossibleKnownCount;
 			iModifier += (GC.getDefineINT("TECH_BLEED_COST_TOTAL_OPEN_BORDERS_MODIFIER") * iOpenBordersCount) / iPossibleKnownCount;
-			iModifier += (GC.getDefineINT("TECH_BLEED_COST_TOTAL_WAR_MODIFIER") * iAtWarCount);// / iPossibleKnownCount;
+			iModifier += (GC.getDefineINT("TECH_BLEED_COST_WAR_MODIFIER") * iAtWarCount);// / iPossibleKnownCount;
 			iModifier += GC.getDefineINT("TECH_BLEED_COST_VASSAL_MODIFIER") * iIsVassel;
 		}
 

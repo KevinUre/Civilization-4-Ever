@@ -1704,7 +1704,7 @@
 		<iDefineIntVal>50</iDefineIntVal>
 	</Define>
 	<Define>
-		<DefineName>TECH_BLEED_COST_TOTAL_WAR_MODIFIER</DefineName>
+		<DefineName>TECH_BLEED_COST_WAR_MODIFIER</DefineName>
 		<iDefineIntVal>20</iDefineIntVal>
 	</Define>
 	<Define>
