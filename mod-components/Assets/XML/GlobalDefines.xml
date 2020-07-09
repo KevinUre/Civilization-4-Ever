@@ -1697,19 +1697,19 @@
 <!-- DEATHMAKER900 TECHNOLOGY BLEED MOD BEGIN -->
 	<Define>
 		<DefineName>TECH_BLEED_COST_TOTAL_KNOWN_MODIFIER</DefineName>
-		<iDefineIntVal>10</iDefineIntVal>
+		<iDefineIntVal>25</iDefineIntVal>
 	</Define>
 	<Define>
 		<DefineName>TECH_BLEED_COST_TOTAL_OPEN_BORDERS_MODIFIER</DefineName>
-		<iDefineIntVal>20</iDefineIntVal>
+		<iDefineIntVal>50</iDefineIntVal>
 	</Define>
 	<Define>
 		<DefineName>TECH_BLEED_COST_TOTAL_WAR_MODIFIER</DefineName>
-		<iDefineIntVal>10</iDefineIntVal>
+		<iDefineIntVal>20</iDefineIntVal>
 	</Define>
 	<Define>
 		<DefineName>TECH_BLEED_COST_VASSAL_MODIFIER</DefineName>
-		<iDefineIntVal>20</iDefineIntVal>
+		<iDefineIntVal>50</iDefineIntVal>
 	</Define>
 <!-- DEATHMAKER900 TECHNOLOGY BLEED MOD END -->
 <!-- DEATHMAKER900 TECH PILLAGE BEGIN -->
