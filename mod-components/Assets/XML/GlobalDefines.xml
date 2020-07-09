@@ -1715,11 +1715,11 @@
 <!-- DEATHMAKER900 TECH PILLAGE BEGIN -->
 	<Define>
 		<DefineName>TECH_PILLAGE_IMPROVEMENT_PERCENT</DefineName>
-		<iDefineIntVal>4</iDefineIntVal>
+		<iDefineIntVal>5</iDefineIntVal>
 	</Define>
 	<Define>
 		<DefineName>TECH_PILLAGE_CITY_PERCENT</DefineName>
-		<iDefineIntVal>20</iDefineIntVal>
+		<iDefineIntVal>25</iDefineIntVal>
 	</Define>
 	<Define>
 		<DefineName>TECH_PILLAGE_IMPROVEMENT_TECHS</DefineName>
