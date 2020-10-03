@@ -31,15 +31,15 @@
 # run "nmake.exe /P" in cmd.exe to see what it is on your system
 # The MS Visual C++ Toolkit and MS SDKs need to be downloaded separately
 # Replace with the correct paths for your system
-TOOLKIT=D:\Civ4SDK\Microsoft Visual C++ Toolkit 2003
-PSDK=D:\Civ4SDK\WindowsSDK
+TOOLKIT=C:\Tools\Civ4SDK\Microsoft Visual C++ Toolkit 2003
+PSDK=C:\Tools\Civ4SDK\Microsoft Platform SDK
 ## Uncomment to have newly compiled dlls copied to your mod's Assets directory
 YOURMOD=..
 
 ## Civ install path
 ## Path to the directory where boost and python is stored
 ## Overwritten by enviroment variable CIV4_LIB_INSTALL_PATH
-CIV4_PATH=D:\Games\Sid Meier's Civilization 4 - Bare\Beyond the Sword\CvGameCoreDLL
+CIV4_PATH=C:\Games\Sid Meier's Civilization 4 - Bare\Beyond the Sword\CvGameCoreDLL
 
 #### Tools ####
 CC="$(TOOLKIT)\bin\cl.exe"
