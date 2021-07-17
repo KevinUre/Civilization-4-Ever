@@ -18494,13 +18494,13 @@ int CvPlayerAI::AI_getEnemyPlotStrength(CvPlot* pPlot, int iRange, bool bDefensi
 int CvPlayerAI::AI_goldToHurryAllUnits() const
 {
 	bool bHurryGold = false;
-	HurryTypes iHurryType;
+	HurryTypes eHurryType;
 	for (int iHurry = 0; iHurry < GC.getNumHurryInfos(); iHurry++)
 	{
 		if ((GC.getHurryInfo((HurryTypes)iHurry).getGoldPerProduction() > 0) && canHurry((HurryTypes)iHurry))
 		{
 			bHurryGold = true;
-			iHurryType = (HurryTypes)iHurry;
+			eHurryType = (HurryTypes)iHurry;
 			break;
 		}
 	}
@@ -18510,9 +18510,9 @@ int CvPlayerAI::AI_goldToHurryAllUnits() const
 	CvCity* pLoopCity;
 	for (pLoopCity = firstCity(&iLoop); pLoopCity != NULL; pLoopCity = nextCity(&iLoop)) 
 	{
-		if (pLoopCity->getProductionUnit() != NO_UNIT && pLoopCity->canHurry(iHurryType))
+		if (pLoopCity->getProductionUnit() != NO_UNIT && pLoopCity->canHurry(eHurryType))
 		{
-			iTotalGold += pLoopCity->hurryGold(iHurryType);
+			iTotalGold += pLoopCity->hurryGold(eHurryType);
 		}
 	}
 	return iTotalGold;
