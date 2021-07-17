@@ -4060,6 +4060,12 @@ int CvPlayerAI::AI_goldTarget() const
 		{
 			iGold *= 10;
 		}
+		
+		// if we are getting close to capitulating or if the enemy out numbers us 2:1 we need money to buy units
+		if (bAnyWar && ( GET_TEAM(getTeam()).AI_getWarSuccessCapitulationRatio() < -51 || GET_TEAM(getTeam()).AI_getEnemyPowerPercent() > 199) )
+		{
+			iGold += AI_goldToHurryAllUnits() / 10;
+		}
 
 		iGold += (AI_goldToUpgradeAllUnits() / (bAnyWar ? 1 : 2));
 
@@ -18483,6 +18489,33 @@ int CvPlayerAI::AI_getEnemyPlotStrength(CvPlot* pPlot, int iRange, bool bDefensi
 
 	return iValue;
 	
+}
+
+int CvPlayerAI::AI_goldToHurryAllUnits() const
+{
+	bool bHurryGold = false;
+	HurryTypes iHurryType;
+	for (int iHurry = 0; iHurry < GC.getNumHurryInfos(); iHurry++)
+	{
+		if ((GC.getHurryInfo((HurryTypes)iHurry).getGoldPerProduction() > 0) && canHurry((HurryTypes)iHurry))
+		{
+			bHurryGold = true;
+			iHurryType = (HurryTypes)iHurry;
+			break;
+		}
+	}
+	if (!bHurryGold) { return 0; }
+	int iTotalGold = 0;
+	int iLoop;
+	CvCity* pLoopCity;
+	for (pLoopCity = firstCity(&iLoop); pLoopCity != NULL; pLoopCity = nextCity(&iLoop)) 
+	{
+		if (pLoopCity->getProductionUnit() != NO_UNIT && pLoopCity->canHurry(iHurryType))
+		{
+			iTotalGold += pLoopCity->hurryGold(iHurryType);
+		}
+	}
+	return iTotalGold;
 }
 
 int CvPlayerAI::AI_goldToUpgradeAllUnits(int iExpThreshold) const
