@@ -4052,8 +4052,8 @@ int CvPlayerAI::AI_goldTarget() const
 		bool bAnyWar = GET_TEAM(getTeam()).getAnyWarPlanCount(true) > 0;
 		if (bAnyWar)
 		{
-			iGold *= 3;
-			iGold /= 2;
+			iGold *= 2;
+			// iGold /= 2;
 		}
 
 		if (AI_avoidScience())
