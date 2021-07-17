@@ -2730,7 +2730,7 @@ void CvUnitAI::AI_attackCityMove()
 				{
 					iCityCaptureCount++;
 
-					if( iCityCaptureCount > 5 || 3*iCityCaptureCount > getGroup()->getNumUnits() )
+					if( iCityCaptureCount > 2 || 3*iCityCaptureCount > getGroup()->getNumUnits() )
 					{
 						bReadyToAttack = true;
 					}
