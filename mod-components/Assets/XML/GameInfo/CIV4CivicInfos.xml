@@ -1158,7 +1158,7 @@
 			<iDomesticGreatGeneralRateModifier>0</iDomesticGreatGeneralRateModifier>
 			<iStateReligionGreatPeopleRateModifier>0</iStateReligionGreatPeopleRateModifier>
 			<iDistanceMaintenanceModifier>0</iDistanceMaintenanceModifier>
-			<iNumCitiesMaintenanceModifier>0</iNumCitiesMaintenanceModifier>
+			<iNumCitiesMaintenanceModifier>-25</iNumCitiesMaintenanceModifier>
 			<iCorporationMaintenanceModifier>0</iCorporationMaintenanceModifier>
 			<iExtraHealth>0</iExtraHealth>
 			<iFreeExperience>0</iFreeExperience>
@@ -1204,7 +1204,16 @@
 			<BuildingHappinessChanges/>
 			<BuildingHealthChanges/>
 			<FeatureHappinessChanges/>
-			<ImprovementYieldChanges/>
+			<ImprovementYieldChanges>
+				<ImprovementYieldChange>
+					<ImprovementType>IMPROVEMENT_WORKSHOP</ImprovementType>
+					<ImprovementYields>
+						<iYield>0</iYield>
+						<iYield>0</iYield>
+						<iYield>1</iYield>
+					</ImprovementYields>
+				</ImprovementYieldChange>
+			</ImprovementYieldChanges>
 			<WeLoveTheKing/>
 		</CivicInfo>
 		<CivicInfo>

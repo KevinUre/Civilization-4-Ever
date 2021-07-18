@@ -4052,13 +4052,19 @@ int CvPlayerAI::AI_goldTarget() const
 		bool bAnyWar = GET_TEAM(getTeam()).getAnyWarPlanCount(true) > 0;
 		if (bAnyWar)
 		{
-			iGold *= 3;
-			iGold /= 2;
+			iGold *= 2;
+			// iGold /= 2;
 		}
 
 		if (AI_avoidScience())
 		{
 			iGold *= 10;
+		}
+		
+		// if we are getting close to capitulating or if the enemy out numbers us 2:1 we need money to buy units
+		if (bAnyWar && ( GET_TEAM(getTeam()).AI_getWarSuccessCapitulationRatio() < -51 || GET_TEAM(getTeam()).AI_getEnemyPowerPercent() > 199) )
+		{
+			iGold += AI_goldToHurryAllUnits() / 10;
 		}
 
 		iGold += (AI_goldToUpgradeAllUnits() / (bAnyWar ? 1 : 2));
@@ -13246,18 +13252,18 @@ void CvPlayerAI::AI_doCommerce()
 			{
 				if (AI_avoidScience())
 				{
-					changeCommercePercent(COMMERCE_RESEARCH, -(GC.getDefineINT("COMMERCE_PERCENT_CHANGE_INCREMENTS")));
+					changeCommercePercent(COMMERCE_RESEARCH, -(GC.getDefineINT("COMMERCE_PERCENT_CHANGE_INCREMENTS2")));
 				}
 			}
 
 			if ((GET_TEAM(getTeam()).getChosenWarCount(true) > 0) || (GET_TEAM(getTeam()).getWarPlanCount(WARPLAN_ATTACKED_RECENT, true) > 0))
 			{
-				changeCommercePercent(COMMERCE_RESEARCH, -(GC.getDefineINT("COMMERCE_PERCENT_CHANGE_INCREMENTS")));
+				changeCommercePercent(COMMERCE_RESEARCH, -(GC.getDefineINT("COMMERCE_PERCENT_CHANGE_INCREMENTS2")));
 			}
 
 			if ((getCommercePercent(COMMERCE_RESEARCH) == 0) && (calculateGoldRate() > 0))
 			{
-				setCommercePercent(COMMERCE_RESEARCH, GC.getDefineINT("COMMERCE_PERCENT_CHANGE_INCREMENTS"));
+				setCommercePercent(COMMERCE_RESEARCH, GC.getDefineINT("COMMERCE_PERCENT_CHANGE_INCREMENTS2"));
 			}
 		}
 	}
@@ -13473,7 +13479,7 @@ void CvPlayerAI::AI_doCommerce()
 		}
 	}
 	
-	if (!bFirstTech && (getGold() < iGoldTarget) && (getCommercePercent(COMMERCE_RESEARCH) > 40))
+	if ((getGold() < iGoldTarget) && (getCommercePercent(COMMERCE_ESPIONAGE) >= 10))
 	{
 		bool bHurryGold = false;
 		for (int iHurry = 0; iHurry < GC.getNumHurryInfos(); iHurry++)
@@ -13486,14 +13492,8 @@ void CvPlayerAI::AI_doCommerce()
 		}
 		if (bHurryGold)
 		{
-			if (getCommercePercent(COMMERCE_ESPIONAGE) > 0)
-			{
-				changeCommercePercent(COMMERCE_ESPIONAGE, -GC.getDefineINT("COMMERCE_PERCENT_CHANGE_INCREMENTS"));			
-			}
-			else
-			{
-				changeCommercePercent(COMMERCE_RESEARCH, -GC.getDefineINT("COMMERCE_PERCENT_CHANGE_INCREMENTS"));			
-			}
+			changeCommercePercent(COMMERCE_ESPIONAGE, -GC.getDefineINT("COMMERCE_PERCENT_CHANGE_INCREMENTS2"));
+			changeCommercePercent(COMMERCE_RESEARCH, GC.getDefineINT("COMMERCE_PERCENT_CHANGE_INCREMENTS2")/2);
 			//changeCommercePercent(COMMERCE_GOLD, GC.getDefineINT("COMMERCE_PERCENT_CHANGE_INCREMENTS"));
 		}
 	}
@@ -18483,6 +18483,33 @@ int CvPlayerAI::AI_getEnemyPlotStrength(CvPlot* pPlot, int iRange, bool bDefensi
 
 	return iValue;
 	
+}
+
+int CvPlayerAI::AI_goldToHurryAllUnits() const
+{
+	bool bHurryGold = false;
+	HurryTypes eHurryType;
+	for (int iHurry = 0; iHurry < GC.getNumHurryInfos(); iHurry++)
+	{
+		if ((GC.getHurryInfo((HurryTypes)iHurry).getGoldPerProduction() > 0) && canHurry((HurryTypes)iHurry))
+		{
+			bHurryGold = true;
+			eHurryType = (HurryTypes)iHurry;
+			break;
+		}
+	}
+	if (!bHurryGold) { return 0; }
+	int iTotalGold = 0;
+	int iLoop;
+	CvCity* pLoopCity;
+	for (pLoopCity = firstCity(&iLoop); pLoopCity != NULL; pLoopCity = nextCity(&iLoop)) 
+	{
+		if (pLoopCity->getProductionUnit() != NO_UNIT && pLoopCity->canHurry(eHurryType))
+		{
+			iTotalGold += pLoopCity->hurryGold(eHurryType);
+		}
+	}
+	return iTotalGold;
 }
 
 int CvPlayerAI::AI_goldToUpgradeAllUnits(int iExpThreshold) const

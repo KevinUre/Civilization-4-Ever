@@ -339,6 +339,7 @@ public:
     int AI_getEnemyPlotStrength(CvPlot* pPlot, int iRange, bool bDefensiveBonuses, bool bTestMoves) const;
 
 	int AI_goldToUpgradeAllUnits(int iExpThreshold = 0) const;
+	int AI_goldToHurryAllUnits() const;
 
 	int AI_goldTradeValuePercent() const;
 	
