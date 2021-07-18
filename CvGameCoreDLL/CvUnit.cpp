@@ -976,7 +976,7 @@ void CvUnit::resolveAirCombat(CvUnit* pInterceptor, CvPlot* pPlot, CvAirMissionD
 			int iExperience = attackXPValue();
 			iExperience = (iExperience * iOurStrength) / std::max(1, iTheirStrength);
 			iExperience = range(iExperience, GC.getDefineINT("MIN_EXPERIENCE_PER_COMBAT"), GC.getDefineINT("MAX_EXPERIENCE_PER_COMBAT"));
-			pInterceptor->changeExperience(iExperience, maxXPValue(), true, pPlot->getOwnerINLINE() == pInterceptor->getOwnerINLINE(), !isBarbarian());
+			pInterceptor->changeExperience(iExperience, maxXPValue(), true, pPlot->getOwnerINLINE() == pInterceptor->getOwnerINLINE(), true);
 		}
 	}
 	else if (pInterceptor->isDead())
@@ -984,18 +984,18 @@ void CvUnit::resolveAirCombat(CvUnit* pInterceptor, CvPlot* pPlot, CvAirMissionD
 		int iExperience = pInterceptor->defenseXPValue();
 		iExperience = (iExperience * iTheirStrength) / std::max(1, iOurStrength);
 		iExperience = range(iExperience, GC.getDefineINT("MIN_EXPERIENCE_PER_COMBAT"), GC.getDefineINT("MAX_EXPERIENCE_PER_COMBAT"));
-		changeExperience(iExperience, pInterceptor->maxXPValue(), true, pPlot->getOwnerINLINE() == getOwnerINLINE(), !pInterceptor->isBarbarian());
+		changeExperience(iExperience, pInterceptor->maxXPValue(), true, pPlot->getOwnerINLINE() == getOwnerINLINE(), true);
 	}
 	else if (iOurDamage > 0)
 	{
 		if (iTheirRoundDamage > 0)
 		{
-			pInterceptor->changeExperience(GC.getDefineINT("EXPERIENCE_FROM_WITHDRAWL"), maxXPValue(), true, pPlot->getOwnerINLINE() == pInterceptor->getOwnerINLINE(), !isBarbarian());
+			pInterceptor->changeExperience(GC.getDefineINT("EXPERIENCE_FROM_WITHDRAWL"), maxXPValue(), true, pPlot->getOwnerINLINE() == pInterceptor->getOwnerINLINE(), true);
 		}
 	}
 	else if (iTheirDamage > 0)
 	{
-		changeExperience(GC.getDefineINT("EXPERIENCE_FROM_WITHDRAWL"), pInterceptor->maxXPValue(), true, pPlot->getOwnerINLINE() == getOwnerINLINE(), !pInterceptor->isBarbarian());
+		changeExperience(GC.getDefineINT("EXPERIENCE_FROM_WITHDRAWL"), pInterceptor->maxXPValue(), true, pPlot->getOwnerINLINE() == getOwnerINLINE(), true);
 	}
 
 	kBattle.setDamage(BATTLE_UNIT_ATTACKER, iOurDamage);
@@ -1215,7 +1215,7 @@ void CvUnit::resolveCombat(CvUnit* pDefender, CvPlot* pPlot, CvBattleDefinition&
 				{
 					flankingStrikeCombat(pPlot, iAttackerStrength, iAttackerFirepower, iAttackerKillOdds, iDefenderDamage, pDefender); // give them one on the way out
 
-					changeExperience(GC.getDefineINT("EXPERIENCE_FROM_WITHDRAWL"), pDefender->maxXPValue(), true, pPlot->getOwnerINLINE() == getOwnerINLINE(), !pDefender->isBarbarian());
+					changeExperience(GC.getDefineINT("EXPERIENCE_FROM_WITHDRAWL"), pDefender->maxXPValue(), true, pPlot->getOwnerINLINE() == getOwnerINLINE(), true);
 					break;
 				}
 
@@ -1246,7 +1246,7 @@ void CvUnit::resolveCombat(CvUnit* pDefender, CvPlot* pPlot, CvBattleDefinition&
 			{
 				if (std::min(GC.getMAX_HIT_POINTS(), pDefender->getDamage() + iDefenderDamage) > combatLimit()) // we fuck off instead of wounding them past the damage cap
 				{
-					changeExperience(GC.getDefineINT("EXPERIENCE_FROM_WITHDRAWL"), pDefender->maxXPValue(), true, pPlot->getOwnerINLINE() == getOwnerINLINE(), !pDefender->isBarbarian());
+					changeExperience(GC.getDefineINT("EXPERIENCE_FROM_WITHDRAWL"), pDefender->maxXPValue(), true, pPlot->getOwnerINLINE() == getOwnerINLINE(), true);
 					pDefender->setDamage(combatLimit(), getOwnerINLINE());
 					break;
 				}
@@ -1280,7 +1280,7 @@ void CvUnit::resolveCombat(CvUnit* pDefender, CvPlot* pPlot, CvBattleDefinition&
 				int iExperience = defenseXPValue();
 				iExperience = ((iExperience * iAttackerStrength) / iDefenderStrength);
 				iExperience = range(iExperience, GC.getDefineINT("MIN_EXPERIENCE_PER_COMBAT"), GC.getDefineINT("MAX_EXPERIENCE_PER_COMBAT"));
-				pDefender->changeExperience(iExperience, maxXPValue(), true, pPlot->getOwnerINLINE() == pDefender->getOwnerINLINE(), !isBarbarian());
+				pDefender->changeExperience(iExperience, maxXPValue(), true, pPlot->getOwnerINLINE() == pDefender->getOwnerINLINE(), true);
 			}
 			else
 			{
@@ -1289,7 +1289,7 @@ void CvUnit::resolveCombat(CvUnit* pDefender, CvPlot* pPlot, CvBattleDefinition&
 				int iExperience = pDefender->attackXPValue();
 				iExperience = ((iExperience * iDefenderStrength) / iAttackerStrength);
 				iExperience = range(iExperience, GC.getDefineINT("MIN_EXPERIENCE_PER_COMBAT"), GC.getDefineINT("MAX_EXPERIENCE_PER_COMBAT"));
-				changeExperience(iExperience, pDefender->maxXPValue(), true, pPlot->getOwnerINLINE() == getOwnerINLINE(), !pDefender->isBarbarian());
+				changeExperience(iExperience, pDefender->maxXPValue(), true, pPlot->getOwnerINLINE() == getOwnerINLINE(), true);
 			}
 
 			break;
@@ -1300,8 +1300,8 @@ void CvUnit::resolveCombat(CvUnit* pDefender, CvPlot* pPlot, CvBattleDefinition&
 		{
 			if (iCombatRoundCount >= GC.getDefineINT("MAX_COMBAT_ROUNDS")) {
 				int iExperience = GC.getDefineINT("MIN_EXPERIENCE_PER_COMBAT");
-				pDefender->changeExperience(iExperience, maxXPValue(), true, pPlot->getOwnerINLINE() == pDefender->getOwnerINLINE(), !isBarbarian());
-				changeExperience(iExperience, pDefender->maxXPValue(), true, pPlot->getOwnerINLINE() == getOwnerINLINE(), !pDefender->isBarbarian());
+				pDefender->changeExperience(iExperience, maxXPValue(), true, pPlot->getOwnerINLINE() == pDefender->getOwnerINLINE(), true);
+				changeExperience(iExperience, pDefender->maxXPValue(), true, pPlot->getOwnerINLINE() == getOwnerINLINE(), true);
 				break;
 			}
 			else
@@ -4742,7 +4742,7 @@ bool CvUnit::airBomb(int iX, int iY)
 		{
 			int iExperience = (int)((attackXPValue()*((float)pCity->getDefenseModifier(false)/100))/1.25);
 			iExperience = range(iExperience, GC.getDefineINT("MIN_EXPERIENCE_PER_COMBAT"), GC.getDefineINT("MAX_EXPERIENCE_PER_COMBAT"));
-			changeExperience(iExperience, maxXPValue(), false, pPlot->getOwnerINLINE() == getOwnerINLINE(), !isBarbarian());
+			changeExperience(iExperience, maxXPValue(), false, pPlot->getOwnerINLINE() == getOwnerINLINE(), true);
 		}
 		// < Air Combat Experience End   >
 	}
@@ -4784,7 +4784,7 @@ bool CvUnit::airBomb(int iX, int iY)
 						int iExperience = attackXPValue();
 						iExperience = (GC.getImprovementInfo(pPlot->getImprovementType()).getAirBombDefense()/iExperience)/2;
 						iExperience = range(iExperience, GC.getDefineINT("MIN_EXPERIENCE_PER_COMBAT"), GC.getDefineINT("MAX_EXPERIENCE_PER_COMBAT"));
-						changeExperience(iExperience, maxXPValue(), false, pPlot->getOwnerINLINE() == getOwnerINLINE(), !isBarbarian());
+						changeExperience(iExperience, maxXPValue(), false, pPlot->getOwnerINLINE() == getOwnerINLINE(), true);
 					}
 					// < Air Combat Experience End   >
 
@@ -4821,7 +4821,7 @@ bool CvUnit::airBomb(int iX, int iY)
 						int iExperience = attackXPValue();
 						iExperience = (GC.getRouteInfo(pPlot->getRouteType()).getAirBombDefense()/iExperience)/2;
 						iExperience = range(iExperience, GC.getDefineINT("MIN_EXPERIENCE_PER_COMBAT"), GC.getDefineINT("MAX_EXPERIENCE_PER_COMBAT"));
-						changeExperience(iExperience, maxXPValue(), false, pPlot->getOwnerINLINE() == getOwnerINLINE(), !isBarbarian());
+						changeExperience(iExperience, maxXPValue(), false, pPlot->getOwnerINLINE() == getOwnerINLINE(), true);
 					}
 
 					pPlot->setRouteType(NO_ROUTE, true);
@@ -10808,7 +10808,7 @@ void CvUnit::changeExperience(int iChange, int iMax, bool bFromCombat, bool bInB
 			iUnitExperience += (iChange * kPlayer.getExpInBorderModifier()) / 100;
 		}
 
-		if (bUpdateGlobal)
+		if (bUpdateGlobal && !kPlayer.isBarbarian())
 		{
 			kPlayer.changeCombatExperience((iChange * iCombatExperienceMod) / 100);
 		}
@@ -13350,7 +13350,7 @@ bool CvUnit::airStrike(CvPlot* pPlot)
 			iExperience = iExperience/2;
 		}
 
-		changeExperience(iExperience, pDefender->maxXPValue(), true, pPlot->getOwnerINLINE() == getOwnerINLINE(), !pDefender->isBarbarian());
+		changeExperience(iExperience, pDefender->maxXPValue(), true, pPlot->getOwnerINLINE() == getOwnerINLINE(), true);
 	}
 	// < Air Combat Experience End   >
 
