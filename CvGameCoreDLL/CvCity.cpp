@@ -4794,7 +4794,6 @@ int CvCity::getModifiedProductionPerPopulation(HurryTypes eHurry) const
 }
 
 //@HURRY
-// TODO WTF IS THIS FUNCTION
 // hurry cost already accounts for the modifier of the object being hurried
 int CvCity::getHurryPopulation(HurryTypes eHurry, int iHurryCost) const
 {
@@ -4823,8 +4822,7 @@ int CvCity::getHurryPopulation(HurryTypes eHurry, int iHurryCost) const
 	return std::max(1, iPopulation);
 }
 //@HURRY
-// TODO WTF IS THIS FUNCTION
-// function seems to be how many hammers are left, but for population based hurry it 
+// function seems to be how many hammers are left, but for population based hurry it also calculates the overflow
 int CvCity::hurryProduction(HurryTypes eHurry) const
 {
 	int iProduction;
