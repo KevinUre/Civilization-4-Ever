@@ -13479,7 +13479,7 @@ void CvPlayerAI::AI_doCommerce()
 		}
 	}
 	
-	if (!bFirstTech && (getGold() < iGoldTarget) && (getCommercePercent(COMMERCE_RESEARCH) > 40))
+	if ((getGold() < iGoldTarget) && (getCommercePercent(COMMERCE_ESPIONAGE) >= 10))
 	{
 		bool bHurryGold = false;
 		for (int iHurry = 0; iHurry < GC.getNumHurryInfos(); iHurry++)
@@ -13492,14 +13492,8 @@ void CvPlayerAI::AI_doCommerce()
 		}
 		if (bHurryGold)
 		{
-			if (getCommercePercent(COMMERCE_ESPIONAGE) > 0)
-			{
-				changeCommercePercent(COMMERCE_ESPIONAGE, -GC.getDefineINT("COMMERCE_PERCENT_CHANGE_INCREMENTS2"));
-			}
-			else
-			{
-				changeCommercePercent(COMMERCE_RESEARCH, -GC.getDefineINT("COMMERCE_PERCENT_CHANGE_INCREMENTS2"));
-			}
+			changeCommercePercent(COMMERCE_ESPIONAGE, -GC.getDefineINT("COMMERCE_PERCENT_CHANGE_INCREMENTS2"));
+			changeCommercePercent(COMMERCE_RESEARCH, GC.getDefineINT("COMMERCE_PERCENT_CHANGE_INCREMENTS2")/2);
 			//changeCommercePercent(COMMERCE_GOLD, GC.getDefineINT("COMMERCE_PERCENT_CHANGE_INCREMENTS"));
 		}
 	}
