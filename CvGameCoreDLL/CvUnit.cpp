@@ -924,7 +924,15 @@ void CvUnit::resolveAirCombat(CvUnit* pInterceptor, CvPlot* pPlot, CvAirMissionD
 		iOurRoundDamage = std::max(1, ((iBaseDamage * (iTheirFirepower + iStrengthFactor) * iTheirInterception) / ((iOurFirepower + iStrengthFactor) * 100)));
 		iTheirRoundDamage = std::max(1, ((iBaseDamage * (iOurFirepower + iStrengthFactor) * iOurInterception) / ((iTheirFirepower + iStrengthFactor) * 100)));
 
-		iMaxRounds = 2*GC.getDefineINT("INTERCEPTION_MAX_ROUNDS") - 1;
+		if (GC.getGameINLINE().isOption(GAMEOPTION_NON_LETHAL_COMBAT))
+		{
+			iMaxRounds = GC.getDefineINT("INTERCEPTION_MAX_ROUNDS");
+		}
+		else
+		{
+			iMaxRounds = 2 * GC.getDefineINT("INTERCEPTION_MAX_ROUNDS") - 1;
+		}
+		
 	}
 	else
 	{

@@ -1782,4 +1782,9 @@
 		<iDefineIntVal>1</iDefineIntVal>
 	</Define>
 <!-- DEATHMAKER900 NON-LETHAL COMBAT END -->
+	<Define>
+		<!-- Better BTS AI: Use new air combat mechanics -->
+		<DefineName>BBAI_AIR_COMBAT</DefineName>
+		<iDefineIntVal>1</iDefineIntVal>
+	</Define>
 </Civ4Defines>
