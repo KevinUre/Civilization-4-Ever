@@ -1298,7 +1298,7 @@ void CvUnit::resolveCombat(CvUnit* pDefender, CvPlot* pPlot, CvBattleDefinition&
 		// DEATHMAKER900 NON-LETHAL COMBAT BEGIN
 		if (GC.getGameINLINE().isOption(GAMEOPTION_NON_LETHAL_COMBAT)) 
 		{
-			if (iCombatRoundCount >= GC.getDefineINT("MAX_COMBAT_ROUNDS")) {
+			if (iCombatRoundCount >= GC.getDefineINT("MAX_COMBAT_ROUNDS") && !isSuicide() && !pDefender->isSuicide()) {
 				int iExperience = GC.getDefineINT("MIN_EXPERIENCE_PER_COMBAT");
 				pDefender->changeExperience(iExperience, maxXPValue(), true, pPlot->getOwnerINLINE() == pDefender->getOwnerINLINE(), true);
 				changeExperience(iExperience, pDefender->maxXPValue(), true, pPlot->getOwnerINLINE() == getOwnerINLINE(), true);
@@ -1307,7 +1307,7 @@ void CvUnit::resolveCombat(CvUnit* pDefender, CvPlot* pPlot, CvBattleDefinition&
 			else
 			{
 				if(getCombatFirstStrikes() == 0 && pDefender->getCombatFirstStrikes() == 0) // first strikes dont count against turn limit
-				iCombatRoundCount++;
+					iCombatRoundCount++;
 			}
 		}
 		// DEATHMAKER900 NON-LETHAL COMBAT END
