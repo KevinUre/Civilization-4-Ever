@@ -1181,8 +1181,8 @@ void CvUnit::resolveCombat(CvUnit* pDefender, CvPlot* pPlot, CvBattleDefinition&
 	int iAttackerStrength = currCombatStr(NULL, NULL, &cdAttackerDetails);
 	int iAttackerFirepower = currFirepower(NULL, NULL);
 	int iDefenderStrength;
-	int iAttackerDamage;
-	int iDefenderDamage;
+	int iAttackerDamage; // damage TAKEN by the attacker when the defender hits
+	int iDefenderDamage; // damage TAKEN by the defender when the attacker hits
 	int iDefenderOdds;
 
 	getDefenderCombatValues(*pDefender, pPlot, iAttackerStrength, iAttackerFirepower, iDefenderOdds, iDefenderStrength, iAttackerDamage, iDefenderDamage, &cdDefenderDetails);
@@ -1299,6 +1299,9 @@ void CvUnit::resolveCombat(CvUnit* pDefender, CvPlot* pPlot, CvBattleDefinition&
 		if (GC.getGameINLINE().isOption(GAMEOPTION_NON_LETHAL_COMBAT)) 
 		{
 			if (iCombatRoundCount >= GC.getDefineINT("MAX_COMBAT_ROUNDS") && !isSuicide() && !pDefender->isSuicide()) {
+				if (GC.getGameINLINE().getSorenRandNum(GC.getDefineINT("COMBAT_DIE_SIDES"), "Combat") >= iDefenderOdds) { // if we can roll one last success we get a flanking strike
+					flankingStrikeCombat(pPlot, iAttackerStrength, iAttackerFirepower, iAttackerKillOdds, iDefenderDamage, pDefender);
+				}
 				int iExperience = GC.getDefineINT("MIN_EXPERIENCE_PER_COMBAT");
 				pDefender->changeExperience(iExperience, maxXPValue(), true, pPlot->getOwnerINLINE() == pDefender->getOwnerINLINE(), true);
 				changeExperience(iExperience, pDefender->maxXPValue(), true, pPlot->getOwnerINLINE() == getOwnerINLINE(), true);
