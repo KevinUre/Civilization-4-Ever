@@ -7469,7 +7469,7 @@ int CvPlayer::calculateResearchModifier(TechTypes eTech) const //KEVIN TECH
 	else
 	{
 		int iKnownCount = 0;
-		int iPossibleKnownCount = 0;
+		int iPossibleKnownCount = -1; // we dont want to count ourselves
 		int iOpenBordersCount = 0;
 		int iAtWarCount = 0;
 		int iIsVassel = 0;
