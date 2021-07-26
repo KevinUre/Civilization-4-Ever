@@ -354,6 +354,14 @@
 		<iDefineIntVal>50</iDefineIntVal> <!-- @HURRY -->
 	</Define>
 	<Define>
+		<DefineName>POPULATION_HURRY_WONDER_MODIFIER_NUMERATOR</DefineName>
+		<iDefineIntVal>3</iDefineIntVal> <!-- @HURRY -->
+	</Define>
+	<Define>
+		<DefineName>POPULATION_HURRY_WONDER_MODIFIER_DENOMINATOR</DefineName>
+		<iDefineIntVal>2</iDefineIntVal> <!-- @HURRY -->
+	</Define>
+	<Define>
 		<DefineName>CONSCRIPT_MIN_CITY_POPULATION</DefineName>
 		<iDefineIntVal>5</iDefineIntVal>
 	</Define>
