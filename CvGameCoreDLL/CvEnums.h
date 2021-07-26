@@ -733,6 +733,7 @@ enum GameOptionTypes				// Exposed to Python
 	//Lemon's Spy Mod End
 	//DeathMaker900 Advanced Technology Bleeding Begin
 	GAMEOPTION_ADV_TECH_BLEED,
+	GAMEOPTION_ADV_TECH_BLEED_LOGISTIC_CURVE,
 	//DeathMaker900 Advanced Technology Bleeding End
 	//DeathMaker900 Tech Pillage Begin
 	GAMEOPTION_PILLAGE_TECH,

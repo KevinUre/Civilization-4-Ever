@@ -528,6 +528,7 @@ void CyEnumsPythonInterface()
 		//Lemon's Spy Mod Begin
 		//DeathMaker900 Advanced Technology Bleeding Begin
 		.value("GAMEOPTION_ADV_TECH_BLEED", GAMEOPTION_ADV_TECH_BLEED)
+		.value("GAMEOPTION_ADV_TECH_BLEED_LOGISTIC_CURVE", GAMEOPTION_ADV_TECH_BLEED_LOGISTIC_CURVE)
 		//DeathMaker900 Advanced Technology Bleeding End
 		//DeathMaker900 Tech Pillage Begin
 		.value("GAMEOPTION_PILLAGE_TECH", GAMEOPTION_PILLAGE_TECH)

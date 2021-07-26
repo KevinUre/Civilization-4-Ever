@@ -1800,6 +1800,10 @@
 		<iDefineIntVal>50</iDefineIntVal>
 	</Define>
 	<Define>
+		<DefineName>TECH_BLEED_X_NAUGHT</DefineName>
+		<iDefineIntVal>10</iDefineIntVal>
+	</Define>
+	<Define>
 		<DefineName>TECH_BLEED_ONE_HUNDRED_E</DefineName>
 		<iDefineIntVal>272</iDefineIntVal>
 	</Define>

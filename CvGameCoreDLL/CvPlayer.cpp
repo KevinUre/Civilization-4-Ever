@@ -7500,8 +7500,29 @@ int CvPlayer::calculateResearchModifier(TechTypes eTech) const //KEVIN TECH
 
 		if (iPossibleKnownCount > 0)
 		{
-			iModifier += (GC.getDefineINT("TECH_BLEED_COST_TOTAL_KNOWN_MODIFIER") * iKnownCount) / iPossibleKnownCount;
-			iModifier += (GC.getDefineINT("TECH_BLEED_COST_TOTAL_OPEN_BORDERS_MODIFIER") * iOpenBordersCount) / iPossibleKnownCount;
+			if (GC.getGameINLINE().isOption(GAMEOPTION_ADV_TECH_BLEED_LOGISTIC_CURVE))
+			{
+				float fConstE = (float)GC.getDefineINT("TECH_BLEED_ONE_HUNDRED_E") / 100.0f;
+				float fXNaught = (float)GC.getDefineINT("TECH_BLEED_X_NAUGHT");
+				float fKnownLMax = (float)GC.getDefineINT("TECH_BLEED_KNOWN_L_MAX");
+				float fOpenLMax = (float)GC.getDefineINT("TECH_BLEED_OPEN_BORDERS_L_MAX");
+				float fKnownK = (float)GC.getDefineINT("TECH_BLEED_KNOWN_K");
+				float fOpenK = (float)GC.getDefineINT("TECH_BLEED_OPEN_BORDERS_K");
+				float fKnownOffset = fKnownLMax / (1 + std::powf(fConstE, -1 * fKnownK * (0.0f - fXNaught)));
+				float fOpenOffset = fOpenLMax / (1 + std::powf(fConstE, -1 * fOpenK * (0.0f - fXNaught)));
+				float fPercentKnown = (float)iKnownCount / (float)iPossibleKnownCount;
+				float fPercentOpen = (float)iOpenBordersCount / (float)iPossibleKnownCount;
+				float fModFromKnown = (fKnownLMax + fKnownOffset) / (1 + std::powf(fConstE, -1 * fKnownK * (fPercentKnown - fXNaught))) - fKnownOffset;
+				float fModFromOpen = (fOpenLMax + fOpenOffset) / (1 + std::powf(fConstE, -1 * fOpenK * (fPercentOpen - fXNaught))) - fOpenOffset;
+				iModifier += (int)(fModFromKnown + 0.5f); //poor man's rounding function
+				iModifier += (int)(fModFromOpen + 0.5f);
+			}
+			else
+			{
+				iModifier += (GC.getDefineINT("TECH_BLEED_COST_TOTAL_KNOWN_MODIFIER") * iKnownCount) / iPossibleKnownCount;
+				iModifier += (GC.getDefineINT("TECH_BLEED_COST_TOTAL_OPEN_BORDERS_MODIFIER") * iOpenBordersCount) / iPossibleKnownCount;
+			}
+			
 			iModifier += (GC.getDefineINT("TECH_BLEED_COST_WAR_MODIFIER") * iAtWarCount);// / iPossibleKnownCount;
 			iModifier += GC.getDefineINT("TECH_BLEED_COST_VASSAL_MODIFIER") * iIsVassel;
 		}
