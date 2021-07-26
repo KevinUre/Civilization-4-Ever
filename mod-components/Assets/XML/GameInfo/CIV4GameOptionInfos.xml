@@ -219,7 +219,7 @@
 			<Type>GAMEOPTION_ADV_TECH_BLEED_LOGISTIC_CURVE</Type>
 			<Description>TXT_KEY_GAME_OPTION_ADV_TECH_BLEED_LOGISTIC_CURVE</Description>
 			<Help>TXT_KEY_GAME_OPTION_ADV_TECH_BLEED_LOGISTIC_CURVE_HELP</Help>
-			<bDefault>1</bDefault>
+			<bDefault>0</bDefault>
 			<bVisible>1</bVisible>
 		</GameOptionInfo>
 	</GameOptionInfos>
