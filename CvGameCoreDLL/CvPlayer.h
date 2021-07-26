@@ -268,6 +268,7 @@ public:
 
 	int calculateBaseNetGold() const;
 	int calculateBaseNetResearch(TechTypes eTech = NO_TECH) const;   // Exposed to Python
+	float powfWithNegativeExponents(float fBase, float fExponent) const;
 	int calculateResearchModifier(TechTypes eTech) const;   // Exposed to Python
 	int calculateGoldRate() const;																																				// Exposed to Python
 	int calculateResearchRate(TechTypes eTech = NO_TECH) const;																						// Exposed to Python

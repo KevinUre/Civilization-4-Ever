@@ -7393,6 +7393,18 @@ int CvPlayer::calculateBaseNetGold() const
 	return iNetGold;
 }
 
+float CvPlayer::powfWithNegativeExponents(float fBase, float fExponent) const
+{
+	if (fExponent < 0.0f)
+	{
+		return 1 / std::powf(fBase, -1 * fExponent);
+	}
+	else
+	{
+		return std::powf(fBase, fExponent);
+	}
+}
+
 int CvPlayer::calculateResearchModifier(TechTypes eTech) const //KEVIN TECH
 {
 	int iModifier = 100;
@@ -7510,14 +7522,14 @@ int CvPlayer::calculateResearchModifier(TechTypes eTech) const //KEVIN TECH
 				float fXNaught = (float)GC.getDefineINT("TECH_BLEED_X_NAUGHT");
 				float fKnownLMax = (float)GC.getDefineINT("TECH_BLEED_KNOWN_L_MAX");
 				float fOpenLMax = (float)GC.getDefineINT("TECH_BLEED_OPEN_BORDERS_L_MAX");
-				float fKnownK = (float)GC.getDefineINT("TECH_BLEED_KNOWN_K");
-				float fOpenK = (float)GC.getDefineINT("TECH_BLEED_OPEN_BORDERS_K");
-				float fKnownOffset = fKnownLMax / (1 + std::powf(fConstE, -1 * fKnownK * (0.0f - fXNaught)));
-				float fOpenOffset = fOpenLMax / (1 + std::powf(fConstE, -1 * fOpenK * (0.0f - fXNaught)));
-				float fPercentKnown = (float)iKnownCount / (float)iPossibleKnownCount;
-				float fPercentOpen = (float)iOpenBordersCount / (float)iPossibleKnownCount;
-				float fModFromKnown = (fKnownLMax + fKnownOffset) / (1 + std::powf(fConstE, -1 * fKnownK * (fPercentKnown - fXNaught))) - fKnownOffset;
-				float fModFromOpen = (fOpenLMax + fOpenOffset) / (1 + std::powf(fConstE, -1 * fOpenK * (fPercentOpen - fXNaught))) - fOpenOffset;
+				float fKnownK = (float)GC.getDefineINT("TECH_BLEED_KNOWN_K") / 100.0f;
+				float fOpenK = (float)GC.getDefineINT("TECH_BLEED_OPEN_BORDERS_K") / 100.0f;
+				float fKnownOffset = fKnownLMax / (1 + powfWithNegativeExponents(fConstE, -1 * fKnownK * (0.0f - fXNaught)));
+				float fOpenOffset = fOpenLMax / (1 + powfWithNegativeExponents(fConstE, -1 * fOpenK * (0.0f - fXNaught)));
+				float fPercentKnown = ((float)iKnownCount / (float)iPossibleKnownCount) * 100.0f;
+				float fPercentOpen = ((float)iOpenBordersCount / (float)iPossibleKnownCount) * 100.0f;
+				float fModFromKnown = (fKnownLMax + fKnownOffset) / (1 + powfWithNegativeExponents(fConstE, -1 * fKnownK * (fPercentKnown - fXNaught))) - fKnownOffset;
+				float fModFromOpen = (fOpenLMax + fOpenOffset) / (1 + powfWithNegativeExponents(fConstE, -1 * fOpenK * (fPercentOpen - fXNaught))) - fOpenOffset;
 				iModifier += (int)(fModFromKnown + 0.5f); //poor man's rounding function
 				iModifier += (int)(fModFromOpen + 0.5f);
 			}
