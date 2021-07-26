@@ -5715,14 +5715,25 @@ int CvCity::calculateNumCitiesMaintenanceTimes100() const
 		}
 		else 
 		{
-			int iOverflowCityCount = (iNumCitiesMaintenance / 100) - GC.getHandicapInfo(getHandicapType()).getMaxNumCitiesMaintenance();
-			FAssert(iOverflowCityCount > 0);
-			int iSumOfPartialCities = 0;
-			for (int iI = 1; iI <= iOverflowCityCount; iI++) 
+			int iOverflowCityAmount = iNumCitiesMaintenance - GC.getHandicapInfo(getHandicapType()).getMaxNumCitiesMaintenance() * 100;
+			FAssert(iOverflowCityAmount > 0);
+			int iWholeCities = iOverflowCityAmount / 100;
+			int iFractionalCity = iOverflowCityAmount % 100;
+			int iSum = 0;
+			int iI = 1;
+			for (iI = 1; iI <= iWholeCities; iI++)
 			{
-				iSumOfPartialCities += 100 / (iI + 1);
+				iSum += 100 / (iI + 1);
 			}
-			iNumCitiesMaintenance = (GC.getHandicapInfo(getHandicapType()).getMaxNumCitiesMaintenance() * 100) + iSumOfPartialCities;
+			if (iFractionalCity > 0) 
+			{
+				int iLastWhole = 100 / (iI); // for loop increased iI
+				int iNextWhole = 100 / (iI + 1);
+				int iDifference = iLastWhole - iNextWhole;
+				int iLerp = ((iFractionalCity * iDifference) / 100);
+				iSum += iLerp;
+			}
+			iNumCitiesMaintenance = (GC.getHandicapInfo(getHandicapType()).getMaxNumCitiesMaintenance() * 100) + iSum;
 		}
 	}
 	else
