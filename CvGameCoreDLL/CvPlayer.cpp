@@ -6526,6 +6526,10 @@ bool CvPlayer::canMaintain(ProcessTypes eProcess, bool bContinue) const
 	{
 		return false;
 	}
+	if (GC.getProcessInfo(eProcess).getTechObsolete() != NO_TECH && (GET_TEAM(getTeam()).isHasTech((TechTypes)(GC.getProcessInfo(eProcess).getTechObsolete()))))
+	{
+		return false;
+	}
 
 	return true;
 }

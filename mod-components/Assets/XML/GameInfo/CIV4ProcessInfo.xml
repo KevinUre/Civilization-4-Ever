@@ -7,10 +7,25 @@
 <Civ4ProcessInfo xmlns="x-schema:CIV4GameInfoSchema.xml">
 	<ProcessInfos>
 		<ProcessInfo>
-			<Type>PROCESS_WEALTH</Type>
+			<Type>PROCESS_WEALTH_1</Type>
 			<Description>TXT_KEY_PROCESS_WEALTH</Description>
 			<Strategy>TXT_KEY_PROCESS_WEALTH_STRATEGY</Strategy>
 			<TechPrereq>TECH_CURRENCY</TechPrereq>
+			<TechObsolete>TECH_ECONOMICS</TechObsolete>
+			<ProductionToCommerceModifiers>
+				<iProductionToCommerceModifier>50</iProductionToCommerceModifier>
+				<iProductionToCommerceModifier>0</iProductionToCommerceModifier>
+				<iProductionToCommerceModifier>0</iProductionToCommerceModifier>
+				<iProductionToCommerceModifier>0</iProductionToCommerceModifier>
+			</ProductionToCommerceModifiers>
+			<Button>Art/Interface/Buttons/Process/ProcessWealth.dds</Button>
+		</ProcessInfo>
+		<ProcessInfo>
+			<Type>PROCESS_WEALTH_2</Type>
+			<Description>TXT_KEY_PROCESS_WEALTH</Description>
+			<Strategy>TXT_KEY_PROCESS_WEALTH_STRATEGY</Strategy>
+			<TechPrereq>TECH_ECONOMICS</TechPrereq>
+			<TechObsolete>NONE</TechObsolete>
 			<ProductionToCommerceModifiers>
 				<iProductionToCommerceModifier>100</iProductionToCommerceModifier>
 				<iProductionToCommerceModifier>0</iProductionToCommerceModifier>
@@ -20,10 +35,25 @@
 			<Button>Art/Interface/Buttons/Process/ProcessWealth.dds</Button>
 		</ProcessInfo>
 		<ProcessInfo>
-			<Type>PROCESS_RESEARCH</Type>
+			<Type>PROCESS_RESEARCH_1</Type>
 			<Description>TXT_KEY_PROCESS_RESEARCH</Description>
 			<Strategy>TXT_KEY_PROCESS_RESEARCH_STRATEGY</Strategy>
 			<TechPrereq>TECH_ALPHABET</TechPrereq>
+			<TechObsolete>TECH_SCIENTIFIC_METHOD</TechObsolete>
+			<ProductionToCommerceModifiers>
+				<iProductionToCommerceModifier>0</iProductionToCommerceModifier>
+				<iProductionToCommerceModifier>50</iProductionToCommerceModifier>
+				<iProductionToCommerceModifier>0</iProductionToCommerceModifier>
+				<iProductionToCommerceModifier>0</iProductionToCommerceModifier>
+			</ProductionToCommerceModifiers>
+			<Button>Art/Interface/Buttons/Process/ProcessResearch.dds</Button>
+		</ProcessInfo>
+		<ProcessInfo>
+			<Type>PROCESS_RESEARCH_2</Type>
+			<Description>TXT_KEY_PROCESS_RESEARCH</Description>
+			<Strategy>TXT_KEY_PROCESS_RESEARCH_STRATEGY</Strategy>
+			<TechPrereq>TECH_SCIENTIFIC_METHOD</TechPrereq>
+			<TechObsolete>NONE</TechObsolete>
 			<ProductionToCommerceModifiers>
 				<iProductionToCommerceModifier>0</iProductionToCommerceModifier>
 				<iProductionToCommerceModifier>100</iProductionToCommerceModifier>
@@ -33,10 +63,25 @@
 			<Button>Art/Interface/Buttons/Process/ProcessResearch.dds</Button>
 		</ProcessInfo>
 		<ProcessInfo>
-			<Type>PROCESS_CULTURE</Type>
+			<Type>PROCESS_CULTURE_1</Type>
 			<Description>TXT_KEY_PROCESS_CULTURE</Description>
 			<Strategy>TXT_KEY_PROCESS_CULTURE_STRATEGY</Strategy>
 			<TechPrereq>TECH_MUSIC</TechPrereq>
+			<TechObsolete>TECH_MASS_MEDIA</TechObsolete>
+			<ProductionToCommerceModifiers>
+				<iProductionToCommerceModifier>0</iProductionToCommerceModifier>
+				<iProductionToCommerceModifier>0</iProductionToCommerceModifier>
+				<iProductionToCommerceModifier>50</iProductionToCommerceModifier>
+				<iProductionToCommerceModifier>0</iProductionToCommerceModifier>
+			</ProductionToCommerceModifiers>
+			<Button>Art/Interface/Buttons/Process/ProcessCulture.dds</Button>
+		</ProcessInfo>
+		<ProcessInfo>
+			<Type>PROCESS_CULTURE_2</Type>
+			<Description>TXT_KEY_PROCESS_CULTURE</Description>
+			<Strategy>TXT_KEY_PROCESS_CULTURE_STRATEGY</Strategy>
+			<TechPrereq>TECH_MASS_MEDIA</TechPrereq>
+			<TechObsolete>NONE</TechObsolete>
 			<ProductionToCommerceModifiers>
 				<iProductionToCommerceModifier>0</iProductionToCommerceModifier>
 				<iProductionToCommerceModifier>0</iProductionToCommerceModifier>
@@ -46,10 +91,25 @@
 			<Button>Art/Interface/Buttons/Process/ProcessCulture.dds</Button>
 		</ProcessInfo>
 		<ProcessInfo>
-			<Type>PROCESS_ESPIONAGE</Type>
+			<Type>PROCESS_ESPIONAGE_1</Type>
+			<Description>TXT_KEY_PROCESS_ESPIONAGE</Description>
+			<Strategy>TXT_KEY_PROCESS_ESPIONAGE_STRATEGY</Strategy>
+			<TechPrereq>TECH_NATIONALISM</TechPrereq>
+			<TechObsolete>TECH_COMPUTERS</TechObsolete>
+			<ProductionToCommerceModifiers>
+				<iProductionToCommerceModifier>0</iProductionToCommerceModifier>
+				<iProductionToCommerceModifier>0</iProductionToCommerceModifier>
+				<iProductionToCommerceModifier>0</iProductionToCommerceModifier>
+				<iProductionToCommerceModifier>50</iProductionToCommerceModifier>
+			</ProductionToCommerceModifiers>
+			<Button>Art/Interface/Buttons/Process/ProcessEspionage.dds</Button>
+		</ProcessInfo>
+		<ProcessInfo>
+			<Type>PROCESS_ESPIONAGE_2</Type>
 			<Description>TXT_KEY_PROCESS_ESPIONAGE</Description>
 			<Strategy>TXT_KEY_PROCESS_ESPIONAGE_STRATEGY</Strategy>
 			<TechPrereq>TECH_COMPUTERS</TechPrereq>
+			<TechObsolete>NONE</TechObsolete>
 			<ProductionToCommerceModifiers>
 				<iProductionToCommerceModifier>0</iProductionToCommerceModifier>
 				<iProductionToCommerceModifier>0</iProductionToCommerceModifier>

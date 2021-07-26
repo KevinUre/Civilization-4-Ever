@@ -171,6 +171,7 @@ void CyInfoPythonInterface3()
 	// CvProcessInfos
 	python::class_<CvProcessInfo, python::bases<CvInfoBase> >("CvProcessInfo")
 		.def("getTechPrereq", &CvProcessInfo::getTechPrereq, "int ()")
+		.def("getTechObsolete", &CvProcessInfo::getTechObsolete, "int ()")
 
 		// Arrays
 
