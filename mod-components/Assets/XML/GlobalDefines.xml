@@ -1782,4 +1782,26 @@
 		<iDefineIntVal>1</iDefineIntVal>
 	</Define>
 <!-- DEATHMAKER900 NON-LETHAL COMBAT END -->
+<!-- DEATHMAKER900 TECHNOLOGY BLEED LOGISTIC CUVRE MOD BEGIN -->
+	<Define>
+		<DefineName>TECH_BLEED_KNOWN_L_MAX</DefineName>
+		<iDefineIntVal>25</iDefineIntVal>
+	</Define>
+	<Define>
+		<DefineName>TECH_BLEED_OPEN_BORDERS_L_MAX</DefineName>
+		<iDefineIntVal>50</iDefineIntVal>
+	</Define>
+	<Define>
+		<DefineName>TECH_BLEED_KNOWN_K</DefineName>
+		<iDefineIntVal>25</iDefineIntVal>
+	</Define>
+	<Define>
+		<DefineName>TECH_BLEED_OPEN_BORDERS_K</DefineName>
+		<iDefineIntVal>50</iDefineIntVal>
+	</Define>
+	<Define>
+		<DefineName>TECH_BLEED_ONE_HUNDRED_E</DefineName>
+		<iDefineIntVal>272</iDefineIntVal>
+	</Define>
+<!-- DEATHMAKER900 TECHNOLOGY BLEED LOGISTIC CUVRE MOD END -->
 </Civ4Defines>
