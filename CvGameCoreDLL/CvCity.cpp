@@ -5707,7 +5707,28 @@ int CvCity::calculateNumCitiesMaintenanceTimes100() const
 
 	int iNumCitiesMaintenance = (GET_PLAYER(getOwnerINLINE()).getNumCities() + iNumVassalCities) * iNumCitiesPercent;
 
-	iNumCitiesMaintenance = std::min(iNumCitiesMaintenance, GC.getHandicapInfo(getHandicapType()).getMaxNumCitiesMaintenance() * 100);
+	if (GC.getGameINLINE().isOption(GAMEOPTION_CITY_MAINTENANCE_SOFT_CAP))
+	{
+		if (iNumCitiesMaintenance <= GC.getHandicapInfo(getHandicapType()).getMaxNumCitiesMaintenance() * 100)
+		{
+			iNumCitiesMaintenance = std::min(iNumCitiesMaintenance, GC.getHandicapInfo(getHandicapType()).getMaxNumCitiesMaintenance() * 100);
+		}
+		else 
+		{
+			int iOverflowCityCount = (iNumCitiesMaintenance / 100) - GC.getHandicapInfo(getHandicapType()).getMaxNumCitiesMaintenance();
+			FAssert(iOverflowCityCount > 0);
+			int iSumOfPartialCities = 0;
+			for (int iI = 1; iI <= iOverflowCityCount; iI++) 
+			{
+				iSumOfPartialCities += 100 / (iI + 1);
+			}
+			iNumCitiesMaintenance = (GC.getHandicapInfo(getHandicapType()).getMaxNumCitiesMaintenance() * 100) + iSumOfPartialCities;
+		}
+	}
+	else
+	{
+		iNumCitiesMaintenance = std::min(iNumCitiesMaintenance, GC.getHandicapInfo(getHandicapType()).getMaxNumCitiesMaintenance() * 100);
+	}
 
 	iNumCitiesMaintenance *= std::max(0, (GET_PLAYER(getOwnerINLINE()).getNumCitiesMaintenanceModifier() + 100));
 	iNumCitiesMaintenance /= 100;

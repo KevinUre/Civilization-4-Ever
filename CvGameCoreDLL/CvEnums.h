@@ -742,6 +742,7 @@ enum GameOptionTypes				// Exposed to Python
 	GAMEOPTION_NON_LETHAL_COMBAT,
 	//DeathMaker900 Non-Lethal Combat Begin
 	GAMEOPTION_ADV_CULTURE,
+	GAMEOPTION_CITY_MAINTENANCE_SOFT_CAP,
 
 #ifdef _USRDLL
 	NUM_GAMEOPTION_TYPES
