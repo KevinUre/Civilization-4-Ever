@@ -5727,10 +5727,8 @@ int CvCity::calculateNumCitiesMaintenanceTimes100() const
 			}
 			if (iFractionalCity > 0) 
 			{
-				int iLastWhole = 100 / (iI); // for loop increased iI
 				int iNextWhole = 100 / (iI + 1);
-				int iDifference = iLastWhole - iNextWhole;
-				int iLerp = ((iFractionalCity * iDifference) / 100);
+				int iLerp = ((iFractionalCity * iNextWhole) / 100);
 				iSum += iLerp;
 			}
 			iNumCitiesMaintenance = (GC.getHandicapInfo(getHandicapType()).getMaxNumCitiesMaintenance() * 100) + iSum;
