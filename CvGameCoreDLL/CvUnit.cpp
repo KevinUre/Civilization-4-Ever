@@ -291,6 +291,7 @@ void CvUnit::reset(int iID, UnitTypes eUnit, PlayerTypes eOwner, bool bConstruct
 	uninit();
 	
 	//@MOD Commanders: reset parameters
+	m_iOnslaughtCount = 0;
 	m_iExtraCommandRange = 0;
 	m_iExtraControlPoints = 0;
 	m_iControlPointsLeft = 0;
