@@ -4728,7 +4728,6 @@ int CvCity::getHurryCost(bool bExtra, BuildingTypes eBuilding, bool bIgnoreNew) 
 }
 
 //@HURRY
-// Cost in hammers to finish production
 int CvCity::getHurryCost(bool bExtra, int iProductionLeft, int iHurryModifier, int iModifier) const
 {
 	//remaining production to be paid for
@@ -4775,24 +4774,6 @@ int CvCity::hurryPopulation(HurryTypes eHurry) const
 	return (getHurryPopulation(eHurry, hurryCost(true)));
 }
 
-int CvCity::getModifiedProductionPerPopulation(HurryTypes eHurry) const
-{
-	int iProductionPerPopulation = GC.getGameINLINE().getProductionPerPopulation(eHurry);
-	BuildingTypes eCurBuilding = getProductionBuilding();
-	if (eCurBuilding != NO_BUILDING)
-	{
-		CvBuildingClassInfo cTemp = GC.getBuildingClassInfo((BuildingClassTypes)GC.getBuildingInfo(eCurBuilding).getBuildingClassType());
-		if (cTemp.getMaxGlobalInstances() != -1 || cTemp.getMaxPlayerInstances() != -1 || cTemp.getMaxTeamInstances() != -1) // is wonder
-		{
-			int iNumerator = GC.getDefineINT("POPULATION_HURRY_WONDER_MODIFIER_NUMERATOR");
-			int iDenominator = GC.getDefineINT("POPULATION_HURRY_WONDER_MODIFIER_DENOMINATOR");
-			iProductionPerPopulation *= iNumerator;
-			iProductionPerPopulation /= iDenominator;
-		}
-	}
-	return iProductionPerPopulation;
-}
-
 //@HURRY
 // hurry cost already accounts for the modifier of the object being hurried
 int CvCity::getHurryPopulation(HurryTypes eHurry, int iHurryCost) const
@@ -4802,7 +4783,7 @@ int CvCity::getHurryPopulation(HurryTypes eHurry, int iHurryCost) const
 		return 0;
 	}
 
-	int iPopulation = (iHurryCost - 1) / getModifiedProductionPerPopulation(eHurry);
+	int iPopulation = (iHurryCost - 1) / GC.getGameINLINE().getProductionPerPopulation(eHurry);
 	
 	iPopulation += 1;
 
@@ -4841,7 +4822,7 @@ int CvCity::hurryProduction(HurryTypes eHurry) const
 				iTemp *= 2;
 			}
 		}*/
-		iProduction = (100 * getExtraProductionDifference(hurryPopulation(eHurry) * getModifiedProductionPerPopulation(eHurry))) / std::max(1, getHurryCostModifier());
+		iProduction = (100 * getExtraProductionDifference(hurryPopulation(eHurry) * GC.getGameINLINE().getProductionPerPopulation(eHurry))) / std::max(1, getHurryCostModifier());
 		//iProduction = (100 * getExtraProductionDifference(iTemp * GC.getGameINLINE().getProductionPerPopulation(eHurry))) / std::max(1, getHurryCostModifier());
 		//END FIX
 		
