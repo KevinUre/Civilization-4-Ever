@@ -179,10 +179,10 @@
 			</TradeYieldModifiers>
 			<CommerceChanges/>
 			<CommerceModifiers>
-   				<iCommerce>20</iCommerce>
-   				<iCommerce>0</iCommerce>
-  				<iCommerce>0</iCommerce>
-  			</CommerceModifiers>
+				<iCommerce>25</iCommerce>
+				<iCommerce>0</iCommerce>
+				<iCommerce>0</iCommerce>
+			</CommerceModifiers>
 			<FreePromotions/>
 			<FreePromotionUnitCombats/>
 		</TraitInfo>
