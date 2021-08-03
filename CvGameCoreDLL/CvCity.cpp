@@ -5711,7 +5711,7 @@ int CvCity::calculateNumCitiesMaintenanceTimes100() const
 
 	if (GC.getGameINLINE().isOption(GAMEOPTION_CITY_MAINTENANCE_SOFT_CAP))
 	{
-		if (iNumCitiesMaintenance <= iNumCitiesCapTimes100)
+		/*if (iNumCitiesMaintenance <= iNumCitiesCapTimes100)
 		{
 			iNumCitiesMaintenance = std::min(iNumCitiesMaintenance, iNumCitiesCapTimes100);
 		}
@@ -5734,7 +5734,7 @@ int CvCity::calculateNumCitiesMaintenanceTimes100() const
 				iSum += iLerp;
 			}
 			iNumCitiesMaintenance = iNumCitiesCapTimes100 + iSum;
-		}
+		}*/
 	}
 	else
 	{
