@@ -524,7 +524,6 @@
 			<iCityPoisonWaterCounter>0</iCityPoisonWaterCounter>
 			<iCityUnhappinessCounter>0</iCityUnhappinessCounter>
 			<iCityRevoltCounter>0</iCityRevoltCounter>
-			<!-- STEAL TECH ADDITIONAL COST MODIFIER CvPlayer::gerEspionageMissionBaseCost -->
 			<iBuyTechCostFactor>50</iBuyTechCostFactor> 
 			<iSwitchCivicCostFactor>0</iSwitchCivicCostFactor>
 			<iSwitchReligionCostFactor>0</iSwitchReligionCostFactor>
