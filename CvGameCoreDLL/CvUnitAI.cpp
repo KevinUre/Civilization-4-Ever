@@ -2730,7 +2730,7 @@ void CvUnitAI::AI_attackCityMove()
 				{
 					iCityCaptureCount++;
 
-					if( iCityCaptureCount > (GC.getGameINLINE().isOption(GAMEOPTION_NON_LETHAL_COMBAT) ? 2 : 5) || 3*iCityCaptureCount > getGroup()->getNumUnits() )
+					if( iCityCaptureCount > (GC.getGameINLINE().isOption(GAMEOPTION_NON_LETHAL_COMBAT) ? 1 : 5) || 3*iCityCaptureCount > getGroup()->getNumUnits() )
 					{
 						bReadyToAttack = true;
 					}
