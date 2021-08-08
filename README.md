@@ -8,6 +8,10 @@ Download a zip from the [Releases Page](https://github.com/KevinUre/Civilization
 
 To boot the mod either boot the game and then goto `Advanced` then `Load a Mod` or make a shortcut to `Civ4BeyondSword.exe` and add ` mod= mods\Civilization 4-Ever` to the target. you can also add ` mod= mods\Civilization 4-Ever` to the launch options on steam.
 
+## How to clear the game cache
+
+The game caches some values when it runs and clearing this cache out seems to both fix problems when updating the mod as well as cure some multiplayer desyncs. To clear the cache make sure the game is closed and then navigate to `%localappdata%\My Games\beyond the sword` and delete the `cache` directory found there.
+
 ## How to build
 
 Run the Installer from the root. modify the `makefile` on lines `34` and `35` to the directory you used with the installer. put your path to your civ4 on line `42`. build with visual studio.
