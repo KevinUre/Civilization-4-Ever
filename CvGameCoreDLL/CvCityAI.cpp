@@ -5566,7 +5566,7 @@ bool CvCityAI::AI_isDanger()
 /* City AI, Efficiency                                                                          */
 /************************************************************************************************/
 	//return GET_PLAYER(getOwnerINLINE()).AI_getPlotDanger(plot(), 2, false);
-	return GET_PLAYER(getOwnerINLINE()).AI_getAnyPlotDanger(plot(), 2, false);
+	return GET_PLAYER(getOwnerINLINE()).AI_getAnyPlotDanger(plot(), 3, false);
 /************************************************************************************************/
 /* BETTER_BTS_AI_MOD                       END                                                  */
 /************************************************************************************************/	
