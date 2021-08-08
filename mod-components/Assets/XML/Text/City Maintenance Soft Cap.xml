@@ -6,15 +6,15 @@
 <Civ4GameText xmlns="http://www.firaxis.com">
 	<TEXT>
 		<Tag>TXT_KEY_GAME_OPTION_CITY_MAINTENANCE_SOFT_CAP</Tag>
-		<English>EXPERIMENTAL - City Maintenance Soft Cap</English>
-		<French>EXPERIMENTAL - City Maintenance Soft Cap</French>
-		<German>EXPERIMENTAL - City Maintenance Soft Cap</German>
-		<Italian>EXPERIMENTAL - City Maintenance Soft Cap</Italian>
-		<Spanish>EXPERIMENTAL - City Maintenance Soft Cap</Spanish>
+		<English>EXPERIMENTAL - Uncapped City Maintenance</English>
+		<French>EXPERIMENTAL - Uncapped City Maintenance</French>
+		<German>EXPERIMENTAL - Uncapped City Maintenance</German>
+		<Italian>EXPERIMENTAL - Uncapped City Maintenance</Italian>
+		<Spanish>EXPERIMENTAL - Uncapped City Maintenance</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_GAME_OPTION_CITY_MAINTENANCE_SOFT_CAP_HELP</Tag>
-		<English>Makes it so that every city you have over your city limit from handicap adds an increasingly small fractional city to your maintenance calculation. This will make it more costly to keep a big civiliziation and thus give smaller civs a chance to catch up. </English>
+		<English>Removes the hard cap on maintenance from number of cities. This will make it more costly to keep a big civiliziation and thus give smaller civs a chance to catch up. </English>
 		<French>Makes it so that every city you have over your city limit from handicap adds an increasingly small fractional city to your maintenance calculation. This will make it more costly to keep a big civiliziation and thus give smaller civs a chance to catch up. </French>
 		<German>Makes it so that every city you have over your city limit from handicap adds an increasingly small fractional city to your maintenance calculation. This will make it more costly to keep a big civiliziation and thus give smaller civs a chance to catch up. </German>
 		<Italian>Makes it so that every city you have over your city limit from handicap adds an increasingly small fractional city to your maintenance calculation. This will make it more costly to keep a big civiliziation and thus give smaller civs a chance to catch up. </Italian>
