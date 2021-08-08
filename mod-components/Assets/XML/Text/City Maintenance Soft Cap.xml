@@ -6,11 +6,11 @@
 <Civ4GameText xmlns="http://www.firaxis.com">
 	<TEXT>
 		<Tag>TXT_KEY_GAME_OPTION_CITY_MAINTENANCE_SOFT_CAP</Tag>
-		<English>EXPERIMENTAL - Uncapped City Maintenance</English>
-		<French>EXPERIMENTAL - Uncapped City Maintenance</French>
-		<German>EXPERIMENTAL - Uncapped City Maintenance</German>
-		<Italian>EXPERIMENTAL - Uncapped City Maintenance</Italian>
-		<Spanish>EXPERIMENTAL - Uncapped City Maintenance</Spanish>
+		<English>Uncapped City Maintenance</English>
+		<French>Uncapped City Maintenance</French>
+		<German>Uncapped City Maintenance</German>
+		<Italian>Uncapped City Maintenance</Italian>
+		<Spanish>Uncapped City Maintenance</Spanish>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_GAME_OPTION_CITY_MAINTENANCE_SOFT_CAP_HELP</Tag>
