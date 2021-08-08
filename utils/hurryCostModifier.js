@@ -1,4 +1,4 @@
-const fs = require('fs'),
+const fs = require('fs')
 const path = require('path');
 var parser = require('fast-xml-parser');
 
@@ -16,12 +16,12 @@ const eraOrder = {
 const unitCostsPerEra = {
     NONE: 50,
     ERA_ANCIENT: 50,
-    ERA_CLASSICAL: 55,
-    ERA_MEDIEVAL: 60,
-    ERA_RENAISSANCE: 65,
-    ERA_INDUSTRIAL: 70,
-    ERA_MODERN: 75,
-    ERA_FUTURE: 75
+    ERA_CLASSICAL: 60,
+    ERA_MEDIEVAL: 70,
+    ERA_RENAISSANCE: 80,
+    ERA_INDUSTRIAL: 90,
+    ERA_MODERN: 100,
+    ERA_FUTURE: 100
 }
 const ignoredUnitClasses = [
     'UNITCLASS_SETTLER',
