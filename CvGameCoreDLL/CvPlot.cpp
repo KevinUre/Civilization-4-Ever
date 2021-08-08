@@ -7760,6 +7760,10 @@ void CvPlot::changeVisibilityCount(TeamTypes eTeam, int iChange, InvisibleTypes 
 
 		m_aiVisibilityCount[eTeam] += iChange;
 		FAssert(getVisibilityCount(eTeam) >= 0);
+		if (m_aiVisibilityCount[eTeam] < 0)
+		{
+			m_aiVisibilityCount[eTeam] = 0;
+		}
 
 		if (eSeeInvisible != NO_INVISIBLE)
 		{

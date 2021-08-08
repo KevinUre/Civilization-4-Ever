@@ -354,14 +354,6 @@
 		<iDefineIntVal>50</iDefineIntVal> <!-- @HURRY -->
 	</Define>
 	<Define>
-		<DefineName>POPULATION_HURRY_WONDER_MODIFIER_NUMERATOR</DefineName>
-		<iDefineIntVal>3</iDefineIntVal> <!-- @HURRY -->
-	</Define>
-	<Define>
-		<DefineName>POPULATION_HURRY_WONDER_MODIFIER_DENOMINATOR</DefineName>
-		<iDefineIntVal>2</iDefineIntVal> <!-- @HURRY -->
-	</Define>
-	<Define>
 		<DefineName>CONSCRIPT_MIN_CITY_POPULATION</DefineName>
 		<iDefineIntVal>5</iDefineIntVal>
 	</Define>
@@ -1782,4 +1774,30 @@
 		<iDefineIntVal>1</iDefineIntVal>
 	</Define>
 <!-- DEATHMAKER900 NON-LETHAL COMBAT END -->
+<!-- DEATHMAKER900 TECHNOLOGY BLEED LOGISTIC CUVRE MOD BEGIN -->
+	<Define>
+		<DefineName>TECH_BLEED_KNOWN_L_MAX</DefineName>
+		<iDefineIntVal>25</iDefineIntVal>
+	</Define>
+	<Define>
+		<DefineName>TECH_BLEED_OPEN_BORDERS_L_MAX</DefineName>
+		<iDefineIntVal>50</iDefineIntVal>
+	</Define>
+	<Define>
+		<DefineName>TECH_BLEED_KNOWN_K</DefineName>
+		<iDefineIntVal>5</iDefineIntVal>
+	</Define>
+	<Define>
+		<DefineName>TECH_BLEED_OPEN_BORDERS_K</DefineName>
+		<iDefineIntVal>10</iDefineIntVal>
+	</Define>
+	<Define>
+		<DefineName>TECH_BLEED_X_NAUGHT</DefineName>
+		<iDefineIntVal>10</iDefineIntVal>
+	</Define>
+	<Define>
+		<DefineName>TECH_BLEED_ONE_HUNDRED_E</DefineName>
+		<iDefineIntVal>272</iDefineIntVal>
+	</Define>
+<!-- DEATHMAKER900 TECHNOLOGY BLEED LOGISTIC CUVRE MOD END -->
 </Civ4Defines>

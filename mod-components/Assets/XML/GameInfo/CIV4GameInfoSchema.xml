@@ -101,6 +101,7 @@
 	<ElementType name="Strategy" content="textOnly"/>
 	<ElementType name="Civilopedia" content="textOnly"/>
 	<ElementType name="TechPrereq" content="textOnly"/>
+	<ElementType name="TechObsolete" content="textOnly"/>
 	<ElementType name="iProductionToCommerceModifier" content="textOnly" dt:type="int"/>
 	<ElementType name="ProductionToCommerceModifiers" content="eltOnly">
 		<element type="iProductionToCommerceModifier" maxOccurs="*"/>
@@ -112,6 +113,7 @@
 		<element type="Description"/>
 		<element type="Strategy"/>
 		<element type="TechPrereq"/>
+		<element type="TechObsolete"/>
 		<element type="ProductionToCommerceModifiers"/>
 		<element type="Button"/>
 	</ElementType>

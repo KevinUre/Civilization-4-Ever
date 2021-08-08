@@ -6526,6 +6526,10 @@ bool CvPlayer::canMaintain(ProcessTypes eProcess, bool bContinue) const
 	{
 		return false;
 	}
+	if (GC.getProcessInfo(eProcess).getTechObsolete() != NO_TECH && (GET_TEAM(getTeam()).isHasTech((TechTypes)(GC.getProcessInfo(eProcess).getTechObsolete()))))
+	{
+		return false;
+	}
 
 	return true;
 }
@@ -7389,6 +7393,18 @@ int CvPlayer::calculateBaseNetGold() const
 	return iNetGold;
 }
 
+float CvPlayer::powfWithNegativeExponents(float fBase, float fExponent) const
+{
+	if (fExponent < 0.0f)
+	{
+		return 1 / std::powf(fBase, -1 * fExponent);
+	}
+	else
+	{
+		return std::powf(fBase, fExponent);
+	}
+}
+
 int CvPlayer::calculateResearchModifier(TechTypes eTech) const //KEVIN TECH
 {
 	int iModifier = 100;
@@ -7453,7 +7469,7 @@ int CvPlayer::calculateResearchModifier(TechTypes eTech) const //KEVIN TECH
 	else
 	{
 		int iKnownCount = 0;
-		int iPossibleKnownCount = 0;
+		int iPossibleKnownCount = -1; // we dont want to count ourselves
 		int iOpenBordersCount = 0;
 		int iAtWarCount = 0;
 		int iIsVassel = 0;
@@ -7500,8 +7516,29 @@ int CvPlayer::calculateResearchModifier(TechTypes eTech) const //KEVIN TECH
 
 		if (iPossibleKnownCount > 0)
 		{
-			iModifier += (GC.getDefineINT("TECH_BLEED_COST_TOTAL_KNOWN_MODIFIER") * iKnownCount) / iPossibleKnownCount;
-			iModifier += (GC.getDefineINT("TECH_BLEED_COST_TOTAL_OPEN_BORDERS_MODIFIER") * iOpenBordersCount) / iPossibleKnownCount;
+			if (GC.getGameINLINE().isOption(GAMEOPTION_ADV_TECH_BLEED_LOGISTIC_CURVE))
+			{
+				float fConstE = (float)GC.getDefineINT("TECH_BLEED_ONE_HUNDRED_E") / 100.0f;
+				float fXNaught = (float)GC.getDefineINT("TECH_BLEED_X_NAUGHT");
+				float fKnownLMax = (float)GC.getDefineINT("TECH_BLEED_KNOWN_L_MAX");
+				float fOpenLMax = (float)GC.getDefineINT("TECH_BLEED_OPEN_BORDERS_L_MAX");
+				float fKnownK = (float)GC.getDefineINT("TECH_BLEED_KNOWN_K") / 100.0f;
+				float fOpenK = (float)GC.getDefineINT("TECH_BLEED_OPEN_BORDERS_K") / 100.0f;
+				float fKnownOffset = fKnownLMax / (1 + powfWithNegativeExponents(fConstE, -1 * fKnownK * (0.0f - fXNaught)));
+				float fOpenOffset = fOpenLMax / (1 + powfWithNegativeExponents(fConstE, -1 * fOpenK * (0.0f - fXNaught)));
+				float fPercentKnown = ((float)iKnownCount / (float)iPossibleKnownCount) * 100.0f;
+				float fPercentOpen = ((float)iOpenBordersCount / (float)iPossibleKnownCount) * 100.0f;
+				float fModFromKnown = (fKnownLMax + fKnownOffset) / (1 + powfWithNegativeExponents(fConstE, -1 * fKnownK * (fPercentKnown - fXNaught))) - fKnownOffset;
+				float fModFromOpen = (fOpenLMax + fOpenOffset) / (1 + powfWithNegativeExponents(fConstE, -1 * fOpenK * (fPercentOpen - fXNaught))) - fOpenOffset;
+				iModifier += (int)(fModFromKnown + 0.5f); //poor man's rounding function
+				iModifier += (int)(fModFromOpen + 0.5f);
+			}
+			else
+			{
+				iModifier += (GC.getDefineINT("TECH_BLEED_COST_TOTAL_KNOWN_MODIFIER") * iKnownCount) / iPossibleKnownCount;
+				iModifier += (GC.getDefineINT("TECH_BLEED_COST_TOTAL_OPEN_BORDERS_MODIFIER") * iOpenBordersCount) / iPossibleKnownCount;
+			}
+			
 			iModifier += (GC.getDefineINT("TECH_BLEED_COST_WAR_MODIFIER") * iAtWarCount);// / iPossibleKnownCount;
 			iModifier += GC.getDefineINT("TECH_BLEED_COST_VASSAL_MODIFIER") * iIsVassel;
 		}

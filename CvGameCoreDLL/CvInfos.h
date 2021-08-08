@@ -3910,6 +3910,7 @@ public:
 	virtual ~CvProcessInfo();
 
 	int getTechPrereq() const;				// Exposed to Python
+	int getTechObsolete() const;				// Exposed to Python
 
 	// Arrays
 
@@ -3921,6 +3922,7 @@ public:
 protected:
 
 	int m_iTechPrereq;
+	int m_iTechObsolete;
 
 	// Arrays
 

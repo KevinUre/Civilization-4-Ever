@@ -1652,7 +1652,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>40</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>60</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -1833,7 +1833,7 @@
 			</Flavors>
 			<iAIWeight>0</iAIWeight>
 			<iCost>40</iCost>
-			<iHurryCostModifier>0</iHurryCostModifier>
+			<iHurryCostModifier>60</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -4360,7 +4360,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>15</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier> <!-- ======================================================================================= -->
+			<iHurryCostModifier>50</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -4739,7 +4739,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>40</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>60</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -4923,7 +4923,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>35</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>60</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -5117,7 +5117,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>40</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>60</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -5314,7 +5314,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>45</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>60</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -6287,7 +6287,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>70</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>70</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -6484,7 +6484,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>70</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>70</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -6695,7 +6695,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>70</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>70</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -7467,7 +7467,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>60</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>70</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -7656,7 +7656,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>60</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>70</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -7845,7 +7845,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>80</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>80</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -8029,7 +8029,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>80</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>80</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -8209,7 +8209,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>80</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>80</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -8402,7 +8402,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>80</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>80</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -8599,7 +8599,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>110</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>80</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -8784,7 +8784,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>110</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>80</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -8981,7 +8981,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>100</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>80</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -9166,7 +9166,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>120</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>90</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -9364,7 +9364,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>140</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>90</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -9549,7 +9549,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>150</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>100</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -9733,7 +9733,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>220</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>100</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -9921,7 +9921,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>160</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>90</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -10118,7 +10118,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>160</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>90</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -10307,7 +10307,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>160</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>100</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -10490,7 +10490,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>200</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>100</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -11220,7 +11220,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>50</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>70</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -11412,7 +11412,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>60</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>70</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -11609,7 +11609,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>60</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>70</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -12368,7 +12368,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>50</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>60</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -12566,7 +12566,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>50</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>60</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -12770,7 +12770,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>50</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>60</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -12969,7 +12969,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>90</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>70</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -13158,7 +13158,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>90</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>70</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -13352,7 +13352,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>90</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>70</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -13563,7 +13563,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>100</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>80</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -13766,7 +13766,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>100</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>80</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -13959,7 +13959,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>120</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>80</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -14157,7 +14157,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>120</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>80</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -14347,7 +14347,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>60</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>60</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -14537,7 +14537,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>60</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>60</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -14726,7 +14726,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>180</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>90</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -14915,7 +14915,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>180</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>90</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -15109,7 +15109,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>240</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>100</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -15298,7 +15298,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>160</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>100</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -15479,7 +15479,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>50</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>60</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -15664,7 +15664,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>50</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>60</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -15855,7 +15855,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>80</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>70</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -16036,7 +16036,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>100</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>90</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -16217,7 +16217,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>125</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>90</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -16403,7 +16403,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>150</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>90</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -16588,7 +16588,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>200</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>100</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -17165,7 +17165,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>50</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>60</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>20</iMinAreaSize>
@@ -17385,7 +17385,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>60</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>70</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>20</iMinAreaSize>
@@ -17598,7 +17598,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>60</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>70</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>20</iMinAreaSize>
@@ -17779,7 +17779,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>80</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>80</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>20</iMinAreaSize>
@@ -17964,7 +17964,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>80</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>80</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>20</iMinAreaSize>
@@ -18163,7 +18163,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>80</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>80</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>20</iMinAreaSize>
@@ -18361,7 +18361,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>90</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>80</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>20</iMinAreaSize>
@@ -18546,7 +18546,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>120</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>80</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>20</iMinAreaSize>
@@ -18746,7 +18746,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>100</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>90</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>20</iMinAreaSize>
@@ -18928,7 +18928,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>125</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>90</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>20</iMinAreaSize>
@@ -19113,7 +19113,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>190</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>90</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>20</iMinAreaSize>
@@ -19308,7 +19308,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>210</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>90</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>20</iMinAreaSize>
@@ -19490,7 +19490,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>240</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>90</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>20</iMinAreaSize>
@@ -19671,7 +19671,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>270</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>100</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>20</iMinAreaSize>
@@ -19860,7 +19860,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>220</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>100</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>20</iMinAreaSize>
@@ -20045,7 +20045,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>150</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>100</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>20</iMinAreaSize>
@@ -20229,7 +20229,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>200</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>100</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>20</iMinAreaSize>
@@ -20402,7 +20402,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>175</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>100</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>20</iMinAreaSize>
@@ -20574,7 +20574,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>80</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>90</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -20750,7 +20750,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>100</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>100</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -20926,7 +20926,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>150</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>100</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -21102,7 +21102,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>140</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>100</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -21282,7 +21282,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>200</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>100</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -21458,7 +21458,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>30</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>100</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -21629,7 +21629,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>250</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>100</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -21800,7 +21800,7 @@
 			<Flavors/>
 			<iAIWeight>0</iAIWeight>
 			<iCost>500</iCost>
-			<iHurryCostModifier>50</iHurryCostModifier>
+			<iHurryCostModifier>100</iHurryCostModifier>
 			<iAdvancedStartCost>100</iAdvancedStartCost>
 			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
 			<iMinAreaSize>-1</iMinAreaSize>
@@ -23009,236 +23009,233 @@
 			<LeaderPromotion>NONE</LeaderPromotion>
 			<iLeaderExperience>0</iLeaderExperience>
 		</UnitInfo>
-    <UnitInfo>
-      <Class>UNITCLASS_GREAT_GENERAL</Class>
-      <Type>UNIT_GREAT_GENERAL</Type>
-      <UniqueNames>
-        <UniqueName>TXT_KEY_GREAT_PERSON_SARGON</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_NEBUCHADREZZAR</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_SUN_TZU</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_LEONIDAS</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_LYSANDER</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_CHANDRAGUPTA_MAURYA</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_HAMILCAR_BARCA</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_GAIUS_MARIUS</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_SCIPIO_AFRICANUS</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_VERCINGETORIX</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_ARMINIUS</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_CAO_CAO</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_ZHUGE_LIANG</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_BELISARIUS</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_KHALED_IBN_AL_WALID</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_CHARLES_MARTEL</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_EL_CID</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_WILLIAM_THE_CONQUEROR</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_SUBUTAI</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_TIMUR</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_JEANNE_DARC</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_PACHACUTI</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_AUITZOTL</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_HERNAN_CORTES</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_FRANCISCO_PIZARRO</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_IVAN_THE_TERRIBLE</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_AKBAR</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_GUSTAVUS_ADOLPHUS</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_MICHIEL_DE_RUYTER</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_CROMWELL</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_EUGENE_OF_SAVOY</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_LORD_NELSON</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_GERONIMO</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_ROBERT_LEE</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_YAMAMOTO</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_PATTON</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_MONTGOMERY</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_GUERDIAN</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_ROMMEL</UniqueName>
-        <UniqueName>TXT_KEY_GREAT_PERSON_ZHUKOV</UniqueName>
-      </UniqueNames>
-      <Special>SPECIALUNIT_PEOPLE</Special>
-      <Capture>NONE</Capture>
-      <Combat>UNITCOMBAT_COMMANDER</Combat>
-      <!-- @MOD Commanders -->
-      <Domain>DOMAIN_LAND</Domain>
-      <DefaultUnitAI>UNITAI_GENERAL</DefaultUnitAI>
-      <Invisible>NONE</Invisible>
-      <SeeInvisible>NONE</SeeInvisible>
-      <Description>TXT_KEY_UNIT_GREAT_GENERAL</Description>
-      <Civilopedia>TXT_KEY_CONCEPT_GREAT_GENERALS_PEDIA</Civilopedia>
-      <Strategy>TXT_KEY_UNIT_GREAT_GENERAL_STRATEGY</Strategy>
-      <Advisor>ADVISOR_MILITARY</Advisor>
-      <bAnimal>0</bAnimal>
-      <bFood>0</bFood>
-      <bNoBadGoodies>0</bNoBadGoodies>
-      <bOnlyDefensive>0</bOnlyDefensive>
-      <bNoCapture>0</bNoCapture>
-      <bQuickCombat>0</bQuickCombat>
-      <bRivalTerritory>0</bRivalTerritory>
-      <bMilitaryHappiness>0</bMilitaryHappiness>
-      <bMilitarySupport>0</bMilitarySupport>
-      <bMilitaryProduction>0</bMilitaryProduction>
-      <bPillage>0</bPillage>
-      <bSpy>0</bSpy>
-      <bSabotage>0</bSabotage>
-      <bDestroy>0</bDestroy>
-      <bStealPlans>0</bStealPlans>
-      <bInvestigate>0</bInvestigate>
-      <bCounterSpy>0</bCounterSpy>
-      <bFound>0</bFound>
-      <bGoldenAge>0</bGoldenAge>
-      <bInvisible>0</bInvisible>
-      <bFirstStrikeImmune>0</bFirstStrikeImmune>
-      <bNoDefensiveBonus>0</bNoDefensiveBonus>
-      <bIgnoreBuildingDefense>0</bIgnoreBuildingDefense>
-      <bCanMoveImpassable>0</bCanMoveImpassable>
-      <bCanMoveAllTerrain>0</bCanMoveAllTerrain>
-      <bFlatMovementCost>0</bFlatMovementCost>
-      <bIgnoreTerrainCost>0</bIgnoreTerrainCost>
-      <bNukeImmune>0</bNukeImmune>
-      <bPrereqBonuses>0</bPrereqBonuses>
-      <bPrereqReligion>0</bPrereqReligion>
-      <bMechanized>0</bMechanized>
-      <bSuicide>0</bSuicide>
-      <bHiddenNationality>0</bHiddenNationality>
-      <bAlwaysHostile>0</bAlwaysHostile>
-      <UnitClassUpgrades/>
-      <UnitClassTargets/>
-      <UnitCombatTargets/>
-      <UnitClassDefenders/>
-      <UnitCombatDefenders/>
-      <FlankingStrikes/>
-      <UnitAIs>
-        <UnitAI>
-          <UnitAIType>UNITAI_GENERAL</UnitAIType>
-          <bUnitAI>1</bUnitAI>
-        </UnitAI>
-      </UnitAIs>
-      <NotUnitAIs/>
-      <Builds/>
-      <ReligionSpreads/>
-      <CorporationSpreads/>
-      <GreatPeoples>
-        <GreatPeople>
-          <GreatPeopleType>SPECIALIST_GREAT_GENERAL</GreatPeopleType>
-          <bGreatPeople>1</bGreatPeople>
-        </GreatPeople>
-      </GreatPeoples>
-      <Buildings>
-        <Building>
-          <BuildingType>BUILDING_MILITARY_ACADEMY</BuildingType>
-          <bBuilding>1</bBuilding>
-        </Building>
-      </Buildings>
-      <ForceBuildings/>
-      <HolyCity>NONE</HolyCity>
-      <ReligionType>NONE</ReligionType>
-      <StateReligion>NONE</StateReligion>
-      <PrereqReligion>NONE</PrereqReligion>
-      <PrereqCorporation>NONE</PrereqCorporation>
-      <PrereqBuilding>NONE</PrereqBuilding>
-      <PrereqTech>NONE</PrereqTech>
-      <TechTypes/>
-      <BonusType>NONE</BonusType>
-      <PrereqBonuses/>
-      <ProductionTraits/>
-      <Flavors>
-        <Flavor>
-          <FlavorType>FLAVOR_MILITARY</FlavorType>
-          <iFlavor>1</iFlavor>
-        </Flavor>
-      </Flavors>
-      <iAIWeight>0</iAIWeight>
-      <iCost>-1</iCost>
-      <iHurryCostModifier>50</iHurryCostModifier>
-      <iAdvancedStartCost>-1</iAdvancedStartCost>
-      <iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
-      <iMinAreaSize>-1</iMinAreaSize>
-      <iMoves>2</iMoves>
-      <bNoRevealMap>0</bNoRevealMap>
-      <iAirRange>0</iAirRange>
-      <iAirUnitCap>0</iAirUnitCap>
-      <iDropRange>0</iDropRange>
-      <iNukeRange>-1</iNukeRange>
-      <iWorkRate>0</iWorkRate>
-      <iBaseDiscover>0</iBaseDiscover>
-      <iDiscoverMultiplier>0</iDiscoverMultiplier>
-      <iBaseHurry>0</iBaseHurry>
-      <iHurryMultiplier>0</iHurryMultiplier>
-      <iBaseTrade>0</iBaseTrade>
-      <iTradeMultiplier>0</iTradeMultiplier>
-      <iGreatWorkCulture>0</iGreatWorkCulture>
-      <iEspionagePoints>0</iEspionagePoints>
-      <TerrainImpassables/>
-      <FeatureImpassables/>
-      <TerrainPassableTechs/>
-      <FeaturePassableTechs/>
-      <iCombat>0</iCombat>
-      <iCombatLimit>0</iCombatLimit>
-      <iAirCombat>0</iAirCombat>
-      <iAirCombatLimit>0</iAirCombatLimit>
-      <iXPValueAttack>0</iXPValueAttack>
-      <iXPValueDefense>0</iXPValueDefense>
-      <iFirstStrikes>0</iFirstStrikes>
-      <iChanceFirstStrikes>0</iChanceFirstStrikes>
-      <iInterceptionProbability>0</iInterceptionProbability>
-      <iEvasionProbability>0</iEvasionProbability>
-      <iWithdrawalProb>0</iWithdrawalProb>
-      <iCollateralDamage>0</iCollateralDamage>
-      <iCollateralDamageLimit>0</iCollateralDamageLimit>
-      <iCollateralDamageMaxUnits>0</iCollateralDamageMaxUnits>
-      <iCityAttack>0</iCityAttack>
-      <iCityDefense>0</iCityDefense>
-      <iAnimalCombat>0</iAnimalCombat>
-      <iHillsAttack>0</iHillsAttack>
-      <iHillsDefense>0</iHillsDefense>
-      <TerrainNatives/>
-      <FeatureNatives/>
-      <TerrainAttacks/>
-      <TerrainDefenses/>
-      <FeatureAttacks/>
-      <FeatureDefenses/>
-      <UnitClassAttackMods/>
-      <UnitClassDefenseMods/>
-      <UnitCombatMods/>
-      <UnitCombatCollateralImmunes/>
-      <DomainMods/>
-      <BonusProductionModifiers/>
-      <iBombRate>0</iBombRate>
-      <iBombardRate>0</iBombardRate>
-      <SpecialCargo>NONE</SpecialCargo>
-      <DomainCargo>NONE</DomainCargo>
-      <iCargo>0</iCargo>
-      <iConscription>0</iConscription>
-      <iCultureGarrison>0</iCultureGarrison>
-      <iExtraCost>0</iExtraCost>
-      <iAsset>5</iAsset>
-      <iPower>0</iPower>
-      <UnitMeshGroups>
-        <iGroupSize>1</iGroupSize>
-        <fMaxSpeed>1.75</fMaxSpeed>
-        <fPadTime>1</fPadTime>
-        <iMeleeWaveSize>1</iMeleeWaveSize>
-        <iRangedWaveSize>1</iRangedWaveSize>
-        <UnitMeshGroup>
-          <iRequired>1</iRequired>
-          <EarlyArtDefineTag>ART_DEF_UNIT_WARLORD_ANCIENT</EarlyArtDefineTag>
-          <LateArtDefineTag>ART_DEF_UNIT_WARLORD_MODERN</LateArtDefineTag>
-          <MiddleArtDefineTag>ART_DEF_UNIT_WARLORD_MEDIEVAL</MiddleArtDefineTag>
-        </UnitMeshGroup>
-      </UnitMeshGroups>
-      <FormationType>FORMATION_TYPE_DEFAULT</FormationType>
-      <HotKey/>
-      <bAltDown>0</bAltDown>
-      <bShiftDown>0</bShiftDown>
-      <bCtrlDown>0</bCtrlDown>
-      <iHotKeyPriority>0</iHotKeyPriority>
-      <FreePromotions/>
-      <LeaderPromotion>PROMOTION_LEADER</LeaderPromotion>
-      <iLeaderExperience>20</iLeaderExperience>
-      <!-- @MOD Commanders -->
-      <iCommandRange>0</iCommandRange>
-      <iControlPoints>3</iControlPoints>
-      <!-- end mod -->
-    </UnitInfo>
+		<UnitInfo>
+			<Class>UNITCLASS_GREAT_GENERAL</Class>
+			<Type>UNIT_GREAT_GENERAL</Type>
+			<UniqueNames>
+				<UniqueName>TXT_KEY_GREAT_PERSON_SARGON</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_NEBUCHADREZZAR</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_SUN_TZU</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_LEONIDAS</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_LYSANDER</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_CHANDRAGUPTA_MAURYA</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_HAMILCAR_BARCA</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_GAIUS_MARIUS</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_SCIPIO_AFRICANUS</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_VERCINGETORIX</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_ARMINIUS</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_CAO_CAO</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_ZHUGE_LIANG</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_BELISARIUS</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_KHALED_IBN_AL_WALID</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_CHARLES_MARTEL</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_EL_CID</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_WILLIAM_THE_CONQUEROR</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_SUBUTAI</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_TIMUR</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_JEANNE_DARC</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_PACHACUTI</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_AUITZOTL</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_HERNAN_CORTES</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_FRANCISCO_PIZARRO</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_IVAN_THE_TERRIBLE</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_AKBAR</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_GUSTAVUS_ADOLPHUS</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_MICHIEL_DE_RUYTER</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_CROMWELL</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_EUGENE_OF_SAVOY</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_LORD_NELSON</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_GERONIMO</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_ROBERT_LEE</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_YAMAMOTO</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_PATTON</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_MONTGOMERY</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_GUERDIAN</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_ROMMEL</UniqueName>
+				<UniqueName>TXT_KEY_GREAT_PERSON_ZHUKOV</UniqueName>
+			</UniqueNames>
+			<Special>SPECIALUNIT_PEOPLE</Special>
+			<Capture>NONE</Capture>
+			<Combat>UNITCOMBAT_COMMANDER</Combat>
+			<Domain>DOMAIN_LAND</Domain>
+			<DefaultUnitAI>UNITAI_GENERAL</DefaultUnitAI>
+			<Invisible>NONE</Invisible>
+			<SeeInvisible>NONE</SeeInvisible>
+			<Description>TXT_KEY_UNIT_GREAT_GENERAL</Description>
+			<Civilopedia>TXT_KEY_CONCEPT_GREAT_GENERALS_PEDIA</Civilopedia>
+			<Strategy>TXT_KEY_UNIT_GREAT_GENERAL_STRATEGY</Strategy>
+			<Advisor>ADVISOR_MILITARY</Advisor>
+			<bAnimal>0</bAnimal>
+			<bFood>0</bFood>
+			<bNoBadGoodies>0</bNoBadGoodies>
+			<bOnlyDefensive>0</bOnlyDefensive>
+			<bNoCapture>0</bNoCapture>
+			<bQuickCombat>0</bQuickCombat>
+			<bRivalTerritory>0</bRivalTerritory>
+			<bMilitaryHappiness>0</bMilitaryHappiness>
+			<bMilitarySupport>0</bMilitarySupport>
+			<bMilitaryProduction>0</bMilitaryProduction>
+			<bPillage>0</bPillage>
+			<bSpy>0</bSpy>
+			<bSabotage>0</bSabotage>
+			<bDestroy>0</bDestroy>
+			<bStealPlans>0</bStealPlans>
+			<bInvestigate>0</bInvestigate>
+			<bCounterSpy>0</bCounterSpy>
+			<bFound>0</bFound>
+			<bGoldenAge>0</bGoldenAge>
+			<bInvisible>0</bInvisible>
+			<bFirstStrikeImmune>0</bFirstStrikeImmune>
+			<bNoDefensiveBonus>0</bNoDefensiveBonus>
+			<bIgnoreBuildingDefense>0</bIgnoreBuildingDefense>
+			<bCanMoveImpassable>0</bCanMoveImpassable>
+			<bCanMoveAllTerrain>0</bCanMoveAllTerrain>
+			<bFlatMovementCost>0</bFlatMovementCost>
+			<bIgnoreTerrainCost>0</bIgnoreTerrainCost>
+			<bNukeImmune>0</bNukeImmune>
+			<bPrereqBonuses>0</bPrereqBonuses>
+			<bPrereqReligion>0</bPrereqReligion>
+			<bMechanized>0</bMechanized>
+			<bSuicide>0</bSuicide>
+			<bHiddenNationality>0</bHiddenNationality>
+			<bAlwaysHostile>0</bAlwaysHostile>
+			<UnitClassUpgrades/>
+			<UnitClassTargets/>
+			<UnitCombatTargets/>
+			<UnitClassDefenders/>
+			<UnitCombatDefenders/>
+			<FlankingStrikes/>
+			<UnitAIs>
+				<UnitAI>
+					<UnitAIType>UNITAI_GENERAL</UnitAIType>
+					<bUnitAI>1</bUnitAI>
+				</UnitAI>
+			</UnitAIs>
+			<NotUnitAIs/>
+			<Builds/>
+			<ReligionSpreads/>
+			<CorporationSpreads/>
+			<GreatPeoples>
+				<GreatPeople>
+					<GreatPeopleType>SPECIALIST_GREAT_GENERAL</GreatPeopleType>
+					<bGreatPeople>1</bGreatPeople>
+				</GreatPeople>
+			</GreatPeoples>
+			<Buildings>
+				<Building>
+					<BuildingType>BUILDING_MILITARY_ACADEMY</BuildingType>
+					<bBuilding>1</bBuilding>
+				</Building>
+			</Buildings>
+			<ForceBuildings/>
+			<HolyCity>NONE</HolyCity>
+			<ReligionType>NONE</ReligionType>
+			<StateReligion>NONE</StateReligion>
+			<PrereqReligion>NONE</PrereqReligion>
+			<PrereqCorporation>NONE</PrereqCorporation>
+			<PrereqBuilding>NONE</PrereqBuilding>
+			<PrereqTech>NONE</PrereqTech>
+			<TechTypes/>
+			<BonusType>NONE</BonusType>
+			<PrereqBonuses/>
+			<ProductionTraits/>
+			<Flavors>
+				<Flavor>
+					<FlavorType>FLAVOR_MILITARY</FlavorType>
+					<iFlavor>1</iFlavor>
+				</Flavor>
+			</Flavors>
+			<iAIWeight>0</iAIWeight>
+			<iCost>-1</iCost>
+			<iHurryCostModifier>50</iHurryCostModifier>
+			<iAdvancedStartCost>-1</iAdvancedStartCost>
+			<iAdvancedStartCostIncrease>0</iAdvancedStartCostIncrease>
+			<iMinAreaSize>-1</iMinAreaSize>
+			<iMoves>2</iMoves>
+			<bNoRevealMap>0</bNoRevealMap>
+			<iAirRange>0</iAirRange>
+			<iAirUnitCap>0</iAirUnitCap>
+			<iDropRange>0</iDropRange>
+			<iNukeRange>-1</iNukeRange>
+			<iWorkRate>0</iWorkRate>
+			<iBaseDiscover>0</iBaseDiscover>
+			<iDiscoverMultiplier>0</iDiscoverMultiplier>
+			<iBaseHurry>0</iBaseHurry>
+			<iHurryMultiplier>0</iHurryMultiplier>
+			<iBaseTrade>0</iBaseTrade>
+			<iTradeMultiplier>0</iTradeMultiplier>
+			<iGreatWorkCulture>0</iGreatWorkCulture>
+			<iEspionagePoints>0</iEspionagePoints>
+			<TerrainImpassables/>
+			<FeatureImpassables/>
+			<TerrainPassableTechs/>
+			<FeaturePassableTechs/>
+			<iCombat>0</iCombat>
+			<iCombatLimit>0</iCombatLimit>
+			<iAirCombat>0</iAirCombat>
+			<iAirCombatLimit>0</iAirCombatLimit>
+			<iXPValueAttack>0</iXPValueAttack>
+			<iXPValueDefense>0</iXPValueDefense>
+			<iFirstStrikes>0</iFirstStrikes>
+			<iChanceFirstStrikes>0</iChanceFirstStrikes>
+			<iInterceptionProbability>0</iInterceptionProbability>
+			<iEvasionProbability>0</iEvasionProbability>
+			<iWithdrawalProb>0</iWithdrawalProb>
+			<iCollateralDamage>0</iCollateralDamage>
+			<iCollateralDamageLimit>0</iCollateralDamageLimit>
+			<iCollateralDamageMaxUnits>0</iCollateralDamageMaxUnits>
+			<iCityAttack>0</iCityAttack>
+			<iCityDefense>0</iCityDefense>
+			<iAnimalCombat>0</iAnimalCombat>
+			<iHillsAttack>0</iHillsAttack>
+			<iHillsDefense>0</iHillsDefense>
+			<TerrainNatives/>
+			<FeatureNatives/>
+			<TerrainAttacks/>
+			<TerrainDefenses/>
+			<FeatureAttacks/>
+			<FeatureDefenses/>
+			<UnitClassAttackMods/>
+			<UnitClassDefenseMods/>
+			<UnitCombatMods/>
+			<UnitCombatCollateralImmunes/>
+			<DomainMods/>
+			<BonusProductionModifiers/>
+			<iBombRate>0</iBombRate>
+			<iBombardRate>0</iBombardRate>
+			<SpecialCargo>NONE</SpecialCargo>
+			<DomainCargo>NONE</DomainCargo>
+			<iCargo>0</iCargo>
+			<iConscription>0</iConscription>
+			<iCultureGarrison>0</iCultureGarrison>
+			<iExtraCost>0</iExtraCost>
+			<iAsset>5</iAsset>
+			<iPower>0</iPower>
+			<UnitMeshGroups>
+				<iGroupSize>1</iGroupSize>
+				<fMaxSpeed>1.75</fMaxSpeed>
+				<fPadTime>1</fPadTime>
+				<iMeleeWaveSize>1</iMeleeWaveSize>
+				<iRangedWaveSize>1</iRangedWaveSize>
+				<UnitMeshGroup>
+					<iRequired>1</iRequired>
+					<EarlyArtDefineTag>ART_DEF_UNIT_WARLORD_ANCIENT</EarlyArtDefineTag>
+					<LateArtDefineTag>ART_DEF_UNIT_WARLORD_MODERN</LateArtDefineTag>
+					<MiddleArtDefineTag>ART_DEF_UNIT_WARLORD_MEDIEVAL</MiddleArtDefineTag>
+				</UnitMeshGroup>
+			</UnitMeshGroups>
+			<FormationType>FORMATION_TYPE_DEFAULT</FormationType>
+			<HotKey/>
+			<bAltDown>0</bAltDown>
+			<bShiftDown>0</bShiftDown>
+			<bCtrlDown>0</bCtrlDown>
+			<iHotKeyPriority>0</iHotKeyPriority>
+			<FreePromotions/>
+			<LeaderPromotion>PROMOTION_LEADER</LeaderPromotion>
+			<iLeaderExperience>20</iLeaderExperience>
+			<iCommandRange>0</iCommandRange>
+			<iControlPoints>3</iControlPoints>
+		</UnitInfo>
 		<UnitInfo>
 			<Class>UNITCLASS_GREAT_SPY</Class>
 			<Type>UNIT_GREAT_SPY</Type>

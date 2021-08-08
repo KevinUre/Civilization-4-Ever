@@ -15326,6 +15326,7 @@ bool CvSeaLevelInfo::read(CvXMLLoadUtility* pXML)
 //------------------------------------------------------------------------------------------------------
 CvProcessInfo::CvProcessInfo() :
 m_iTechPrereq(NO_TECH),
+m_iTechObsolete(NO_TECH),
 m_paiProductionToCommerceModifier(NULL)
 {
 }
@@ -15342,9 +15343,14 @@ CvProcessInfo::~CvProcessInfo()
 	SAFE_DELETE_ARRAY(m_paiProductionToCommerceModifier);
 }
 
-int CvProcessInfo::getTechPrereq() const	
+int CvProcessInfo::getTechPrereq() const
 {
-	return m_iTechPrereq; 
+	return m_iTechPrereq;
+}
+
+int CvProcessInfo::getTechObsolete() const
+{
+	return m_iTechObsolete;
 }
 
 // Arrays
@@ -15366,6 +15372,8 @@ bool CvProcessInfo::read(CvXMLLoadUtility* pXML)
 
 	pXML->GetChildXmlValByName(szTextVal, "TechPrereq");
 	m_iTechPrereq = pXML->FindInInfoClass(szTextVal);
+	pXML->GetChildXmlValByName(szTextVal, "TechObsolete");
+	m_iTechObsolete = pXML->FindInInfoClass(szTextVal);
 
 	if (gDLL->getXMLIFace()->SetToChildByTagName(pXML->GetXML(),"ProductionToCommerceModifiers"))
 	{

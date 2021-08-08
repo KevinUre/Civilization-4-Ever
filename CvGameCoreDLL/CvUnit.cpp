@@ -291,6 +291,7 @@ void CvUnit::reset(int iID, UnitTypes eUnit, PlayerTypes eOwner, bool bConstruct
 	uninit();
 	
 	//@MOD Commanders: reset parameters
+	m_iOnslaughtCount = 0;
 	m_iExtraCommandRange = 0;
 	m_iExtraControlPoints = 0;
 	m_iControlPointsLeft = 0;
@@ -7640,7 +7641,7 @@ int CvUnit::upgradePrice(UnitTypes eUnit) const
 	iPrice += (std::max(0, (GET_PLAYER(getOwnerINLINE()).getProductionNeeded(eUnit) - GET_PLAYER(getOwnerINLINE()).getProductionNeeded(getUnitType()))) * GC.getDefineINT("UNIT_UPGRADE_COST_PER_PRODUCTION"));
 
 	//DeathMaker900 Begin
-	if (GET_TEAM(getTeam()).isAtWar(plot()->getTeam()) || GET_TEAM(plot()->getTeam()).isBarbarian())
+	if (plot()->getTeam() != NO_TEAM && (GET_TEAM(getTeam()).isAtWar(plot()->getTeam()) || GET_TEAM(plot()->getTeam()).isBarbarian()))
 	{
 		iPrice = (GC.getDefineINT("UNIT_UPGRADE_COST_MOD_HOSTILE") * iPrice) / 100;
 	}

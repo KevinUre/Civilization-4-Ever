@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Sid Meier's Civilization 4 Beyond the Sword -->
+<!-- Modified by the World of Civilization Team -->
+<!-- Game Text Infos -->
+<!-- -->
+<Civ4GameText xmlns="http://www.firaxis.com">
+	<TEXT>
+		<Tag>TXT_KEY_GAME_OPTION_CITY_MAINTENANCE_SOFT_CAP</Tag>
+		<English>Uncapped City Maintenance</English>
+		<French>Uncapped City Maintenance</French>
+		<German>Uncapped City Maintenance</German>
+		<Italian>Uncapped City Maintenance</Italian>
+		<Spanish>Uncapped City Maintenance</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_GAME_OPTION_CITY_MAINTENANCE_SOFT_CAP_HELP</Tag>
+		<English>Removes the hard cap on maintenance from number of cities. This will make it more costly to keep a big civiliziation and thus give smaller civs a chance to catch up. </English>
+		<French>Makes it so that every city you have over your city limit from handicap adds an increasingly small fractional city to your maintenance calculation. This will make it more costly to keep a big civiliziation and thus give smaller civs a chance to catch up. </French>
+		<German>Makes it so that every city you have over your city limit from handicap adds an increasingly small fractional city to your maintenance calculation. This will make it more costly to keep a big civiliziation and thus give smaller civs a chance to catch up. </German>
+		<Italian>Makes it so that every city you have over your city limit from handicap adds an increasingly small fractional city to your maintenance calculation. This will make it more costly to keep a big civiliziation and thus give smaller civs a chance to catch up. </Italian>
+		<Spanish>Makes it so that every city you have over your city limit from handicap adds an increasingly small fractional city to your maintenance calculation. This will make it more costly to keep a big civiliziation and thus give smaller civs a chance to catch up. </Spanish>
+	</TEXT>
+</Civ4GameText>

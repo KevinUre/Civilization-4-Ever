@@ -1225,7 +1225,6 @@ protected:
 	int getHurryCost(bool bExtra, UnitTypes eUnit, bool bIgnoreNew) const;
 	int getHurryCost(bool bExtra, BuildingTypes eBuilding, bool bIgnoreNew) const;
 	int getHurryCost(bool bExtra, int iProductionLeft, int iHurryModifier, int iModifier) const;
-	int getModifiedProductionPerPopulation(HurryTypes eHurry) const;
 	int getHurryPopulation(HurryTypes eHurry, int iHurryCost) const;
 	int getHurryGold(HurryTypes eHurry, int iHurryCost) const;
 	bool canHurryUnit(HurryTypes eHurry, UnitTypes eUnit, bool bIgnoreNew) const;

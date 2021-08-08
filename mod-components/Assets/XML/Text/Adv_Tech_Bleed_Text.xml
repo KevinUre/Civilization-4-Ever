@@ -20,4 +20,20 @@
 		<Italian>Enables a more in depth technology bleeding system, replacing the standard one</Italian>
 		<Spanish>Enables a more in depth technology bleeding system, replacing the standard one</Spanish>
 	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_GAME_OPTION_ADV_TECH_BLEED_LOGISTIC_CURVE</Tag>
+		<English>Adv Tech Bleed Logistic Curve</English>
+		<French>Adv Tech Bleed Logistic Curve</French>
+		<German>Adv Tech Bleed Logistic Curve</German>
+		<Italian>Adv Tech Bleed Logistic Curve</Italian>
+		<Spanish>Adv Tech Bleed Logistic Curve</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_GAME_OPTION_ADV_TECH_BLEED_LOGISTIC_CURVE_HELP</Tag>
+		<English>Modifies Advanced Techology Bleeding to use a logistic curve. This will help everyone catch up to a snowballing player</English>
+		<French>Modifies Advanced Techology Bleeding to use a logistic curve. this will help everyone catch up to a snowballing player</French>
+		<German>Modifies Advanced Techology Bleeding to use a logistic curve. this will help everyone catch up to a snowballing player</German>
+		<Italian>Modifies Advanced Techology Bleeding to use a logistic curve. this will help everyone catch up to a snowballing player</Italian>
+		<Spanish>Modifies Advanced Techology Bleeding to use a logistic curve. this will help everyone catch up to a snowballing player</Spanish>
+	</TEXT>
 </Civ4GameText>
