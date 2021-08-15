@@ -10,7 +10,11 @@ To boot the mod either boot the game and then goto `Advanced` then `Load a Mod` 
 
 ## How to clear the game cache
 
-The game caches some values when it runs and clearing this cache out seems to both fix problems when updating the mod as well as cure some multiplayer desyncs. To clear the cache make sure the game is closed and then navigate to `%localappdata%\My Games\beyond the sword` and delete the `cache` directory found there.
+The game caches some values when it runs and clearing this cache out seems to both fix problems when updating the mod as well as cure some multiplayer desyncs. Make sure the game is closed before you clear the cache.
+
+Inside the mod directory there is a script `Clear-Cache.bat` that will clear the cache.
+
+If you want to do it manually you can navigate to `%localappdata%\My Games\beyond the sword` and delete the `cache` directory found there.
 
 ## How to build
 

@@ -1,0 +1,1 @@
+del "%localappdata%\My Games\beyond the sword\cache" /F /Q
