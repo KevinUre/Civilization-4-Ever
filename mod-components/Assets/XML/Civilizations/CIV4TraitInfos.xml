@@ -120,9 +120,9 @@
 			<iGreatPeopleRateModifier>0</iGreatPeopleRateModifier>
 			<iGreatGeneralRateModifier>0</iGreatGeneralRateModifier>
 			<iDomesticGreatGeneralRateModifier>0</iDomesticGreatGeneralRateModifier>
-			<iMaxGlobalBuildingProductionModifier>33</iMaxGlobalBuildingProductionModifier>
-			<iMaxTeamBuildingProductionModifier>33</iMaxTeamBuildingProductionModifier>
-			<iMaxPlayerBuildingProductionModifier>33</iMaxPlayerBuildingProductionModifier>
+			<iMaxGlobalBuildingProductionModifier>34</iMaxGlobalBuildingProductionModifier>
+			<iMaxTeamBuildingProductionModifier>34</iMaxTeamBuildingProductionModifier>
+			<iMaxPlayerBuildingProductionModifier>34</iMaxPlayerBuildingProductionModifier>
 			<ExtraYieldThresholds/>
 			<TradeYieldModifiers/>
 			<CommerceChanges/>
