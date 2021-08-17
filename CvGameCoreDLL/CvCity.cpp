@@ -4781,13 +4781,19 @@ int CvCity::getModifiedProductionPerPopulation(HurryTypes eHurry) const
 	BuildingTypes eCurBuilding = getProductionBuilding();
 	if (eCurBuilding != NO_BUILDING)
 	{
-		CvBuildingClassInfo cTemp = GC.getBuildingClassInfo((BuildingClassTypes)GC.getBuildingInfo(eCurBuilding).getBuildingClassType());
-		if (cTemp.getMaxGlobalInstances() != -1 || cTemp.getMaxPlayerInstances() != -1 || cTemp.getMaxTeamInstances() != -1) // is wonder
-		{
-			int iNumerator = GC.getDefineINT("POPULATION_HURRY_WONDER_MODIFIER_NUMERATOR");
-			int iDenominator = GC.getDefineINT("POPULATION_HURRY_WONDER_MODIFIER_DENOMINATOR");
-			iProductionPerPopulation *= iNumerator;
-			iProductionPerPopulation /= iDenominator;
+		FAssertMsg(eCurBuilding < GC.getNumBuildingInfos() && eCurBuilding > -1, "building is not a building");
+		if (eCurBuilding < GC.getNumBuildingInfos() && eCurBuilding > -1) {
+			BuildingClassTypes eTempBuildingClass = (BuildingClassTypes)(GC.getBuildingInfo(eCurBuilding).getBuildingClassType());
+			FAssertMsg(eTempBuildingClass < GC.getNumBuildingClassInfos() && eTempBuildingClass > 0, "building has invalid building class info");
+			if (eTempBuildingClass < GC.getNumBuildingClassInfos() && eTempBuildingClass > 0) {
+				if (isWorldWonderClass(eTempBuildingClass) || isNationalWonderClass(eTempBuildingClass) || isTeamWonderClass(eTempBuildingClass)) // is wonder
+				{
+					int iNumerator = GC.getDefineINT("POPULATION_HURRY_WONDER_MODIFIER_NUMERATOR");
+					int iDenominator = GC.getDefineINT("POPULATION_HURRY_WONDER_MODIFIER_DENOMINATOR");
+					iProductionPerPopulation *= iNumerator;
+					iProductionPerPopulation /= iDenominator;
+				}
+			}
 		}
 	}
 	return iProductionPerPopulation;
