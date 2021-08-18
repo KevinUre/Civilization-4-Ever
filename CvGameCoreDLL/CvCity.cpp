@@ -4778,6 +4778,7 @@ int CvCity::hurryPopulation(HurryTypes eHurry) const
 int CvCity::getModifiedProductionPerPopulation(HurryTypes eHurry) const
 {
 	int iProductionPerPopulation = GC.getGameINLINE().getProductionPerPopulation(eHurry);
+	iProductionPerPopulation += (GC.getDefineINT("POPULATION_HURRY_ERA_BONUS") * GET_PLAYER(getOwner()).getCurrentEra() * 100) / std::max(1, GC.getGameSpeedInfo(GC.getGameINLINE().getGameSpeedType()).getHurryPercent());
 	BuildingTypes eCurBuilding = getProductionBuilding();
 	if (eCurBuilding != NO_BUILDING)
 	{
