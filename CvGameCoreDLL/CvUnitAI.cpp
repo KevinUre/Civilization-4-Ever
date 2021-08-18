@@ -22878,7 +22878,6 @@ int CvUnitAI::AI_pillageValue(CvPlot* pPlot, int iBonusValueThreshold)
 		if (getDomainType() != DOMAIN_AIR)
 		{
 			iValue += GC.getImprovementInfo(eImprovement).getPillageGold();
-			
 		}
 
 		if (eNonObsoleteBonus != NO_BONUS)
