@@ -4728,6 +4728,7 @@ int CvCity::getHurryCost(bool bExtra, BuildingTypes eBuilding, bool bIgnoreNew) 
 }
 
 //@HURRY
+// Cost in hammers to finish production
 int CvCity::getHurryCost(bool bExtra, int iProductionLeft, int iHurryModifier, int iModifier) const
 {
 	//remaining production to be paid for
@@ -4774,6 +4775,31 @@ int CvCity::hurryPopulation(HurryTypes eHurry) const
 	return (getHurryPopulation(eHurry, hurryCost(true)));
 }
 
+int CvCity::getModifiedProductionPerPopulation(HurryTypes eHurry) const
+{
+	int iProductionPerPopulation = GC.getGameINLINE().getProductionPerPopulation(eHurry);
+	iProductionPerPopulation += (GC.getDefineINT("POPULATION_HURRY_ERA_BONUS") * GET_PLAYER(getOwner()).getCurrentEra() * 100) / std::max(1, GC.getGameSpeedInfo(GC.getGameINLINE().getGameSpeedType()).getHurryPercent());
+	BuildingTypes eCurBuilding = getProductionBuilding();
+	if (eCurBuilding != NO_BUILDING)
+	{
+		FAssertMsg(eCurBuilding < GC.getNumBuildingInfos() && eCurBuilding > -1, "building is not a building");
+		if (eCurBuilding < GC.getNumBuildingInfos() && eCurBuilding > -1) {
+			BuildingClassTypes eTempBuildingClass = (BuildingClassTypes)(GC.getBuildingInfo(eCurBuilding).getBuildingClassType());
+			FAssertMsg(eTempBuildingClass < GC.getNumBuildingClassInfos() && eTempBuildingClass > 0, "building has invalid building class info");
+			if (eTempBuildingClass < GC.getNumBuildingClassInfos() && eTempBuildingClass > 0) {
+				if (isWorldWonderClass(eTempBuildingClass) || isNationalWonderClass(eTempBuildingClass) || isTeamWonderClass(eTempBuildingClass)) // is wonder
+				{
+					int iNumerator = GC.getDefineINT("POPULATION_HURRY_WONDER_MODIFIER_NUMERATOR");
+					int iDenominator = GC.getDefineINT("POPULATION_HURRY_WONDER_MODIFIER_DENOMINATOR");
+					iProductionPerPopulation *= iNumerator;
+					iProductionPerPopulation /= iDenominator;
+				}
+			}
+		}
+	}
+	return iProductionPerPopulation;
+}
+
 //@HURRY
 // hurry cost already accounts for the modifier of the object being hurried
 int CvCity::getHurryPopulation(HurryTypes eHurry, int iHurryCost) const
@@ -4783,7 +4809,7 @@ int CvCity::getHurryPopulation(HurryTypes eHurry, int iHurryCost) const
 		return 0;
 	}
 
-	int iPopulation = (iHurryCost - 1) / GC.getGameINLINE().getProductionPerPopulation(eHurry);
+	int iPopulation = (iHurryCost - 1) / getModifiedProductionPerPopulation(eHurry);
 	
 	iPopulation += 1;
 
@@ -4822,7 +4848,7 @@ int CvCity::hurryProduction(HurryTypes eHurry) const
 				iTemp *= 2;
 			}
 		}*/
-		iProduction = (100 * getExtraProductionDifference(hurryPopulation(eHurry) * GC.getGameINLINE().getProductionPerPopulation(eHurry))) / std::max(1, getHurryCostModifier());
+		iProduction = (100 * getExtraProductionDifference(hurryPopulation(eHurry) * getModifiedProductionPerPopulation(eHurry))) / std::max(1, getHurryCostModifier());
 		//iProduction = (100 * getExtraProductionDifference(iTemp * GC.getGameINLINE().getProductionPerPopulation(eHurry))) / std::max(1, getHurryCostModifier());
 		//END FIX
 		
