@@ -363,7 +363,7 @@
 	</Define>
 	<Define>
 		<DefineName>POPULATION_HURRY_ERA_BONUS</DefineName>
-		<iDefineIntVal>4</iDefineIntVal> <!-- @HURRY -->
+		<iDefineIntVal>3</iDefineIntVal> <!-- @HURRY -->
 	</Define>
 	<Define>
 		<DefineName>CONSCRIPT_MIN_CITY_POPULATION</DefineName>
