@@ -7981,6 +7981,12 @@ void CvCity::setCultureLevel(CultureLevelTypes eNewValue, bool bUpdatePlotGroups
 				CvEventReporter::getInstance().cultureExpansion(this, getOwnerINLINE());
 				
 				//Stop Build Culture
+/************************************************************************************************/
+/* UNOFFICIAL_PATCH                       12/07/09                         denev & jdog5000     */
+/*                                                                                              */
+/* Bugfix, Odd behavior                                                                         */
+/************************************************************************************************/
+/* original BTS code
 				if (isProductionProcess())
 				{
 					if (GC.getProcessInfo(getProductionProcess()).getProductionToCommerceModifier(COMMERCE_CULTURE) > 0)
@@ -7988,6 +7994,23 @@ void CvCity::setCultureLevel(CultureLevelTypes eNewValue, bool bUpdatePlotGroups
 						popOrder(0, false, true);						
 					}
 				}
+*/
+// For AI this is completely unnecessary.  Timing also appears to cause bug with overflow production,
+// giving extra hammers innappropriately.
+				if (isHuman() && !isProductionAutomated())
+				{
+					if (isProductionProcess())
+					{
+						if (GC.getProcessInfo(getProductionProcess()).getProductionToCommerceModifier(COMMERCE_CULTURE) > 0)
+						{
+							popOrder(0, false, true);
+							//m_bPopProductionProcess = true;
+						}
+					}
+				}
+/************************************************************************************************/
+/* UNOFFICIAL_PATCH                        END                                                  */
+/************************************************************************************************/
 			}
 		}
 	}
@@ -12047,11 +12070,11 @@ void CvCity::doProduction(bool bAllowNoProduction)
 /*                                                                                              */
 /* Bugfix, Odd behavior                                                                         */
 /************************************************************************************************/
-		if (m_bPopProductionProcess)
+		/*if (m_bPopProductionProcess)
 		{
 			popOrder(0, false, true);
 			m_bPopProductionProcess = false;
-		}
+		}*/
 /************************************************************************************************/
 /* UNOFFICIAL_PATCH                        END                                                  */
 /************************************************************************************************/
